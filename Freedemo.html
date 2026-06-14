@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Demo Class - English Spur</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* Global Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        /* Portal Main Container */
+        .portal-container {
+            background: #ffffff;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        /* Clean Branding Header - Universally Visible */
+        .brand-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 3px double #1e3a8a;
+            padding-bottom: 15px;
+            gap: 5px;
+        }
+
+        .logo-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Custom Styled Speaking Voice Silhouette SVG Logo */
+        .brand-logo-svg {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .brand-header h1 {
+            color: #1e3a8a;
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .brand-header .academy-sub {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 3px;
+            text-transform: uppercase;
+        }
+
+        .brand-header .contact-info {
+            color: #475569;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        /* Security Gateway Layout Section */
+        #gateway-screen {
+            text-align: center;
+            border-top: 4px solid #2563eb;
+            padding-top: 15px;
+        }
+
+        .gateway-title {
+            font-size: 16px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .scam-warning {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        /* Main Registration Form Screen (Hidden initially) */
+        #admissionForm {
+            display: none;
+        }
+
+        /* Form Title Row - Centered alignment */
+        .form-title-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f1f5f9;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .form-title-row h2 {
+            color: #1e3a8a;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .form-id-box {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1e40af;
+            background: #dbeafe;
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid #93c5fd;
+            white-space: nowrap;
+        }
+
+        /* Section Title Component - Centered */
+        .section-title {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 25px 0 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 6px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Form Layout Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* FIXED: Input Fields and Labels fully center-aligned */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            align-items: center;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #0f172a;
+            background-color: #f8fafc;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center; /* Centers typed characters */
+            text-align-last: center; /* Centers drop-down choices */
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: #2563eb;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Fixed Address Fields Centering */
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #0f172a;
+            background-color: #f8fafc;
+            outline: none;
+            resize: none;
+            height: auto;
+            min-height: 45px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            text-align: center;
+        }
+
+        /* Action Buttons Area */
+        .btn-container {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .action-btn {
+            border: none;
+            padding: 14px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            text-align: center;
+        }
+
+        .action-btn:active {
+            transform: scale(0.99);
+        }
+
+        .submit-btn {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .submit-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .gateway-btn {
+            background-color: #2563eb;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        .gateway-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .guide-text {
+            font-size: 12px;
+            color: #475569;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        /* Responsive Breakpoints Structure */
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; gap: 12px; }
+            .full-width { grid-column: span 1; }
+            .portal-container { padding: 20px 15px; }
+            .brand-header h1 { font-size: 26px; }
+            .brand-logo-svg { width: 42px; height: 42px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="portal-container" id="master-capture-box">
+    
+    <div class="brand-header">
+        <div class="logo-title-wrapper">
+          
+                <circle cx="50" cy="50" r="46" fill="none" stroke="#1e3a8a" stroke-width="6"/>
+                <path d="M22 75 C22 60 28 55 33 50 C30 45 28 38 31 30 C34 20 45 18 48 24 C51 27 50 33 46 38 C48 42 49 46 44 48 C48 51 46 54 41 55 C41 62 38 68 38 75 Z" fill="#1e3a8a"/>
+                <path d="M56 42 Q62 50 56 58" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+                <path d="M66 34 Q76 50 66 66" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+                <path d="M76 26 Q90 50 76 74" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <h1>English Spur</h1>
+        </div>
+        <div class="academy-sub">Online English Training Academy</div>
+        <div class="contact-info">
+            Kanaipur, Bantul, Bagnan, Howrah - 711312<br>
+            <strong>Contact:</strong> 9875340842 | <strong>Email:</strong> englishspur2020@gmail.com
+        </div>
+    </div>
+
+    <div id="gateway-screen">
+        <div class="gateway-title">Enter your real phone number to get to the free demo class page.</div>
+        
+        <div class="scam-warning">
+            💡 <strong>DEMO CLASS REQUISITION NOTE:</strong><br>
+            To preserve genuine interaction slots for our interactive sessions, fake or sequential inputs are auto-blocked. Please submit your active WhatsApp number so we can easily share the live class link and schedules with you.
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="gateway-phone">Valid WhatsApp Number (10 Digits) *</label>
+            <input type="tel" id="gateway-phone" placeholder="e.g., 9876XXXXXX" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+        </div>
+        
+        <button type="button" class="action-btn gateway-btn" onclick="verifyGatewayAccess()">Verify & Request Free Access</button>
+    </div>
+
+    <form id="admissionForm">
+        <div class="form-title-row">
+            <h2>FREE DEMO CLASS REGISTRATION</h2>
+            <div class="form-id-box"><span id="dynamicFormId">Generating ID...</span></div>
+        </div>
+        
+        <div class="section-title">Student Profile Details</div>
+        
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="full-name">Full Name *</label>
+                <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="student@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">WhatsApp Number *</label>
+                <input type="tel" id="phone" name="phone" readonly style="background-color: #e2e8f0; cursor: not-allowed;">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="profession">What do you currently do? (Occupation) *</label>
+                <select id="profession" name="profession" required>
+                    <option value="" disabled selected>Select your occupation</option>
+                    <option value="School Student">School Student</option>
+                    <option value="College / University Student">College / University Student</option>
+                    <option value="Job Seeker / Aspirant">Job Seeker / Aspirant</option>
+                    <option value="Job Holder / Professional">Job Holder / Professional</option>
+                    <option value="Business Owner / Self-Employed">Business Owner / Self-Employed</option>
+                    <option value="Housewife / Homemaker">Housewife / Homemaker</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section-title">Demo Session Preferences</div>
+        
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="demo-reason">Primary Reason for Joining the Free Demo *</label>
+                <select id="demo-reason" name="demo_reason" required>
+                    <option value="" disabled selected>Select your core goal</option>
+                    <option value="Want to evaluate Spoken English interactive training style">Want to evaluate Spoken English interactive training style</option>
+                    <option value="Want to understand English Grammar & Foundation curriculum">Want to understand English Grammar & Foundation curriculum</option>
+                    <option value="Want to experience live online class teaching quality">Want to experience live online class teaching quality</option>
+                    <option value="Seeking professional career counseling for English development">Seeking professional career counseling for English development</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section-title">Residential Address Details</div>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="addr-vill">Vill / City *</label>
+                <input type="text" id="addr-vill" name="addr_vill" placeholder="Village or City name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="addr-post">Post Office *</label>
+                <input type="text" id="addr-post" name="addr_post" placeholder="P.O." required>
+            </div>
+
+            <div class="form-group">
+                <label for="addr-ps">Police Station *</label>
+                <input type="text" id="addr-ps" name="addr_ps" placeholder="P.S." required>
+            </div>
+
+            <div class="form-group">
+                <label for="addr-dist">District *</label>
+                <input type="text" id="addr-dist" name="addr_dist" placeholder="District name" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="addr-pin">Pin Code *</label>
+                <input type="text" id="addr-pin" name="addr_pin" placeholder="6-digit Zip Code" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+            </div>
+        </div>
+
+        <div class="btn-container" id="action-buttons-wrapper">
+            <button type="submit" class="action-btn submit-btn" id="submitBtn">Submit & Download Form Image</button>
+            <div class="guide-text">ℹ️ Submission compiles a secure registration card snapshot on your machine to forward to our academic desk coordinates.</div>
+        </div>
+    </form>
+</div>
+
+<script>
+    let officialFormId = "";
+    let verifiedPhoneNumber = "";
+
+    function generateUniqueFormId() {
+        const now = new Date();
+        officialFormId = `ES-DEMO-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}${String(now.getSeconds()).padStart(2, '0')}`;
+        document.getElementById('dynamicFormId').innerText = officialFormId;
+    }
+
+    function verifyGatewayAccess() {
+        const inputPhone = document.getElementById('gateway-phone').value.trim();
+        const errorMessage = "Wrong mobile number detected. Enter your valid mobile number.";
+
+        if (inputPhone.length !== 10) { alert(errorMessage); return; }
+
+        const firstDigit = inputPhone[0];
+        if (!['6', '7', '8', '9'].includes(firstDigit)) { alert(errorMessage); return; }
+
+        if (/^(.)\1{9}$/.test(inputPhone)) { alert(errorMessage); return; }
+
+        let seqIn = 1, seqDe = 1;
+        for (let i = 0; i < inputPhone.length - 1; i++) {
+            let curr = parseInt(inputPhone[i]), next = parseInt(inputPhone[i+1]);
+            if (next === curr + 1) { seqIn++; if (seqIn >= 5) { alert(errorMessage); return; } } else { seqIn = 1; }
+            if (next === curr - 1) { seqDe++; if (seqDe >= 5) { alert(errorMessage); return; } } else { seqDe = 1; }
+        }
+
+        verifiedPhoneNumber = inputPhone;
+        document.getElementById('phone').value = verifiedPhoneNumber;
+        
+        document.getElementById('gateway-screen').style.display = 'none';
+        document.getElementById('admissionForm').style.display = 'block';
+        generateUniqueFormId();
+    }
+
+    function validateInputText(name, vill, post, ps, dist) {
+        const checkGibberish = (text, fieldName) => {
+            const trimmed = text.trim();
+            if (trimmed.length < 4) return true;
+            
+            if (/^[A-Za-z\s,.-]+$/.test(trimmed)) {
+                const words = trimmed.toLowerCase().split(/[\s,.-]+/);
+                for (let word of words) {
+                    if (word.length >= 5 && !/[aeiouy]/.test(word)) {
+                        alert(`Error: Invalid spelling pattern in ${fieldName}!`);
+                        return false;
+                    }
+                    if (word.length >= 6 && /[^aeiouy]{5,}/.test(word)) {
+                        alert(`Error: Keyboard mashing detected in ${fieldName}. Please enter genuine details.`);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        };
+
+        if (!checkGibberish(name, "Full Name")) return false;
+        if (!checkGibberish(vill, "Vill / City")) return false;
+        if (!checkGibberish(post, "Post Office")) return false;
+        if (!checkGibberish(ps, "Police Station")) return false;
+        if (!checkGibberish(dist, "District")) return false;
+        return true;
+    }
+
+    document.getElementById('admissionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fullName = document.getElementById('full-name').value;
+        const vill = document.getElementById('addr-vill').value;
+        const post = document.getElementById('addr-post').value;
+        const ps = document.getElementById('addr-ps').value;
+        const dist = document.getElementById('addr-dist').value;
+        const pin = document.getElementById('addr-pin').value;
+
+        if (!validateInputText(fullName, vill, post, ps, dist)) return;
+        if (pin.length !== 6) { alert("Error: Pin Code must be exactly 6 digits!"); return; }
+
+        const element = document.getElementById('master-capture-box');
+        const buttonsWrapper = document.getElementById('action-buttons-wrapper');
+        
+        buttonsWrapper.style.display = 'none';
+
+        html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            scrollY: 0,
+            scrollX: 0,
+            width: element.clientWidth,
+            windowWidth: element.clientWidth
+        }).then(canvas => {
+            buttonsWrapper.style.display = 'flex';
+
+            const image = canvas.toDataURL("image/png");
+            const downloadLink = document.createElement('a');
+            const fileName = `${officialFormId}_Registration_${fullName.replace(/\s+/g, '_')}.png`;
+            
+            downloadLink.href = image;
+            downloadLink.download = fileName;
+            
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            const alertBengali = `📥 আপনার ডেমো ক্লাসের রেজিস্ট্রেশন ফর্মের ইমেজটি ডাউনলোড হয়ে গেছে (Ref No: ${officialFormId})।\n\n⚠️ এবার অনুগ্রহ করে আপনার ডাউনলোড হওয়া ইমেজটি ৯৮৭৫৩৪০৮৪২ নম্বরে English Spur Academic Help Desk-এ পাঠিয়ে আপনার অনলাইন ডেমো রিকোয়েস্ট রেজিস্ট্রেশন প্রসেস কমপ্লিট করুন।`;
+            const alertEnglish = `📥 Your demo class registration form image has been downloaded successfully (Ref No: ${officialFormId}).\n\n⚠️ Now, please manually open your WhatsApp and send the downloaded image to 9875340842 at the English Spur Academic Help Desk to complete your online demo request registration process.`;
+            
+            alert(alertBengali + "\n\n━━━━━━━━━━━━━━━━━━━━\n\n" + alertEnglish);
+            
+            setTimeout(() => {
+                document.getElementById('admissionForm').reset();
+                document.getElementById('admissionForm').style.display = 'none';
+                document.getElementById('gateway-screen').style.display = 'block';
+                document.getElementById('gateway-phone').value = "";
+            }, 1000);
+
+        }).catch(err => {
+            buttonsWrapper.style.display = 'flex';
+            console.error(err);
+        });
+    });
+</script>
+</body>
+</html>

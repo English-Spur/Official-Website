@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONLINE Admission Portal - English Spur</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* Global Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Security Gateway Styling */
+        .gateway-container {
+            background: #ffffff;
+            max-width: 450px;
+            width: 100%;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            border-top: 5px solid #dc2626; /* Warning Red Border */
+        }
+
+        .gateway-logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .gateway-title {
+            font-size: 16px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .scam-warning {
+            background-color: #fff1f2;
+            border: 1px solid #fecdd3;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        /* Form Container (Hidden initially) */
+        .admission-container {
+            display: none;
+            background: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* English Spur Branding Header Styling */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 3px double #1e3a8a;
+            padding-bottom: 15px;
+        }
+
+        .brand-header h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .brand-header .academy-sub {
+            color: #2563eb;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .brand-header .contact-info {
+            color: #475569;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Form Title Row */
+        .form-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .form-title-row h2 {
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .form-meta-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8fafc;
+            padding: 8px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-id-box {
+            font-size: 13px;
+            font-weight: 700;
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #fca5a5;
+        }
+
+        .form-date-box {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e3a8a;
+            background: #dbeafe;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* Section Title */
+        .section-title {
+            color: #2563eb;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        /* Form Layout */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* Input Fields Styling */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #0f172a;
+            background-color: #f8fafc;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        /* Conditional Element Animation Base Wrapper */
+        .conditional-wrapper {
+            display: none;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        /* Forces Uppercase Styling inside requested input fields */
+        .uppercase-input {
+            text-transform: uppercase;
+        }
+
+        /* Forces Lowercase Styling inside the email field */
+        .lowercase-input {
+            text-transform: lowercase;
+        }
+
+        /* Temporary view element for snapshot safety */
+        .snapshot-text-view {
+            display: none;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #0f172a;
+            background-color: #f8fafc;
+            word-break: break-all;
+            white-space: pre-wrap;
+            min-height: 45px;
+        }
+
+        /* Snapshot mode helper */
+        .snapshot-mode .snapshot-text-view { display: block !important; }
+        .snapshot-mode input, 
+        .snapshot-mode select, 
+        .snapshot-mode textarea, 
+        .snapshot-mode .amount-input-wrapper,
+        .snapshot-mode .file-upload-wrapper,
+        .snapshot-mode .add-payment-btn-wrapper,
+        .snapshot-mode .remove-payment-btn { display: none !important; }
+
+        /* Complex helper rule to ensure conditional views match UI visibility states during snapshot processing */
+        .snapshot-mode .conditional-wrapper:not(.active-snapshot-field) .snapshot-text-view {
+            display: none !important;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: #2563eb;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Currency Wrapper for Amount Field */
+        .amount-input-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .amount-input-wrapper input {
+            padding-right: 35px;
+        }
+
+        .currency-suffix {
+            position: absolute;
+            right: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #475569;
+            pointer-events: none;
+        }
+
+        /* Payment Cluster Multi-Block Box Styling */
+        .payment-block {
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f8fafc;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .snapshot-mode .payment-block {
+            border: 1px dashed #cbd5e1;
+            background-color: #ffffff;
+            padding: 12px 0;
+            margin-bottom: 5px;
+        }
+
+        .remove-payment-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fca5a5;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .add-payment-btn-wrapper {
+            margin: 10px 0 20px 0;
+        }
+
+        .add-row-btn {
+            background-color: #16a34a;
+            color: #ffffff;
+            border: none;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .add-row-btn:hover {
+            background-color: #15803d;
+        }
+
+        .total-summary-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .grand-total-display {
+            font-size: 16px;
+            font-weight: 700;
+            color: #16a34a;
+            margin-bottom: 5px;
+        }
+
+        .amount-words-box {
+            font-size: 12px;
+            font-weight: 600;
+            color: #15803d;
+            background-color: #ffffff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px dashed #bbf7d0;
+            min-height: 28px;
+            width: 100%;
+        }
+
+        /* Screenshot Upload Preview System */
+        .file-upload-wrapper {
+            width: 100%;
+        }
+
+        .screenshot-preview-container {
+            margin-top: 10px;
+            display: none;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .screenshot-preview-container img {
+            max-width: 100%;
+            max-height: 220px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .preview-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2563eb;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Radio Buttons Group */
+        .radio-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        /* Action Buttons Area */
+        .btn-container {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .action-btn {
+            border: none;
+            padding: 14px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            text-align: center;
+            display: block;
+        }
+
+        .action-btn:active {
+            transform: scale(0.99);
+        }
+
+        .submit-btn {
+            background-color: #1e3a8a;
+            color: #ffffff;
+        }
+
+        .submit-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .gateway-btn {
+            background-color: #dc2626;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        .gateway-btn:hover {
+            background-color: #b91c1c;
+        }
+
+        .guide-text {
+            font-size: 13px;
+            color: #475569;
+            font-weight: 500;
+            line-height: 1.5;
+            padding-left: 8px;
+            border-left: 3px solid #1e3a8a;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .admission-container { padding: 25px 20px; }
+            .form-title-row { flex-direction: column; gap: 8px; justify-content: center; text-align: center; }
+            .form-meta-container { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="gateway-container" id="gateway-screen">
+    <div class="gateway-logo">English Spur Online English Training Academy</div>
+    <div class="gateway-title">Enter your real phone number to get to the admission page.</div>
+    
+    <div class="scam-warning">
+        ⚠️ <strong>SCAM PROTECTION WARNING:</strong><br>
+        Submission of fake, random, or auto-generated numbers is strictly monitored. To prevent spam registrations, our system will immediately block continuous sequence entries or invalid routing codes. Please provide your actual WhatsApp contact number.
+    </div>
+
+    <div class="form-group" style="text-align: left;">
+        <label for="gateway-phone">Valid Phone Number (10 Digits) *</label>
+        <input type="tel" id="gateway-phone" placeholder="e.g., 9876XXXXXX" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+    </div>
+    
+    <button type="button" class="action-btn gateway-btn" onclick="verifyGatewayAccess()">Verify & Open Form</button>
+</div>
+
+<div class="admission-container" id="admission-form-area">
+    <div class="brand-header">
+        <h1>English Spur</h1>
+        <div class="academy-sub">Online English Training Academy</div>
+        <div class="contact-info">
+            Kanaipur, Bantul, Bagnan, Howrah - 711312<br>
+            <div class="contact_numbewr-info"><strong>Contact:</strong> <strong>9875340842</strong></div> 
+            <div class="Email-info"><strong>E-mail:</strong> englishspur2020@gmail.com</div>
+        </div>
+    </div>
+
+    <form id="admissionForm">
+        <div class="form-title-row">
+            <h2>ONLINE ADMISSION FORM</h2>
+        </div>
+        
+        <div class="form-meta-container">
+            <div class="form-id-box">Form No: <span id="dynamicFormId">Generating...</span></div>
+            <div class="form-date-box">Date of Admission: <span id="dynamicAdmissionDate">Locking...</span></div>
+        </div>
+        
+        <div class="section-title">Personal & Professional Details</div>
+        
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="full-name">Full Name *</label>
+                <input type="text" id="full-name" name="full_name" class="uppercase-input" placeholder="ENTER YOUR FULL NAME" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-full-name"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" class="lowercase-input" placeholder="student@example.com" oninput="this.value = this.value.toLowerCase();" required>
+                <div class="snapshot-text-view" id="view-email" style="text-transform: lowercase;"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" readonly style="background-color: #e2e8f0; cursor: not-allowed;">
+                <div class="snapshot-text-view" id="view-phone"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" name="dob" required>
+                <div class="snapshot-text-view" id="view-dob"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Gender *</label>
+                <div class="radio-container">
+                    <label class="radio-option"><input type="radio" name="gender" value="Male" required> Male</label>
+                    <label class="radio-option"><input type="radio" name="gender" value="Female"> Female</label>
+                    <label class="radio-option"><input type="radio" name="gender" value="Other"> Other</label>
+                </div>
+                <div class="snapshot-text-view" id="view-gender"></div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="occupation">Occupation *</label>
+                <select id="occupation" name="occupation" onchange="toggleConditionalOccupation(this.value)" required>
+                    <option value="" disabled selected>Select your occupation</option>
+                    <option value="Student (School)">Student (School)</option>
+                    <option value="Student (College)">Student (College)</option>
+                    <option value="Job Seeker">Job Seeker</option>
+                    <option value="Working Professional">Working Professional</option>
+                    <option value="Business Owner">Business Owner</option>
+                    <option value="Housewife">Housewife</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="snapshot-text-view" id="view-occupation"></div>
+                
+                <div class="conditional-wrapper" id="other-occupation-wrapper">
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label for="other-occupation-spec">Specify Occupation (পেশা উল্লেখ করুন) *</label>
+                        <input type="text" id="other-occupation-spec" class="uppercase-input" placeholder="PLEASE SPECIFY YOUR PROFESSION" oninput="this.value = this.value.toUpperCase();">
+                        <div class="snapshot-text-view" id="view-other-occupation-spec"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">Address Details</div>
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="addr-village">Village / Street *</label>
+                <input type="text" id="addr-village" class="uppercase-input" placeholder="VILLAGE OR STREET NAME" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-village"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="addr-po">Post Office *</label>
+                <input type="text" id="addr-po" class="uppercase-input" placeholder="POST OFFICE" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-po"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="addr-ps">Police Station *</label>
+                <input type="text" id="addr-ps" class="uppercase-input" placeholder="POLICE STATION" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-ps"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="addr-dist">District *</label>
+                <input type="text" id="addr-dist" class="uppercase-input" placeholder="DISTRICT" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-dist"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="addr-pin">Pin Code *</label>
+                <input type="text" id="addr-pin" placeholder="6 DIGIT PIN CODE" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                <div class="snapshot-text-view" id="view-addr-pin"></div>
+            </div>
+        </div>
+
+        <div class="section-title">Academic Information</div>
+        
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="course-select">Select Course *</label>
+                <select id="course-select" name="course" required>
+                    <option value="" disabled selected>Choose your desired course</option>
+                    <option value="FEARLESS ENGLISH FOR KIDS">FEARLESS ENGLISH FOR KIDS</option>
+                    <option value="POWER SPEAK">POWER SPEAK</option>
+                    <option value="ONE ON ONE SPECIAL TRAINING">ONE ON ONE SPECIAL TRAINING</option>
+                    <option value="OFFLINE TRAINING">OFFLINE TRAINING (Will start soon..)</option>
+                </select>
+                <div class="snapshot-text-view" id="view-course"></div>
+            </div>
+        </div>
+
+        <div class="section-title">Online Payment Details</div>
+        
+        <div id="payment-cluster-wrapper">
+            
+            <div class="payment-block" id="pay-block-1">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Payment Method *</label>
+                        <select class="pay-method-input" required>
+                            <option value="" disabled selected>Choose Method</option>
+                            <option value="UPI (GPay/PhonePe/Paytm)">UPI (GPay/PhonePe/Paytm)</option>
+                            <option value="Net Banking / Bank Transfer">Net Banking / Bank Transfer</option>
+                        </select>
+                        <div class="snapshot-text-view view-pay-method"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amount Paid (INR) *</label>
+                        <div class="amount-input-wrapper">
+                            <input type="number" class="pay-amount-input" placeholder="e.g., 1500" min="1" oninput="calculateGrandTotal()" required>
+                            <span class="currency-suffix">/-</span>
+                        </div>
+                        <div class="snapshot-text-view view-pay-amount"></div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Transaction ID / UTR No *</label>
+                        <input type="text" class="pay-utr-input uppercase-input" placeholder="ENTER REFERENCE NUMBER" oninput="this.value = this.value.toUpperCase();" required>
+                        <div class="snapshot-text-view view-pay-utr"></div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Upload Payment Screenshot *</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" class="pay-file-input" accept="image/*" onchange="processBlockPreview(this)" required>
+                        </div>
+                        <div class="screenshot-preview-container">
+                            <div class="preview-title">📊 Attached Payment Confirmation Receipt</div>
+                            <img class="img-preview-tag" src="#" alt="Payment Proof">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="add-payment-btn-wrapper">
+            <button type="button" class="add-row-btn" onclick="addNewPaymentRow()">+ Add Another Payment Receipt (for multiple accounts or UPI transfers)</button>
+        </div>
+
+        <div class="total-summary-box">
+            <div class="grand-total-display" id="grandTotalText">Grand Total Paid: 0.00 /-</div>
+            <div class="amount-words-box" id="grandTotalWords">In Words: Zero Rupees Only/-</div>
+        </div>
+
+        <div class="btn-container" id="action-buttons-wrapper">
+            <button type="submit" class="action-btn submit-btn" id="submitBtn">Submit Application (Click here to take screenshot of this 'Admission Form' and send it to '9875340842 via Whatsapp' to complete the Admission Process)</button>
+            <div class="guide-text">ℹ️ This form will automatically generate an enrollment snapshot for your files. You must send the enrollment snapshot(screenshot) to <strong>9875340842 via WhatsApp</strong> to complete your 'Enrollment Process'.</div>
+        </div>
+    </form>
+</div>
+
+<script>
+    let officialFormId = "";
+    let verifiedPhoneNumber = "";
+    let paymentBlockCount = 1;
+
+    function generateUniqueFormId() {
+        const now = new Date();
+        officialFormId = `ES-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}${String(now.getSeconds()).padStart(2, '0')}`;
+        document.getElementById('dynamicFormId').innerText = officialFormId;
+        
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        document.getElementById('dynamicAdmissionDate').innerText = `${day}-${month}-${year}`;
+    }
+
+    // --- Dynamic Conditional Field Visibility Toggler ---
+    function toggleConditionalOccupation(value) {
+        const otherWrapper = document.getElementById('other-occupation-wrapper');
+        const otherInput = document.getElementById('other-occupation-spec');
+        
+        if (value === "Other") {
+            otherWrapper.style.display = "block";
+            otherInput.setAttribute("required", "required");
+        } else {
+            otherWrapper.style.display = "none";
+            otherInput.removeAttribute("required");
+            otherInput.value = ""; // Safety reset
+        }
+    }
+
+    // --- Dynamic Multi-Account Row Adder ---
+    function addNewPaymentRow() {
+        paymentBlockCount++;
+        const wrapper = document.getElementById('payment-cluster-wrapper');
+        
+        const newBlock = document.createElement('div');
+        newBlock.className = 'payment-block';
+        newBlock.id = `pay-block-${paymentBlockCount}`;
+        newBlock.innerHTML = `
+            <button type="button" class="remove-payment-btn" onclick="removePaymentRow(${paymentBlockCount})">✖ Remove</button>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Payment Method *</label>
+                    <select class="pay-method-input" required>
+                        <option value="" disabled selected>Choose Method</option>
+                        <option value="UPI (GPay/PhonePe/Paytm)">UPI (GPay/PhonePe/Paytm)</option>
+                        <option value="Net Banking / Bank Transfer">Net Banking / Bank Transfer</option>
+                    </select>
+                    <div class="snapshot-text-view view-pay-method"></div>
+                </div>
+                <div class="form-group">
+                    <label>Amount Paid (INR) *</label>
+                    <div class="amount-input-wrapper">
+                        <input type="number" class="pay-amount-input" placeholder="e.g., 1000" min="1" oninput="calculateGrandTotal()" required>
+                        <span class="currency-suffix">/-</span>
+                    </div>
+                    <div class="snapshot-text-view view-pay-amount"></div>
+                </div>
+                <div class="form-group full-width">
+                    <label>Transaction ID / UTR No *</label>
+                    <input type="text" class="pay-utr-input uppercase-input" placeholder="ENTER REFERENCE NUMBER" oninput="this.value = this.value.toUpperCase();" required>
+                    <div class="snapshot-text-view view-pay-utr"></div>
+                </div>
+                <div class="form-group full-width">
+                    <label>Upload Payment Screenshot *</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" class="pay-file-input" accept="image/*" onchange="processBlockPreview(this)" required>
+                    </div>
+                    <div class="screenshot-preview-container">
+                        <div class="preview-title">📊 Attached Payment Confirmation Receipt</div>
+                        <img class="img-preview-tag" src="#" alt="Payment Proof">
+                    </div>
+                </div>
+            </div>
+        `;
+        wrapper.appendChild(newBlock);
+    }
+
+    function removePaymentRow(id) {
+        const targetBlock = document.getElementById(`pay-block-${id}`);
+        if(targetBlock) {
+            targetBlock.remove();
+            calculateGrandTotal();
+        }
+    }
+
+    // --- Dynamic Multi-Row Target Image Live Processor ---
+    function processBlockPreview(fileInput) {
+        const block = fileInput.closest('.payment-block');
+        const container = block.querySelector('.screenshot-preview-container');
+        const previewImg = block.querySelector('.img-preview-tag');
+
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                container.style.display = 'block';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+    // --- Cumulative Grand Total Calculator & In Words Engine ---
+    function calculateGrandTotal() {
+        const amountInputs = document.querySelectorAll('.pay-amount-input');
+        let total = 0;
+        
+        amountInputs.forEach(input => {
+            let val = parseInt(input.value);
+            if (!isNaN(val)) {
+                total += val;
+            }
+        });
+
+        document.getElementById('grandTotalText').innerText = `Grand Total Paid: ${total}.00 /-`;
+        const words = convertNumberToWords(total);
+        document.getElementById('grandTotalWords').innerText = "In Words: " + words;
+    }
+
+    function convertNumberToWords(amount) {
+        const words = {
+            0: '', 1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine',
+            10: 'Ten', 11: 'Eleven', 12: 'Twelve', 13: 'Thirteen', 14: 'Fourteen', 15: 'Fifteen', 16: 'Sixteen',
+            17: 'Seventeen', 18: 'Eighteen', 19: 'Nineteen', 20: 'Twenty', 30: 'Thirty', 40: 'Forty', 50: 'Fifty',
+            60: 'Sixty', 70: 'Seventy', 80: 'Eighty', 90: 'Ninety'
+        };
+
+        let num = parseInt(amount);
+        if (isNaN(num) || num === 0) return 'Zero Rupees Only/-';
+
+        function convertLessThanOneThousand(n) {
+            let rem = n % 100;
+            let s = '';
+            if (n >= 100) {
+                s += words[Math.floor(n / 100)] + ' Hundred ';
+            }
+            if (rem > 0) {
+                if (rem < 20) {
+                    s += words[rem];
+                } else {
+                    s += words[Math.floor(rem / 10) * 10];
+                    if (rem % 10 > 0) {
+                        s += ' ' + words[rem % 10];
+                    }
+                }
+            }
+            return s.trim();
+        }
+
+        let result = '';
+        let lakhs = Math.floor(num / 100000);
+        num %= 100000;
+        let thousands = Math.floor(num / 1000);
+        num %= 1000;
+
+        if (lakhs > 0) {
+            result += convertLessThanOneThousand(lakhs) + ' Lakh ';
+        }
+        if (thousands > 0) {
+            result += convertLessThanOneThousand(thousands) + ' Thousand ';
+        }
+        if (num > 0) {
+            result += convertLessThanOneThousand(num);
+        }
+
+        return result.trim() + ' Rupees Only/-';
+    }
+
+    // --- GATEWAY PHONE NUMBER VALIDATION ENGINE ---
+    function verifyGatewayAccess() {
+        const inputPhone = document.getElementById('gateway-phone').value.trim();
+        const errorMessage = "Wrong mobile number detected. Enter your valid mobile number.";
+
+        if (inputPhone.length !== 10) {
+            alert(errorMessage);
+            return;
+        }
+
+        const firstDigit = inputPhone[0];
+        if (!['6', '7', '8', '9'].includes(firstDigit)) {
+            alert(errorMessage);
+            return;
+        }
+
+        if (/^(.)\1{9}$/.test(inputPhone)) {
+            alert(errorMessage);
+            return;
+        }
+
+        let seqIn = 1, seqDe = 1;
+        for (let i = 0; i < inputPhone.length - 1; i++) {
+            let curr = parseInt(inputPhone[i]), next = parseInt(inputPhone[i+1]);
+            if (next === curr + 1) { seqIn++; if (seqIn >= 5) { alert(errorMessage); return; } } else { seqIn = 1; }
+            if (next === curr - 1) { seqDe++; if (seqDe >= 5) { alert(errorMessage); return; } } else { seqDe = 1; }
+        }
+
+        verifiedPhoneNumber = inputPhone;
+        document.getElementById('phone').value = verifiedPhoneNumber;
+        
+        document.getElementById('gateway-screen').style.display = 'none';
+        document.getElementById('admission-form-area').style.display = 'block';
+        generateUniqueFormId();
+    }
+
+    // --- Core Form Submission Anti-Gibberish Controls ---
+    function validateInputText(name, village, po, dist, ps) {
+        const checkGibberish = (text, fieldName) => {
+            const trimmed = text.trim();
+            if (trimmed.length < 3) return true;
+            
+            if (/^[A-Za-z\s,.-]+$/.test(trimmed)) {
+                const words = trimmed.toLowerCase().split(/[\s,.-]+/);
+                for (let word of words) {
+                    if (word.length >= 5 && !/[aeiouy]/.test(word)) {
+                        alert(`Error: Invalid spelling pattern in ${fieldName}. Please verify!`);
+                        return false;
+                    }
+                    if (word.length >= 6 && /[^aeiouy]{5,}/.test(word)) {
+                        alert(`Error: Random characters detected in ${fieldName}. Enter genuine details.`);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        };
+
+        if (!checkGibberish(name, "Full Name")) return false;
+        if (!checkGibberish(village, "Village / Street")) return false;
+        if (!checkGibberish(po, "Post Office")) return false;
+        if (!checkGibberish(ps, "Police Station")) return false;
+        if (!checkGibberish(dist, "District")) return false;
+        return true;
+    }
+
+    document.getElementById('admissionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fullName = document.getElementById('full-name').value.toUpperCase();
+        const village = document.getElementById('addr-village').value.toUpperCase();
+        const po = document.getElementById('addr-po').value.toUpperCase();
+        const ps = document.getElementById('addr-ps').value.toUpperCase();
+        const dist = document.getElementById('addr-dist').value.toUpperCase();
+        const pin = document.getElementById('addr-pin').value;
+        const occupationSelect = document.getElementById('occupation').value;
+
+        if (!validateInputText(fullName, village, po, dist, ps)) return;
+
+        // Conditional Text Verification for 'Other' Field
+        if (occupationSelect === "Other") {
+            const otherSpec = document.getElementById('other-occupation-spec').value.trim();
+            if(otherSpec.length < 3) {
+                alert("Please explicitly define your occupation.");
+                return;
+            }
+            document.getElementById('view-other-occupation-spec').innerText = otherSpec.toUpperCase();
+            document.getElementById('other-occupation-wrapper').classList.add('active-snapshot-field');
+        } else {
+            document.getElementById('other-occupation-wrapper').classList.remove('active-snapshot-field');
+        }
+
+        // Sync inputs to snapshot text-views safely before image rendering
+        document.getElementById('view-full-name').innerText = fullName;
+        document.getElementById('view-email').innerText = document.getElementById('email').value.toLowerCase();
+        document.getElementById('view-phone').innerText = verifiedPhoneNumber;
+        document.getElementById('view-dob').innerText = document.getElementById('dob').value;
+        
+        const genderChecked = document.querySelector('input[name="gender"]:checked');
+        document.getElementById('view-gender').innerText = genderChecked ? genderChecked.value : '';
+        
+        document.getElementById('view-occupation').innerText = occupationSelect;
+        document.getElementById('view-course').innerText = document.getElementById('course-select').value;
+        
+        document.getElementById('view-addr-village').innerText = village;
+        document.getElementById('view-addr-po').innerText = po;
+        document.getElementById('view-addr-ps').innerText = ps;
+        document.getElementById('view-addr-dist').innerText = dist;
+        document.getElementById('view-addr-pin').innerText = pin;
+
+        // Dynamic Loop processing to sync all active payment blocks safely into snapshot layers
+        const blocks = document.querySelectorAll('.payment-block');
+        blocks.forEach(block => {
+            const methodVal = block.querySelector('.pay-method-input').value;
+            const amountVal = block.querySelector('.pay-amount-input').value;
+            const utrVal = block.querySelector('.pay-utr-input').value.toUpperCase();
+
+            block.querySelector('.view-pay-method').innerText = methodVal;
+            block.querySelector('.view-pay-amount').innerText = amountVal + " /-";
+            block.querySelector('.view-pay-utr').innerText = utrVal;
+        });
+
+        const element = document.getElementById('admission-form-area');
+        const buttonsWrapper = document.getElementById('action-buttons-wrapper');
+        
+        // Trigger Snapshot styling state and hide button layout
+        element.classList.add('snapshot-mode');
+        buttonsWrapper.style.display = 'none';
+
+        html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            scrollY: 0,
+            scrollX: 0
+        }).then(canvas => {
+            // Restore interactive form states
+            element.classList.remove('snapshot-mode');
+            buttonsWrapper.style.display = 'flex';
+
+            const image = canvas.toDataURL("image/png");
+            const downloadLink = document.createElement('a');
+            const fileName = `${officialFormId}_Admission_${fullName.replace(/\s+/g, '_')}.png`;
+            
+            downloadLink.href = image;
+            downloadLink.download = fileName;
+            
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            alert("Application Form processed successfully!\nYour admission form image with payment proof has been downloaded. Please send this downloaded image to our official WhatsApp number 9875340842 to complete your admission process.");
+
+            const whatsappNumber = "919875340842";
+            const message = `🚨 *ENGLISH SPUR ADMISSION PORTAL* 🚨%0A%0A` +
+                            `নমস্কার *শোভন কাপড়ী*, আমার অ্যাডমিশন ফর্ম ও পেমেন্টের ইমেজটি সফলভাবে ডাউনলোড হয়েছে।%0A%0A` +
+                            `*Form No:* ${officialFormId}%0A` +
+                            `*Student Name:* ${fullName}%0A%0A` +
+                            `আমি নিচে এই মেসেজের সাথে আমার ডাউনলোড হওয়া অ্যাডমিশন ফর্মের ইমেজটি (যার নিচে পেমেন্ট স্ক্রিনশট যুক্ত আছে) পাঠাচ্ছি। অনুগ্রহ করে এটি যাচাই করে আমার Admission Process টি সম্পূর্ণ করুন।`;
+
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }).catch(err => {
+            element.classList.remove('snapshot-mode');
+            buttonsWrapper.style.display = 'flex';
+            console.error(err);
+        });
+    });
+</script>
+
+</body>
+</html>

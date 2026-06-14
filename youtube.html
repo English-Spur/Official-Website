@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Social Media Handles - ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
+    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গ利 ফন্ট ইমপোর্ট করার লিংক -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- ফন্টঅসাম আইকন লাইব্রেরি লিংক -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন - about.html এর গেটআপ অনুযায়ী */
+        :root {
+            --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
+            --secondary-color: #1F316F;     /* সাপোর্টিং নেভি ব্লু */
+            --accent-color: #10B981;        /* সাকসেস মিন্ট গ্রিন */
+            --text-dark: #0B192C;
+            --text-light: #F8FAFC;
+            --bg-light: #F4F6F9;
+            --card-bg: #FFFFFF;
+            --footer-bg: #051122;          /* index.html অনুযায়ী নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* হেডার ব্র্যান্ডিং নেভিগেশন বার - exact from about.html */
+        header {
+            background-color: var(--primary-color);
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(11, 25, 44, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2.5px solid var(--accent-color);
+            object-fit: cover;
+            background: #FFFFFF;
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .academy-title-block {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .main-title {
+            color: var(--text-light);
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .main-title span {
+            color: var(--accent-color);
+        }
+
+        .sub-title {
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+            text-align: left;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* পেজ টাইটেল ব্যানার সেকশন - exact from about.html */
+        .page-banner {
+            background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .page-banner h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .page-banner p {
+            font-size: 20px;
+            opacity: 0.85;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* সোশ্যাল মিডিয়া কন্টেইনার */
+        .social-container {
+            max-width: 950px; /* ডেসক্রিপশন বড় হওয়ার কারণে উইডথ একটু বাড়ানো হলো পড়ার সুবিধার জন্য */
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* সোশ্যাল সেকশন কার্ড মডিউল */
+        .social-section {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(11, 25, 44, 0.08);
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 12px rgba(11, 25, 44, 0.03);
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(11, 25, 44, 0.06);
+        }
+
+        /* কন্টেন্ট শিরোনাম - মাঝখানে লকড */
+        .platform-title {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            gap: 12px;
+            color: var(--primary-color);
+            border-bottom: 2px solid rgba(11, 25, 44, 0.08);
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* ২ কলাম বিশিষ্ট অভ্যন্তরীণ বাইলিঙ্গুয়াল গ্রিড লেআউট */
+        .bilingual-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr; /* বাংলা ডেসক্রিপশন বড় থাকায় বাম কলাম একটু চওড়া রাখা হলো */
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .col-bn {
+            border-right: 1px solid rgba(11, 25, 44, 0.08);
+            padding-right: 25px;
+            text-align: left;
+        }
+        
+        .col-en {
+            padding-left: 5px;
+            text-align: left;
+        }
+
+        /* স্পষ্ট প্রফেশনাল বড় বডি টেক্সট - Left Aligned */
+        p { 
+            font-size: 15.5px; 
+            line-height: 1.7; 
+            text-align: left; 
+            color: #334155;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+        
+        .col-en p {
+            font-family: 'Inter', sans-serif;
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* টিকচিহ্ন যুক্ত কন্টেন্ট লিস্ট স্টাইলিং - Left Aligned */
+        .youtube-features {
+            list-style: none;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .youtube-features li {
+            font-size: 15px;
+            color: #334155;
+            padding: 5px 0 5px 25px;
+            position: relative;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .youtube-features li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 800;
+        }
+
+        /* কাস্টম অ্যাকশন বাটন মেকানিজম */
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 14.5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        /* অফিসিয়াল ব্র্যান্ড কালার ও প্রিমিয়াম হোভার গাইডলাইন */
+        .brand-youtube { color: #ff0000; }
+        .btn-youtube {
+            background: rgba(255, 0, 0, 0.08);
+            border: 1px solid rgba(255, 0, 0, 0.25);
+            color: #ff0000;
+        }
+        .btn-youtube:hover {
+            background: #ff0000;
+            color: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.35);
+        }
+
+        .brand-facebook { color: #1877f2; }
+        .btn-facebook {
+            background: rgba(24, 119, 242, 0.08);
+            border: 1px solid rgba(24, 119, 242, 0.25);
+            color: #1877f2;
+        }
+        .btn-facebook:hover {
+            background: #1877f2;
+            color: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(24, 119, 242, 0.35);
+        }
+
+        .brand-instagram { color: #e1306c; }
+        .btn-instagram {
+            background: rgba(225, 48, 108, 0.08);
+            border: 1px solid rgba(225, 48, 108, 0.25);
+            color: #e1306c;
+        }
+        .btn-instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #FFFFFF;
+            box-shadow: 0 5px 20px rgba(225, 48, 108, 0.35);
+        }
+        
+        /* মোবাইল রেসপন্সিভ ভিউ কনফিগারেশন */
+        @media (max-width: 850px) {
+            .bilingual-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .col-bn {
+                border-right: none;
+                border-bottom: 1px solid rgba(11, 25, 44, 0.08);
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+            .col-en {
+                padding-left: 0;
+            }
+            nav ul {
+                display: none;
+            }
+            .main-title {
+                font-size: 18px;
+            }
+            .sub-title {
+                font-size: 9px;
+            }
+            .brand-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* index.html এর সাথে ১০০% মিলানো আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার স্টাইল */
+       .footer { 
+            background-color: var(--footer-bg) !important; 
+            padding: 18px 20px !important;                 
+            margin-top: 60px; 
+            border-radius: 18px;                          
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 3.5px solid var(--accent-color) !important; /* স্ক্রিনশট অনুয়ায়ী আল্ট্রা-লাক্সারি বর্ডার */
+            width: 100% !important;
+            
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 6px !important;                          
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-text-main {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 10.5px !important;                  
+            font-weight: 800 !important;
+            letter-spacing: 0.3px !important;
+            color: #FFFFFF !important;                     
+            text-transform: uppercase;
+            text-align: center !important;                 
+            line-height: 1.5 !important;
+        }
+
+        .footer-author-line {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 11px !important;
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px !important;
+            text-align: center !important;
+            white-space: nowrap;                          
+        }
+
+        .creator-highlight {
+            color: var(--accent-color) !important;                     
+            font-weight: 800 !important;
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার নেভিগেশন বার - exact from about.html -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-wrapper">
+                <img src="logo.png" alt="ENGLISH SPUR LOGO" class="brand-logo" onerror="this.style.display='none';">
+                <div class="academy-title-block">
+                    <div class="main-title">ENGLISH <span>SPUR</span></div>
+                    <div class="sub-title">ONLINE ENGLISH TRAINING ACADEMY | SINCE 2020</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Courses</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- পেজ ব্যানার টপ এরিয়া - exact from about.html ডিগ্রি লেআউট -->
+    <section class="page-banner">
+        <h1>OUR SOCIAL MEDIA HANDLES</h1>
+        <p>Empowering Your Voice, Shaping Your Future....</p>
+        <p>'ইংলিশ স্পার অনলাইন ইংলিশ ট্রেনিং একাডেমির' <strong>সোশ্যাল নেটওয়ার্কে আপনাকে স্বাগত জানাই ...</strong></p>
+    </section>
+
+    <!-- মূল রেসপন্সিভ কন্টেইনার এরিয়া -->
+    <div class="social-container">
+
+        <!-- সোশ্যাল সেকশন ১: ইউটিউব চ্যানেল (নতুন কাস্টমাইজড ডেসক্রিপশনসহ) -->
+        <div class="social-section">
+            <div class="platform-title"><i class="fa-brands fa-youtube brand-youtube"></i> YouTube Channel</div>
+            <div class="bilingual-grid">
+                <!-- বাম কলাম: বাংলা ডেসক্রিপশন এবং সিলেক্টেড ফিচারস তালিকা -->
+                <div class="col-bn">
+                    <p>English শেখা কি এখনও কঠিন মনে হয়? চাকরি, পড়াশোনা, interview বা daily communication-এর জন্য confident English speaking কি আপনার প্রয়োজন? তাহলে আপনি একদম সঠিক জায়গায় এসেছেন।</p>
+                    <p>২০২০ সাল থেকে <strong>English Spur</strong> বাংলা ভাষাভাষী শিক্ষার্থীদের Online ও Offline training-এর মাধ্যমে Spoken English, Communication Skills, Personality Development ও Smart Learning-এর practical guidance দিয়ে আসছে।</p>
+                    <p>আমাদের এই channel-এ আপনি নিয়মিত পাবেন:</p>
+                    <ul class="youtube-features">
+                        <li>Spoken English Tips</li>
+                        <li>Vocabulary & Grammar</li>
+                        <li>Personality Development</li>
+                        <li>Communication Skills</li>
+                        <li>Selected Online Live Class Recordings</li>
+                        <li>Practical Learning Strategies</li>
+                    </ul>
+                    <p>আমাদের লক্ষ্য শুধু ইংরেজি শেখানো নয়, বরং confident, skilled ও future-ready learners তৈরি করা।</p>
+                </div>
+                <!-- ডান কলাম: ইংরেজি অফিশিয়াল ইন্ট্রোডাকশন -->
+                <div class="col-en">
+                    <p><strong>Welcome to Sovan Kapri Official</strong> — the official channel of <strong>শোভন কাপড়ী (Sovan Kapri)</strong>, Founder of English Spur.</p>
+                    <p>Explore systematically organized, high-impact video lectures and interactive masterclasses on our official channel. Join today to master foundational grammar modules, eliminate fluency barriers, and unlock spontaneous spoken English drills without any rote memorization.</p>
+                </div>
+            </div>
+            <a href="https://www.youtube.com/@SOVANKAPRI123" target="_blank" class="action-btn btn-youtube">
+                <i class="fa-brands fa-youtube"></i> Visit Our YouTube Channel
+            </a>
+        </div>
+        
+        <!-- সোশ্যাল সেকশন ২: ফেসবুক পেজ -->
+        <div class="social-section">
+            <div class="platform-title"><i class="fa-brands fa-facebook-f brand-facebook"></i> Facebook Page</div>
+            <div class="bilingual-grid">
+                <div class="col-bn">
+                    <p>আমাদের ফেসবুক পেজে প্রতিদিন শেয়ার করা হয় গুরুত্বপূর্ণ ইংরেজি টিপস, কুইজ এবং লাইভ ক্লাসের আপডেট। বাংলা ভাষাভাষী শিক্ষার্থীদের একটি সক্রিয় কমিউনিটির সাথে যুক্ত থাকতে পেজটি ফলো করুন।</p>
+                </div>
+                <div class="col-en">
+                    <p>Get instant updates on interactive English learning tips, functional quizzes, and class schedules hosted on our official page. Follow us to integrate into a progressive community of active learners.</p>
+                </div>
+            </div>
+            <a href="https://www.facebook.com/profile.php?id=100078171497466" target="_blank" class="action-btn btn-facebook">
+                <i class="fa-brands fa-facebook-f"></i> Follow Our Facebook Page
+            </a>
+        </div>
+        
+        <!-- সোশ্যাল সেকশন ৩: ইনস্টাগ্রাম প্রোফাইল -->
+        <div class="social-section">
+            <div class="platform-title"><i class="fa-brands fa-instagram brand-instagram"></i> Instagram Profile</div>
+            <div class="bilingual-grid">
+                <div class="col-bn">
+                    <p>খুব কম সময়ে সহজে ইংরেজি শেখার জন্য ফলো করুন আমাদের ইনস্টাগ্রাম প্রোফাইল। এখানে নিয়মিত পাবেন ছোট ছোট রিলস (Reels), ডেইলি ভোকাবুলারি বুস্টার এবং স্মার্ট লার্নিং স্ট্র্যাটেজি।</p>
+                </div>
+                <div class="col-en">
+                    <p>Follow our Instagram handle for smart, micro-learning sessions. Accelerate your language skills daily through highly educational reels, essential vocabulary sheets, and quick fluency blueprints.</p>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/kaprisovan/" target="_blank" class="action-btn btn-instagram">
+                <i class="fa-brands fa-instagram"></i> Follow Our Instagram Profile
+            </a>
+        </div>
+        
+        <!-- index.html এর গেটআপ অনুযায়ী আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার -->
+        <div class="footer">
+            <div class="footer-text-main">
+                &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
+            </div>
+            <div class="footer-author-line">
+                CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

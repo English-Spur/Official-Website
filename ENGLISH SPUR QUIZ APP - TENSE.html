@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Spur Online Quiz</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .container { background: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; overflow: hidden; }
+        .header { background: #2c5cc5; color: white; padding: 20px; text-align: center; }
+        .header img { width: 80px; background: white; padding: 5px; border-radius: 50%; margin-bottom: 10px; }
+        .contact { background: #4a7ae2; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 14px; margin-top: 10px; }
+        .quiz-body { padding: 20px; }
+        .meta-info { display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; color: #555; height: 30px; align-items: center; }
+        .option { display: block; width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; text-align: left; background: #f9f9f9; }
+        .correct { border-color: #27ae60 !important; background: #d4edda !important; }
+        .wrong { border-color: #c0392b !important; background: #f8d7da !important; }
+        .btn { width:100%; padding:15px; border:none; cursor:pointer; background:#2c5cc5; color:white; border-radius: 10px; font-weight: bold; margin-top: 10px; }
+        #quiz-area, #result-area, #otp-area { display: none; }
+        input { width: 92%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; display: block; margin-left: auto; margin-right: auto; }
+        label { font-size: 12px; font-weight: bold; color: #555; margin-left: 20px; }
+
+        @media print {
+            
+    /* হাইড করা বাটনগুলো ছাড়া বাকি সব কিছু প্রিন্টে দেখাবে */
+    .btn { display: none !important; }
+    
+    /* হেডার এবং লোগো এখন আর হাইড হবে না */
+    .header { display: block !important; background: #2c5cc5 !important; color: white !important; }
+    
+    /* কন্টেইনার যেন পুরো পেজে ঠিকঠাক থাকে */
+    .container { box-shadow: none !important; width: 100% !important; border: none !important; }
+    
+    /* রেজাল্ট এরিয়াটি সুন্দরভাবে সাজানোর জন্য */
+    #result-area { display: block !important; border: 2px solid #2c5cc5; padding: 20px; margin-top: 20px; }
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="quiz-container">
+    <div class="header">
+               <div style="font-size: 18px; font-weight: bold;">English Spur Online English Training Academy</div>
+        <div style="font-size: 18px; font-weight: bold;">Kanaipur,Bantul,Bagnan,Howrah-711312</div>
+        <div class="contact">📞 Call / WhatsApp: 9875340842</div>
+    </div>
+
+    <div class="quiz-body">
+        <div id="start-area">
+            <label>FIRST NAME (USE CAPITAL LETTERS ONLY)</label>
+            <input type="text" id="first-name" placeholder="FIRST NAME" oninput="this.value = this.value.toUpperCase()">
+            <label>LAST NAME (USE CAPITAL LETTERS ONLY)</label>
+            <input type="text" id="last-name" placeholder="LAST NAME" oninput="this.value = this.value.toUpperCase()">
+            <label>ENTER VALID 10 DIGIT MOBILE NUMBER</label>
+            <input type="number" id="phone" placeholder="Phone Number">
+            <button onclick="sendOTP()" class="btn">Generate OTP</button>
+        </div>
+
+        <div id="otp-area">
+            <p style="text-align:center;">Enter the 4-digit code:</p>
+            <input type="number" id="otp-input" placeholder="Enter OTP">
+            <button onclick="verifyOTP()" class="btn">Verify & Start</button>
+            <button onclick="resetOTP()" class="btn" style="background:#e67e22;">Resend/Generate New OTP</button>
+        </div>
+
+        <div id="quiz-area">
+            <div class="meta-info">
+                <span id="progress"></span>
+                <span id="live-time"></span>
+            </div>
+            <div class="meta-info">
+                <span id="topic">TOPIC-TENSE</span>
+                <span id="score-text">Score: 0</span>
+            </div>
+            <h3 id="question-text"></h3>
+            <div id="options-container"></div>
+            <p id="explanation" style="background:#e8f5e9; padding:10px; border-radius:5px; font-size:14px; display:none;"></p>
+            <button id="next-btn" onclick="nextQuestion()" class="btn" style="display:none;">Next Question</button>
+        </div>
+
+        <div id="result-area">
+            <h2>Quiz Result</h2>
+            <div id="score-details" style="line-height:2; font-size:18px;"></div>
+            <button onclick="window.print()" class="btn" style="background:#2980b9;">Save PDF</button>
+            <button onclick="location.reload()" class="btn" style="background:#e67e22;">Start New Quiz</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const quizData = [
+        {q: "He ___ (go) to school daily.", a: ["goes", "go", "going"], correct: 0},
+        {q: "I ___ (eat) rice now.", a: ["am eating", "eat", "ate"], correct: 0},
+        {q: "They ___ (play) football yesterday.", a: ["played", "play", "playing"], correct: 0},
+        {q: "She ___ (read) a book since morning.", a: ["has been reading", "is reading", "reads"], correct: 0},
+        {q: "The sun ___ (rise) in the east.", a: ["rises", "rise", "rising"], correct: 0},
+        {q: "I ___ (see) him last week.", a: ["saw", "see", "seen"], correct: 0},
+        {q: "He ___ (finish) the work just now.", a: ["has finished", "finished", "finishes"], correct: 0},
+        {q: "Water ___ (boil) at 100 degrees.", a: ["boils", "boil", "boiled"], correct: 0},
+        {q: "We ___ (watch) TV when he came.", a: ["were watching", "watched", "watch"], correct: 0},
+        {q: "If it rains, we ___ (not go) out.", a: ["will not go", "do not go", "would not go"], correct: 0},
+        {q: "He ___ (live) here for five years.", a: ["has lived", "lives", "lived"], correct: 0},
+        {q: "I ___ (meet) her tomorrow.", a: ["will meet", "meet", "met"], correct: 0},
+        {q: "They ___ (arrive) by 8 PM tonight.", a: ["will have arrived", "arrive", "arrived"], correct: 0},
+        {q: "She ___ (sing) well.", a: ["sings", "sing", "sang"], correct: 0},
+        {q: "It ___ (rain) since 2 AM.", a: ["has been raining", "is raining", "rained"], correct: 0},
+        {q: "He ___ (break) his leg last month.", a: ["broke", "break", "broken"], correct: 0},
+        {q: "I ___ (never see) such a bird.", a: ["have never seen", "never see", "never saw"], correct: 0},
+        {q: "The train ___ (leave) before I reached.", a: ["had left", "left", "leaves"], correct: 0},
+        {q: "She ___ (learn) English nowadays.", a: ["is learning", "learn", "learned"], correct: 0},
+        {q: "He ___ (work) hard for the exam.", a: ["is working", "work", "works"], correct: 0},
+        {q: "I ___ (write) a letter now.", a: ["am writing", "write", "wrote"], correct: 0},
+        {q: "They ___ (go) to the park every Sunday.", a: ["go", "goes", "went"], correct: 0},
+        {q: "He ___ (buy) a car last year.", a: ["bought", "buy", "buys"], correct: 0},
+        {q: "She ___ (sleep) now.", a: ["is sleeping", "sleep", "sleeps"], correct: 0},
+        {q: "We ___ (finish) our homework just now.", a: ["have finished", "finish", "finished"], correct: 0},
+        {q: "The earth ___ (move) around the sun.", a: ["moves", "move", "moved"], correct: 0},
+        {q: "He ___ (play) since 4 PM.", a: ["has been playing", "is playing", "plays"], correct: 0},
+        {q: "I ___ (not go) to school yesterday.", a: ["did not go", "do not go", "will not go"], correct: 0},
+        {q: "She ___ (speak) English well.", a: ["speaks", "speak", "spoke"], correct: 0},
+        {q: "They ___ (drink) tea every morning.", a: ["drink", "drinks", "drank"], correct: 0},
+        {q: "He ___ (do) his duty regularly.", a: ["does", "do", "did"], correct: 0},
+        {q: "I ___ (give) him the book yesterday.", a: ["gave", "give", "given"], correct: 0},
+        {q: "She ___ (cook) food now.", a: ["is cooking", "cook", "cooked"], correct: 0},
+        {q: "They ___ (run) in the field.", a: ["are running", "run", "ran"], correct: 0},
+        {q: "He ___ (come) home late yesterday.", a: ["came", "come", "comes"], correct: 0},
+        {q: "I ___ (wash) my hands.", a: ["am washing", "wash", "washed"], correct: 0},
+        {q: "She ___ (paint) a picture.", a: ["is painting", "paint", "painted"], correct: 0},
+        {q: "They ___ (fly) kites.", a: ["are flying", "fly", "flew"], correct: 0},
+        {q: "He ___ (tell) me a lie.", a: ["told", "tell", "tells"], correct: 0},
+        {q: "I ___ (help) him.", a: ["am helping", "help", "helped"], correct: 0},
+        {q: "She ___ (call) me.", a: ["is calling", "call", "called"], correct: 0},
+        {q: "They ___ (dance) well.", a: ["are dancing", "dance", "danced"], correct: 0},
+        {q: "He ___ (sit) there.", a: ["is sitting", "sit", "sat"], correct: 0},
+        {q: "I ___ (stand) up.", a: ["am standing", "stand", "stood"], correct: 0},
+        {q: "She ___ (open) the door.", a: ["is opening", "open", "opened"], correct: 0},
+        {q: "They ___ (close) the window.", a: ["are closing", "close", "closed"], correct: 0},
+        {q: "He ___ (bring) a pen.", a: ["brings", "bring", "brought"], correct: 0},
+        {q: "I ___ (take) a bath.", a: ["am taking", "take", "took"], correct: 0},
+        {q: "She ___ (keep) the book.", a: ["keeps", "keep", "kept"], correct: 0},
+        {q: "They ___ (send) a message.", a: ["are sending", "send", "sent"], correct: 0}
+    ];
+
+    let currentQ = 0, score = 0, fullName = "", generatedOTP = "", answered = false;
+
+    function updateTime() {
+        const now = new Date();
+        const d = String(now.getDate()).padStart(2, '0');
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const y = now.getFullYear();
+        document.getElementById('live-time').innerText = `${d}-${m}-${y}, ${now.toLocaleTimeString()}`;
+    }
+    setInterval(updateTime, 1000);
+
+
+    function sendOTP() {
+        const fn = document.getElementById('first-name').value.trim();
+        const ln = document.getElementById('last-name').value.trim();
+        const ph = document.getElementById('phone').value.trim();
+        const nameRegex = /^[A-Z]{2,}$/; 
+        
+        if(!nameRegex.test(fn) || !nameRegex.test(ln) || ph.length < 10) {
+            alert("Please enter valid UPPERCASE Name and Phone Number.");
+        } else {
+            fullName = `${fn} ${ln}`;
+            generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+            alert("Your OTP is: " + generatedOTP);
+            document.getElementById('start-area').style.display = 'none';
+            document.getElementById('otp-area').style.display = 'block';
+        }
+    }
+
+    function resetOTP() {
+        generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+        alert("New OTP: " + generatedOTP);
+    }
+
+    function verifyOTP() {
+        if(document.getElementById('otp-input').value === generatedOTP) {
+            document.getElementById('otp-area').style.display = 'none';
+            document.getElementById('quiz-area').style.display = 'block';
+            loadQuestion();
+        } else { alert("Invalid OTP!"); }
+    }
+
+    function loadQuestion() {
+        answered = false;
+        document.getElementById('explanation').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+        const data = quizData[currentQ];
+        document.getElementById('progress').innerText = `${currentQ + 1} of ${quizData.length}`;
+        document.getElementById('question-text').innerText = data.q;
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        data.a.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'option';
+            btn.innerText = (idx === 0 ? 'A. ' : idx === 1 ? 'B. ' : 'C. ') + opt;
+            btn.onclick = () => { if(!answered) checkAnswer(idx, btn); };
+            container.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(idx, btn) {
+        answered = true;
+        const data = quizData[currentQ];
+        const btns = document.querySelectorAll('.option');
+        if(idx === data.correct) { score++; btn.classList.add('correct'); }
+        else { btn.classList.add('wrong'); btns[data.correct].classList.add('correct'); }
+        document.getElementById('score-text').innerText = `Score: ${score}`;
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentQ++;
+        if(currentQ < quizData.length) loadQuestion();
+        else showResult();
+    }
+
+    function showResult() {
+        document.getElementById('quiz-area').style.display = 'none';
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('score-details').innerHTML = `Name: ${fullName}<br>Total Score: ${score}/${quizData.length}<br>Date: ${new Date().toLocaleDateString()}`;
+    }
+</script>
+</body>
+</html>

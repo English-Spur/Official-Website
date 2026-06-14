@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Courses - ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
+    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গলি ফন্ট ইমপোর্ট করার লিংক -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- ফন্টঅসাম আইকন লাইব্রেরি লিংক -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন */
+        :root {
+            --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
+            --secondary-color: #1F316F;     /* সাপোর্টিং নেভি ব্লু */
+            --accent-color: #10B981;        /* সাকসেস মিন্ট গ্রিন */
+            --text-dark: #0B192C;
+            --text-light: #F8FAFC;
+            --bg-light: #F4F6F9;
+            --card-bg: #FFFFFF;
+            --footer-bg: #051122;          /* ইমেজ অনুযায়ী নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* হেডারブランドিং নেভিগেশন বার */
+        header {
+            background-color: var(--primary-color);
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(11, 25, 44, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2.5px solid var(--accent-color);
+            object-fit: cover;
+            background: #FFFFFF;
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .academy-title-block {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .main-title {
+            color: var(--text-light);
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .main-title span {
+            color: var(--accent-color);
+        }
+
+        .sub-title {
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+            text-align: left;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* পেজ টাইটেল ব্যানার সেকশন */
+        .page-banner {
+            background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .page-banner h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .page-banner p {
+            font-size: 20px;
+            opacity: 0.85;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* কোর্স কনফিগারেশন মেইন কন্টেইনার */
+        .courses-container {
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* কোর্স আইটেম কার্ড মডিউল */
+        .course-item {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(11, 25, 44, 0.08);
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 12px rgba(11, 25, 44, 0.03);
+            margin-bottom: 35px;
+        }
+
+        /* কোর্স মেইন হেডিং - মাঝখানে সেন্টারে লকড */
+        .course-title { 
+            font-size: 24px; 
+            color: var(--primary-color); 
+            margin-bottom: 25px; 
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            gap: 12px;
+            border-bottom: 2px solid rgba(11, 25, 44, 0.08);
+            padding-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        
+        .course-title i { 
+            color: var(--accent-color); 
+            font-size: 22px; 
+        }
+
+        /* ৩ কলামের মাস্টার লেআউট গ্রিড: ১টি কলাম ইমেজের জন্য, ২টি কলাম টেক্সটের জন্য */
+        .course-main-grid {
+            display: grid;
+            grid-template-columns: 1fr 2.2fr; /* বাম দিকে ছবি এবং ডান দিকে বড় টেক্সট প্যানেল */
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* প্রফেশনাল কোর্স ইমেজ বক্স স্টাইলিং */
+        .course-image-wrapper {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            border: 2px solid rgba(11, 25, 44, 0.06);
+            overflow: hidden;
+            background-color: #E2E8F0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .course-image-wrapper:hover .course-img {
+            transform: scale(1.04); /* হালকা জুমিং ইফেক্ট */
+        }
+
+        /* ২ কলাম বিশিষ্ট অভ্যন্তরীণ বাইলিঙ্গুয়াল গ্রিড লেআউট */
+        .bilingual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px;
+            align-items: start;
+        }
+
+        .col-bn {
+            border-right: 1px solid rgba(11, 25, 44, 0.08);
+            padding-right: 25px;
+            text-align: left;
+        }
+        
+        .col-en {
+            padding-left: 5px;
+            text-align: left;
+        }
+
+        /* স্পষ্ট প্রফেশনাল বড় বডি টেক্সট - Left Aligned */
+        p { 
+            font-size: 16px; 
+            line-height: 1.7; 
+            text-align: left; 
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #334155;
+        }
+        
+        .col-bn p strong, .col-en p strong {
+            color: var(--primary-color);
+        }
+
+        /* বুলেটেড পয়েন্ট লেআউট স্টাইলিং */
+        .info-list {
+            list-style: none;
+            margin-top: 15px;
+            text-align: left;
+        }
+        
+        .info-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px; 
+            font-size: 15px;
+            line-height: 1.6;
+            color: #475569;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .col-en .info-list li {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .info-list li::before {
+            content: "🎯";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 14px;
+        }
+
+        /* মোবাইল এবং ট্যাবলেটের রেসপন্সিভ ব্রেকপয়েন্ট */
+        @media (max-width: 950px) {
+            .course-main-grid {
+                grid-template-columns: 1fr; /* মোবাইল স্ক্রিনে ছবি ওপরে চলে যাবে */
+                gap: 20px;
+            }
+            .course-image-wrapper {
+                height: 200px; /* মোবাইলের জন্য ইমেজের সাইজ ব্যালেন্স করা হলো */
+            }
+            .bilingual-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .col-bn {
+                border-right: none;
+                border-bottom: 1px solid rgba(11, 25, 44, 0.08);
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+            .col-en {
+                padding-left: 0;
+            }
+            nav ul {
+                display: none;
+            }
+            .main-title {
+                font-size: 18px;
+            }
+            .sub-title {
+                font-size: 9px;
+            }
+            .brand-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* image_63014a.png এর সাথে ১০০% মিলানো আল্ট্রা-সেন্টারড ডার্ক ফুটার স্টাইল */
+        footer {
+            background-color: var(--footer-bg) !important; 
+            padding: 30px 20px !important;                 
+            margin-top: 80px !important;
+            width: 100% !important;
+            border-top: 3.5px solid var(--accent-color) !important; /* স্ক্রিনশট অনুয়ায়ী আল্ট্রা-লাক্সারি বর্ডার */
+            
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        .footer-container {
+            width: 100% !important;
+            max-width: 1250px !important;
+            margin: 0 auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        .footer-container p {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.2px !important;
+            color: #94A3B8 !important;                     
+            margin: 0 !important;
+            text-align: center !important;                  
+        }
+
+        .creator-highlight {
+            color: var(--accent-color) !important;                     
+            font-weight: 700 !important;
+            padding-left: 4px !important;
+            display: inline-block !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার নেভিগেশন বার - exact from about.html -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-wrapper">
+                <img src="logo.png" alt="ENGLISH SPUR LOGO" class="brand-logo" onerror="this.style.display='none';">
+                <div class="academy-title-block">
+                    <div class="main-title">ENGLISH <span>SPUR</span></div>
+                    <div class="sub-title">ONLINE ENGLISH TRAINING ACADEMY | SINCE 2020</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- পেজ ব্যানার টপ এরিয়া - exact from about.html ডিগ্রি লেআউট -->
+    <section class="page-banner">
+        <h1>OUR PREMIUM TRAINING PROGRAMS</h1>
+        <p>Empowering Your Voice, Shaping Your Future....</p>
+        <p>'ইংলিশ স্পার অনলাইন ইংলিশ ট্রেনিং একাডেমির' <strong>কোর্স মডিউলে আপনাকে স্বাগত জানাই ...</strong></p>
+    </section>
+
+    <!-- মূল রেসপন্সিভ কন্টেইনার এরিয়া -->
+    <div class="courses-container">
+        
+        <!-- কোর্স ১: ফিয়ারলেস ইংলিশ ফর কিডস -->
+        <div class="course-item">
+            <div class="course-title"><i class="fa-solid fa-child"></i> 1. FEARLESS ENGLISH FOR KIDS | GROUP CLASS FOR KIDS</div>
+            
+            <!-- ৩ কলাম মাস্টার গ্রিড যার বামে ছবি এবং ডানে বাইলিঙ্গুয়াল টেক্সট -->
+            <div class="course-main-grid">
+                <!-- ইমেজ হোল্ডার সেকশন -->
+                <div class="course-image-wrapper">
+                    <img src="kids_course.jpg" alt="Fearless English For Kids Banner" class="course-img" onerror="this.src='https://via.placeholder.com/350x250?text=Fearless+English+For+Kids';">
+                </div>
+                
+                <!-- ডেসক্রিপশন টেক্সট এরিয়া -->
+                <div class="bilingual-grid">
+                    <div class="col-bn">
+                        <p><strong>কোর্সের বিবরণ:</strong> ছোটবেলা থেকেই শিশুদের মনের ভেতর থেকে ইংরেজির ভয় দূর করে একটি মজবুত ভিত্তি গড়ে তোলার জন্য এই বিশেষ কোর্স। মজাদার খেলা, ছড়া, গল্প এবং ছবির মাধ্যমে শিশুদের প্রাকৃতিকভাবে ইংরেজি শুনে বুঝতে শেখা, পড়া, বলা ও লেখা শেখানো হয়।</p>
+                        <ul class="info-list">
+                            <li><strong>কাদের জন্য এই কোর্স:</strong> 8 থেকে 14 বছর বয়সী ছোট সোনামণিদের জন্য।</li>
+                            <li><strong>কেন এই কোর্স:</strong> যাতে স্কুলে বা বন্ধুদের সাথে তারা কোনো রকম জড়তা ছাড়াই সম্পূর্ণ নির্ভয়ে ও আনন্দের সাথে ইংরেজিতে কথা বলতে পারে।</li>
+                            <li><strong>বিশেষ আকর্ষণ:</strong> মেন্টর শোভন কাপড়ী (Sovan Kapri) মহাশয়ের তৈরি শিশুদের উপযোগী বিশেষ ওয়ার্কশিট।</li>
+                        </ul>
+                    </div>
+                    <div class="col-en">
+                        <p><strong>Course Overview:</strong> A uniquely crafted program designed to eliminate English phobia from early childhood and build a rock-solid foundation. Through interactive games, rhymes, storytelling, and engaging visuals, children learn to read, write, and speak naturally.</p>
+                        <ul class="info-list">
+                            <li><strong>Target Audience:</strong> Young learners aged 8 to 14 years.</li>
+                            <li><strong>Why This Course:</strong> To empower your child to speak English with absolute fearlessness and joy at school or among peers without any hesitation.</li>
+                            <li><strong>Key Highlight:</strong> Specially animated worksheets researched and designed by our mentor Sovan Kapri.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- курс ২: পাওয়ার স্পিক -->
+        <div class="course-item">
+            <div class="course-title"><i class="fa-solid fa-bolt"></i> 2. POWER SPEAK | GROUP CLASS FOR ADULTS</div>
+            
+            <div class="course-main-grid">
+                <!-- ইমেজ হোল্ডার সেকশন -->
+                <div class="course-image-wrapper">
+                    <img src="power_speak.jpg" alt="Power Speak Banner" class="course-img" onerror="this.src='https://via.placeholder.com/350x250?text=Power+Speak+Masterclass';">
+                </div>
+                
+                <div class="bilingual-grid">
+                    <div class="col-bn">
+                        <p><strong>কোর্সের বিবরণ:</strong> এটি বড়দের জন্য তৈরি একটি স্পেশাল ফ্লুয়েন্সি বুস্টার প্রোগ্রাম। মনের মধ্যে বাক্য সাজালেও মুখে বলার সময় আটকে যাওয়া বা কনফিডেন্সের অভাব—এই সমস্ত সমস্যার স্থায়ী সমাধান মিলে এখানে। আমাদের প্র্যাকটিক্যাল সেশনের মাধ্যমে আপনার ব্যক্তিত্ব ও কথা বলার ধরন বদলে যাবে কর্পোরেট স্ট্যান্ডার্ডে।</p>
+                        <ul class="info-list">
+                            <li><strong>কাদের জন্য এই কোর্স:</strong> কলেজ বা ইউনিভার্সিটির শিক্ষার্থী, ফ্রিল্যান্সার, চাকরিজীবী, ব্যবসায়ী এবং গৃহবধূ—যারা স্মার্টলি ইংরেজি বলতে চান।</li>
+                            <li><strong>বিশেষ আকর্ষণ:</strong> ৫০০০ স্পোকেন ইংলিশ স্ট্রাকচার গাইডের রিয়েল-লাইফ ব্যবহার এবং সম্পূর্ণ LSRW মেথড ভিত্তিক ডেইলি টকিং প্র্যাকটিস।</li>
+                        </ul>
+                    </div>
+                    <div class="col-en">
+                        <p><strong>Course Overview:</strong> A high-impact communication and fluency booster program tailored exclusively for adults. If you can construct ideas in your mind but freeze or lose confidence while speaking, this course is your ultimate solution. It transforms your overall public speaking skills and refines your personality to corporate standards.</p>
+                        <ul class="info-list">
+                            <li><strong>Target Audience:</strong> College students, freelancers, working professionals, entrepreneurs, and homemakers striving to speak English smartly and assertively.</li>
+                            <li><strong>Key Highlight:</strong> Practical deployment of the 5000 Spoken English Structures manual and daily conversational drills driven by the LSRW Method.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- курс ৩: ওয়ান অন ওয়ান স্পেশাল ট্রেনিং -->
+        <div class="course-item">
+            <div class="course-title"><i class="fa-solid fa-user-shield"></i> 3. ONE ON ONE SPECIAL TRAINING</div>
+            
+            <div class="course-main-grid">
+                <!-- ইমেজ হোল্ডার সেকশন -->
+                <div class="course-image-wrapper">
+                    <img src="one_on_one.jpg" alt="One on One Training Banner" class="course-img" onerror="this.src='https://via.placeholder.com/350x250?text=One+On+One+Mentorship';">
+                </div>
+                
+                <div class="bilingual-grid">
+                    <div class="col-bn">
+                        <p><strong>কোর্সের বিবরণ:</strong> ব্যাচের ভিড়ে পড়তে সমস্যা হয়? তবে এই প্রিমিয়াম কাস্টমাইজড কোর্সটি আপনারই জন্য। এখানে একজন শিক্ষার্থীর জন্য একজন ডেডিকেটেড মেন্টর থাকেন, যিনি শিক্ষার্থীর বর্তমান লেভেল অনুযায়ী সম্পূর্ণ পার্সোনাল কেয়ার নিয়ে ক্লাস করান।</p>
+                        <ul class="info-list">
+                            <li><strong>কাদের জন্য এই কোর্স:</strong> ছোট বা বড়—যে কোনো বয়সী মানুষ, যারা নিজেদের পার্সোনাল গাইডেন্সে তৈরি করতে চান।</li>
+                            <li><strong>কেন এই কোর্স:</strong> বিশেষ করে যারা খুব কম সময়ে ইন্টারভিউ, প্রেজেন্টেশন বা বিদেশ যাওয়ার জন্য নিজেকে রেডি করতে চান।</li>
+                            <li><strong>বিশেষ আকর্ষণ:</strong> সম্পূর্ণ ফ্লেক্সিবল টাইমিং এবং সরাসরি মেন্টরের সাথে লাইভ প্র্যাকটিস ও ইনস্ট্যান্ট ফিডব্যাক সিস্টেম।</li>
+                        </ul>
+                    </div>
+                    <div class="col-en">
+                        <p><strong>Course Overview:</strong> Prefer personalized guidance over crowded batches? This premium customized training offers a highly focused learning environment. Under this track, a dedicated mentor is assigned to a single student, engineering a personalized curriculum tailored precisely to their learning pace and goals.</p>
+                        <ul class="info-list">
+                            <li><strong>Target Audience:</strong> Learners of all age groups (children or adults) who prefer exclusive personal mentorship.</li>
+                            <li><strong>Why This Course:</strong> Ideal for individuals preparing rapidly for upcoming job interviews, corporate presentations, or international travel.</li>
+                            <li><strong>Key Highlight:</strong> 100% flexible session timings, direct live tracking by the lead mentor, and instant performance feedback.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- image_63014a.png এর সাথে ১০০% পিক্সেল পারফেক্ট ও ফ্লেক্সবক্স দিয়ে আল্ট্রা-সেন্টারড মিলানো ফুটার লেআউট -->
+    <footer>
+        <div class="footer-container">
+            <p>© 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY. All Rights Reserved. | Created by: <span class="creator-highlight">Sovan Kapri</span></p>
+        </div>
+    </footer>
+
+</body>
+</html>

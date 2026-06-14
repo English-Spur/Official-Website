@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Quiz Hub - ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
+    <!-- ফন্টঅসাম আইকন লাইব্রেরি লিংক -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গলি ফন্ট ইমপোর্ট করার লিংক -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন - about.html এর গেটআপ অনুযায়ী */
+        :root {
+            --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
+            --secondary-color: #1F316F;     /* সাপোর্টিং নেভি ব্লু */
+            --accent-color: #10B981;        /* সাকসেস মিন্ট গ্রিন */
+            --text-dark: #0B192C;
+            --text-light: #F8FAFC;
+            --bg-light: #F4F6F9;
+            --card-bg: #FFFFFF;
+            --footer-bg: #051122;          /* index.html অনুযায়ী নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            text-align: left;
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+        }
+
+        /* হেডার ব্র্যান্ডিং নেভিগেশন বার - exact from about.html */
+        header {
+            background-color: var(--primary-color);
+            padding: 18px 5%;
+            position: sticky; 
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(11, 25, 44, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1250px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2.5px solid var(--accent-color);
+            object-fit: cover;
+            background: #FFFFFF;
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .academy-title-block {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .main-title {
+            color: var(--text-light);
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .main-title span {
+            color: var(--accent-color);
+        }
+
+        .sub-title {
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+            text-align: left;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* পেজ টাইটেল ব্যানার সেকশন - image_464346.png অনুযায়ী একদম জিরো মার্জিন ও টাইট লেআউট */
+        .page-banner {
+            background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            text-align: center;
+            padding: 55px 20px;
+            width: 100%;
+            margin-top: 0 !important; /* হেডার ও ব্যানারের মাঝখানের সাদা গ্যাপ সম্পূর্ণ অফ করার জন্য */
+        }
+
+        .page-banner h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .page-banner p {
+            font-size: 20px;
+            opacity: 0.85;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* মূল কন্টেন্ট কার্ড এরিয়া স্পেসিং */
+        .content-container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 20px;
+            margin-top: 50px; /* ব্যানার থেকে কার্ডের পারফেক্ট গ্যাপ */
+        }
+
+        /* Luxury Clean Main Card - aligned with about.html structure */
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid rgba(11, 25, 44, 0.08); 
+            border-radius: 24px; 
+            padding: 45px 35px; 
+            width: 100%; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); 
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        /* Page Header Configuration */
+        .page-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .page-title {
+            font-size: 28px;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+        .page-subtitle {
+            font-size: 13px;
+            color: #64748B;
+            margin-top: 8px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ৬টি কুইজের জন্য ২-কলামের রেসপন্সিভ গ্রিড প্যানেল */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+        
+        /* Individual Quiz Section Card Setup - aligned with about.html content card setup */
+        .app-section {
+            background: rgba(11, 25, 44, 0.02);
+            border: 1px solid rgba(11, 25, 44, 0.06);
+            border-radius: 18px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+        }
+        .app-section:hover {
+            background: #FFFFFF;
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(11, 25, 44, 0.05);
+        }
+
+        .app-meta {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+
+        /* Icon Wrapper glowing specifications */
+        .icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color); /* নিয়ন মিন্ট গ্রিন আইকন গ্লো */
+            font-size: 22px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .app-section:hover .icon-wrapper {
+            color: #FFFFFF;
+            background: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .app-texts {
+            flex-grow: 1;
+        }
+        .app-title {
+            font-size: 19px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        p { 
+            font-size: 14.5px; 
+            line-height: 1.6; 
+            text-align: left; /* বাম মার্জিন মেনে চলবে */
+            color: #475569;
+            font-weight: 400;
+        }
+
+        /* Active Action Anchor Button Style */
+        .action-link-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(11, 25, 44, 0.04);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(11, 25, 44, 0.08);
+            transition: all 0.3s ease;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .action-link-btn:hover {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(11, 25, 44, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        @media (max-width: 850px) {
+            .apps-grid { grid-template-columns: 1fr; }
+            .card { padding: 30px 15px; }
+            nav ul {
+                display: none;
+            }
+            .main-title {
+                font-size: 18px;
+            }
+            .sub-title {
+                font-size: 9px;
+            }
+            .brand-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        /* image_47afde.png এর সাথে ১০০% পিক্সেল পারফেক্ট মিলানো আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার ও সবুজ বর্ডার */
+        .footer { 
+            background-color: var(--footer-bg) !important; 
+            padding: 18px 20px !important;                 
+            margin-top: 40px; 
+            border-radius: 18px;                          
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 3.5px solid var(--accent-color) !important; /* স্ক্রিনশট অনুয়ায়ী আল্ট্রা-লাক্সারি বর্ডার স্ট্রিপ */
+            width: 100% !important;
+            
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 6px !important;                          
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-text-main {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 10.5px !important;                  
+            font-weight: 800 !important;
+            letter-spacing: 0.3px !important;
+            color: #FFFFFF !important;                     
+            text-transform: uppercase;
+            text-align: center !important;                 
+            line-height: 1.5 !important;
+        }
+
+        .footer-author-line {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 11px !important;
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px !important;
+            text-align: center !important;
+            white-space: nowrap;                          
+        }
+
+        .creator-highlight {
+            color: var(--accent-color) !important;                     
+            font-weight: 800 !important;
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার নেভিগেশন বার - exact from about.html -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-wrapper">
+                <img src="logo.png" alt="ENGLISH SPUR LOGO" class="brand-logo" onerror="this.style.display='none';">
+                <div class="academy-title-block">
+                    <div class="main-title">ENGLISH <span>SPUR</span></div>
+                    <div class="sub-title">ONLINE ENGLISH TRAINING ACADEMY | SINCE 2020</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Courses</a></li>
+                    <li><a href="youtube.html">Social Media</a></li>
+                    <li><a href="studentcorner.html">Student Corner</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- পেজ ব্যানার টপ এরিয়া - exact from about.html ডিগ্রি লেআউট -->
+    <section class="page-banner">
+        <h1>FREE RESOURCES PANEL</h1>
+        <p>Empowering Your Voice, Shaping Your Future....</p>
+        <p>'ইংলিশ স্পার অনলাইন ইংলিশ ট্রেনিং একাডেমির' <strong>ফ্রি কুইজ হাবে আপনাকে স্বাগত জানাই ...</strong></p>
+    </section>
+
+    <!-- মূল কন্টেন্ট কার্ড এরিয়া -->
+    <div class="content-container">
+        <div class="card">
+            
+            <div class="page-header">
+                <div class="page-title">FREE RESOURCES</div>
+                <div class="page-subtitle">English Spur Live Grammar Quizzes</div>
+            </div>
+            
+            <div class="apps-grid">
+                
+                <!-- কুইজ ১ -->
+                <div class="app-section">
+                    <div class="app-meta">
+                        <div class="icon-wrapper"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div class="app-texts">
+                            <div class="app-title">ADJECTIVE QUIZ</div>
+                            <p>বাক্যের দোষ, গুণ, অবস্থা ও সংখ্যা চিহ্নিত করার ক্ষমতা পরীক্ষা করুন। এই কুইজে অংশ নিয়ে নাউন বা প্রোনাউনের সঠিক কোয়ালিফাইং বৈশিষ্ট্য নির্ধারণ করার মাধ্যমে আপনার গ্রামার বেস আরও মজবুত করুন।</p>
+<P>Test your ability to identify the flaws, merits, states, and numbers within a sentence. Participate in this quiz to strengthen your grammatical foundation by accurately determining the qualifying characteristics of nouns or pronouns.</P>
+                        </div>
+                    </div>
+                    <a href="ENGLISH SPUR QUIZ APP - 30 ADJECTIVE.HTML" class="action-link-btn"><i class="fa-solid fa-play"></i> Start Quiz</a>
+                </div>
+                
+                <!-- কুইজ ২ -->
+                <div class="app-section">
+                    <div class="app-meta">
+                        <div class="icon-wrapper"><i class="fa-solid fa-user-tag"></i></div>
+                        <div class="app-texts">
+                            <div class="app-title">PRONOUN QUIZ</div>
+                            <p>নাউনের পরিবর্তে সঠিক প্রোনাউনের ব্যবহার কতটা জানেন? রিলেটিভ, রিফ্লেক্সিভ থেকে শুরু করে পার্সোনাল প্রোনাউনের সূক্ষ্ম নিয়মগুলো যাচাই করতে আজই এই টেস্টটিতে অংশ নিন।</p>
+<P>How well do you know the correct usage of pronouns in place of nouns? Participate in this test today to verify the subtle rules of pronouns, ranging from relative and reflexive to personal pronouns.</P>
+                        </div>
+                    </div>
+                    <a href="ENGLISH SPUR QUIZ APP - 30 PRONOUN.HTML" class="action-link-btn"><i class="fa-solid fa-play"></i> Start Quiz</a>
+                </div>
+                
+                <!-- কুইজ ৩ -->
+                <div class="app-section">
+                    <div class="app-meta">
+                        <div class="icon-wrapper"><i class="fa-solid fa-person-running"></i></div>
+                        <div class="app-texts">
+                            <div class="app-title">VERB QUIZ</div>
+                            <p>বাক্যের আসল চালিকাশক্তি হলো ভার্ব। ট্রানজিটিভ, ইনট্রানজিটিভ, ফাইনাইট ও নন-ফাইনাইট ভার্বের ব্যবহার এবং সাবজেক্ট-ভার্ব এগ্রিমেন্টের কনসেপ্ট জলের মতো পরিষ্কার করতে এই কুইজটি দিন।</p>
+<p>The real driving force of a sentence is the verb. Take this quiz to make your concept of subject-verb agreement and the usage of transitive, intransitive, finite, and non-finite verbs crystal clear.</p>                </div>
+                    </div>
+                    <a href="ENGLISH SPUR QUIZ APP - 30 VERB.HTML" class="action-link-btn"><i class="fa-solid fa-play"></i> Start Quiz</a>
+                </div>
+
+                <!-- কুইজ ৪ -->
+                <div class="app-section">
+                    <div class="app-meta">
+                        <div class="icon-wrapper"><i class="fa-solid fa-route"></i></div>
+                        <div class="app-texts">
+                            <div class="app-title">PREPOSITION QUIZ</div>
+                            <p>ইংরেজি গ্রামারের সবচেয়ে কনফিউজিং চ্যাপ্টার! অ্যাপ্রোপ্রিয়েট প্রিপজিশন এবং ইন, অন, অ্যাট (In, On, At) এর সঠিক পজিশনিং নির্ধারণের ম্যাজিক রুলসগুলো এই লাইভ কুইজের মাধ্যমে আয়ত্ত করুন।</p>
+<p>The most confusing chapter of English grammar! Master the magic rules for determining the correct positioning of appropriate prepositions and 'In, On, At' through this live quiz.</p>
+                        </div>
+                    </div>
+                    <a href="ENGLISH SPUR QUIZ APP - 30 PREPOSITION.HTML" class="action-link-btn"><i class="fa-solid fa-play"></i> Start Quiz</a>
+                </div>
+
+                <!-- কুইজ ৫ -->
+                <div class="app-section">
+                    <div class="app-meta">
+                        <div class="icon-wrapper"><i class="fa-solid fa-clock"></i></div>
+                        <div class="app-texts">
+                            <div class="app-title">TENSE QUIZ</div>
+                            <p>ইংরেজি ভাষার মেরুদণ্ড হলো টেন্স। প্রেজেন্ট, পাস্ট ও ফিউচার টেন্সের ১২টি ফর্মের সঠিক গঠন এবং বাস্তব বাক্যে তাদের সঠিক টাইমিং প্রয়োগ করার দক্ষতা এক নিমেষে পরীক্ষা করে নিন এই সেকশনে।</p><p>Tense is the backbone of the English language. Test your skills in a flash within this section regarding the correct structure of the twelve forms of present, past, and future tenses, as well as their accurate timing application in real-life sentences.</p>
+                        </div>
+                    </div>
+                    <a href="ENGLISH SPUR QUIZ APP - TENSE.html" class="action-link-btn"><i class="fa-solid fa-play"></i> Start Quiz</a>
+                </div>
+
+                <!-- কুইজ ৬ -->
+                <div class="app-section">
+                    <div class="app-meta">
+                        <div class="icon-wrapper"><i class="fa-solid fa-award"></i></div>
+                        <div class="app-texts">
+                            <div class="app-title">BASIC GRAMMAR TEST QUIZ</div>
+                            <p>একটি অল-ইন-ওয়ান মেগা টেস্ট! সেন্টেন্স স্ট্রাকচার, পার্টস অফ স্পীচ এবং বেসিক পাংচুয়েশনের মিশ্রণে তৈরি আমাদের এই আল্টিমেট গ্র্যান্ড কুইজটি দিয়ে আপনার ইংরেজির ওভারঅল স্কোর আজই জেনে নিন।</p><p>An all-in-one mega test! Find out your overall English score today with this ultimate grand quiz, beautifully crafted with a blend of sentence structure, parts of speech, and basic punctuation.</p>
+                        </div>
+                    </div>
+                    <a href="Online_Quiz (1).html" class="action-link-btn"><i class="fa-solid fa-play"></i> Start Quiz</a>
+                </div>
+            </div>
+            
+            <!-- image_47afde.png এর গেটআপ অনুযায়ী আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার ও নিয়ন-সবুজ টপ বর্ডার -->
+            <div class="footer">
+                <div class="footer-text-main">
+                    &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
+                </div>
+                <div class="footer-author-line">
+                    CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

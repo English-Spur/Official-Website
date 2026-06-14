@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Corner - ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
+    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গলি ফন্ট ইমপোর্ট করার লিংক -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- ফন্টঅসাম আইকন লাইব্রেরি লিংক -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন - about.html এর গেটআপ অনুযায়ী */
+        :root {
+            --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
+            --secondary-color: #1F316F;     /* সাপোর্টিং নেভি ব্লু */
+            --accent-color: #10B981;        /* সাকসেস মিন্ট গ্রিন */
+            --text-dark: #0B192C;
+            --text-light: #F8FAFC;
+            --bg-light: #F4F6F9;
+            --card-bg: #FFFFFF;
+            --footer-bg: #051122;          /* index.html অনুযায়ী নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* হেডার ব্র্যান্ডিং নেভিগেশন বার - exact from about.html */
+        header {
+            background-color: var(--primary-color);
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(11, 25, 44, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2.5px solid var(--accent-color);
+            object-fit: cover;
+            background: #FFFFFF;
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .academy-title-block {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .main-title {
+            color: var(--text-light);
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .main-title span {
+            color: var(--accent-color);
+        }
+
+        .sub-title {
+            color: #94A3B8;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+            text-align: left;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* পেজ টাইটেল ব্যানার সেকশন - exact from about.html */
+        .page-banner {
+            background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .page-banner h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .page-banner p {
+            font-size: 20px;
+            opacity: 0.85;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* স্টুডেন্ট কর্নার কন্টেইনার */
+        .student-container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ফর্ম সেকশন কার্ড মডিউল - aligned with about.html content card setup */
+        .form-section {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(11, 25, 44, 0.08);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(11, 25, 44, 0.03);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(11, 25, 44, 0.06);
+        }
+
+        /* কন্টেন্ট শিরোনাম - মাঝখানে লকড */
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            gap: 12px;
+            color: var(--primary-color);
+            border-bottom: 2px solid rgba(11, 25, 44, 0.08);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .section-title i {
+            color: #38bdf8; 
+            font-size: 20px;
+        }
+
+        /* ২ কলাম বিশিষ্ট অভ্যন্তরীণ বাইলিঙ্গুয়াল গ্রিড লেআউট */
+        .bilingual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 25px;
+            align-items: start;
+        }
+        
+        .col-bn {
+            border-right: 1px solid rgba(11, 25, 44, 0.08);
+            padding-right: 20px;
+            text-align: left;
+        }
+        
+        .col-en {
+            padding-left: 5px;
+            text-align: left;
+        }
+
+        /* স্পষ্ট প্রফেশনাল বড় বডি টেক্সট - Left Aligned */
+        p { 
+            font-size: 17.5px; 
+            line-height: 1.8; 
+            text-align: left; 
+            color: #334155;
+            font-weight: 400;
+        }
+        
+        .col-en p {
+            font-family: 'Inter', sans-serif;
+            color: #475569;
+            font-size: 16.5px;
+            line-height: 1.9;
+        }
+
+        /* প্রিমিয়াম অ্যাকশন বাটন মেকানিজম */
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        /* বাটন কালার ও হোভার লজিক */
+        .btn-admission {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
+        }
+        .btn-admission:hover {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-demo {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            border: 1px solid rgba(52, 211, 153, 0.4);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+        }
+        .btn-demo:hover {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* মোবাইল রেসপন্সিভ ভিউ কনফিগারেশন */
+        @media (max-width: 750px) {
+            .bilingual-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .col-bn {
+                border-right: none;
+                border-bottom: 1px solid rgba(11, 25, 44, 0.08);
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+            .col-en {
+                padding-left: 0;
+            }
+            nav ul {
+                display: none;
+            }
+            .main-title {
+                font-size: 18px;
+            }
+            .sub-title {
+                font-size: 9px;
+            }
+            .brand-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* image_47afde.png এর সাথে ১০০% মিলানো গ্লোবাল উইডথ ফুলার ও সবুজ বর্ডার */
+        .footer { 
+            background-color: var(--footer-bg) !important; 
+            padding: 18px 20px !important;                 
+            margin-top: 60px; 
+            border-radius: 18px;                          
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 3.5px solid var(--accent-color) !important; /* স্ক্রিনশট অনুয়ায়ী আল্ট্রা-লাক্সারি বর্ডার */
+            width: 100% !important;
+            
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 6px !important;                          
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-text-main {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 10.5px !important;                  
+            font-weight: 800 !important;
+            letter-spacing: 0.3px !important;
+            color: #FFFFFF !important;                     
+            text-transform: uppercase;
+            text-align: center !important;                 
+            line-height: 1.5 !important;
+        }
+
+        .footer-author-line {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 11px !important;
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px !important;
+            text-align: center !important;
+            white-space: nowrap;                          
+        }
+
+        .creator-highlight {
+            color: var(--accent-color) !important;                     
+            font-weight: 800 !important;
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার নেভিগেশন বার - exact from about.html -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-wrapper">
+                <img src="logo.png" alt="ENGLISH SPUR LOGO" class="brand-logo" onerror="this.style.display='none';">
+                <div class="academy-title-block">
+                    <div class="main-title">ENGLISH <span>SPUR</span></div>
+                    <div class="sub-title">ONLINE ENGLISH TRAINING ACADEMY | SINCE 2020</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Courses</a></li>
+                    <li><a href="youtube.html">Social Media</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- পেজ ব্যানার টপ এরিয়া - exact from about.html ডিগ্রি লেআউট -->
+    <section class="page-banner">
+        <h1>STUDENT CORNER</h1>
+        <p>Empowering Your Voice, Shaping Your Future....</p>
+        <p>'ইংলিশ স্পার অনলাইন ইংলিশ ট্রেনিং একাডেমির' <strong>অ্যাডমিশন পোর্টালে আপনাকে স্বাগত জানাই ...</strong></p>
+    </section>
+
+    <!-- মূল রেসপন্সিভ কন্টেইনার এরিয়া -->
+    <div class="student-container">
+
+        <!-- ফর্ম সেকশন ১: অনলাইন অ্যাডমিশন ফর্ম -->
+        <div class="form-section">
+            <div class="section-title"><i class="fa-solid fa-file-signature"></i> Online Admission Form</div>
+            <div class="bilingual-grid">
+                <div class="col-bn">
+                    <p>আপনি কি আমাদের প্রিমিয়াম ইংলিশ লার্নিং কোর্সে ভর্তি হতে প্রস্তুত? নিচে দেওয়া বাটনে ক্লিক করে অফিশিয়াল অ্যাডমিশন ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন। আমাদের টিম দ্রুত আপনার সাথে যোগাযোগ করবে।</p>
+                </div>
+                <div class="col-en">
+                    <p>Are you ready to join our premium English learning courses? Click the button below to fill out the official admission form with accurate details. Our team will get in touch with you shortly.</p>
+                </div>
+            </div>
+            <a href="English Spur Online Admission Form(F).html" class="action-btn btn-admission">
+                <i class="fa-solid fa-user-plus"></i> Open Admission Form
+            </a>
+        </div>
+        
+        <!-- ফর্ম সেকশন ২: ফ্রি ডেমো ক্লাস রেজিস্ট্রেশন -->
+        <div class="form-section">
+            <div class="section-title"><i class="fa-solid fa-chalkboard-user"></i> Free Demo Class Registration</div>
+            <div class="bilingual-grid">
+                <div class="col-bn">
+                    <p>ভর্তি হওয়ার আগে আমাদের ক্লাসের কোয়ালিটি যাচাই করতে চান? আজই আপনার ফ্রি ডেমো সিট বুক করুন! নিচের ফর্মে আপনার নাম ও নম্বর রেজিস্টার করে আমাদের লাইভ ডেমো সেশনের ফ্রি অ্যাক্সেস পান।</p>
+                </div>
+                <div class="col-en">
+                    <p>Want to experience our training quality before enrolling? Book your free demo seat today! Register your name and contact details to secure complimentary access to our live demo sessions.</p>
+                </div>
+            </div>
+            <a href="Freedemo.html" class="action-btn btn-demo">
+                <i class="fa-solid fa-calendar-check"></i> Book Free Demo Class
+            </a>
+        </div>
+        
+        <!-- image_47afde.png এর গেটআপ অনুযায়ী আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার ও নিয়ন-সবুজ টপ বর্ডার -->
+        <div class="footer">
+            <div class="footer-text-main">
+                &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
+            </div>
+            <div class="footer-author-line">
+                CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

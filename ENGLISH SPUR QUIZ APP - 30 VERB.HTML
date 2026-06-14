@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Spur Online Quiz</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .container { background: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; overflow: hidden; }
+        .header { background: #2c5cc5; color: white; padding: 20px; text-align: center; }
+        .contact { background: #4a7ae2; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 14px; margin-top: 10px; }
+        .quiz-body { padding: 20px; }
+        .meta-info { display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; color: #555; height: 30px; align-items: center; }
+        .option { display: block; width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; text-align: left; background: #f9f9f9; }
+        .correct { border-color: #27ae60 !important; background: #d4edda !important; }
+        .wrong { border-color: #c0392b !important; background: #f8d7da !important; }
+        .btn { width:100%; padding:15px; border:none; cursor:pointer; background:#2c5cc5; color:white; border-radius: 10px; font-weight: bold; margin-top: 10px; }
+        #quiz-area, #result-area, #otp-area { display: none; }
+        input { width: 92%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; display: block; margin-left: auto; margin-right: auto; }
+        label { font-size: 12px; font-weight: bold; color: #555; margin-left: 20px; }
+
+        @media print {
+            
+    /* হাইড করা বাটনগুলো ছাড়া বাকি সব কিছু প্রিন্টে দেখাবে */
+    .btn { display: none !important; }
+    
+    /* হেডার এবং লোগো এখন আর হাইড হবে না */
+    .header { display: block !important; background: #2c5cc5 !important; color: white !important; }
+    
+    /* কন্টেইনার যেন পুরো পেজে ঠিকঠাক থাকে */
+    .container { box-shadow: none !important; width: 100% !important; border: none !important; }
+    
+    /* রেজাল্ট এরিয়াটি সুন্দরভাবে সাজানোর জন্য */
+    #result-area { display: block !important; border: 2px solid #2c5cc5; padding: 20px; margin-top: 20px; }
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="quiz-container">
+    <div class="header">
+        
+        <div style="font-size: 18px; font-weight: bold;">English Spur Online English Training Academy</div>
+        <div style="font-size: 18px; font-weight: bold;">Kanaipur,Bantul,Bagnan,Howrah-711312</div>
+        <div class="contact">📞 Call / WhatsApp: 9875340842</div>
+    </div>
+
+    <div class="quiz-body">
+        <div id="start-area">
+            <label>FIRST NAME (USE CAPITAL LETTERS ONLY)</label>
+            <input type="text" id="first-name" placeholder="FIRST NAME" oninput="this.value = this.value.toUpperCase()">
+            <label>LAST NAME (USE CAPITAL LETTERS ONLY)</label>
+            <input type="text" id="last-name" placeholder="LAST NAME" oninput="this.value = this.value.toUpperCase()">
+            <label>ENTER VALID 10 DIGIT MOBILE NUMBER</label>
+            <input type="number" id="phone" placeholder="Phone Number">
+            <button onclick="sendOTP()" class="btn">Generate OTP</button>
+        </div>
+
+        <div id="otp-area">
+            <p style="text-align:center;">Enter the 4-digit code:</p>
+            <input type="number" id="otp-input" placeholder="Enter OTP">
+            <button onclick="verifyOTP()" class="btn">Verify & Start</button>
+            <button onclick="resetOTP()" class="btn" style="background:#e67e22;">Resend/Generate New OTP</button>
+        </div>
+
+        <div id="quiz-area">
+            <div class="meta-info">
+                <span id="progress"></span>
+                <span id="live-time"></span>
+            </div>
+            <div class="meta-info">
+                <span id="topic">Topic:VERB</span>
+                <span id="score-text">Score: 0</span>
+            </div>
+            <h3 id="question-text"></h3>
+            <div id="options-container"></div>
+            <p id="explanation" style="background:#e8f5e9; padding:10px; border-radius:5px; font-size:14px; display:none;"></p>
+            <button id="next-btn" onclick="nextQuestion()" class="btn" style="display:none;">Next Question</button>
+        </div>
+
+        <div id="result-area">
+            <h2>Quiz Result</h2>
+            <div id="score-details" style="line-height:2; font-size:18px;"></div>
+            <button onclick="window.print()" class="btn" style="background:#2980b9;">Save PDF</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const quizData = [
+          {q: "Which is a verb: Run, Fast, Quickly?", a: ["Run", "Fast", "Quickly"], correct: 0, ans: "Run"},
+  {q: "Identify the verb: She writes a letter.", a: ["She", "writes", "letter"], correct: 1, ans: "writes"},
+  {q: "Which is an auxiliary (helping) verb?", a: ["Eat", "Am", "Table"], correct: 1, ans: "Am"},
+  {q: "What is the past tense of 'Go'?", a: ["Goed", "Went", "Gone"], correct: 1, ans: "Went"},
+  {q: "Which is an action verb?", a: ["Is", "Jump", "Seems"], correct: 1, ans: "Jump"},
+  {q: "Which of the following is a pure 'Linking Verb'?", a: ["Seem", "Run", "Eat"], correct: 0, ans: "Seem"},
+  {q: "What is the present participle of 'Sing'?", a: ["Sang", "Sung", "Singing"], correct: 2, ans: "Singing"},
+  {q: "Which verb means to consume food?", a: ["Eat", "Run", "Sit"], correct: 0, ans: "Eat"},
+  {q: "Which is a stative verb?", a: ["Dance", "Believe", "Write"], correct: 1, ans: "Believe"},
+  {q: "Which form of 'Have' is used with 'He'?", a: ["Have", "Has", "Had"], correct: 1, ans: "Has"},
+  {q: "What is the past participle of 'Write'?", a: ["Wrote", "Written", "Writing"], correct: 1, ans: "Written"},
+  {q: "Which verb indicates future time?", a: ["Will play", "Played", "Plays"], correct: 0, ans: "Will play"},
+  {q: "Which verb is used for perception?", a: ["See", "Build", "Call"], correct: 0, ans: "See"},
+  {q: "Which is the base form of the verb?", a: ["Talks", "Talked", "Talk"], correct: 2, ans: "Talk"},
+  {q: "Which sentence contains a modal verb?", a: ["I run fast.", "He can swim.", "She likes tea."], correct: 1, ans: "He can swim."},
+  {q: "What is the past tense of 'Teach'?", a: ["Teached", "Taught", "Teaches"], correct: 1, ans: "Taught"},
+  {q: "Which verb means to listen carefully?", a: ["Hear", "Ignore", "Listen"], correct: 2, ans: "Listen"},
+  {q: "Identify the main verb: They are studying.", a: ["They", "are", "studying"], correct: 2, ans: "studying"},
+  {q: "Which verb implies a state of existence?", a: ["Exist", "Run", "Cook"], correct: 0, ans: "Exist"},
+  {q: "Which verb is irregular?", a: ["Walk", "Call", "Break"], correct: 2, ans: "Break"},
+  {q: "What is the third-person singular of 'Fly'?", a: ["Flyes", "Flies", "Flying"], correct: 1, ans: "Flies"},
+  {q: "Which verb is a synonym for 'Construct'?", a: ["Build", "Destroy", "Break"], correct: 0, ans: "Build"},
+  {q: "Which verb form often shows a habit?", a: ["Run", "Ran", "Running"], correct: 0, ans: "Run"},
+  {q: "Which verb means to say goodbye/go away?", a: ["Leave", "Stay", "Arrive"], correct: 0, ans: "Leave"},
+  {q: "In 'He is happy', what is 'is'?", a: ["Linking Verb", "Action Verb", "Modal Verb"], correct: 0, ans: "Linking Verb"},
+  {q: "What is the past tense of 'Drink'?", a: ["Drank", "Drinked", "Drunk"], correct: 0, ans: "Drank"},
+  {q: "Which verb indicates a thought process?", a: ["Think", "Push", "Hold"], correct: 0, ans: "Think"},
+  {q: "Which verb means to keep going?", a: ["Stop", "Continue", "Pause"], correct: 1, ans: "Continue"},
+  {q: "What is the past participle of 'Eat'?", a: ["Ate", "Eaten", "Eats"], correct: 1, ans: "Eaten"},
+  {q: "Which verb relates to loud sound?", a: ["Shout", "Write", "Draw"], correct: 0, ans: "Shout"}
+    ]
+
+    let currentQ = 0, score = 0, fullName = "", generatedOTP = "", answered = false;
+
+   function updateTime() {
+        const now = new Date();
+        const d = String(now.getDate()).padStart(2, '0');
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const y = now.getFullYear();
+        document.getElementById('live-time').innerText = `${d}-${m}-${y}, ${now.toLocaleTimeString()}`;
+    }
+    setInterval(updateTime, 1000);
+
+    function sendOTP() {
+        const fn = document.getElementById('first-name').value.trim();
+        const ln = document.getElementById('last-name').value.trim();
+        const ph = document.getElementById('phone').value.trim();
+        const nameRegex = /^[A-Z]{2,}$/; 
+        
+        if(!nameRegex.test(fn) || !nameRegex.test(ln) || ph.length < 10) {
+            alert("Please enter valid UPPERCASE Name and Phone Number.");
+        } else {
+            fullName = `${fn} ${ln}`;
+            generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+            alert("Your OTP is: " + generatedOTP);
+            document.getElementById('start-area').style.display = 'none';
+            document.getElementById('otp-area').style.display = 'block';
+        }
+    }
+
+    function resetOTP() {
+        generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+        alert("New OTP: " + generatedOTP);
+    }
+
+    function verifyOTP() {
+        if(document.getElementById('otp-input').value === generatedOTP) {
+            document.getElementById('otp-area').style.display = 'none';
+            document.getElementById('quiz-area').style.display = 'block';
+            loadQuestion();
+        } else { alert("Invalid OTP!"); }
+    }
+
+    function loadQuestion() {
+        answered = false;
+        document.getElementById('explanation').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+        const data = quizData[currentQ];
+        document.getElementById('progress').innerText = `${currentQ + 1} of ${quizData.length}`;
+        document.getElementById('question-text').innerText = data.q;
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        data.a.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'option';
+            btn.innerText = (idx === 0 ? 'A. ' : idx === 1 ? 'B. ' : 'C. ') + opt;
+            btn.onclick = () => { if(!answered) checkAnswer(idx, btn); };
+            container.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(idx, btn) {
+        answered = true;
+        const data = quizData[currentQ];
+        const btns = document.querySelectorAll('.option');
+        if(idx === data.correct) { score++; btn.classList.add('correct'); }
+        else { btn.classList.add('wrong'); btns[data.correct].classList.add('correct'); }
+        document.getElementById('score-text').innerText = `Score: ${score}`;
+                document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+    currentQ++; // পরের প্রশ্নের ইনডেক্সে যাওয়ার জন্য এটি যোগ করতে হবে
+    
+    if (currentQ < quizData.length) {
+        // যদি আরও প্রশ্ন থাকে, তবে নতুন প্রশ্ন লোড করো
+        loadQuestion();
+    } else {
+        // যদি সব প্রশ্ন শেষ হয়ে যায়, তবেই রেজাল্ট দেখাও
+        document.getElementById('quiz-area').style.display = 'none';
+        document.getElementById('result-area').style.display = 'block';
+        
+        const d = new Date();
+        const dateStr = `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
+        document.getElementById('score-details').innerHTML = `Name: ${fullName}<br>Total Score: ${score}/${quizData.length}<br>Date: ${dateStr}`;
+    }
+}
+    function showResult() {
+        document.getElementById('quiz-area').style.display = 'none';
+        document.getElementById('result-area').style.display = 'block';
+                     const d = new Date();
+        const dateStr = `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
+                document.getElementById('score-details').innerHTML = `Name: ${fullName}<br>Total Score: ${score}/${quizData.length}<br>Date: ${dateStr}`;
+    }
+</script>
+</body>
+</html>

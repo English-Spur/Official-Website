@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Spur Online Quiz</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+    body{ font-family:Arial; margin:0; background:#eef2f7; display:flex; justify-content:center; padding:10px; }
+    .container{ width:100%; max-width:600px; background:white; padding:20px; border-radius:10px; box-sizing:border-box; }
+    .header{ text-align:center; background:#1e3c72; color:white; padding:15px; border-radius:8px; }
+    .header h2{margin:0; font-size:18px; color: white;}
+    .header p{margin:3px 0; font-size:12px; color: white;}
+    
+    .phone-icon {
+        width: 14px;
+        height: 14px;
+        fill: #ffffff; 
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: 2px;
+    }
+    
+    .print-only { display: none; }
+    @media print {
+        .print-only { display: block; text-align: center; margin-bottom: 10px; }
+        .no-print { display: none !important; }
+    }
+
+    .smallbrand{ font-size:12px; color:#555; text-align:center; margin:10px 0; }
+    input{ width:100%; padding:12px; margin:6px 0; box-sizing:border-box; font-size:16px; }
+    .btn{ width:100%; padding:12px; background:#1e3c72; color:white; border:none; margin-top:10px; cursor:pointer; font-weight:bold; font-size:16px; border-radius:5px; }
+    .btn.green{background:#28a745; margin-top:10px;}
+    .btn.red{background:red;}
+    .btn.orange{background:#f39c12;}
+    .btn.screenshot-btn{background:#17a2b8;}
+    .center{text-align:center;}
+    .option{ padding:12px; margin:8px 0; border:2px solid #ccc; border-radius:8px; cursor:pointer; font-size:16px; }
+    .correct{background:#c8f7c5; border-color:green;}
+    .wrong{background:#f8c6c6; border-color:red;}
+    .explanation{ font-size:14px; color:#333; background:#f0f0f0; padding:10px; border-radius:5px; margin-top:10px; display:none; }
+    .topbar{ display:flex; justify-content:space-between; font-size:14px; margin:10px 0; color:#333; }
+    .topic{ text-align:center; font-weight:bold; color:#1e3c72; margin:10px 0; }
+    .hide{display:none;}
+    .footer-text{ font-size: 11px; color: #777; text-align: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 10px; }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <div id="loginBox">
+        <div class="header">
+            <h2>ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</h2>
+            <p>KANAIPUR, BANTUL, BAGNAN, HOWRAH - 711312</p>
+            <p>
+                <svg class="phone-icon" viewBox="0 0 24 24">
+                    <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a1 1 0 0 0 .25-1.02A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
+                </svg>
+                <span>9875340842 (Call / WhatsApp)</span>
+            </p>
+        </div>
+        <p class="smallbrand">English Spur Online Quiz System</p>
+        <input id="name" placeholder="Student Name">
+        <input id="phone" placeholder="10 Digit Mobile Number" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+        <p id="phoneMsg" class="center"></p>
+        <button class="btn" onclick="generateOTP()">Generate OTP</button>
+        <p class="center" id="otpShow"></p>
+        <input id="otpInput" placeholder="Enter OTP">
+        <button class="btn" onclick="verifyOTP()">Login & Start Quiz</button>
+        <button class="btn red" onclick="regenOTP()">Re-generate OTP</button>
+        <div class="footer-text">&copy; 2026 English Spur | App Created by: Sovan Kapri</div>
+    </div>
+
+    <div id="quizBox" class="hide">
+        <div class="header">
+            <h2>ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</h2>
+            <p>KANAIPUR, BANTUL, BAGNAN, HOWRAH - 711312</p>
+        </div>
+        <div class="topic">Topic: English Grammar Basic Test</div>
+        <div class="topbar"><div id="dateTime"></div><div id="progress"></div></div>
+        <h3 id="question"></h3>
+        <div id="options"></div>
+        <div id="expBox" class="explanation"></div>
+        <button class="btn" id="nextBtn" onclick="nextQ()">Next Question</button>
+        <button class="btn orange" id="skipBtn" onclick="skipQ()">Skip Question</button>
+        <button class="btn hide" id="resultBtn" onclick="showResult()">Get Quiz Result</button>
+        <div class="footer-text">&copy; 2026 English Spur | App Created by: Sovan Kapri</div>
+    </div>
+
+    <div id="resultBox" class="hide" style="padding:15px; border-radius:10px; background:white;">
+        <div class="header" style="margin-bottom:15px;">
+            <h2>ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</h2>
+            <p style="margin:0; font-size:12px;">
+                KANAIPUR, BANTUL, BAGNAN, HOWRAH - 711312 | 
+                <svg class="phone-icon" viewBox="0 0 24 24">
+                    <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a1 1 0 0 0 .25-1.02A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>
+                </svg>
+                <span>9875340842</span>
+            </p>
+        </div>
+        <h3 class="center">QUIZ RESULT</h3>
+        <p id="rname"></p>
+        <p id="rphone"></p>
+        <p id="rdate"></p>
+        <p id="rscore"></p>
+        
+        <div id="buttonGroup" class="no-print">
+            <button class="btn" onclick="window.print()">PRINT RESULT / SAVE PDF</button>
+            <button id="captureBtn" class="btn screenshot-btn" onclick="takeScreenshot()">TAKE SCREENSHOT (DOWNLOAD IMAGE)</button>
+            <button class="btn green" onclick="shareResult()">SHARE RESULT ON WHATSAPP</button>
+        </div>
+        <div class="footer-text">&copy; 2026 English Spur | App Created by: Sovan Kapri</div>
+    </div>
+</div>
+
+<script>
+const quiz = [
+    {q:"He is interested ___ music", a:["in","on","at"], c:0, exp:"'Interested in' is the correct fixed preposition."},
+    {q:"She lives ___ Kolkata", a:["in","at","on"], c:0, exp:"We use 'in' for a large city or country."},
+    {q:"The book is ___ the table", a:["on","in","at"], c:0, exp:"'On' indicates contact with a surface."},
+    {q:"I go ___ school every day", a:["to","in","on"], c:0, exp:"'To' denotes direction or destination."},
+    {q:"They are good ___ English", a:["in","at","on"], c:1, exp:"We say 'good at' to describe a particular skill."},
+    {q:"Look ___ the whiteboard", a:["at","on","to"], c:0, exp:"'Look at' is used to direct attention towards something."},
+    {q:"The cat jumped ___ the table", a:["onto","in","under"], c:0, exp:"'Onto' shows movement towards a surface."},
+    {q:"He has been ill ___ Monday", a:["since","for","from"], c:0, exp:"'Since' is used for a specific point of time in perfect tenses."},
+    {q:"They have lived here ___ five years", a:["for","since","during"], c:0, exp:"'For' indicates a total duration or period of time."},
+    {q:"Divide the apples ___ the two brothers", a:["between","among","with"], c:0, exp:"'Between' is used when distributing or separating between two people or entities."},
+    {q:"Distribute the sweets ___ the children", a:["among","between","to"], c:0, exp:"'Among' is used for distribution involving more than two people."},
+    {q:"He is afraid ___ dogs", a:["of","from","with"], c:0, exp:"'Afraid of' is a standard prepositional phrase indicating fear."},
+    {q:"She is married ___ a doctor", a:["to","with","by"], c:0, exp:"In standard English, someone is 'married to' another person."},
+    {q:"The train arrived ___ the station on time", a:["at","in","on"], c:0, exp:"'At' is used for a specific point or location like a station."},
+    {q:"He died ___ cholera", a:["of","from","by"], c:0, exp:"We use 'died of' when referring to a death caused directly by a disease."},
+    {q:"Listen ___ your teacher", a:["to","with","at"], c:0, exp:"'Listen to' is the correct collocated phrase."},
+    {q:"I prefer milk ___ tea", a:["to","than","over"], c:0, exp:"The verb 'prefer' takes the preposition 'to' for comparisons."},
+    {q:"He is senior ___ me in service", a:["to","than","from"], c:0, exp:"Adjectives ending in '-ior' (like senior, junior) take 'to' instead of 'than'."},
+    {q:"She is proficient ___ open-source tools", a:["in","at","with"], c:0, exp:"'Proficient in' is used to express expertise in a field or subject."},
+    {q:"We should abide ___ the rules", a:["by","with","to"], c:0, exp:"'Abide by' means to accept or act in accordance with a rule."},
+    {q:"The sun ___ in the east", a:["rises","rise","rising"], c:0, exp:"Universal truths or habits take the Simple Present tense with a singular verb form ('rises')."},
+    {q:"Water ___ at 100°C", a:["boils","boil","boiling"], c:0, exp:"Scientific facts are always stated in the Simple Present tense."},
+    {q:"He ___ to school yesterday", a:["went","goes","has gone"], c:0, exp:"'Yesterday' indicates a completed action in the past, requiring Simple Past Tense."},
+    {q:"I ___ my breakfast just now", a:["have taken","took","take"], c:0, exp:"'Just now' indicates an action completed very recently, which takes Present Perfect Tense."},
+    {q:"The patient ___ before the doctor came", a:["had died","died","has died"], c:0, exp:"In the past perfect sequence, the earlier action takes 'had + V3'."},
+    {q:"If it rains, we ___ the match", a:["will cancel","canceled","would cancel"], c:0, exp:"This is a first conditional clause (If + Present Simple, Will + Verb)."},
+    {q:"She ___ a beautiful song right now", a:["is singing","sings","sang"], c:0, exp:"'Right now' signals a continuous action happening at the moment of speaking."},
+    {q:"They ___ football when it started to rain", a:["were playing","played","are playing"], c:0, exp:"An ongoing past action interrupted by another action requires Past Continuous Tense."},
+    {q:"Honesty ___ the best policy", a:["is","was","be"], c:0, exp:"Proverbs and general truths always remain in the Present Simple tense."},
+    {q:"By next year, he ___ his graduation", a:["will have completed","completes","will complete"], c:0, exp:"'By next year' denotes an action that will be completed by a future point (Future Perfect Tense)."},
+    {q:"Each of the students ___ received a prize", a:["has","have","are"], c:0, exp:"'Each' is a singular pronoun and takes a singular verb."},
+    {q:"Time and tide ___ for none", a:["wait","waits","waiting"], c:0, exp:"'Time and tide' is treated as a plural phrase in modern functional English usage."},
+    {q:"The quality of these mangoes ___ not good", a:["is","are","were"], c:0, exp:"The true subject is 'quality' (singular), not 'mangoes', so the verb must be singular."},
+    {q:"Neither he nor his friends ___ arrived", a:["have","has","is"], c:0, exp:"When joined by 'neither... nor', the verb agrees with the closer subject ('friends')."},
+    {q:"Either you or he ___ responsible for this", a:["is","are","am"], c:0, exp:"The verb agrees with the closer pronoun subject ('he')."},
+    {q:"Bread and butter ___ my wholesome breakfast", a:["is","are","were"], c:0, exp:"When two nouns express a single, unified idea, they take a singular verb."},
+    {q:"A number of students ___ absent today", a:["are","is","was"], c:0, exp:"'A number of' is a plural quantifier and always takes a plural verb."},
+    {q:"The number of accidents ___ decreasing", a:["is","are","were"], c:0, exp:"'The number of' refers to a single specific quantity or count, taking a singular verb."},
+    {q:"Many a man ___ drowned in the sea", a:["has","have","are"], c:0, exp:"The phrase 'Many a' is structurally followed by a singular noun and a singular verb."},
+    {q:"Gulliver's Travels ___ written by Jonathan Swift", a:["was","were","are"], c:0, exp:"Even though the title looks plural, it is a single book and takes a singular verb."},
+    {q:"This is ___ useful tool for students", a:["a","an","the"], c:0, exp:"The letter 'u' here sounds like a consonant 'yoo', so we use 'a'."},
+    {q:"He is ___ honorable person", a:["an","a","the"], c:0, exp:"The 'h' is silent in 'honorable', giving it a vowel sound, so we use 'an'."},
+    {q:"Copper is ___ useful metal", a:["a","an","the"], c:0, exp:"The initial sound of 'useful' is a consonant sound, hence 'a' is appropriate."},
+    {q:"He is ___ MA in English Literature", a:["an","a","the"], c:0, exp:"The abbreviation 'MA' begins with a vowel sound ('em'), requiring 'an'."},
+    {q:"I saw ___ one-eyed man walking by", a:["a","an","the"], c:0, exp:"The word 'one' begins with a 'wa' consonant sound, so we use 'a'."},
+    {q:"___ Pacific Ocean is the largest ocean", a:["The","A","An"], c:0, exp:"Definite article 'The' must be used before the names of oceans and seas."},
+    {q:"He reads ___ Holy Gita daily", a:["the","a","an"], c:0, exp:"We use 'the' before the names of sacred or holy scriptures."},
+    {q:"___ sun shines brightly during noon", a:["The","A","An"], c:0, exp:"We use 'the' before unique celestial objects or bodies."},
+    {q:"He is ___ tallest boy in our classroom", a:["the","a","an"], c:0, exp:"Superlative adjectives (like tallest) are always preceded by 'the'."},
+    {q:"He will return in ___ hour", a:["an","a","the"], c:0, exp:"The 'h' in 'hour' is silent, making the initial sound a vowel sound."},
+    {q:"Identify the collective noun: The ___ of cattle is grazing", a:["herd","flock","pack"], c:0, exp:"'Herd' is the specific collective noun designated for a group of cattle."},
+    {q:"A group of wolves is called a ___", a:["pack","herd","swarm"], c:0, exp:"'Pack' is the standard collective noun used for wolves or hounds."},
+    {q:"Which of the following is an abstract noun?", a:["Kindness","Gold","Team"], c:0, exp:"'Kindness' represents a quality or state of being, making it an abstract noun."},
+    {q:"Gold is a valuable asset. Identify 'Gold':", a:["Material Noun","Proper Noun","Abstract Noun"], c:0, exp:"'Gold' is a raw element or substance, which classifies it as a material noun."},
+    {q:"What is the plural form of 'Criterion'?", a:["Criteria","Criterions","Criterias"], c:0, exp:"'Criterion' is a Latin loanword whose regular plural form is 'Criteria'."},
+    {q:"What is the plural form of 'Phenomenon'?", a:["Phenomena","Phenomenons","Phenomenas"], c:0, exp:"'Phenomenon' is a singular noun that converts to 'Phenomena' in the plural form."},
+    {q:"What is the feminine gender of 'Monk'?", a:["Nun","Actress","Widow"], c:0, exp:"A 'Nun' is the female counterpart of a religious 'Monk'."},
+    {q:"What is the plural form of 'Knife'?", a:["Knives","Knifes","Knife"], c:0, exp:"Nouns ending in '-fe' generally change to '-ves' in their plural forms."},
+    {q:"Choose the correct abstract noun for 'Wise':", a:["Wisdom","Wisely","Wiseness"], c:0, exp:"'Wisdom' is the correct noun form derived from the adjective 'wise'."},
+    {q:"What is the plural form of 'Deer'?", a:["Deer","Deers","Deeres"], c:0, exp:"The noun 'Deer' retains identical spelling in both its singular and plural forms."},
+    {q:"He is the man ___ stole my wallet", a:["who","whom","which"], c:0, exp:"'Who' is used as a relative pronoun acting as the subject of the clause."},
+    {q:"This is the book ___ I was looking for", a:["which","who","whom"], c:0, exp:"'Which' or 'that' is utilized as a relative pronoun for inanimate objects."},
+    {q:"To ___ did you pass the confidential file?", a:["whom","who","whose"], c:0, exp:"'Whom' is the objective case pronoun used following a preposition like 'To'."},
+    {q:"The two sisters genuinely love ___", a:["each other","one another","themselves"], c:0, exp:"'Each other' is used for reciprocal relationships involving exactly two entities."},
+    {q:"The players helped ___ during the match", a:["one another","each other","himself"], c:0, exp:"'One another' is used for reciprocal interactions among more than two entities."},
+    {q:"Let you and ___ solve this critical matter", a:["me","I","myself"], c:0, exp:"The objective case pronoun ('me') must follow the transitive verb 'let'."},
+    {q:"He cut ___ while chopping wood", a:["himself","myself","themselves"], c:0, exp:"A reflexive pronoun ('himself') matches a singular masculine subject."},
+    {q:"___ of the paths leads to the main highway", a:["Either","Both","All"], c:0, exp:"'Either' is followed by a singular verb form ('leads')."},
+    {q:"This pen is mine, and that one is ___", a:["yours","your","your's"], c:0, exp:"'Yours' is the proper absolute possessive pronoun; no apostrophe is required."},
+    {q:"Who is knocking at the gate? Identify 'Who':", a:["Interrogative Pronoun","Relative Pronoun","Personal Pronoun"], c:0, exp:"'Who' functions as an interrogative pronoun here to ask a direct question."},
+    {q:"Choose the correctly spelled word:", a:["Receive","Recieve","Receve"], c:0, exp:"The rule is 'i' before 'e' except after 'c', making 'Receive' correct."},
+    {q:"Choose the correct spelling:", a:["Committee","Commitee","Committe"], c:0, exp:"'Committee' requires double 'm', double 't', and double 'e'."},
+    {q:"Find the correctly spelled option:", a:["Lieutenant","Letenant","Leftenant"], c:0, exp:"The standard military term is spelled as 'Lieutenant'."},
+    {q:"Choose the correct spelling:", a:["Vacuum","Vaccum","Vacum"], c:0, exp:"'Vacuum' is spelled with one 'c' and a double 'u'."},
+    {q:"Select the correct spelling:", a:["Occurrence","Occurence","Ocurence"], c:0, exp:"'Occurrence' features a double 'c', a double 'r', and ends with '-ence'."},
+    {q:"What is the synonym of 'Brief'?", a:["Short","Long","Detailed"], c:0, exp:"'Brief' means concise or short in duration or extension."},
+    {q:"What is the synonym of 'Abundant'?", a:["Plentiful","Scarce","Rare"], c:0, exp:"'Abundant' means existing or available in large, plentiful quantities."},
+    {q:"What is the antonym of 'Beautiful'?", a:["Ugly","Pretty","Attractive"], c:0, exp:"'Ugly' represents the precise direct polar opposite of 'beautiful'."},
+    {q:"What is the antonym of 'Cruel'?", a:["Kind","Harsh","Brutal"], c:0, exp:"'Kind' stands as the semantic opposite of the adjective 'cruel'."},
+    {q:"What is the synonym of 'Huge'?", a:["Gigantic","Tiny","Small"], c:0, exp:"'Gigantic' shares the same meaning of massive scale or size as 'huge'."},
+    {q:"Change the voice: He writes a letter.", a:["A letter is written by him","A letter was written by him","A letter has been written by him"], c:0, exp:"Present Simple shifts to 'is/am/are + V3' in its passive counterpart."},
+    {q:"Passive voice of: She sang a sweet song.", a:["A sweet song was sung by her","A sweet song is sung by her","A sweet song had been sung by her"], c:0, exp:"Past Simple shifts to 'was/were + V3' within a passive framework."},
+    {q:"Passive voice of: Shut the door.", a:["Let the door be shut","The door should shut","Let the door shut"], c:0, exp:"Imperative commands translate into passive structures via 'Let + Subject + be + V3'."},
+    {q:"Passive voice of: I know the rules.", a:["The rules are known to me","The rules are known by me","The rules were known to me"], c:0, exp:"The verb 'know' takes the preposition 'to' instead of 'by' in the passive voice."},
+    {q:"Active voice of: A house is being built by them.", a:["They are building a house","They build a house","They were building a house"], c:0, exp:"'is/are being + V3' indicates that the active sentence is in the Present Continuous Tense."},
+    {q:"He said, 'I am unwell today.'", a:["He said that he was unwell that day","He said that I am unwell today","He said that he is unwell today"], c:0, exp:"Present simple turns to past simple, and 'today' updates to 'that day' in reported speech."},
+    {q:"The teacher said, 'The Earth revolves around the Sun.'", a:["The teacher said that the Earth revolves around the Sun","The teacher said that the Earth revolved around the Sun","The teacher said the Earth is revolving around the sun"], c:0, exp:"Tense remains unchanged in direct narration if the statement reflects a universal scientific truth."},
+    {q:"He said to me, 'What is your name?'", a:["He asked me what my name was","He asked me what was my name","He told me what is my name"], c:0, exp:"Interrogative structures transform into declarative word orders in indirect narration."},
+    {q:"She said, 'May God bless you!'", a:["She prayed that God might bless my efforts","She wished that God may bless my efforts","She said that God will bless my efforts"], c:0, exp:"Optative sentences convert using 'prayed/wished', and 'may' updates to 'might'."},
+    {q:"He said to me, 'Please help me.'", a:["He requested me to help him","He told me to please help him","He ordered me to help him"], c:0, exp:"Imperative sentences displaying courtesy transform using 'requested + to-infinitive'."}
+];
+
+let i=0, score=0, otp="", user={name:"", phone:""};
+
+function generateOTP(){
+    let phone = document.getElementById("phone").value;
+    if(!/^[0-9]{10}$/.test(phone)){
+        document.getElementById("phoneMsg").innerText = "❌ Enter valid 10 digit mobile number";
+        document.getElementById("phoneMsg").style.color = "red";
+        return;
+    }
+    otp = Math.floor(1000 + Math.random()*9000);
+    document.getElementById("otpShow").innerHTML = "Your OTP: <b>" + otp + "</b>";
+    alert("OTP Generated: " + otp);
+}
+
+function renameOTP(){ generateOTP(); } 
+function regenOTP(){ generateOTP(); }
+
+function verifyOTP(){
+    user.name = document.getElementById("name").value.trim();
+    user.phone = document.getElementById("phone").value.trim();
+    let inputOTP = document.getElementById("otpInput").value.trim();
+
+    if(user.name === "" || inputOTP !== otp.toString()){
+        alert("Invalid Details or Wrong OTP!");
+        return;
+    }
+    document.getElementById("loginBox").classList.add("hide");
+    document.getElementById("quizBox").classList.remove("hide");
+    startQuiz();
+}
+
+function startQuiz(){ i=0; score=0; setInterval(updateTime,1000); show(); }
+
+function updateTime(){
+    let d=new Date();
+    document.getElementById("dateTime").innerText = d.toLocaleDateString('en-GB') + " | " + d.toLocaleTimeString();
+}
+
+function show(){
+    let q = quiz[i];
+    document.getElementById("question").innerText = q.q;
+    document.getElementById("expBox").style.display = "none";
+    let box = document.getElementById("options");
+    box.innerHTML = "";
+    q.a.forEach((o, idx)=>{
+        let div = document.createElement("div");
+        div.className = "option";
+        div.innerText = o;
+        div.onclick = () => {
+            let all = document.querySelectorAll(".option");
+            all.forEach(op => op.onclick = null);
+            if(idx === q.c) { div.classList.add("correct"); score++; }
+            else { div.classList.add("wrong"); all[q.c].classList.add("correct"); }
+            document.getElementById("expBox").innerText = "Explanation: " + q.exp;
+            document.getElementById("expBox").style.display = "block";
+        };
+        box.appendChild(div);
+    });
+    document.getElementById("progress").innerText = (i+1)+" / "+quiz.length;
+}
+
+function nextQ(){
+    i++;
+    if(i < quiz.length) show();
+    else { 
+        document.getElementById("nextBtn").classList.add("hide"); 
+        document.getElementById("skipBtn").classList.add("hide"); 
+        document.getElementById("resultBtn").classList.remove("hide"); 
+    }
+}
+
+function skipQ(){
+    i++;
+    if(i < quiz.length) show();
+    else { 
+        showResult(); 
+    }
+}
+
+function showResult(){
+    document.getElementById("quizBox").classList.add("hide");
+    document.getElementById("resultBox").classList.remove("hide");
+    document.getElementById("rname").innerText = "Name: " + user.name;
+    document.getElementById("rphone").innerText = "Phone: " + user.phone;
+    document.getElementById("rdate").innerText = "Date: " + new Date().toLocaleDateString('en-GB');
+    document.getElementById("rscore").innerText = "Score: " + score + " / " + quiz.length;
+}
+
+function shareResult(){
+    let d = new Date().toLocaleDateString('en-GB');
+    let msg = `Hi, I am ${user.name}. I scored ${score}/${quiz.length} in the English Spur Quiz on ${d}!`;
+    window.location.href = "https://wa.me/?text=" + encodeURIComponent(msg);
+}
+
+function takeScreenshot(){
+    const resultBox = document.getElementById('resultBox');
+    const buttonGroup = document.getElementById('buttonGroup');
+    buttonGroup.style.display = 'none';
+    
+    html2canvas(resultBox, {
+        useCORS: true,
+        allowTaint: true,
+        scale: 2
+    }).then(canvas => {
+        buttonGroup.style.display = 'block';
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = `${user.name}_EnglishSpurResult.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        alert("Screenshot ডাউনলোড করা হয়েছে!");
+    }).catch(err => {
+        buttonGroup.style.display = 'block';
+        alert("লোকাল ফাইলের সিকিউরিটির কারণে ব্রাউজারে স্ক্রিনশট নেওয়া যাচ্ছে না। এটি লাইভ সার্ভারে ঠিক কাজ করবে।");
+    });
+}
+</script>
+</body>
+</html>

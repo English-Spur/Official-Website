@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
+    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গলি ফন্ট ইমপোর্ট করার লিংক -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন */
+        :root {
+            --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
+            --secondary-color: #1F316F;     /* সাপোর্টিং নেভি ব্লু */
+            --accent-color: #10B981;        /* সাকসেস মিন্ট গ্রিন */
+            --text-dark: #0B192C;
+            --text-light: #F8FAFC;
+            --bg-light: #F4F6F9;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            text-align: left; /* গ্লোবালি সম্পূর্ণ বডির টেক্সট এলাইনমেন্ট লেফট */
+        }
+
+        /* হেডার ব্র্যান্ডিং নেভিগেশন বার */
+        header {
+            background-color: var(--primary-color);
+            padding: 18px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(11, 25, 44, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2.5px solid var(--accent-color);
+            object-fit: cover;
+            background: #FFFFFF;
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .academy-title-block {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .main-title {
+            color: var(--text-light);
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .main-title span {
+            color: var(--accent-color);
+        }
+
+        .sub-title {
+            color: #94A3B8;
+            font-size: 15PX;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+            text-align: left;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* পেজ টাইটেল ব্যানার সেকশন - সেন্টার এলাইনড */
+        .page-banner {
+            background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .page-banner h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .page-banner p {
+            font-size: 20px;
+            opacity: 0.85;
+            max-width: 800px;
+            margin: 0 auto;
+COLOR:var(--text-light);
+            text-align: center;
+        }
+
+        /* মেন লেআউট কন্টেইনার */
+        .about-container {
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none;
+            }
+            .main-title {
+                font-size: 18px;
+            }
+            .sub-title {
+                font-size: 9px;
+            }
+            .brand-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        /* কন্টেন্ট কার্ড স্টাইল গাইড */
+        .content-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(11, 25, 44, 0.08);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(11, 25, 44, 0.03);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .section-heading {
+            font-size: 22px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(11, 25, 44, 0.08);
+            text-align: left;
+        }
+
+        .content-card p {
+            font-size: 15.5px;
+            color: #334155;
+            line-height: 1.7;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        /* ট্রেইনার প্রোফাইল সেকশন */
+        .profile-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(11, 25, 44, 0.08);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(11, 25, 44, 0.03);
+            height: fit-content;
+            position: sticky;
+            top: 110px;
+        }
+
+        /* ছবি, নাম ও পদবি একদম মাঝখানে রাখার ডেডিকেটেড ক্লাস */
+        .profile-header-center {
+            text-align: center;
+            margin-bottom: 22px;
+            width: 100%;
+        }
+
+        .founder-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 20%;
+            border: 3px solid var(--accent-color);
+            object-fit: cover;
+            background-color: #E2E8F0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .founder-name {
+            font-size: 20px;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .founder-desg {
+            font-size: 13px;
+            color: var(--accent-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
+        /* স্যারের ডায়নামিক বায়োগ্রাফি টেক্সট লেফট এলাইন্ড রাখার ক্লাস */
+        .founder-bio {
+            font-size: 16px; 
+            color: #475569; 
+            text-align: left;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 18px;
+        }
+
+        .founder-bio p {
+            margin-top: 0;
+            margin-bottom: 14px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .founder-bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* মিশন এবং মেথড লিস্ট আইটেম */
+        .feature-list {
+            list-style: none;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .feature-list li {
+            font-size: 15px;
+            color: #334155;
+            padding: 10px 0 10px 25px;
+            position: relative;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .feature-list li::before {
+            content: "🎯";
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .feature-list.why li::before {
+            content: "⚡";
+        }
+
+        /* ফুটার সেকশন (Centered Layout) */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+            font-weight: 500;
+            border-top: 3px solid var(--accent-color);
+        }
+
+        .footer-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .creator-highlight {
+            color: var(--accent-color);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            padding: 0 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার নেভিগেশন বার -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="brand-wrapper">
+                <img src="logo.png" alt="ENGLISH SPUR LOGO" class="brand-logo" onerror="this.style.display='none';">
+                <div class="academy-title-block">
+                    <div class="main-title">ENGLISH <span>SPUR</span></div>
+                    <div class="sub-title">ONLINE ENGLISH TRAINING ACADEMY | SINCE 2020 </div>
+
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- পেজ ব্যানার টপ এরিয়া - মাঝখানে (Middle) অ্যালাইন্ড -->
+    <section class="page-banner">
+        <h1>ABOUT OUR ACADEMY & FOUNDER</h1>
+        <p>Empowering Your Voice, Shaping Your Future....</P> <p>'ইংলিশ স্পার অনলাইন ইংলিশ ট্রেনিং একাডেমিতে'<strong> আপনাকে স্বাগত জানাই ...</strong></p>
+    </section>
+
+    <!-- মূল ডায়নামিক দুই-কলাম লেআউট -->
+    <div class="about-container">
+        
+        <!-- বাম কলাম: আমাদের গল্প এবং মিশন মডিউল -->
+        <main>
+            <!-- কার্ড ১: আমাদের গল্প -->
+            <div class="content-card">
+                <h2 class="section-heading">Our Story (আমাদের গল্প)</h2>
+                <p>২০২০ সালে একটি ছোট্ট স্বপ্ন নিয়ে <strong>English Spur</strong>-এর যাত্রা শুরু হয়েছিল। আমাদের মূল লক্ষ্য ছিল ইংরেজি ব্যাকরণ (English Grammar) এবং স্পোকেন ইংলিশের (Spoken English) জটিল নিয়মগুলোকে এক্কেবারে সহজ ও <strong>জলের</strong> মতো সাবলীল পদ্ধতিতে শিক্ষার্থীদের সামনে তুলে করা।</p>
+<p><strong>Kanaipur (Bagnan)</strong> থেকে শুরু হওয়া এই মিশন আজ একটি সম্পূর্ণ অনলাইন একাডেমিতে রূপান্তরিত হয়েছে, যা হাজারো শিক্ষার্থীর ইংরেজি শেখার ভীতি দূর করে তাদের এক একজন আত্মবিশ্বাসী বক্তা হিসেবে গড়ে তুলছে।</p>
+<p>In 2020, English Spur commenced its journey driven by a modest yet visionary dream. Our primary mission was to deconstruct the complex and rigid rules of English Grammar and Spoken English, reshaping them into an exceptionally simple, fluid, and effortlessly natural learning experience for students.</p>             
+<p>What initially began as a dedicated grassroots mission in Kanaipur (Bagnan) has today evolved into a full-scale online academy. It successfully eradicates the deep-rooted fear of learning English for thousands of students, empowering them to transform into highly confident, articulate, and fluent speakers.</p>
+            </div>
+
+            <!-- কার্ড ২: লক্ষ্য ও উদ্দেশ্য -->
+            <div class="content-card">
+                <h2 class="section-heading">Our Vision & Mission (আমাদের লক্ষ্য ও উদ্দেশ্য)</h2>
+                <p>আমাদের একমাত্র মিশন হলো 2026 সালের মধ্যেই ইংলিশ স্পার-কে প্রতিটি ঘরে একটি বিশ্বস্ত এবং প্রথম সারির ব্র্যান্ড হিসাবে প্রতিষ্ঠিত করা, যেখানে নামমাত্র খরচে বিশ্বমানের ইংরেজি শিক্ষা পাওয়া যাবে।</p>
+                <ul class="feature-list">
+                    <li><strong>কোনো মুখস্থ বিদ্যা নয়:</strong> আমরা শিক্ষার্থীদের মুখস্থ করানোর বদলে বাস্তবভিত্তিক ইংরেজি কাঠামো (Structures) শেখাই।</li>
+                    <li><strong>অনলাইন লিসেনিং মেথড:</strong> বিশেষ অডিও-ভিজ্যুয়াল মডিউলের মাধ্যমে শিক্ষার্থীদের চিন্তা প্রক্রিয়াকে সরাসরি ইংরেজিতে রূপান্তর করতে সাহায্য করা হয়।</li>
+<p>Our sole mission is to establish English Spur as a trusted and leading brand in every household by 2026, offering world-class English education at a nominal cost.</p>
+                    <li><strong>No Rote Memorization:</strong> Instead of making students memorize lessons, we teach them practical, real-world English structures.</li>
+                    <li><strong>Online Listening Method:</strong> Through specialized audio-visual modules, students are guided to transform their thinking process directly into English.</li>
+
+                </ul>
+            </div>
+
+            <!-- াকાર્ড ৩: কেন আমাদের বেছে নেবেন -->
+            <div class="content-card">
+                <h2 class="section-heading">Why Choose English Spur? (কেন আমাদের বেছে নেবেন?)</h2>
+                <p>ইংরেজি শেখার জন্য ইন্টারনেটে হাজারো মাধ্যম থাকতে পারে, <strong>কিন্তু ইংলিশ স্পার প্রতিটি শিক্ষার্থীকে দেয় এক অনন্য ও প্রফেশনাল গাইডেন্স:</strong></p>
+                <ul class="feature-list why">
+                    <li><strong>সহজ কাঠামো (Simple Structures):</strong> জটিল গ্রামার ছাড়া প্র্যাক্টিক্যাল ফর্মুলায় স্পোকেন ইংরেজি আয়ত্ত করা।</li>
+                    <li><strong>ইন্টারঅ্যাক্টিভ মডিউল:</strong> আধুনিক ড্যাশবোর্ড, লাইভ কুইজ এবং নিয়মিত মূল্যায়ন ব্যবস্থা।</li>
+                    <li><strong>বিশ্বস্ত মেন্টরশিপ:</strong> একজন কঠোর শিক্ষকের মতো নয়, বরং একজন বিশ্বস্ত বন্ধুর মতো সার্বক্ষণিক আন্তরিক গাইডেন্স।</li>
+<p>There may be thousands of mediums on the internet for learning English, <strong>but English Spur provides every student with unique and professional guidance:</strong></p>
+<li><strong>Simple Structures:</strong> Mastering spoken English through practical formulas without the burden of complex grammar.</li>
+                    <li><strong>Interactive Modules:</strong> A modern dashboard, live quizzes, and a regular evaluation system.</li>
+                    <li><strong>Trusted Mentorship:</strong> Round-the-clock heartfelt guidance, not like a strict teacher, but like a trusted friend.</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- ডান কলাম: প্রতিষ্ঠাতা ও ট্রেইনার প্রোফাইল কার্ড (শর্ত অনুযায়ী ছবি, নাম ও টাইটেল একদম সেন্টারে লক করা) -->
+        <aside>
+            <div class="profile-card">
+                
+                <!-- এই ডেডিকেটেড ব্লকটির মাধ্যমে ছবি, দ্বৈত নাম ও পদবি একদম মাঝখানে বা সেন্টারে অ্যালাইন করা হলো -->
+                <div class="profile-header-center">
+                    <img src="sovan_sir.jpg" alt="শোভন কাপড়ী - Founder & Lead Trainer" class="founder-img" onerror="this.src='https://via.placeholder.com/140';">
+                    <h3 class="founder-name">শোভন কাপড়ী / Sovan Kapri</h3>
+                    <div class="founder-desg">Founder & Lead Trainer</div>
+                </div>
+                
+                <!-- স্যারের সম্পূর্ণ বায়োগ্রাফি কন্টেন্ট ব্লক - যা নিখুঁত ও প্রফেশনাল বাম মার্জিন (Left Aligned) বজায় রাখবে -->
+                <div class="founder-bio">
+                    <p>শোভন কাপড়ী সুদীর্ঘ ১৭ বছর (২০০৩ থেকে ২০২০ সাল পর্যন্ত) ভারতের জুয়েলারি রিটেল সেক্টরে একজন সফল কর্পোরেট প্রফেশনাল হিসেবে অত্যন্ত সুনামের সাথে কর্মরত ছিলেন। তাঁর এই বর্ণিল ও গতিশীল কর্মজীবনে তিনি দেশের বিভিন্ন প্রান্তে বহু গুরুত্বপূর্ণ ট্রেনিং প্রোগ্রামে অংশগ্রহণ করেন এবং অসামান্য কর্ম-কুশলতা ও নেতৃত্বের স্বীকৃতিস্বরূপ একাধিক মর্যাদাপূর্ণ পুরস্কারে ভূষিত হন।</p>
+                    <p>মাঠপর্যায়ের এই দীর্ঘ অভিজ্ঞতা থেকে তিনি গভীরভাবে উপলব্ধি করেন যে—'ইংরেজি ভাষায় সঠিক দক্ষতা ক্যারিয়ারে যেমন অবারিত সুযোগের দুয়ার খুলে দেয়, তেমনই সমাজে এনে দেয় এক অনন্য সম্মান ও আত্মবিশ্বাস।' নিজের সহজাত শিক্ষকতা ও প্রশিক্ষণের আগ্রহ থেকে তিনি তাঁর সর্বভারতীয় জুয়েলারি রিটেলিং ক্যারিয়ারে সহকর্মীদের অত্যন্ত দক্ষতার সাথে ডায়মন্ড ও প্ল্যাটিনাম জুয়েলারির ওপর প্রফেশনাল প্রশিক্ষণ প্রদান করতেন।</p>
+<p>২০২০ সালে গ্রাম-বাংলার প্রান্তিক 'বাংলা মিডিয়াম' শিক্ষার্থীদের ইংরেজি ভীতির অবসান ঘটিয়ে স্পোকেন ইংলিশে দক্ষ ও পারদর্শী করে তোলার এক দূরদর্শী মিশন নিয়ে তিনি 'সেনকো গোল্ড অ্যান্ড ডায়মন্ডস'-এর সুপ্রতিষ্ঠিত কর্পোরেট জীবন থেকে স্বেচ্ছায় অবসর গ্রহণ করেন। এরপর তিনি নিজেকে সম্পূর্ণভাবে ইংরেজি শিক্ষাদানে নিয়োজিত করেন।</p>
+<p>তাঁর সুদীর্ঘ বাস্তব কর্পোরেট অভিজ্ঞতা এবং নিজস্ব উদ্ভাবনী স্পেশাল "ফাংশনাল ইংলিশ স্ট্রাকচার" (Functional English Structures) পদ্ধতির কল্যাণে আজ প্রত্যন্ত অঞ্চলের হাজারো শিক্ষার্থী অত্যন্ত সহজে, কোনো রকম মুখস্থ বিদ্যা ছাড়াই অত্যন্ত সাবলীল ও আত্মবিশ্বাসের সাথে অনর্গল ইংরেজিতে কথা বলতে পারছে।</p>
+<p>Sovan Kapri is a seasoned corporate professional with a distinguished 17-year career (2003–2020) in the pan-India jewelry retail sector. Throughout his illustrious corporate journey, he traveled extensively, spearheaded numerous high-impact training initiatives, and received multiple prestigious accolades for his exceptional leadership and executive excellence.</p>
+
+<p>This rich, hands-on experience led him to a profound realization: 'Proficiency in English is the ultimate catalyst that unlocks elite global career opportunities and commands immense social respect.' Driven by a lifelong passion for mentoring, he served as a master corporate trainer, equipping his colleagues with specialized, high-end training in Diamond and Platinum product verticals.</p>
+
+<p>In 2020, fueled by a visionary mission to transform 'Bengali Medium' grassroots students from rural areas into confident, fluent English speakers, he chose to step down from his established career at Senco Gold & Diamonds to dedicate himself entirely to education.</p>
+
+<p>By merging his extensive corporate background with his unique, innovative "Functional English Structures" methodology, he has shattered traditional learning barriers—enabling thousands of students from remote areas to speak English fluently and spontaneously without any rote memorization.</p>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- ফুটার কপিরাইট এবং ব্র্যান্ডিং এরিয়া (Centered Layout) -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY. All Rights Reserved. | Created by: <span class="creator-highlight">Sovan Kapri</span></p>
+        </div>
+    </footer>
+
+</body>
+</html>
