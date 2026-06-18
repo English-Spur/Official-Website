@@ -3,145 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO and Open Graph (Social Media Preview) Tags -->
     <title>ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
+    <meta name="description" content="Join English Spur! Build confidence with practical, Bengali-friendly live classes. Speak fluent English with confidence.">
+    <meta property="og:title" content="ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY">
+    <meta property="og:description" content="Speak fluent English with confidence. Join our practical, Bengali-friendly live English classes today!">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon (Browser Tab Icon) -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- FontAwesome Icon Library Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Premium Inter Font Import Link -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* Official color tokens and getup based on about.html */
         :root {
-            --primary-color: #0B192C;
-            --secondary-color: #1F316F;
-            --accent-color: #10B981;
+            --primary-color: #0B192C;       /* Royal Blue Base Tone */
+            --secondary-color: #1F316F;     /* Supporting Navy Blue */
+            --accent-color: #10B981;        /* Success Mint Green (Neon Highlighter) */
             --text-light: #F8FAFC;
+            --bg-light: #F4F6F9;
             --card-bg: #FFFFFF;
-            --footer-bg: #051122;
+            --footer-bg: #051122;          /* Ultra dark footer background */
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Inter', sans-serif; 
+        }
         
         body { 
+            /* 150-degree premium linear gradient background matching about.html banner */
             background: linear-gradient(150deg, var(--primary-color) 0%, var(--secondary-color) 100%); 
             color: var(--primary-color); 
             min-height: 100vh; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px 15px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 30px 15px; 
+            overflow-x: hidden;
         }
-
-        /* প্রিমিয়াম এনিমেটেড ওয়েলকাম লেয়ার - ৩ সেকেন্ড টাইম */
-        .welcome-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(150deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999; animation: fadeOut 0.8s ease-in-out 3s forwards;
-        }
-
-        .welcome-logo-anim { 
-            width: 140px; height: 140px; margin-bottom: 20px; background: white; 
-            border-radius: 20px; display: flex; align-items: center; justify-content: center;
-            padding: 10px; animation: zoomIn 1s ease-out; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .welcome-logo-anim img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        .welcome-text-anim { font-size: 36px; font-weight: 800; text-transform: uppercase; color: #FFFFFF; animation: slideUp 1s ease-out; }
-        .welcome-text-anim span { color: var(--accent-color); }
-
-        @keyframes zoomIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        @keyframes slideUp { 0% { transform: translateY(50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
-        
-        /* Premium Hub Card Setup */
+                
+        /* Premium Hub Card Setup with Animation */
         .card { 
-            background: var(--card-bg); border: 1px solid rgba(11, 25, 44, 0.08); 
-            border-radius: 24px; padding: 40px 30px; max-width: 550px; width: 100%; 
-            text-align: center; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); 
+            background: var(--card-bg); 
+            border: 1px solid rgba(11, 25, 44, 0.08); 
+            border-radius: 24px; 
+            padding: 40px 30px; 
+            max-width: 900px; 
+            width: 100%; 
+            text-align: center; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); 
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        
-        /* Rounded Corner Box লোগো এরিয়া */
+
+        /* Smooth Fade-Up Animation Keyframes */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animation Delay Classes for Staggered Effect */
+        .animate-fade-up { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+                
+        /* Circular Logo Container with Mint Green Border */
         .logo-area { 
-            width: 120px; height: 120px; margin: 0 auto 20px; 
-            background: #f8fafc; border-radius: 20px; border: 2px solid #e2e8f0;
-            display: flex; justify-content: center; align-items: center; padding: 10px;
+            width: 100px; 
+            height: 100px; 
+            margin: 0 auto 20px; 
+            border-radius: 50%; 
+            overflow: hidden;
+            border: 2.5px solid var(--accent-color); 
+            background: #FFFFFF; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        .logo-area img { max-width: 100%; max-height: 100%; object-fit: contain; }
         
+        .logo-area img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+                
         .badge {
-            display: inline-block; background: rgba(16, 185, 129, 0.1); color: var(--accent-color);
-            font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 20px; 
-            margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid rgba(16, 185, 129, 0.2);
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-color);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+                
+        /* Main Heading Styling */
+        h1 { 
+            font-size: clamp(30px,6vw,48px); 
+            color: var(--primary-color); 
+            margin-bottom: 6px; 
+            letter-spacing: 1px; 
+            font-weight: 800; 
         }
         
-        h1 { font-size: 34px; color: var(--primary-color); margin-bottom: 6px; letter-spacing: 1px; font-weight: 800; }
+        /* Special span class ensuring double color effect */
         h1 span { color: var(--accent-color); }
         
-        .subtitle { font-size: 13px; color: #64748B; margin-bottom: 30px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .subtitle { 
+            font-size: 13px; 
+            color: #64748B; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            text-transform: uppercase;
+        }
+                
+        /* Owner Section */
+        .owner-section {
+            margin-bottom: 30px;
+            background: rgba(11, 25, 44, 0.02);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(11, 25, 44, 0.05);
+        }
         
-        .owner-section { margin-bottom: 30px; background: rgba(11, 25, 44, 0.02); padding: 20px; border-radius: 16px; border: 1px solid rgba(11, 25, 44, 0.05); }
-        .owner-label { font-size: 11px; color: #64748B; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
-        .owner-image { width: 110px; height: 110px; border-radius: 20%; margin: 0 auto 12px; overflow: hidden; border: 2px solid var(--accent-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #E2E8F0; }
-        .owner-image img { width: 100%; height: 100%; object-fit: cover; }
-        .owner-name { font-size: 17px; color: var(--primary-color); font-weight: 800; letter-spacing: 0.5px; }
+        .owner-label {
+            font-size: 11px;
+            color: #64748B;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
         
-        .tagline { font-size: 14px; color: var(--accent-color); font-style: italic; margin-bottom: 35px; letter-spacing: 0.5px; font-weight: 700; }
+        .owner-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 20%;
+            margin: 0 auto 12px;
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: #E2E8F0;
+        }
         
-        .nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 0 auto; }
-        .grid-btn { 
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        .owner-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .owner-name {
+            font-size: 17px;
+            color: var(--primary-color);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+                
+        .tagline { 
+            font-size: 14px; 
+            color: var(--accent-color); 
+            font-style: italic; 
+            margin-bottom: 35px; 
+            letter-spacing: 0.5px; 
+            font-weight: 700; 
+        }
+                
+        /* 6 Modern Grid Cards Panel */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px;
+            width: 100%;
+            margin: 0 auto;
+        }
+                
+        /* Premium Navigation Buttons */
+        .grid-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--text-light); text-decoration: none; padding: 22px 15px; border-radius: 14px;
-            font-weight: 700; font-size: 12px; letter-spacing: 0.5px; border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 12px rgba(11, 25, 44, 0.15); text-transform: uppercase;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 22px 15px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(11, 25, 44, 0.15);
+            text-transform: uppercase;
         }
-        .grid-btn i { font-size: 22px; color: var(--accent-color); margin-bottom: 10px; transition: transform 0.3s ease; }
-        .grid-btn:hover { background: var(--accent-color); color: var(--primary-color); transform: translateY(-4px); box-shadow: 0 8px 22px rgba(16, 185, 129, 0.3); border-color: var(--accent-color); }
-        .grid-btn:hover i { color: var(--primary-color); transform: scale(1.15); }
-        
+                
+        .grid-btn i {
+            font-size: 22px;
+            color: var(--accent-color); 
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+                
+        .grid-btn:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px rgba(16, 185, 129, 0.3);
+            border-color: var(--accent-color);
+        }
+                
+        .grid-btn:hover i {
+            color: var(--primary-color);
+            transform: scale(1.15);
+        }
+                
+        /* Responsive Support */
+        @media (max-width: 450px) {
+            .nav-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 28px; }
+        }
+                
+        /* Ultra-centered capsule footer */
         .footer { 
-            background-color: var(--footer-bg) !important; padding: 18px 20px !important; margin-top: 60px; border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.02); border-top: 3.5px solid var(--accent-color) !important;
-            width: 100% !important; display: flex !important; flex-direction: column !important;
-            justify-content: center !important; align-items: center !important; gap: 6px !important; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--footer-bg) !important; 
+            padding: 18px 20px !important;                 
+            margin-top: 60px; 
+            border-radius: 18px;                          
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 3.5px solid var(--accent-color) !important; 
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 6px !important;                          
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        .footer-text-main { font-family: 'Inter', sans-serif !important; font-size: 10.5px !important; font-weight: 800 !important; color: #FFFFFF !important; text-transform: uppercase; text-align: center !important; }
-        .footer-author-line { font-family: 'Inter', sans-serif !important; font-size: 11px !important; color: #FFFFFF !important; font-weight: 800 !important; text-transform: uppercase; }
-        .creator-highlight { color: #10B981 !important; padding-left: 4px; }
+
+        .footer-text-main {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 10.5px !important;                 
+            font-weight: 800 !important;
+            letter-spacing: 0.3px !important;
+            color: #FFFFFF !important;                     
+            text-transform: uppercase;
+            text-align: center !important;                 
+            line-height: 1.5 !important;
+        }
+
+        .footer-author-line {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 11px !important;
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px !important;
+            text-align: center !important;
+            white-space: nowrap;                          
+        }
+
+        .creator-highlight {
+            color: #10B981 !important;                     
+            font-weight: 800 !important;
+            padding-left: 4px;
+        }
+    
+        .hero-message { margin-bottom: 30px; }
+        .hero-message h2 { font-size: clamp(18px,4vw,30px); font-weight: 800; color: var(--accent-color); margin-bottom: 12px; }
+        .hero-message p {
+            color: BLACK;
+            line-height: 1.8;
+            font-size: 12px;
+            margin-bottom: 12px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .cta-btn { text-decoration: none; padding: 12px 20px; border-radius: 12px; font-weight: 700; transition: .3s; }
+        .primary-btn { background: var(--accent-color); color: white; }
+        .secondary-btn { background: #EEF2FF; color: var(--primary-color); }
+        .cta-btn:hover { transform: translateY(-3px); }
+        
+        .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 25px 0 30px; }
+        .stat-item { background: #EEF2FF; padding: 15px 10px; border-radius: 12px; }
+        .number { display: block; font-size: 22px; font-weight: 800; color: var(--accent-color); }
+        .stat-item small { color: #64748B; }
+        
+        /* Floating Contact Button with Hover Tooltip */
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, .35);
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-contact:hover {
+            transform: scale(1.1);
+        }
+
+        /* Tooltip Setup */
+        .floating-contact::before {
+            content: "Chat with us";
+            position: absolute;
+            right: 75px;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            pointer-events: none;
+        }
+
+        /* Tooltip Arrow */
+        .floating-contact::after {
+            content: "";
+            position: absolute;
+            right: 67px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--primary-color);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .floating-contact:hover::before,
+        .floating-contact:hover::after {
+            opacity: 1;
+            visibility: visible;
+            right: 80px;
+        }
+        .floating-contact:hover::after {
+            right: 68px; /* Adjusting the arrow position when hovered */
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="welcome-overlay">
-        <div class="welcome-logo-anim">
-            <img src="logo.png" alt="Logo">
-        </div>
-        <div class="welcome-text-anim">WELCOME TO <span>ENGLISH SPUR</span></div>
-    </div>
-
     <div class="card">
+        <!-- Logo area with lazy loading -->
         <div class="logo-area">
-            <img src="logo.png" alt="ENGLISH SPUR LOGO" onerror="this.style.display='none';">
+            <img src="logo.png" alt="ENGLISH SPUR LOGO" loading="lazy" onerror="this.style.display='none';">
         </div>
-        <div class="badge">SINCE 2020</div>
-        <h1>ENGLISH <span>SPUR</span></h1>
-        <div class="subtitle">ONLINE ENGLISH TRAINING ACADEMY</div>
         
-        <div class="owner-section">
+        <div class="badge animate-fade-up delay-1">SINCE 2020</div>
+        
+        <h1 class="animate-fade-up delay-1">ENGLISH <span>SPUR</span></h1>
+        <div class="subtitle animate-fade-up delay-1">ONLINE ENGLISH TRAINING ACADEMY</div>
+        
+        <div class="hero-message animate-fade-up delay-2">
+            <h2>SPEAK FLUENT ENGLISH WITH CONFIDENCE</h2>
+            <p><STRONG>JOIN ENGLISH SPUR!</STRONG> <BR>BUILD CONFIDENCE WITH <br>PRACTICAL, BENGALI-FRIENDLY LIVE CLASSES.</p>
+            <div class="hero-buttons">
+                <a href="Freedemo.html" class="cta-btn primary-btn"><i class="fa-solid fa-circle-play"></i> Free Demo</a>
+                <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="cta-btn secondary-btn"><i class="fa-brands fa-whatsapp"></i> Contact Us</a>
+            </div>
+        </div>
+
+        <div class="stats-bar animate-fade-up delay-3">
+            <div class="stat-item"><span class="number">500+</span><small>Students</small></div>
+            <div class="stat-item"><span class="number">6+</span><small>Years</small></div>
+            <div class="stat-item"><span class="number">2000+</span><small>Online live Classes</small></div>
+        </div>
+                
+        <!-- Founder profile with lazy loading -->
+        <div class="owner-section animate-fade-up delay-3">
             <div class="owner-label">Founder & Lead Trainer</div>
             <div class="owner-image">
-                <img src="sovan_sir.jpg" alt="শোভন কাপড়ী" onerror="this.src='https://via.placeholder.com/110';">
+                <img src="sovan_sir.jpg" alt="শোভন কাপড়ী" loading="lazy" onerror="this.src='https://via.placeholder.com/110';">
             </div>
             <div class="owner-name">SOVAN KAPRI</div>
         </div>
-        
-        <div class="tagline">"YOUR GATEWAY TO CONFIDENT ENGLISH"</div>
-        
-        <div class="nav-grid">
-            <a href="about.html" class="grid-btn"><i class="fa-solid fa-graduation-cap"></i> <span>About Us</span></a>
-            <a href="courses.html" class="grid-btn"><i class="fa-solid fa-book-open"></i> <span>Our Courses</span></a>
-            <a href="youtube.html" class="grid-btn"><i class="fa-brands fa-youtube"></i> <span>Social Media</span></a>
-            <a href="studentcorner.html" class="grid-btn"><i class="fa-solid fa-graduation-cap"></i> <span>Student Corner</span></a>
-            <a href="contact.html" class="grid-btn"><i class="fa-solid fa-headset"></i> <span>Contact Us</span></a>
-            <a href="free resource.html" class="grid-btn"><i class="fa-solid fa-book-bookmark"></i> <span>Free Resources</span></a>
+                
+        <div class="tagline animate-fade-up delay-4">"YOUR GATEWAY TO CONFIDENT ENGLISH"</div>
+                
+        <!-- Navigation Buttons -->
+        <div class="nav-grid animate-fade-up delay-4">
+            <a href="about.html" class="grid-btn">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>About Us</span>
+            </a>
+            <a href="courses.html" class="grid-btn">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Our Courses</span>
+            </a>
+            <a href="youtube.html" class="grid-btn">
+                <i class="fa-brands fa-youtube"></i>
+                <span>Our Social Media Handles</span>
+            </a>
+            <a href="studentcorner.html" class="grid-btn">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Student Corner</span>
+            </a>
+            <a href="contact.html" class="grid-btn">
+                <i class="fa-solid fa-headset"></i>
+                <span>Contact Us</span>
+            </a>
+            <a href="free resource.html" class="grid-btn">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <span>Try Our Free Resources</span>
+            </a>
         </div>
-        
-        <div class="footer">
+                
+        <div class="footer animate-fade-up delay-5">
             <div class="footer-text-main">
                 &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
             </div>
@@ -150,6 +457,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Floating WhatsApp Button with Predefined Text -->
+    <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="floating-contact"><i class="fa-brands fa-whatsapp"></i></a>
 
 </body>
 </html>

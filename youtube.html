@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Social Media Handles - ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
-    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গ利 ফন্ট ইমপোর্ট করার লিংক -->
+    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গলি ফন্ট ইমপোর্ট করার লিংক -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- ফন্টঅসাম আইকন লাইব্রেরি লিংক -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন - about.html এর গেটআপ অনুযায়ী */
+        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন */
         :root {
             --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
             --secondary-color: #1F316F;     /* সাপোর্টিং নেভি ব্লু */
@@ -19,7 +19,7 @@
             --text-light: #F8FAFC;
             --bg-light: #F4F6F9;
             --card-bg: #FFFFFF;
-            --footer-bg: #051122;          /* index.html অনুযায়ী নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
+            --footer-bg: #051122;          /* নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
         }
 
         * {
@@ -34,9 +34,10 @@
             color: var(--text-dark);
             line-height: 1.6;
             text-align: left;
+            overflow-x: hidden;
         }
 
-        /* হেডার ব্র্যান্ডিং নেভিগেশন বার - exact from about.html */
+        /* হেডার ব্র্যান্ডিং নেভিগেশন বার */
         header {
             background-color: var(--primary-color);
             padding: 18px 5%;
@@ -52,6 +53,7 @@
             align-items: center;
             max-width: 1250px;
             margin: 0 auto;
+            transition: all 0.3s ease;
         }
 
         .brand-wrapper {
@@ -63,8 +65,8 @@
         }
 
         .brand-logo {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             border: 2.5px solid var(--accent-color);
             object-fit: cover;
@@ -81,7 +83,7 @@
 
         .main-title {
             color: var(--text-light);
-            font-size: 30px;
+            font-size: clamp(20px, 4vw, 30px);
             font-weight: 800;
             letter-spacing: 0.03em;
             line-height: 1.1;
@@ -94,7 +96,7 @@
 
         .sub-title {
             color: #94A3B8;
-            font-size: 15px;
+            font-size: clamp(10px, 2vw, 15px);
             font-weight: 700;
             letter-spacing: 0.06em;
             margin-top: 4px;
@@ -119,16 +121,17 @@
             color: var(--accent-color);
         }
 
-        /* পেজ টাইটেল ব্যানার সেকশন - exact from about.html */
+        /* পেজ টাইটেল ব্যানার সেকশন */
         .page-banner {
             background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
             color: var(--accent-color);
             text-align: center;
             padding: 55px 20px;
+            width: 100%;
         }
 
         .page-banner h1 {
-            font-size: 32px;
+            font-size: clamp(22px, 5vw, 32px);
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 12px;
@@ -136,7 +139,7 @@
         }
 
         .page-banner p {
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             opacity: 0.85;
             max-width: 800px;
             margin: 0 auto;
@@ -146,7 +149,7 @@
 
         /* সোশ্যাল মিডিয়া কন্টেইনার */
         .social-container {
-            max-width: 950px; /* ডেসক্রিপশন বড় হওয়ার কারণে উইডথ একটু বাড়ানো হলো পড়ার সুবিধার জন্য */
+            max-width: 950px; 
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -172,7 +175,7 @@
 
         /* কন্টেন্ট শিরোনাম - মাঝখানে লকড */
         .platform-title {
-            font-size: 24px;
+            font-size: clamp(20px, 4vw, 24px);
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -183,12 +186,13 @@
             padding-bottom: 12px;
             margin-bottom: 10px;
             text-align: center;
+            flex-wrap: wrap;
         }
 
         /* ২ কলাম বিশিষ্ট অভ্যন্তরীণ বাইলিঙ্গুয়াল গ্রিড লেআউট */
         .bilingual-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr; /* বাংলা ডেসক্রিপশন বড় থাকায় বাম কলাম একটু চওড়া রাখা হলো */
+            grid-template-columns: 1.1fr 0.9fr; 
             gap: 30px;
             align-items: start;
         }
@@ -204,9 +208,9 @@
             text-align: left;
         }
 
-        /* স্পষ্ট প্রফেশনাল বড় বডি টেক্সট - Left Aligned */
+        /* স্পষ্ট প্রফেশনাল বড় বডি টেক্সট */
         p { 
-            font-size: 15.5px; 
+            font-size: clamp(14.5px, 2.5vw, 15.5px); 
             line-height: 1.7; 
             text-align: left; 
             color: #334155;
@@ -217,11 +221,11 @@
         .col-en p {
             font-family: 'Inter', sans-serif;
             color: #475569;
-            font-size: 15px;
+            font-size: clamp(14px, 2.5vw, 15px);
             line-height: 1.7;
         }
 
-        /* টিকচিহ্ন যুক্ত কন্টেন্ট লিস্ট স্টাইলিং - Left Aligned */
+        /* টিকচিহ্ন যুক্ত কন্টেন্ট লিস্ট স্টাইলিং */
         .youtube-features {
             list-style: none;
             margin: 15px 0;
@@ -229,7 +233,7 @@
         }
 
         .youtube-features li {
-            font-size: 15px;
+            font-size: clamp(14px, 2.5vw, 15px);
             color: #334155;
             padding: 5px 0 5px 25px;
             position: relative;
@@ -303,6 +307,27 @@
         
         /* মোবাইল রেসপন্সিভ ভিউ কনফিগারেশন */
         @media (max-width: 850px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .brand-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            .academy-title-block {
+                align-items: center;
+                text-align: center;
+            }
+            .main-title, .sub-title {
+                text-align: center;
+            }
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
             .bilingual-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -316,29 +341,19 @@
             .col-en {
                 padding-left: 0;
             }
-            nav ul {
-                display: none;
-            }
-            .main-title {
-                font-size: 18px;
-            }
-            .sub-title {
-                font-size: 9px;
-            }
-            .brand-logo {
-                width: 50px;
-                height: 50px;
+            .social-section {
+                padding: 25px 15px;
             }
         }
 
-        /* index.html এর সাথে ১০০% মিলানো আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার স্টাইল */
+        /* আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার স্টাইল */
        .footer { 
             background-color: var(--footer-bg) !important; 
             padding: 18px 20px !important;                 
             margin-top: 60px; 
             border-radius: 18px;                          
             border: 1px solid rgba(255, 255, 255, 0.02);
-            border-top: 3.5px solid var(--accent-color) !important; /* স্ক্রিনশট অনুয়ায়ী আল্ট্রা-লাক্সারি বর্ডার */
+            border-top: 3.5px solid var(--accent-color) !important; 
             width: 100% !important;
             
             display: flex !important;
@@ -380,11 +395,11 @@
 </head>
 <body>
 
-    <!-- হেডার নেভিগেশন বার - exact from about.html -->
+    <!-- হেডার নেভিগেশন বার -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="brand-wrapper">
-                <img src="logo.png" alt="ENGLISH SPUR LOGO" class="brand-logo" onerror="this.style.display='none';">
+                <img src="logo.png" alt="ENGLISH SPUR LOGO" class="brand-logo" loading="lazy" onerror="this.style.display='none';">
                 <div class="academy-title-block">
                     <div class="main-title">ENGLISH <span>SPUR</span></div>
                     <div class="sub-title">ONLINE ENGLISH TRAINING ACADEMY | SINCE 2020</div>
@@ -400,7 +415,7 @@
         </div>
     </header>
 
-    <!-- পেজ ব্যানার টপ এরিয়া - exact from about.html ডিগ্রি লেআউট -->
+    <!-- পেজ ব্যানার টপ এরিয়া -->
     <section class="page-banner">
         <h1>OUR SOCIAL MEDIA HANDLES</h1>
         <p>Empowering Your Voice, Shaping Your Future....</p>
@@ -410,7 +425,7 @@
     <!-- মূল রেসপন্সিভ কন্টেইনার এরিয়া -->
     <div class="social-container">
 
-        <!-- সোশ্যাল সেকশন ১: ইউটিউব চ্যানেল (নতুন কাস্টমাইজড ডেসক্রিপশনসহ) -->
+        <!-- সোশ্যাল সেকশন ১: ইউটিউব চ্যানেল -->
         <div class="social-section">
             <div class="platform-title"><i class="fa-brands fa-youtube brand-youtube"></i> YouTube Channel</div>
             <div class="bilingual-grid">
@@ -468,11 +483,11 @@
                 </div>
             </div>
             <a href="https://www.instagram.com/kaprisovan/" target="_blank" class="action-btn btn-instagram">
-                <i class="fa-brands fa-instagram"></i> Follow Our Instagram Profile
+                <i class="fa-brands fa-instagram"></i>Follow Us On Instagram
             </a>
         </div>
         
-        <!-- index.html এর গেটআপ অনুযায়ী আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার -->
+        <!-- আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার -->
         <div class="footer">
             <div class="footer-text-main">
                 &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.

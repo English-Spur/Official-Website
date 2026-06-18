@@ -6,20 +6,20 @@
     <title>Contact Us - ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY</title>
     <!-- ফন্টঅসাম আইকন লাইব্রেরি লিংক -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গলি ফন্ট ইমপোর্ট করার লিংক -->
+    <!-- গুগল ফন্ট থেকে প্রিমিয়াম ইন্টার এবং নোটো সান্স বেঙ্গলি ফন্ট ইমপোর্ট করার লিংক -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন - about.html এর গেটআপ অনুযায়ী */
+        /* ক্রিয়েটরবিদ্যা স্টাইল গাইড এবং অফিশিয়াল কালার টোকেন - about.html এর গেটআপ অনুযায়ী */
         :root {
-            --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
+            --primary-color: #0B192C;       /* রয়্যাল ব্লু বেস টোন */
             --secondary-color: #1F316F;     /* সাপোর্টিং নেভি ব্লু */
             --accent-color: #10B981;        /* সাকসেস মিন্ট গ্রিন */
             --text-dark: #0B192C;
             --text-light: #F8FAFC;
             --bg-light: #F4F6F9;
             --card-bg: #FFFFFF;
-            --footer-bg: #051122;          /* index.html অনুযায়ী নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
+            --footer-bg: #051122;          /* index.html অনুযায়ী নিখুঁত কালচে ডার্ক ব্লু ফুটার টোন */
         }
 
         * { 
@@ -40,11 +40,11 @@
             align-items: center; 
         }
 
-        /* হেডার ব্র্যান্ডিং নেভিগেশন বার - exact from about.html */
+        /* হেডার ব্র্যান্ডিং নেভিগেশন বার */
         header {
             background-color: var(--primary-color);
             padding: 18px 5%;
-            position: sticky; /* fixed থেকে sticky করা হলো যাতে মাঝখানে কোনো সাদা গ্যাপ না আসে */
+            position: sticky; 
             top: 0;
             width: 100%;
             z-index: 1000;
@@ -58,6 +58,7 @@
             max-width: 1250px;
             margin: 0 auto;
             width: 100%;
+            transition: all 0.3s ease;
         }
 
         .brand-wrapper {
@@ -69,8 +70,8 @@
         }
 
         .brand-logo {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             border: 2.5px solid var(--accent-color);
             object-fit: cover;
@@ -87,7 +88,7 @@
 
         .main-title {
             color: var(--text-light);
-            font-size: 30px;
+            font-size: clamp(20px, 4vw, 30px);
             font-weight: 800;
             letter-spacing: 0.03em;
             line-height: 1.1;
@@ -100,7 +101,7 @@
 
         .sub-title {
             color: #94A3B8;
-            font-size: 15px;
+            font-size: clamp(10px, 2vw, 15px);
             font-weight: 700;
             letter-spacing: 0.06em;
             margin-top: 4px;
@@ -125,18 +126,18 @@
             color: var(--accent-color);
         }
 
-        /* পেজ টাইটেল ব্যানার সেকশন - image_464346.png অনুযায়ী একদম জিরো মার্জিন ও টাইট লেআউট */
+        /* পেজ টাইটেল ব্যানার সেকশন */
         .page-banner {
             background: linear-gradient(150deg, var(--primary-color), var(--secondary-color));
             color: var(--accent-color);
             text-align: center;
             padding: 55px 20px;
             width: 100%;
-            margin-top: 0 !important; /* হেডার ও ব্যানারের মাঝখানের সাদা গ্যাপ সম্পূর্ণ অফ করার জন্য */
+            margin-top: 0 !important; 
         }
 
         .page-banner h1 {
-            font-size: 32px;
+            font-size: clamp(24px, 5vw, 32px);
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 12px;
@@ -144,7 +145,7 @@
         }
 
         .page-banner p {
-            font-size: 20px;
+            font-size: clamp(16px, 3vw, 20px);
             opacity: 0.85;
             max-width: 800px;
             margin: 0 auto;
@@ -152,15 +153,19 @@
             text-align: center;
         }
 
-        /* মূল কন্টেন্ট কার্ড এরিয়া স্পেসিং */
+        /* মূল কন্টেন্ট কার্ড এরিয়া স্পেসিং */
         .content-container {
             width: 100%;
             max-width: 780px;
             padding: 0 20px;
-            margin-top: 50px; /* ব্যানার থেকে কার্ডের পারফেক্ট গ্যাপ */
+            margin-top: 50px; 
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        /* Luxury Clean Content Main Card - aligned with about.html structure */
+        /* Luxury Clean Content Main Card */
         .card { 
             background: var(--card-bg); 
             border: 1px solid rgba(11, 25, 44, 0.08); 
@@ -169,7 +174,6 @@
             width: 100%; 
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); 
             text-align: center; 
-            margin-bottom: 60px;
         }
         
         /* Page Header Configuration */
@@ -179,7 +183,7 @@
         }
         
         .page-title {
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             color: var(--primary-color);
             letter-spacing: 0.5px;
             font-weight: 800;
@@ -226,7 +230,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-color); /* নিয়ন মিন্ট গ্রিন আইকন গ্লো */
+            color: var(--accent-color); 
             font-size: 22px;
             flex-shrink: 0;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -248,7 +252,7 @@
         }
         
         .info-value {
-            font-size: 18px;
+            font-size: clamp(15px, 3vw, 18px);
             color: var(--primary-color);
             font-weight: 800;
             line-height: 1.5;
@@ -265,7 +269,7 @@
         }
         
         .info-desc {
-            font-size: 14.5px;
+            font-size: 14px;
             color: #475569;
             margin-top: 4px;
             line-height: 1.5;
@@ -297,41 +301,50 @@
         
         /* Mobile Responsive View Setup */
         @media (max-width: 750px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .brand-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            .academy-title-block {
+                align-items: center;
+                text-align: center;
+            }
+            .main-title, .sub-title {
+                text-align: center;
+            }
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .card {
+                padding: 30px 20px;
+            }
             .contact-section {
                 flex-direction: column;
                 text-align: center;
-                padding: 25px;
+                padding: 25px 15px;
             }
             .action-link-btn {
                 width: 100%;
                 text-align: center;
                 margin-top: 8px;
             }
-            nav ul {
-                display: none;
-            }
-            .main-title {
-                font-size: 18px;
-            }
-            .sub-title {
-                font-size: 9px;
-            }
-            .brand-logo {
-                width: 50px;
-                height: 50px;
-            }
         }
         
-        /* image_47afde.png এর সাথে ১০০% পিক্সেল পারফেক্ট মিলানো আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার ও সবুজ বর্ডার */
+        /* আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার ও সবুজ বর্ডার */
         .footer { 
             background-color: var(--footer-bg) !important; 
             padding: 18px 20px !important;                 
-            margin-top: 40px; 
             border-radius: 18px;                          
             border: 1px solid rgba(255, 255, 255, 0.02);
-            border-top: 3.5px solid var(--accent-color) !important; /* স্ক্রিনশট অনুয়ায়ী আল্ট্রা-লাক্সারি বর্ডার স্ট্রিপ */
+            border-top: 3.5px solid var(--accent-color) !important; 
             width: 100% !important;
-            
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
@@ -371,7 +384,7 @@
 </head>
 <body>
 
-    <!-- হেডার নেভিগেশন বার - exact from about.html -->
+    <!-- হেডার নেভিগেশন বার -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="brand-wrapper">
@@ -393,14 +406,14 @@
         </div>
     </header>
 
-    <!-- পেজ ব্যানার টপ এরিয়া - exact from about.html ডিগ্রি লেআউট -->
+    <!-- পেজ ব্যানার টপ এরিয়া -->
     <section class="page-banner">
         <h1>CONTACT US</h1>
         <p>Empowering Your Voice, Shaping Your Future....</p>
-        <p>'ইংলিশ স্পার অনলাইন ইংলিশ ট্রেনিং একাডেমির' <strong>সোশ্যাল নেটওয়ার্কে আপনাকে স্বাগত জানাই ...</strong></p>
+        <p>'ইংলিশ স্পার অনলাইন ইংলিশ ট্রেনিং একাডেমির' <strong>সোশ্যাল নেটওয়ার্কে আপনাকে স্বাগত জানাই ...</strong></p>
     </section>
 
-    <!-- মূল কন্টেন্ট কার্ড এরিয়া -->
+    <!-- মূল কন্টেন্ট কার্ড এরিয়া -->
     <div class="content-container">
         <div class="card">
             
@@ -441,7 +454,7 @@
                 <a href="tel:8158874131" class="action-btn action-link-btn">Talk to Sir</a>
             </div>
 
-            <!--হোয়্যাটসঅ্যাপ সেকশন -->
+            <!-- হোয়াটসঅ্যাপ সেকশন -->
             <div class="contact-section">
                 <div class="icon-wrapper"><i class="fa-brands fa-whatsapp"></i></div>
                 <div class="contact-details">
@@ -473,15 +486,15 @@
                 </div>
                 <a href="mailto:englishspur2020@gmail.com" class="action-link-btn">Send Mail</a>
             </div>
-            
-            <!-- image_47afde.png এর গেটআপ অনুযায়ী আল্ট্রা-সেন্টারড ক্যাপসুল ফুটার ও নিয়ন-সবুজ টপ বর্ডার -->
-            <div class="footer">
-                <div class="footer-text-main">
-                    &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
-                </div>
-                <div class="footer-author-line">
-                    CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
-                </div>
+        </div>
+
+        <!-- ফুটার সেকশন (কার্ডের বাইরে প্লেস করা হয়েছে) -->
+        <div class="footer">
+            <div class="footer-text-main">
+                &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
+            </div>
+            <div class="footer-author-line">
+                CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
             </div>
         </div>
     </div>
