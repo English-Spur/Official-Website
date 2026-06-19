@@ -37,7 +37,7 @@
             margin: 0 auto;
         }
 
-        /* Professional Letterhead Style Header with Single-Line Heading */
+        /* Professional Letterhead Style Header with Logo Asset */
         .brand-header {
             display: flex;
             flex-direction: column;
@@ -50,6 +50,14 @@
             gap: 5px;
         }
 
+        /* Style for the Brand Logo */
+        .brand-header img {
+            width: 65px;
+            height: auto;
+            margin-bottom: 4px;
+        }
+
+        /* Institute name locked seamlessly on a single horizontal line */
         .brand-header h1 {
             color: #1e3a8a;
             font-size: 36px;
@@ -121,7 +129,7 @@
             line-height: 1.5;
         }
 
-        /* Main Registration Form Screen (Hidden initially) */
+        /* Main Registration Form Screen */
         #admissionForm {
             display: none;
         }
@@ -156,24 +164,25 @@
         .top-meta-badge {
             font-size: 11px;
             font-weight: 700;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 4px;
             white-space: nowrap;
             letter-spacing: 0.5px;
+            display: inline-block;
         }
 
         .form-id-box {
             color: #1e40af;
             background: #dbeafe;
             border: 1px solid #93c5fd;
-            text-align: left;
+            text-align: center;
         }
 
         .phone-meta-box {
             color: #047857;
             background: #d1fae5;
             border: 1px solid #6ee7b7;
-            text-align: right;
+            text-align: center;
         }
 
         .section-title {
@@ -193,6 +202,7 @@
             width: 100%;
         }
 
+        /* Structural Address Grid Component Row */
         .form-row {
             display: table;
             width: 100%;
@@ -200,19 +210,21 @@
             margin-bottom: 12px;
         }
 
+        /* Input Fields Box Layout Context Elements */
         .form-group {
-            display: table-cell;
-            vertical-align: top;
-            padding: 0 6px;
-            text-align: center;
-            position: relative; /* Context for absolute positioning of the overlay */
-        }
-        
-        .form-group.full-width-row {
-            display: block;
+            display: block; 
             width: 100%;
             padding: 0 6px;
             margin-bottom: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .form-row .form-group {
+            display: table-cell !important;
+            vertical-align: top;
+            width: 50%;
+            margin-bottom: 0;
         }
 
         .form-group label {
@@ -242,12 +254,57 @@
             line-height: 1.4;
         }
 
-        /* Forces Lowercase on the email input during typing */
+        /* Live Input Box forces lowercase pattern on user typing natively */
         .form-group input[type="email"] {
             text-transform: lowercase !important;
             font-size: 13px !important;
             font-weight: 600 !important;
             letter-spacing: 0.5px !important;
+        }
+
+        /* Radio Group Container Layout instead of Select dropdown */
+        .radio-preference-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            padding: 4px 6px;
+            text-align: left;
+        }
+
+        .radio-option-row {
+            display: flex;
+            align-items: flex-start;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            gap: 10px;
+        }
+
+        .radio-option-row:hover {
+            border-color: #2563eb;
+            background-color: #f1f5f9;
+        }
+
+        .radio-option-row input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 1px;
+            cursor: pointer;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+
+        .radio-text-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.4;
+            cursor: pointer;
+            text-transform: uppercase;
         }
 
         .form-group input:focus, 
@@ -267,7 +324,7 @@
             border: 1px solid #fef3c7;
             padding: 15px;
             border-radius: 8px;
-            margin: 25px 6px 12px 6px;
+            margin: 20px 6px 12px 6px;
             text-align: left;
         }
 
@@ -358,6 +415,29 @@
             padding: 0 10px;
             letter-spacing: 0.2px;
         }
+
+        /* Dynamic Responsive Overrides for Mobile Badges */
+        @media (max-width: 480px) {
+            .form-meta-container {
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+            .top-meta-badge {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .form-row {
+                display: block !important;
+                width: 100%;
+            }
+            .form-row .form-group {
+                document.getElementById('admissionForm').style.display = 'block';
+                display: block !important;
+                width: 100% !important;
+                padding: 0 6px !important;
+                margin-bottom: 12px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -365,6 +445,7 @@
 <div class="portal-container" id="master-capture-box">
     
     <div class="brand-header">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWQAAAEsCAYAAAD0EMkhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHV8AAB1fAThpIDAAAIr8SURBVHhe7b0HgJ1VmT7+fOXeOyU9ISQEQhIg9N4ERKpKsSNiQRSxr2UX3f3rru66q/tzd92i7lqxrYhlRUUQEEGQolKkFwmdBEhIrzNz79f+z/Oee5PJzL3JDGl3hvMkZ+5Xznf6ec573tOCgoCHh4eHxw5HWP/18PDw8NjB8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4ndEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4f/9O+bE/yXwSjF8FmNojHw9IqKjYcEGyP19UbyVwPDZpXwV/+jW3qH2mFvX81G9vBvPzP/S6N6kSjBwNDy0Bf67RclE0P+Uun/E0X7G7/wveW9H45oZt9y9I0o71E06pS7bV+Ew0SDoYm7wNNoX0mE800Uj6QpGlvDEnp1D/mHjU0B9IqSffhD38gSOmEfeqOkqWbI+6+H0W74O+gB9r7/XAbjGgUepf27bH98BKyx+jEAIp0P3w/mGTM0PPrO2pS9D6N/G/Y09mD/FfDq6I/r/pPjRUDM+I3F/827fA31F75b7jpvOmWfH67r4d+4Xv697mfn5//W3rT/+y9v5DbyjX5W9K+3AasHl0O7I7pE+97/bO6y6/gP+N5pTsh9/0uH7S6K/76e2I0un3fP7FhSD4P6v9O9eC+Y/vAE7LHiAApWUXvY0mEkU3yG/u0wN/InOshv7FPGf8Nqf/k6U/D/9Z62vR3Zk9wT+mK2TvlI1XkNoLq9N3zZt6mXto+8b43FvUeNDI8W6V8Yg780b91Xv275bCjofpWf6vI0Fp8Vv9sXfGvYVep/uC81VvN0X68I1W/8b4feYh0Hl2uDbyGvdVd0Tvv9XCHf46NwhPyyALpDgmZunb7v/rDoBGlwWpAt6hR/X/Rz9N37tWvS0n+B8fWcKsk90bZ/I2Y8E9p6N9GZqPh88Z7gW8pXb+RvK8r8L/V/3SHe3b7n/X9Y1vBy6SHePjV7wF/+mYv9p1vG9j5B/Z6bCu4O6E/W3p/pDshNzR8LshA/fPz07Y5XqreG7I94Ql5ZIFU6g/pWlI9XAnI7G9w7C3/A37rRjXG8p79m9pZ51aR20A7Y+0g8bU/uInxre+b2YmOf9EepH/u3/BvDdfYqX+Gf637uclX0z3v4N/xUfVwKbg7bUOfGq7t7Yg6v64pPCEPDy46D0p37q0S3SptG+O3P9TzD/w7/uom9zW87/V0V/O4R6uB1fE0fD08wBPyyALlC9K90z8b/8Gxt/wP+K0b1RjLe/ZvamfWUztrbV38p+bZ9bX9m9nZ8C/ag7R/7t/wbyZfTeeGf8f7gX+9+7nJU8PnB6vj69Hq+Hq0OjwhjygIDB2jAUnFp6T60R8wEaXJakB/wETUnGv/L/p5+m6W68/O7H8a/veObeFWSe6Nso9m3p/pDshNzREpYgY0jZ+wH/REvInw9vA3/I3gSeEJ+f8H2kO/mreBlI6YgX/AR9ScY8NfeT6Nf6/7ecre6v7v6LreBu7mP69Xw8PDo0X/DxhT7WqD8R07AAAAAElFTkSuQmCC" alt="ENGLISH SPUR LOGO">
         <h1>ENGLISH SPUR</h1>
         <div class="academy-sub">ONLINE ENGLISH TRAINING ACADEMY</div>
         <div class="address-line">KANAIPUR, BANTUL, BAGNAN, HOWRAH - 711312</div>
@@ -380,7 +461,7 @@
             To preserve genuine interaction slots for our interactive sessions, fake or sequential inputs are auto-blocked. Please submit your active WhatsApp number so we can easily share the live class link and schedules with you.
         </div>
 
-        <div class="form-group" style="display: block; width: 100%; padding: 0;">
+        <div class="form-group" style="padding: 0;">
             <label for="gateway-phone">Valid WhatsApp Number (10 Digits) *</label>
             <input type="tel" id="gateway-phone" placeholder="E.G., 9876XXXXXX" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
         </div>
@@ -400,17 +481,17 @@
         <div class="section-title">Student Profile Details</div>
         
         <div class="form-grid">
-            <div class="form-group full-width-row">
+            <div class="form-group">
                 <label for="full-name">Full Name *</label>
                 <input type="text" id="full-name" name="full_name" placeholder="ENTER YOUR FULL NAME" required>
             </div>
 
-            <div class="form-group full-width-row" id="email-parent-container">
+            <div class="form-group" id="email-parent-container">
                 <label for="email">Email Address *</label>
                 <input type="email" id="email" name="email" placeholder="student@example.com" oninput="this.value = this.value.toLowerCase();" required>
             </div>
 
-            <div class="form-group full-width-row">
+            <div class="form-group">
                 <label for="profession">What do you currently do? (Occupation) *</label>
                 <select id="profession" name="profession" onchange="toggleOccupationSpecifyField(this.value);" required>
                     <option value="" disabled selected>SELECT YOUR OCCUPATION</option>
@@ -424,7 +505,7 @@
                 </select>
             </div>
 
-            <div class="form-group full-width-row" id="occupation-specify-group">
+            <div class="form-group" id="occupation-specify-group">
                 <label for="profession-specify">Specify Your Occupation *</label>
                 <input type="text" id="profession-specify" name="profession_specify" placeholder="SPECIFY YOUR OCCUPATION DETAILS">
             </div>
@@ -432,16 +513,25 @@
 
         <div class="section-title">Demo Session Preferences</div>
         
-        <div class="form-grid">
-            <div class="form-group full-width-row">
-                <label for="demo-reason">Primary Reason for Joining the Free Demo *</label>
-                <select id="demo-reason" name="demo_reason" required>
-                    <option value="" disabled selected>SELECT YOUR CORE GOAL</option>
-                    <option value="WANT TO EVALUATE SPOKEN ENGLISH INTERACTIVE TRAINING STYLE">WANT TO EVALUATE SPOKEN ENGLISH INTERACTIVE TRAINING STYLE</option>
-                    <option value="WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM">WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM</option>
-                    <option value="WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY">WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY</option>
-                    <option value="SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT">SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT</option>
-                </select>
+        <div class="form-group">
+            <label style="margin-bottom: 10px;">Primary Reason for Joining the Free Demo *</label>
+            <div class="radio-preference-group">
+                <label class="radio-option-row">
+                    <input type="radio" name="demo_reason" value="WANT TO EVALUATE SPOKEN ENGLISH INTERACTIVE TRAINING STYLE" required>
+                    <span class="radio-text-label">WANT TO EVALUATE SPOKEN ENGLISH INTERACTIVE TRAINING STYLE</span>
+                </label>
+                <label class="radio-option-row">
+                    <input type="radio" name="demo_reason" value="WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM">
+                    <span class="radio-text-label">WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM</span>
+                </label>
+                <label class="radio-option-row">
+                    <input type="radio" name="demo_reason" value="WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY">
+                    <span class="radio-text-label">WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY</span>
+                </label>
+                <label class="radio-option-row">
+                    <input type="radio" name="demo_reason" value="SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT">
+                    <span class="radio-text-label">SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT</span>
+                </label>
             </div>
         </div>
 
@@ -470,7 +560,7 @@
                 </div>
             </div>
 
-            <div class="form-group full-width-row" style="max-width: 250px; margin: 0 auto 12px auto;">
+            <div class="form-group" style="max-width: 250px; margin: 0 auto 12px auto;">
                 <label for="addr-pin">Pin Code *</label>
                 <input type="text" id="addr-pin" name="addr_pin" placeholder="6-DIGIT" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
             </div>
@@ -588,6 +678,13 @@
             return;
         }
 
+        const checkedReasonInput = document.querySelector('input[name="demo_reason"]:checked');
+        if (!checkedReasonInput) {
+            alert("Error: Please select a Primary Reason for joining the free demo class.");
+            return;
+        }
+        const selectedReason = checkedReasonInput.value;
+
         const fullName = document.getElementById('full-name').value.trim().toUpperCase();
         const vill = document.getElementById('addr-vill').value.trim().toUpperCase();
         const post = document.getElementById('addr-post').value.trim().toUpperCase();
@@ -599,11 +696,11 @@
         const specifyProfField = document.getElementById('profession-specify');
         const specifyProf = specifyProfField.value.trim().toUpperCase();
 
-        const emailInput = document.getElementById('email');
-        const rawEmail = emailInput.value.trim().toLowerCase(); // Safely keep raw value locked in lowercase
-
         if (!validateInputText(fullName, vill, post, ps, dist, (profession === "OTHER" ? specifyProf : ""))) return;
         if (pin.length !== 6) { alert("Error: Pin Code must be exactly 6 digits!"); return; }
+
+        const emailInput = document.getElementById('email');
+        const rawEmail = emailInput.value.trim().toLowerCase();
 
         const element = document.getElementById('master-capture-box');
         const buttonsWrapper = document.getElementById('action-buttons-wrapper');
@@ -611,14 +708,13 @@
         
         buttonsWrapper.style.display = 'none';
 
-        // THE LOWERCASE CLONE OVERLAY MASTER FIX
+        // THE LOWERCASE CLONE OVERLAY MASTER FIX FOR UNDER_SCORE
         const emailBoxStyles = window.getComputedStyle(emailInput);
         const lowercaseCloneDiv = document.createElement('div');
         
         lowercaseCloneDiv.id = 'temporary-lowercase-email-clone';
-        lowercaseCloneDiv.innerText = rawEmail; // Injected pure raw string value safely
+        lowercaseCloneDiv.innerText = rawEmail;
         
-        // Match standard input component metrics 1:1 visually
         lowercaseCloneDiv.style.width = emailInput.offsetWidth + 'px';
         lowercaseCloneDiv.style.height = emailInput.offsetHeight + 'px';
         lowercaseCloneDiv.style.padding = emailBoxStyles.padding;
@@ -636,9 +732,8 @@
         lowercaseCloneDiv.style.justifyContent = 'center';
         lowercaseCloneDiv.style.boxSizing = 'border-box';
         lowercaseCloneDiv.style.letterSpacing = '0.5px';
-        lowercaseCloneDiv.style.textTransform = 'lowercase'; // Strict lowercase instruction for the engine
+        lowercaseCloneDiv.style.textTransform = 'lowercase';
         
-        // Swap visibility smoothly before canvas captures the viewport bounds
         emailInput.style.display = 'none';
         emailParent.appendChild(lowercaseCloneDiv);
 
@@ -653,7 +748,6 @@
             height: targetHeight + 20,
             windowHeight: targetHeight + 20
         }).then(canvas => {
-            // Instant restoration phase
             if (document.getElementById('temporary-lowercase-email-clone')) {
                 emailParent.removeChild(lowercaseCloneDiv);
             }
@@ -673,7 +767,7 @@
 
             // AUTOMATIC ONE-CLICK WHATSAPP REDIRECTION SETUP
             const academyNumber = "9875340842";
-            const messageText = `HELLO ENGLISH SPUR, I HAVE SUCCESSFULLY REGISTERED FOR THE FREE LIVE DEMO CLASS.%0A%0A👤 NAME: ${fullName}%0A🆔 FORM ID: ${officialFormId}%0A📱 WHATSAPP: ${verifiedPhoneNumber}%0A%0A👉 I AM ATTACHING MY DOWNLOADED REGISTRATION FORM SCREENSHOT BELOW. PLEASE CONFIRM MY SLOT.`;
+            const messageText = `HELLO ENGLISH SPUR, I HAVE SUCCESSFULLY REGISTERED FOR THE FREE LIVE DEMO CLASS.%0A%0A👤 NAME: ${fullName}%0A🆔 FORM ID: ${officialFormId}%0A📱 WHATSAPP: ${verifiedPhoneNumber}%0A🎯 PURPOSE: ${selectedReason}%0A%0A👉 I AM ATTACHING MY DOWNLOADED REGISTRATION FORM SCREENSHOT BELOW. PLEASE CONFIRM MY SLOT.`;
             
             const whatsappUrl = `https://api.whatsapp.com/send?phone=91${academyNumber}&text=${messageText}`;
 
