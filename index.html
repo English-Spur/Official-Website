@@ -249,16 +249,6 @@
             cursor: pointer;
         }
 
-        .testimonial-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            z-index: 1;
-        }
-
         /* Custom Poster Overlay Styles for Index */
         .index-video-poster {
             position: absolute;
@@ -714,16 +704,19 @@
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-name">Rabeya Sultana's Success Story</div>
-                    <div class="testimonial-video-wrapper" onclick="playIndexVideo(this, 'nqajmbq9ung', 00, 35)">
-                        <div class="index-video-poster" style="background-image: url('rabeya.jpg');"> <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
+                    <div class="testimonial-video-wrapper" style="height:0; padding-bottom:56.25%;">
+                        <div id="player-index-1"></div>
+                        <div class="index-video-poster" style="background-image: url('rabeya.jpg');" onclick="loadYouTubeAPI('player-index-1', 'nqajmbq9ung', 00, 35, this)">
+                            <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="testimonial-name">Arnab Mondal's Experience</div>
-                    <div class="testimonial-video-wrapper" onclick="playIndexVideo(this, 'nqajmbq9ung', 35, 75)">
-                        <div class="index-video-poster" style="background-image: url('arnab.jpg');"> 
+                    <div class="testimonial-video-wrapper" style="height:0; padding-bottom:56.25%;">
+                        <div id="player-index-2"></div>
+                        <div class="index-video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-index-2', 'nqajmbq9ung', 36, 75, this)">
                             <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
                         </div>
                     </div>
@@ -843,21 +836,42 @@
 
     <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="floating-contact"><i class="fa-brands fa-whatsapp"></i></a>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        function playIndexVideo(element, videoId, start, end) {
-            if(!element.querySelector('iframe')) {
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://www.youtube.com/embed/${videoId}?start=${start}&end=${end}&autoplay=1&loop=1&playlist=${videoId}&rel=0`;
-                iframe.setAttribute('allowfullscreen', 'true');
-                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-                
-                const poster = element.querySelector('.index-video-poster');
-                if(poster) poster.style.opacity = '0';
-                
-                element.appendChild(iframe);
-                
-                setTimeout(() => { if(poster) poster.remove(); }, 300);
-            }
+        function loadYouTubeAPI(divId, videoId, startTime, endTime, posterElement) {
+            posterElement.style.opacity = '0';
+            setTimeout(() => { posterElement.remove(); }, 300);
+
+            new YT.Player(divId, {
+                height: '100%',
+                width: '100%',
+                videoId: videoId,
+                playerVars: {
+                    'start': startTime,
+                    'autoplay': 1,
+                    'controls': 1,
+                    'rel': 0,
+                    'modestbranding': 1
+                },
+                events: {
+                    'onReady': function(event) {
+                        event.target.playVideo();
+                        // টাইম মনিটর লুপ চালু করা
+                        setInterval(() => {
+                            if (event.target.getCurrentTime() >= endTime) {
+                                event.target.seekTo(startTime);
+                            }
+                        }, 500);
+                    },
+                    'onStateChange': function(event) {
+                        // যদি ভিডিও শেষ হয়ে যায় তবুও আবার প্রথমে লুপ করবে
+                        if (event.data === YT.PlayerState.ENDED) {
+                            event.target.seekTo(startTime);
+                            event.target.playVideo();
+                        }
+                    }
+                }
+            });
         }
     </script>
 
