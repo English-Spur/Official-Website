@@ -222,6 +222,8 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.04);
             border: 1px solid rgba(11, 25, 44, 0.06);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .testimonial-card:hover {
@@ -244,6 +246,7 @@
             width: 100%;
             padding-top: 56.25%;
             background-color: #000;
+            cursor: pointer;
         }
 
         .testimonial-video-wrapper iframe {
@@ -253,6 +256,45 @@
             width: 100%;
             height: 100%;
             border: none;
+            z-index: 1;
+        }
+
+        /* Custom Poster Overlay Styles for Index */
+        .index-video-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .index-play-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(31, 49, 111, 0.9);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+            font-size: 18px;
+            padding-left: 3px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .testimonial-video-wrapper:hover .index-play-btn {
+            transform: scale(1.12);
+            background: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .view-all-link {
@@ -672,15 +714,18 @@
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-name">Rabeya Sultana's Success Story</div>
-                    <div class="testimonial-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/nqajmbq9ung?start=00" allowfullscreen></iframe>
+                    <div class="testimonial-video-wrapper" onclick="playIndexVideo(this, 'nqajmbq9ung', 00, 35)">
+                        <div class="index-video-poster" style="background-image: url('rabeya.jpg');"> <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="testimonial-name">Arnab Mondal's Experience</div>
-                    <div class="testimonial-video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/nqajmbq9ung?start=35" allowfullscreen></iframe>
+                    <div class="testimonial-video-wrapper" onclick="playIndexVideo(this, 'nqajmbq9ung', 35, 75)">
+                        <div class="index-video-poster" style="background-image: url('arnab.jpg');"> 
+                            <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -791,12 +836,30 @@
                 &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
             </div>
             <div class="footer-author-line">
-                CREATED BY: <span class="creator-highlight">SOVANLAL KAPRI</span>
+                CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
             </div>
         </div>
     </div>
 
     <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="floating-contact"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <script>
+        function playIndexVideo(element, videoId, start, end) {
+            if(!element.querySelector('iframe')) {
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.youtube.com/embed/${videoId}?start=${start}&end=${end}&autoplay=1&loop=1&playlist=${videoId}&rel=0`;
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                
+                const poster = element.querySelector('.index-video-poster');
+                if(poster) poster.style.opacity = '0';
+                
+                element.appendChild(iframe);
+                
+                setTimeout(() => { if(poster) poster.remove(); }, 300);
+            }
+        }
+    </script>
 
 </body>
 </html>
