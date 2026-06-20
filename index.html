@@ -244,9 +244,18 @@
         .testimonial-video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%;
+            padding-top: 56.25%; /* 16:9 aspect container */
             background-color: #000;
             cursor: pointer;
+        }
+
+        /* FIXED: IFrame API Target Element Size Issue */
+        .testimonial-video-wrapper div[id^="player-index-"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Custom Poster Overlay Styles for Index */
@@ -704,7 +713,7 @@
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-name">Rabeya Sultana's Success Story</div>
-                    <div class="testimonial-video-wrapper" style="height:0; padding-bottom:56.25%;">
+                    <div class="testimonial-video-wrapper">
                         <div id="player-index-1"></div>
                         <div class="index-video-poster" style="background-image: url('rabeya.jpg');" onclick="loadYouTubeAPI('player-index-1', 'nqajmbq9ung', 00, 35, this)">
                             <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
@@ -713,10 +722,10 @@
                 </div>
 
                 <div class="testimonial-card">
-                    <div class="testimonial-name">Arnab Mondal's Experience</div>
-                    <div class="testimonial-video-wrapper" style="height:0; padding-bottom:56.25%;">
+                    <div class="testimonial-name">Arnab Mondals's Experience</div>
+                    <div class="testimonial-video-wrapper">
                         <div id="player-index-2"></div>
-                        <div class="index-video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-index-2', 'nqajmbq9ung', 36, 75, this)">
+                        <div class="index-video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-index-2', 'nqajmbq9ung', 35, 75, this)">
                             <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
                         </div>
                     </div>
@@ -839,9 +848,11 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         function loadYouTubeAPI(divId, videoId, startTime, endTime, posterElement) {
+            // ১. ইমেজ পোস্টারকে অ্যানিমেশনের মাধ্যমে হাইড করে রিমুভ করা
             posterElement.style.opacity = '0';
             setTimeout(() => { posterElement.remove(); }, 300);
 
+            // ২. ডায়নামিক আইফ্রেম জেনারেট করা (FIXED: width and height forces layout rendering)
             new YT.Player(divId, {
                 height: '100%',
                 width: '100%',
@@ -856,15 +867,14 @@
                 events: {
                     'onReady': function(event) {
                         event.target.playVideo();
-                        // টাইম মনিটর লুপ চালু করা
+                        // রান-টাইম ট্র্যাকিং ক্লক (প্রতি ৪০০ মিলি-সেকেন্ডে ইন্টারভাল রান করবে)
                         setInterval(() => {
                             if (event.target.getCurrentTime() >= endTime) {
                                 event.target.seekTo(startTime);
                             }
-                        }, 500);
+                        }, 400);
                     },
                     'onStateChange': function(event) {
-                        // যদি ভিডিও শেষ হয়ে যায় তবুও আবার প্রথমে লুপ করবে
                         if (event.data === YT.PlayerState.ENDED) {
                             event.target.seekTo(startTime);
                             event.target.playVideo();
