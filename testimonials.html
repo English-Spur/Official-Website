@@ -61,6 +61,7 @@
             margin-bottom: 45px;
         }
 
+        /* Round Logo Area based on index.html */
         .logo-area { 
             width: 100px; 
             height: 100px; 
@@ -118,7 +119,7 @@
             margin-bottom: 25px;
         }
 
-        /* SYMMETRICAL 3x2 GRID LAYOUT */
+        /* PERFECT 3x2 GRID LAYOUT FOR BALANCED 6 CARDS */
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); 
@@ -172,27 +173,25 @@
             width: 100%;
         }
 
-        /* CUSTOM PLAYABLE POSTER WRAPPER */
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; 
+            padding-top: 56.25%; /* Fixed 16:9 Aspect Ratio Container */
             background-color: #000;
             margin-top: auto; 
             cursor: pointer;
         }
 
-        .video-wrapper iframe {
+        /* FIXED FRAME SELECTOR: Forces both generated iframe and div container to span exactly 100% full width & height */
+        .video-wrapper iframe,
+        .video-wrapper div[id^="player-"] {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            border: none;
-            z-index: 1;
+            height: 100% !important;
         }
 
-        /* Student Face Poster Overlay */
         .video-poster {
             position: absolute;
             top: 0;
@@ -208,7 +207,6 @@
             transition: opacity 0.3s ease;
         }
 
-        /* Modern Glowing Play Button */
         .play-overlay-btn {
             width: 60px;
             height: 60px;
@@ -220,7 +218,7 @@
             align-items: center;
             color: #FFFFFF;
             font-size: 22px;
-            padding-left: 4px; /* Play triangle alignment */
+            padding-left: 4px; 
             box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
             transition: transform 0.3s ease, background 0.3s ease;
         }
@@ -344,8 +342,9 @@
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="testimonial-name-text">Rabeya Sultana's Success Story</div>
                 </div>
-                <div class="video-wrapper" onclick="playVideo(this, 'nqajmbq9ung', 0, 35)">
-                    <div class="video-poster" style="background-image: url('rabeya.jpg');">
+                <div class="video-wrapper">
+                    <div id="player-1"></div>
+                    <div class="video-poster" style="background-image: url('rabeya.jpg');" onclick="loadYouTubeAPI('player-1', 'nqajmbq9ung', 0, 34.5, this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
@@ -356,8 +355,9 @@
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="testimonial-name-text">Arnab Mondal's Experience</div>
                 </div>
-                <div class="video-wrapper" onclick="playVideo(this, 'nqajmbq9ung', 35, 75)">
-                    <div class="video-poster" style="background-image: url('arnab.jpg');">
+                <div class="video-wrapper">
+                    <div id="player-2"></div>
+                    <div class="video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-2', 'nqajmbq9ung', 35, 74.45, this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
@@ -368,8 +368,9 @@
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="testimonial-name-text">Linesha Maity's Feedback</div>
                 </div>
-                <div class="video-wrapper" onclick="playVideo(this, 'nqajmbq9ung', 75, 107)">
-                    <div class="video-poster" style="background-image: url('linesha.jpg');">
+                <div class="video-wrapper">
+                    <div id="player-3"></div>
+                    <div class="video-poster" style="background-image: url('linesha.jpg');" onclick="loadYouTubeAPI('player-3', 'nqajmbq9ung', 75, 106.45, this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
@@ -380,8 +381,9 @@
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="testimonial-name-text">Bidisha Roy's Review</div>
                 </div>
-                <div class="video-wrapper" onclick="playVideo(this, 'nqajmbq9ung', 107, 170)">
-                    <div class="video-poster" style="background-image: url('bidisha.jpg');">
+                <div class="video-wrapper">
+                    <div id="player-4"></div>
+                    <div class="video-poster" style="background-image: url('bidisha.jpg');" onclick="loadYouTubeAPI('player-4', 'nqajmbq9ung', 107, 169.45, this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
@@ -392,8 +394,9 @@
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="testimonial-name-text">Suvojit Mondal's Journey</div>
                 </div>
-                <div class="video-wrapper" onclick="playVideo(this, 'nqajmbq9ung', 170, 207)">
-                    <div class="video-poster" style="background-image: url('suvojit.jpg');">
+                <div class="video-wrapper">
+                    <div id="player-5"></div>
+                    <div class="video-poster" style="background-image: url('suvojit.jpg');" onclick="loadYouTubeAPI('player-5', 'nqajmbq9ung', 170, 206.45, this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
@@ -404,8 +407,9 @@
                     <i class="fa-solid fa-user-graduate"></i>
                     <div class="testimonial-name-text">Rani Chowdhury's Transformation</div>
                 </div>
-                <div class="video-wrapper" onclick="playVideo(this, 'nqajmbq9ung', 207, 260)">
-                    <div class="video-poster" style="background-image: url('rani.jpg');">
+                <div class="video-wrapper">
+                    <div id="player-6"></div>
+                    <div class="video-poster" style="background-image: url('rani.jpg');" onclick="loadYouTubeAPI('player-6', 'nqajmbq9ung', 207, 260, this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
@@ -423,33 +427,54 @@
                     &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
                 </div>
                 <div class="footer-author-line">
-                    CREATED BY: <span class="creator-highlight">sovan kapri</span>
+                    CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
                 </div>
             </div>
         </div>
 
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        function playVideo(element, videoId, start, end) {
-            // যদি আগে থেকে কোনো ভিডিও লোড না হয়ে থাকে
-            if(!element.querySelector('iframe')) {
-                const iframe = document.createElement('iframe');
-                // অটো-প্লে ফায়ার করার জন্য autoplay=1 যোগ করা হলো
-                iframe.src = `https://www.youtube.com/embed/${videoId}?start=${start}&end=${end}&autoplay=1&loop=1&playlist=${videoId}&rel=0`;
-                iframe.setAttribute('allowfullscreen', 'true');
-                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-                
-                // পোস্টার ইমেজ হাইড করা
-                const poster = element.querySelector('.video-poster');
-                if(poster) poster.style.opacity = '0';
-                
-                // ভিডিও ইনজেক্ট করা
-                element.appendChild(iframe);
-                
-                // অ্যানিমেশন ট্রানজিশন শেষে পোস্টার রিমুভ করা
-                setTimeout(() => { if(poster) poster.remove(); }, 300);
-            }
+        function loadYouTubeAPI(divId, videoId, startTime, endTime, posterElement) {
+            // ১. ইমেজ পোস্টারকে সিঙ্কের মাধ্যমে হাইড করে রিমুভ করা
+            posterElement.style.opacity = '0';
+            setTimeout(() => { posterElement.remove(); }, 300);
+
+            // ২. ডায়নামিক আইফ্রেম ট্র্যাকার অবজেক্ট জেনারেট করা
+            new YT.Player(divId, {
+                height: '100%',
+                width: '100%',
+                videoId: videoId,
+                playerVars: {
+                    'start': startTime,
+                    'autoplay': 1,
+                    'controls': 1,
+                    'rel': 0,
+                    'modestbranding': 1
+                },
+                events: {
+                    'onReady': function(event) {
+                        event.target.playVideo();
+                        // রান-টাইম ট্র্যাকিং ক্লক (দশমিক সেকেন্ড নিখুঁতভাবে চেক করার জন্য প্রতি ৩০০ মিলি-সেকেন্ডে রান করবে)
+                        const tracker = setInterval(() => {
+                            // FIXED: নির্দিষ্ট এন্ডিং টাইমে পৌঁছালে লুপ না হয়ে ভিডিও পজ (Pause) হয়ে শুরুতে ফিরে যাবে
+                            if (event.target.getCurrentTime() >= endTime) {
+                                event.target.pauseVideo();
+                                event.target.seekTo(startTime);
+                                clearInterval(tracker); // ইন্টারভাল ক্লিয়ার করা হলো
+                            }
+                        }, 300);
+                    },
+                    'onStateChange': function(event) {
+                        // যদি ইউজার টেনে ভিডিও শেষ করে দেয়, তবুও ভিডিও শুরুতে পজ হয়ে থাকবে
+                        if (event.data === YT.PlayerState.ENDED) {
+                            event.target.seekTo(startTime);
+                            event.target.pauseVideo();
+                        }
+                    }
+                }
+            });
         }
     </script>
 
