@@ -119,7 +119,7 @@
             margin-bottom: 25px;
         }
 
-        /* PERFECT 3x2 GRID LAYOUT FOR BALANCED 6 CARDS */
+        /* 3 COLUMN MATRIX GRID FOR BALANCED SQUARE CARDS */
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); 
@@ -176,13 +176,12 @@
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* Fixed 16:9 Aspect Ratio Container */
+            padding-top: 100%; /* FIXED ARCHITECTURE: Perfect 1:1 Square Box for 480x480 */
             background-color: #000;
             margin-top: auto; 
             cursor: pointer;
         }
 
-        /* FIXED FRAME SELECTOR: Forces both generated iframe and div container to span exactly 100% full width & height */
         .video-wrapper iframe,
         .video-wrapper div[id^="player-"] {
             position: absolute;
@@ -337,6 +336,7 @@
 
         <div class="testimonial-grid">
 
+            <!-- Card 1: Rabeya Sultana -->
             <div class="testimonial-card">
                 <div class="testimonial-name-bar">
                     <i class="fa-solid fa-user-graduate"></i>
@@ -344,12 +344,13 @@
                 </div>
                 <div class="video-wrapper">
                     <div id="player-1"></div>
-                    <div class="video-poster" style="background-image: url('rabeya.jpg');" onclick="loadYouTubeAPI('player-1', 'nqajmbq9ung', 0, 34.5, this)">
+                    <div class="video-poster" style="background-image: url('rabeya.jpg');" onclick="loadYouTubeAPI('player-1', 'f0miBaqrdCU', this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 2: Arnab Mondal -->
             <div class="testimonial-card">
                 <div class="testimonial-name-bar">
                     <i class="fa-solid fa-user-graduate"></i>
@@ -357,12 +358,13 @@
                 </div>
                 <div class="video-wrapper">
                     <div id="player-2"></div>
-                    <div class="video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-2', 'nqajmbq9ung', 35, 74.45, this)">
+                    <div class="video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-2', 'ZA6eaGnQwNY', this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 3: Linesha Maity -->
             <div class="testimonial-card">
                 <div class="testimonial-name-bar">
                     <i class="fa-solid fa-user-graduate"></i>
@@ -370,12 +372,13 @@
                 </div>
                 <div class="video-wrapper">
                     <div id="player-3"></div>
-                    <div class="video-poster" style="background-image: url('linesha.jpg');" onclick="loadYouTubeAPI('player-3', 'nqajmbq9ung', 75, 106.45, this)">
+                    <div class="video-poster" style="background-image: url('linesha.jpg');" onclick="loadYouTubeAPI('player-3', 'FMxOKQiIJ7o', this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 4: Bidisha Roy -->
             <div class="testimonial-card">
                 <div class="testimonial-name-bar">
                     <i class="fa-solid fa-user-graduate"></i>
@@ -383,12 +386,13 @@
                 </div>
                 <div class="video-wrapper">
                     <div id="player-4"></div>
-                    <div class="video-poster" style="background-image: url('bidisha.jpg');" onclick="loadYouTubeAPI('player-4', 'nqajmbq9ung', 108, 169.45, this)">
+                    <div class="video-poster" style="background-image: url('bidisha.jpg');" onclick="loadYouTubeAPI('player-4', 'jKhUyKTfgoc', this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 5: Suvojit Mondal -->
             <div class="testimonial-card">
                 <div class="testimonial-name-bar">
                     <i class="fa-solid fa-user-graduate"></i>
@@ -396,12 +400,13 @@
                 </div>
                 <div class="video-wrapper">
                     <div id="player-5"></div>
-                    <div class="video-poster" style="background-image: url('suvojit.jpg');" onclick="loadYouTubeAPI('player-5', 'nqajmbq9ung', 170, 206.35, this)">
+                    <div class="video-poster" style="background-image: url('suvojit.jpg');" onclick="loadYouTubeAPI('player-5', '7zi4Aiz0S3I', this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 6: Rani Chowdhury -->
             <div class="testimonial-card">
                 <div class="testimonial-name-bar">
                     <i class="fa-solid fa-user-graduate"></i>
@@ -409,7 +414,7 @@
                 </div>
                 <div class="video-wrapper">
                     <div id="player-6"></div>
-                    <div class="video-poster" style="background-image: url('rani.jpg');" onclick="loadYouTubeAPI('player-6', 'nqajmbq9ung', 207, 271, this)">
+                    <div class="video-poster" style="background-image: url('rani.jpg');" onclick="loadYouTubeAPI('player-6', '3mSiOMJ5WIo', this)">
                         <div class="play-overlay-btn"><i class="fa-solid fa-play"></i></div>
                     </div>
                 </div>
@@ -434,45 +439,24 @@
 
     </div>
 
+    <!-- Official YouTube API Script Load -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        function loadYouTubeAPI(divId, videoId, startTime, endTime, posterElement) {
-            // ১. ইমেজ পোস্টারকে সিঙ্কের মাধ্যমে হাইড করে রিমুভ করা
+        function loadYouTubeAPI(divId, videoId, posterElement) {
+            // ইমেজ পোস্টারকে অ্যানিমেশনের মাধ্যমে হাইড করে রিমুভ করা
             posterElement.style.opacity = '0';
             setTimeout(() => { posterElement.remove(); }, 300);
 
-            // ২. ডায়নামিক আইফ্রেম ট্র্যাকার অবজেক্ট জেনারেট করা
+            // ডায়নামিক আইফ্রেম জেনারেট করা
             new YT.Player(divId, {
                 height: '100%',
                 width: '100%',
                 videoId: videoId,
                 playerVars: {
-                    'start': startTime,
                     'autoplay': 1,
                     'controls': 1,
                     'rel': 0,
                     'modestbranding': 1
-                },
-                events: {
-                    'onReady': function(event) {
-                        event.target.playVideo();
-                        // রান-টাইম ট্র্যাকিং ক্লক (দশমিক সেকেন্ড নিখুঁতভাবে চেক করার জন্য প্রতি ৩০০ মিলি-সেকেন্ডে রান করবে)
-                        const tracker = setInterval(() => {
-                            // FIXED: নির্দিষ্ট এন্ডিং টাইমে পৌঁছালে লুপ না হয়ে ভিডিও পজ (Pause) হয়ে শুরুতে ফিরে যাবে
-                            if (event.target.getCurrentTime() >= endTime) {
-                                event.target.pauseVideo();
-                                event.target.seekTo(startTime);
-                                clearInterval(tracker); // ইন্টারভাল ক্লিয়ার করা হলো
-                            }
-                        }, 300);
-                    },
-                    'onStateChange': function(event) {
-                        // যদি ইউজার টেনে ভিডিও শেষ করে দেয়, তবুও ভিডিও শুরুতে পজ হয়ে থাকবে
-                        if (event.data === YT.PlayerState.ENDED) {
-                            event.target.seekTo(startTime);
-                            event.target.pauseVideo();
-                        }
-                    }
                 }
             });
         }
