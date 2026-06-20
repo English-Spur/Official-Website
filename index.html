@@ -249,13 +249,14 @@
             cursor: pointer;
         }
 
-        /* FIXED: IFrame API Target Element Size Issue */
+        /* CRITICAL FIXED CSS SELECTOR: Locks both iframe and dynamic div to 100% full frame width & height */
+        .testimonial-video-wrapper iframe,
         .testimonial-video-wrapper div[id^="player-index-"] {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100% !important;
         }
 
         /* Custom Poster Overlay Styles for Index */
@@ -706,26 +707,29 @@
                 
         <div class="tagline animate-fade-up delay-4">"YOUR GATEWAY TO CONFIDENT ENGLISH"</div>
 
+        <!-- NEW FOOLPROOF TESTIMONIAL GRID -->
         <div class="testimonial-section animate-fade-up delay-4">
             <h3 class="section-title" style="margin-top: 0; margin-bottom: 5px;">What Our Students Say</h3>
             <p style="font-size: 12px; color: #64748B; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">Real success stories from English Spur learners</p>
             
             <div class="testimonial-grid">
+                <!-- Video 1: Rabeya Sultana -->
                 <div class="testimonial-card">
                     <div class="testimonial-name">Rabeya Sultana's Success Story</div>
                     <div class="testimonial-video-wrapper">
                         <div id="player-index-1"></div>
-                        <div class="index-video-poster" style="background-image: url('rabeya.jpg');" onclick="loadYouTubeAPI('player-index-1', 'nqajmbq9ung', 00, 35, this)">
+                        <div class="index-video-poster" style="background-image: url('rabeya.jpg');" onclick="loadYouTubeAPI('player-index-1', 'nqajmbq9ung', 0, 34.5, this)">
                             <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Video 2: Arnab Mondal -->
                 <div class="testimonial-card">
-                    <div class="testimonial-name">Arnab Mondals's Experience</div>
+                    <div class="testimonial-name">Arnab Mondal's Experience</div>
                     <div class="testimonial-video-wrapper">
                         <div id="player-index-2"></div>
-                        <div class="index-video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-index-2', 'nqajmbq9ung', 35, 75, this)">
+                        <div class="index-video-poster" style="background-image: url('arnab.jpg');" onclick="loadYouTubeAPI('player-index-2', 'nqajmbq9ung', 35, 74.5, this)">
                             <div class="index-play-btn"><i class="fa-solid fa-play"></i></div>
                         </div>
                     </div>
@@ -845,14 +849,15 @@
 
     <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="floating-contact"><i class="fa-brands fa-whatsapp"></i></a>
 
+    <!-- Official YouTube API Script Load -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         function loadYouTubeAPI(divId, videoId, startTime, endTime, posterElement) {
-            // ১. ইমেজ পোস্টারকে অ্যানিমেশনের মাধ্যমে হাইড করে রিমুভ করা
+            // ১. ইমেজ পোস্টারকে সিঙ্কের মাধ্যমে হাইড করে রিমুভ করা
             posterElement.style.opacity = '0';
             setTimeout(() => { posterElement.remove(); }, 300);
 
-            // ২. ডায়নামিক আইফ্রেম জেনারেট করা (FIXED: width and height forces layout rendering)
+            // ২. ডায়নামিক আইফ্রেম ট্র্যাকার অবজেক্ট জেনারেট করা
             new YT.Player(divId, {
                 height: '100%',
                 width: '100%',
@@ -867,12 +872,12 @@
                 events: {
                     'onReady': function(event) {
                         event.target.playVideo();
-                        // রান-টাইম ট্র্যাকিং ক্লক (প্রতি ৪০০ মিলি-সেকেন্ডে ইন্টারভাল রান করবে)
+                        // রান-টাইম ট্র্যাকিং ক্লক (দশমিক সেকেন্ড নিখুঁতভাবে ট্র্যাক করার জন্য প্রতি ৩০০ মিলি-সেকেন্ডে রান করবে)
                         setInterval(() => {
                             if (event.target.getCurrentTime() >= endTime) {
                                 event.target.seekTo(startTime);
                             }
-                        }, 400);
+                        }, 300);
                     },
                     'onStateChange': function(event) {
                         if (event.data === YT.PlayerState.ENDED) {
