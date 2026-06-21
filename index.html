@@ -14,18 +14,24 @@
     <link rel="icon" type="image/png" href="logo.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600&display=swap" rel="stylesheet">
     
     <style>
         /* Official color tokens and getup based on about.html */
         :root {
-            --primary-color: #0B192C;       /* Royal Blue Base Tone */
+            --primary-color: #0B192C;       /* Ultra dark base */
+            --logo-blue: #2563EB;           /* Precise Royal Blue matching Logo script */
+            --logo-orange: #FF8A00;         /* Vibrant Orange matching Logo accent */
             --secondary-color: #1F316F;     /* Supporting Navy Blue */
-            --accent-color: #10B981;        /* Success Mint Green (Neon Highlighter) */
             --text-light: #F8FAFC;
             --bg-light: #F4F6F9;
             --card-bg: #FFFFFF;
             --footer-bg: #051122;          /* Ultra dark footer background */
+            
+            /* Indian Flag Themed Colors & Glows */
+            --flag-saffron: #FF9933;        /* Deep Saffron */
+            --flag-white-blue: #000080;     /* Ashoka Chakra Navy Blue */
+            --flag-green: #128807;          /* India Green */
         }
 
         * { 
@@ -45,7 +51,7 @@
             padding: 30px 15px; 
             overflow-x: hidden;
         }
-                
+            
         .card { 
             background: var(--card-bg); 
             border: 1px solid rgba(11, 25, 44, 0.08); 
@@ -71,14 +77,14 @@
         .delay-5 { animation-delay: 0.5s; }
         .delay-6 { animation-delay: 0.6s; }
         .delay-7 { animation-delay: 0.7s; }
-                
+            
         .logo-area { 
             width: 100px; 
             height: 100px; 
-            margin: 0 auto 20px; 
+            margin: 0 auto 12px;           
             border-radius: 50%; 
             overflow: hidden;
-            border: 2.5px solid var(--accent-color); 
+            border: 2.5px solid var(--logo-blue); 
             background: #FFFFFF; 
             display: flex; 
             justify-content: center; 
@@ -92,30 +98,47 @@
             height: 100%; 
             object-fit: cover; 
         }
-                
+
         .badge {
             display: inline-block;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-color);
+            background: rgba(18, 136, 7, 0.1);
+            color: var(--flag-green);
             font-size: 11px;
             font-weight: 700;
             padding: 5px 14px;
             border-radius: 20px;
-            margin-bottom: 18px;
+            margin-bottom: 18px;            
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(18, 136, 7, 0.2);
         }
-                
+
+        /* GIF Indian Flag Container Styling */
+        .indian-flag-gif-container {
+            width: 150px;                      
+            height: auto;
+            margin: 0 auto 16px;            
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: block;
+        }
+        .indian-flag-gif-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+            
         h1 { 
             font-size: clamp(30px,6vw,48px); 
-            color: var(--primary-color); 
             margin-bottom: 6px; 
             letter-spacing: 1px; 
             font-weight: 800; 
         }
         
-        h1 span { color: var(--accent-color); }
+        h1 .brand-blue { color: var(--logo-blue); }
+        h1 .brand-orange { color: var(--logo-orange); }
         
         .subtitle { 
             font-size: 13px; 
@@ -125,7 +148,7 @@
             letter-spacing: 2px; 
             text-transform: uppercase;
         }
-                
+            
         .owner-section {
             margin-bottom: 30px;
             background: rgba(11, 25, 44, 0.02);
@@ -149,7 +172,7 @@
             border-radius: 20%;
             margin: 0 auto 12px;
             overflow: hidden;
-            border: 2px solid var(--accent-color);
+            border: 2px solid var(--logo-orange);
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             background: #E2E8F0;
         }
@@ -166,10 +189,10 @@
             font-weight: 800;
             letter-spacing: 0.5px;
         }
-                
+            
         .tagline { 
             font-size: 14px; 
-            color: var(--accent-color); 
+            color: var(--flag-green); 
             font-style: italic; 
             margin-bottom: 35px; 
             letter-spacing: 0.5px; 
@@ -182,7 +205,7 @@
             width: 100%;
             max-width: 750px;
             margin: 35px auto 15px;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
             border-radius: 16px;
@@ -244,12 +267,11 @@
         .testimonial-video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 100%; /* FIXED: Perfect 1:1 Square Box for 480x480 */
+            padding-top: 100%; 
             background-color: #000;
             cursor: pointer;
         }
 
-        /* CSS LOCK: Fixes frame resizing issue on dynamic iframe injection */
         .testimonial-video-wrapper iframe,
         .testimonial-video-wrapper div[id^="player-index-"] {
             position: absolute;
@@ -259,7 +281,6 @@
             height: 100% !important;
         }
 
-        /* Custom Poster Overlay Styles for Index */
         .index-video-poster {
             position: absolute;
             top: 0;
@@ -279,7 +300,7 @@
             width: 50px;
             height: 50px;
             background: rgba(31, 49, 111, 0.9);
-            border: 2px solid var(--accent-color);
+            border: 2px solid var(--flag-green);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -287,14 +308,14 @@
             color: #FFFFFF;
             font-size: 18px;
             padding-left: 3px;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 12px rgba(18, 136, 7, 0.4);
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .testimonial-video-wrapper:hover .index-play-btn {
             transform: scale(1.12);
-            background: var(--accent-color);
-            color: var(--primary-color);
+            background: var(--flag-green);
+            color: white;
         }
 
         .view-all-link {
@@ -310,7 +331,7 @@
         }
 
         .view-all-link:hover {
-            color: var(--accent-color);
+            color: var(--logo-orange);
         }
 
         .view-all-link i {
@@ -443,7 +464,7 @@
 
         .discount-badge {
             background: rgba(16, 185, 129, 0.15);
-            color: var(--accent-color);
+            color: #10B981;
             font-size: 10px;
             font-weight: 800;
             padding: 3px 8px;
@@ -470,7 +491,7 @@
             background: var(--primary-color);
             transform: translateY(-2px);
         }
-                
+            
         .nav-grid {
             display: grid;
             grid-template-columns: 1fr 1fr; 
@@ -478,7 +499,7 @@
             width: 100%;
             margin: 0 auto;
         }
-                
+            
         .grid-btn {
             display: flex;
             flex-direction: column;
@@ -497,47 +518,48 @@
             box-shadow: 0 4px 12px rgba(11, 25, 44, 0.15);
             text-transform: uppercase;
         }
-                
+            
         .grid-btn i {
             font-size: 22px;
-            color: var(--accent-color); 
+            color: #10B981; 
             margin-bottom: 10px;
             transition: transform 0.3s ease;
         }
-                
+            
         .grid-btn:hover {
-            background: var(--accent-color);
+            background: rgba(31, 49, 111, 0.05);
             color: var(--primary-color);
             transform: translateY(-4px);
-            box-shadow: 0 8px 22px rgba(16, 185, 129, 0.3);
-            border-color: var(--accent-color);
+            box-shadow: 0 8px 22px rgba(11, 25, 44, 0.15);
+            border-color: var(--secondary-color);
         }
-                
+            
         .grid-btn:hover i {
-            color: var(--primary-color);
             transform: scale(1.15);
         }
-                
+            
         @media (max-width: 600px) {
             .nav-grid { grid-template-columns: 1fr; }
             h1 { font-size: 28px; }
             .courses-grid { grid-template-columns: 1fr; }
             .testimonial-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-buttons .cta-btn { width: 100% !important; max-width: 260px; }
         }
-                
+            
         .footer { 
             background-color: var(--footer-bg) !important; 
             padding: 18px 20px !important;                 
             margin-top: 60px; 
-            border-radius: 18px;                           
+            border-radius: 18px;                            
             border: 1px solid rgba(255, 255, 255, 0.02);
-            border-top: 3.5px solid var(--accent-color) !important; 
+            border-top: 3.5px solid var(--logo-blue) !important; 
             width: 100% !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
             align-items: center !important;
-            gap: 6px !important;                           
+            gap: 6px !important;                            
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
@@ -560,17 +582,17 @@
             text-transform: uppercase;
             letter-spacing: 0.5px !important;
             text-align: center !important;
-            white-space: nowrap;                           
+            white-space: nowrap;                            
         }
 
         .creator-highlight {
-            color: #10B981 !important;                     
+            color: var(--logo-orange) !important;                     
             font-weight: 800 !important;
             padding-left: 4px;
         }
     
         .hero-message { margin-bottom: 30px; }
-        .hero-message h2 { font-size: clamp(18px,4vw,30px); font-weight: 800; color: var(--accent-color); margin-bottom: 12px; }
+        .hero-message h2 { font-size: clamp(18px,4vw,30px); font-weight: 800; color: var(--flag-saffron); margin-bottom: 12px; }
         .hero-message p {
             color: BLACK;
             line-height: 1.8;
@@ -581,15 +603,58 @@
             margin-right: auto;
         }
         
-        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .cta-btn { text-decoration: none; padding: 12px 20px; border-radius: 12px; font-weight: 700; transition: .3s; }
-        .primary-btn { background: var(--accent-color); color: white; }
-        .secondary-btn { background: #EEF2FF; color: var(--primary-color); }
+        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: center; }
+        
+        .cta-btn { 
+            text-decoration: none; 
+            padding: 12px 0;                
+            width: 240px;                   
+            border-radius: 12px; 
+            font-weight: 700; 
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;        
+            gap: 8px; 
+        }
+        
+        /* Indian Flag Glow Buttons Setup */
+        .saffron-btn { 
+            background: var(--flag-saffron); 
+            color: white; 
+            box-shadow: 0 4px 14px rgba(255, 153, 51, 0.45); 
+        }
+        .saffron-btn:hover { 
+            box-shadow: 0 6px 22px rgba(255, 153, 51, 0.65); 
+        }
+
+        .blue-btn { 
+            background: var(--flag-white-blue); 
+            color: white; 
+            box-shadow: 0 4px 14px rgba(0, 0, 128, 0.45); 
+        }
+        .blue-btn:hover { 
+            background: #000066;
+            box-shadow: 0 6px 22px rgba(0, 0, 128, 0.65); 
+        }
+
+        .green-btn { 
+            background: var(--flag-green); 
+            color: white; 
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 14px rgba(18, 136, 7, 0.45); 
+        }
+        .green-btn:hover { 
+            background: #0f7305; 
+            box-shadow: 0 6px 22px rgba(18, 136, 7, 0.65); 
+        }
+        
         .cta-btn:hover { transform: translateY(-3px); }
         
         .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 25px 0 30px; }
         .stat-item { background: #EEF2FF; padding: 15px 10px; border-radius: 12px; }
-        .number { display: block; font-size: 22px; font-weight: 800; color: var(--accent-color); }
+        .number { display: block; font-size: 22px; font-weight: 800; color: var(--flag-white-blue); }
         .stat-item small { color: #64748B; }
         
         .floating-contact {
@@ -599,14 +664,14 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: var(--accent-color);
+            background: var(--flag-green);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 30px;
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(16, 185, 129, .35);
+            box-shadow: 0 8px 25px rgba(18, 136, 7, .35);
             z-index: 999;
             transition: transform 0.3s ease;
         }
@@ -664,21 +729,32 @@
 <body>
 
     <div class="card">
+        <!-- Brand Logo Area -->
         <div class="logo-area">
             <img src="logo.png" alt="ENGLISH SPUR LOGO" loading="lazy" onerror="this.style.display='none';">
         </div>
         
+        <!-- "SINCE 2020" Badge -->
         <div class="badge animate-fade-up delay-1">SINCE 2020</div>
         
-        <h1 class="animate-fade-up delay-1">ENGLISH <span>SPUR</span></h1>
+        <!-- Newly Upgraded Vibrant & Bright Indian Flag Asset Positioned Perfectly Here -->
+        <div class="indian-flag-gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYndqc254NjJkaW4zYWtjZnA2cWI3aTRkMGFqYmNuNjlreDM2ZndrcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3TYuocrjKLFC9tuszs/giphy.gif" alt="Vibrant Indian National Flag Animation">
+        </div>
+        
+        <!-- Symmetrical Color Mapped Heading -->
+        <h1 class="animate-fade-up delay-1">
+            <span class="brand-blue">ENGLISH</span> <span class="brand-orange">SPUR</span>
+        </h1>
         <div class="subtitle animate-fade-up delay-1">ONLINE ENGLISH TRAINING ACADEMY</div>
         
         <div class="hero-message animate-fade-up delay-2">
             <h2>SPEAK FLUENT ENGLISH WITH CONFIDENCE</h2>
             <p><STRONG>JOIN ENGLISH SPUR!</STRONG> <BR>BUILD CONFIDENCE WITH <br>PRACTICAL, BENGALI-FRIENDLY LIVE CLASSES.</p>
             <div class="hero-buttons">
-                <a href="Freedemo.html" class="cta-btn primary-btn"><i class="fa-solid fa-arrow-pointer"></i> Book A Free Demo Class</a>
-                <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="cta-btn secondary-btn"><i class="fa-brands fa-whatsapp"></i> Contact Us</a>
+                <a href="Freedemo.html" class="cta-btn saffron-btn"><i class="fa-solid fa-arrow-pointer"></i> Book A Free Demo Class</a>
+                <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="cta-btn blue-btn"><i class="fa-brands fa-whatsapp"></i> Contact Us</a>
+                <a href="career.html" class="cta-btn green-btn"><i class="fa-solid fa-briefcase"></i> Join Our Team 🚀</a>
             </div>
         </div>
 
@@ -853,11 +929,9 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         function loadYouTubeAPI(divId, videoId, posterElement) {
-            // ইমেজ পোস্টারকে সিঙ্কের মাধ্যমে হাইড করে রিমুভ করা
             posterElement.style.opacity = '0';
             setTimeout(() => { posterElement.remove(); }, 300);
 
-            // ডায়নামিক আইফ্রেম জেনারেট করা
             new YT.Player(divId, {
                 height: '100%',
                 width: '100%',
