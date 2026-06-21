@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Join Our Team | English Spur</title>
+    
+    <!-- Google Fonts এবং Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0B192C;       /* Ultra Dark base */
+            --secondary-color: #1F316F;     /* Supporting Navy Blue */
+            --logo-blue: #2563EB;           /* Royal Blue matching Main Brand */
+            --logo-orange: #FF8A00;         /* Vibrant Orange matching Main Brand */
+            --text-light: #F8FAFC;
+            --bg-light: #F4F6F9;
+            --card-bg: #FFFFFF;
+            --footer-bg: #051122;          /* Ultra dark footer background */
+            --flag-green: #128807;          /* India Green */
+            --flag-saffron: #FF9933;        /* India Saffron */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(150deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--primary-color);
+            min-height: 100vh;
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 15px;
+            overflow-x: hidden;
+        }
+
+        .career-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 50px 40px 30px; /* নিচের প্যাডিং ৫০ থেকে কমিয়ে ৩০ করা হয়েছে বাড়তি জায়গা কমাতে */
+            max-width: 850px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo Area matching index.html */
+        .logo-area { 
+            width: 100px; 
+            height: 100px; 
+            margin: 0 auto 12px;            
+            border-radius: 50%; 
+            overflow: hidden;
+            border: 2.5px solid var(--logo-blue); 
+            background: #FFFFFF; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .logo-area img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(18, 136, 7, 0.1);
+            color: var(--flag-green);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 18px;            
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(18, 136, 7, 0.2);
+        }
+
+        /* GIF Indian Flag Container - Upgraded Spacing and Size */
+        .indian-flag-gif-container {
+            width: 85px;                      /* Flag size increased perfectly */
+            height: auto;
+            margin: 0 auto 16px;            
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: block;
+        }
+        .indian-flag-gif-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(28px, 5vw, 38px);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        h1 .brand-blue { color: var(--logo-blue); }
+        h1 .brand-orange { color: var(--logo-orange); }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--flag-green);
+            font-style: italic;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+        }
+
+        .description-box {
+            background: rgba(37, 99, 235, 0.03);
+            border-left: 4px solid var(--logo-blue);
+            padding: 22px 25px;
+            border-radius: 4px 16px 16px 4px;
+            font-size: 14.5px;
+            line-height: 1.8;
+            color: #334155;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .description-box p {
+            margin-bottom: 12px;
+        }
+        .description-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .job-list {
+            margin-bottom: 30px; /* মার্জিন ৪৫ থেকে কমিয়ে ৩০ করা হয়েছে */
+            text-align: left;
+        }
+
+        .job-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .job-item:hover {
+            border-color: var(--logo-orange);
+            box-shadow: 0 5px 15px rgba(255, 138, 0, 0.08);
+        }
+
+        .job-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .job-title i { color: var(--logo-orange); font-size: 14px; }
+
+        .job-desc {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.7;
+            padding-left: 22px;
+        }
+
+        .job-desc .eng-text {
+            display: block;
+            margin-top: 6px;
+            color: #64748B;
+            font-style: italic;
+        }
+
+        /* Upgraded Apply Button Theme */
+        .apply-btn-container {
+            text-align: center;
+            margin: 25px 0 15px; /* মার্জিন কমিয়ে সুন্দর পজিশনে আনা হয়েছে */
+            padding: 20px;
+            background: rgba(37, 99, 235, 0.02);
+            border: 2px dashed rgba(37, 99, 235, 0.2);
+            border-radius: 16px;
+        }
+
+        .custom-apply-btn {
+            background: linear-gradient(135deg, var(--logo-blue) 0%, var(--secondary-color) 100%);
+            color: #FFFFFF;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 45px;
+            font-family: 'Poppins', 'Noto Sans Bengali', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-apply-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(255, 138, 0, 0.4);
+            background: linear-gradient(135deg, var(--logo-orange) 0%, #E67E00 100%);
+        }
+
+        .custom-apply-btn i {
+            font-size: 16px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Back to Home Button Link */
+        .back-home-wrapper {
+            text-align: center;
+            margin-bottom: 20px; /* মার্জিন ২৫ থেকে কমিয়ে ২০ করা হয়েছে */
+            margin-top: 10px;
+        }
+
+        .back-home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--logo-blue);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            transition: all 0.3s ease;
+            padding: 10px 22px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 24px;
+            background: #EEF2FF;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.05);
+        }
+
+        .back-home-link:hover {
+            color: var(--logo-orange);
+            border-color: var(--logo-orange);
+            background: rgba(255, 138, 0, 0.02);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(255, 138, 0, 0.1);
+        }
+
+        /* Footer Element matching index.html */
+        .footer { 
+            background-color: var(--footer-bg) !important; 
+            padding: 18px 20px !important;                 
+            margin-top: 15px; /* মার্জিন ২০ থেকে কমিয়ে ১৫ করা হয়েছে */
+            border-radius: 18px;                          
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-top: 3.5px solid var(--logo-blue) !important; 
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 6px !important;                          
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-text-main {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 10.5px !important;                 
+            font-weight: 800 !important;
+            letter-spacing: 0.3px !important;
+            color: #FFFFFF !important;                    
+            text-transform: uppercase;
+            text-align: center !important;                
+            line-height: 1.5 !important;
+        }
+
+        .footer-author-line {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 11px !important;
+            color: #FFFFFF !important;
+            font-weight: 800 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px !important;
+            text-align: center !important;
+            white-space: nowrap;                          
+        }
+
+        .creator-highlight {
+            color: var(--logo-orange) !important;                     
+            font-weight: 800 !important;
+            padding-left: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .career-card { padding: 30px 20px 20px; }
+            form { padding: 25px 20px; }
+            .custom-apply-btn { padding: 15px 30px; font-size: 16px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="career-card">
+    <!-- Brand Logo Area -->
+    <div class="logo-area">
+        <img src="logo.png" alt="ENGLISH SPUR LOGO" loading="lazy" onerror="this.style.display='none';">
+    </div>
+
+    <!-- "SINCE 2020" Badge Relocated Perfectly below the Logo -->
+    <div style="text-align: center;">
+        <div class="badge animate-fade-up delay-1">SINCE 2020</div>
+    </div>
+
+    <!-- Top Identity Branding Header Area -->
+    <div class="header-section">
+        <!-- Live Giphy Animated Indian Flag (Enlarged) -->
+        <div class="indian-flag-gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYndqc254NjJkaW4zYWtjZnA2cWI3aTRkMGFqYmNuNjlreDM2ZndrcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3TYuocrjKLFC9tuszs/giphy.gif" alt="Indian National Flag Animation">
+        </div>
+        <h1><span class="brand-blue">JOIN OUR</span> <span class="brand-orange">TEAM</span></h1>
+        <p class="tagline">
+            আসুন একসাথে গড়ে তুলি একটি নির্ভীক ইংরেজি শেখার মাধ্যম।<br>
+            <span style="color: #64748B; font-size: 12.5px; font-weight: 600; display:block; margin-top: 4px;">Let's build a fearless English learning platform together.</span>
+        </p>
+    </div>
+    
+    <!-- Operational Description Block (Bilingual) -->
+    <div class="description-box">
+        <p><strong>প্রিয় হবু টিম মেম্বার / Dear Future Team Member,</strong></p>
+        <p>ইংলিশ স্পার (English Spur) শুধুমাত্র একটি লার্নিং প্ল্যাটফর্ম নয়, এটি হাজার হাজার শিক্ষার্থীর স্বপ্ন পূরণের মাধ্যম। ২০২৬ সালের মধ্যেই আমরা একে ভারতের অন্যতম একটি বিশ্বস্ত ব্র্যান্ড হিসেবে প্রতিষ্ঠা করতে চলেছি। আমাদের মিশন দ্রুত বড় হচ্ছে, এবং হাজার হাজার শিক্ষার্থীর কাছে পৌঁছানোর জন্য এখন আমাদের লোকবল বাড়ানো প্রয়োজন। ভবিষ্যতে ইংলিশ স্পার অনলাইনের পাশাপাশি অফলাইনেও বড় স্তরে কাজ শুরু করবে। তাই, এই মিশনকে সফল করার জন্য আমাদের প্রয়োজন একদল দক্ষ, স্বপ্নবাজ এবং পরিশ্রমী মানুষের, যারা এই প্রজেক্টকে আরও সাফল্যের চূড়ায় নিয়ে যাবে। আপনি যদি আমাদের সাথে ফুল-টাইম বা পার্ট-টাইম কাজ করতে আগ্রহী হন, তবে নিচের পদগুলো দেখে আজই আবেদন করুন!</p>
+
+        <p>English Spur is not just a learning platform; it is a gateway to fulfilling the dreams of thousands of learners. By the end of 2026, we aim to establish it as one of India's most trusted brands. Our mission is rapidly expanding, and to reach thousands of learners, we now need to increase our workforce. In the future, English Spur will operate on a large scale both offline as well as online. Therefore, to make this mission successful, we need a team of skilled, visionary, and hardworking individuals who will take this project to the pinnacle of success. If you are eager to work with us full-time or part-time, explore the openings below and apply today!</p>
+    </div>
+
+    <!-- Job Openings Matrix Container (Bilingual) -->
+    <div class="job-list">
+        <h3 class="section-title"><i class="fa-solid fa-briefcase"></i> বর্তমান শূন্যপদসমূহ (Current Openings):</h3>
+        
+        <div class="job-item">
+            <div class="job-title"><i class="fa-solid fa-circle-dot"></i> 1. Content Creator & Script Writer | 1 Post | Male / Female</div> 
+
+            <div class="job-desc">
+                আমাদের ইউটিউব চ্যানেল এবং সোশ্যাল মিডিয়ার জন্য আকর্ষণীয় ও শিক্ষামূলক ভিডিও স্ক্রিপ্ট তৈরি করতে হবে। ইংরেজি ব্যাকরণ ও অভিনব পদ্ধতিতে কন্টেন্ট প্ল্যান করার দক্ষতা থাকা আবশ্যক।
+                <span class="eng-text">Responsible for crafting engaging and educational video scripts for our YouTube channel and social media handles. Expertise in English grammar and innovative content planning is highly required.</span>
+            </div>
+        </div>
+
+        <div class="job-item">
+            <div class="job-title"><i class="fa-solid fa-circle-dot"></i> 2. Digital Product & Worksheet Designer | 1 Post | Male / Female</div>
+            <div class="job-desc">
+                ক্যানভা (Canva) বা অ্যাডোবি ফটোশপ (Adobe Photoshop)-এর মতো টুল ব্যবহার করে শিশুদের জন্য আকর্ষণীয় ওয়ার্কশিট, ই-বুক, পিডিএফ (PDF) ও অনুরূপ শিক্ষণীয় উপকরণ তৈরির দায়িত্ব পালন করতে হবে। ইংরেজি ব্যাকরণে দক্ষতা এবং উদ্ভাবনী পদ্ধতি ব্যবহার করে বিষয়বস্তু বা কনটেন্ট পরিকল্পনার সক্ষমতা থাকা আবশ্যক।
+                <span class="eng-text">Responsible to design engaging worksheets, e-books, PDFs, and similar materials for children using tools like Canva or Adobe Photoshop. Proficiency in English grammar and the ability to plan content using innovative methods are essential.</span>
+            </div>
+        </div>
+
+        <div class="job-item">
+            <div class="job-title"><i class="fa-solid fa-circle-dot"></i> 3. Junior English Trainer / Coordinator | 2 Posts | Female only</div>
+            <div class="job-desc">
+                 শিক্ষার্থীদের গাইড করা, মক টেস্ট নেওয়া এবং LSRW ফ্রেমওয়ার্ক অনুযায়ী আমাদের স্পোকেন ইংলিশের প্র্যাকটিস সেশনগুলো তদারকি করা।
+                <span class="eng-text">Guide students, conduct mock tests, and closely monitor our spoken English practice sessions based on the core LSRW framework.</span>
+            </div>
+        </div>
+  
+        <div class="job-item">
+            <div class="job-title"><i class="fa-solid fa-circle-dot"></i> 4. Student Relation & Outreach Executive | 5 Posts | Male / Female</div>
+            <div class="job-desc">
+              <strong>আমাদের মিশন (Our Mission)</strong>: ইংলিশ স্পার (English Spur) ২০২৬ সালের মধ্যে ভারতের অন্যতম বিশ্বস্ত ব্র্যান্ড হিসেবে গড়ে উঠতে চলেছে। আমাদের মিশন হলো শিক্ষার্থীদের ইংরেজি শিক্ষার ভয় দূর করে তাদের বিশ্বমানের দক্ষতা অর্জন করতে সাহায্য করা। এই লক্ষ্য বাস্তবায়নে আমাদের প্রয়োজন এমন কিছু উদ্যমী ব্যক্তিকে, যারা আমাদের ব্র্যান্ডের প্রতিনিধি হিসেবে সরাসরি শিক্ষার্থীদের সাথে যুক্ত হবেন।
+                <br><br><strong>এই কাজের দায়িত্বসমূহ (Your Responsibilities)</strong>: <br> ১. শিক্ষার্থীদের সাথে নিরবচ্ছিন্ন যোগাযোগ বজায় রাখা এবং আমাদের মিশন ও ভিশন সম্পর্কে তাদের বিস্তারিত জানানো।
+                <br> ২. বিভিন্ন স্কুল, কলেজ বা সোশ্যাল প্ল্যাটফর্মে আমাদের ক্যাম্পেইন এবং প্রচারমূলক অনুষ্ঠানের আয়োজন করা।
+                <br> ৩. শিক্ষার্থীদের ইংলিশ স্পারে ভর্তি হওয়ার প্রক্রিয়ায় পথপ্রদর্শক হিসেবে গুরুত্বপূর্ণ ভূমিকা পালন করা।
+                <br> ৪. আমাদের ফ্রি ডেমো ক্লাসগুলোতে শিক্ষার্থীদের অংশগ্রহণ নিশ্চিত করা এবং তাদের আগ্রহ তৈরি করা।
+                <br><br><strong>প্রয়োজনীয় দক্ষতা (Skills Required)</strong>: 
+                <br>* সাবলীল কথা বলার দক্ষতা (বাংলা ও ইংরেজি)।
+                <br>* মানুষের সাথে যোগাযোগ করার চমৎকার ক্ষমতা।
+                <br>* শিক্ষার্থীদের মোটিভেট করার মানসিকতা।
+                <br><br>
+                <span class="eng-text"><strong>Our Mission:</strong> English Spur is on a journey to become one of the most trusted brands in India by 2026. Our mission is to eliminate the fear of English learning and empower students to achieve world-class proficiency. To realize this vision, we are looking for some energetic and passionate individuals who will act as brand representatives and engage directly with our students.
+                <br><br><strong>Your Responsibilities:</strong>
+                <br>1. Maintain consistent communication with students and provide detailed insights into our mission and vision.
+                <br>2. Organize campaign programs and promotional events across various schools, colleges, and social media platforms.
+                <br>3. Play a pivotal role in guiding students throughout the English Spur enrollment process.
+                <br>4. Ensure student participation in our Free Demo Classes and cultivate their interest in their programs.
+                <br><br><strong>Skills Required:</strong>
+                <br>Proficiency in both Bengali and English.
+                <br>Excellent communication and interpersonal skills.
+                <br>A mindset dedicated to motivating and inspiring students.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Replaced Blank Iframe Box with a Premium Custom Button Group -->
+    <div class="apply-btn-container">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezLIbofA87ZXVQlARLgL3RDcGgDmHcbXjncH9vXNK9r5VN3Q/viewform?usp=sharing" target="_blank" class="custom-apply-btn">
+            <i class="fa-solid fa-pen-to-square"></i> এখানে ক্লিক করে আবেদন করুন (Apply Now)
+        </a>
+    </div>
+
+    <!-- Back to Home Action Link -->
+    <div class="back-home-wrapper">
+        <a href="index.html" class="back-home-link"><i class="fa-solid fa-house"></i> Back To Home</a>
+    </div>
+
+    <!-- Balanced Dark Footer Container Layout matching index.html -->
+    <div class="footer">
+        <div class="footer-text-main">
+            &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
+        </div>
+        <div class="footer-author-line">
+            CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
