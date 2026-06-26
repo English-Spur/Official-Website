@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Spur Online Store</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         /* ==========================================================================
            ১. গ্লোবাল সেটিংস এবং আধুনিক ভেরিয়েবলস (Premium Theme)
@@ -45,90 +44,191 @@
         }
         
         /* ==========================================================================
-           ②. ১০০% আন-ক্রপড ফ্রিজড হেডার ব্যানার (100% Uncropped Frozen Header UI)
+           ②. সম্পূর্ণ ফ্রিজড এবং ১০০% রেসপন্সিভ হেডার জোন (Sticky Header Banner & Navigation)
            ========================================================================== */
-        .frozen-brand-header { 
-            position: -webkit-sticky; 
-            position: sticky; 
-            top: 0; 
+        .sticky-header-container {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: var(--shadow-md);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .frozen-brand-banner { 
             width: 100%; 
-            height: 180px; 
+            height: 140px; 
+            /* 👇 এখানে তোমার ইমেজ ফাইল বা ইউআরএলটি বসিয়ে দেবে */
             background-image: url('ess2.png'); 
             background-size: contain; 
             background-position: center center; 
             background-repeat: no-repeat; 
-            background-color: white; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 10px 40px; 
-            z-index: 1000; 
-            box-shadow: var(--shadow-md);
-            border-bottom: 4px solid var(--accent);
+            background-color: #ffffff; 
         }
         
+        .header-control-bar {
+            background-color: #1e3a8a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
         .header-home-link { 
-            color: white; 
+            color: #ffffff; 
             text-decoration: none; 
-            font-size: 16px;
-            font-weight: 900;
+            font-size: 14px;
+            font-weight: 800;
             text-transform: uppercase;
             transition: var(--transition);
             letter-spacing: 0.5px;
-            background: rgba(255, 0, 132, 0.8);
-            padding: 5px 12px;
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.15); 
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
-        .header-home-link:hover { color: var(--primary); transform: scale(1.05); }
+        .header-home-link:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-1px); }
         
-        .cart-action-cluster { 
+        .control-bar-actions { 
             display: flex; 
-            gap: 15px; 
+            gap: 10px; 
             align-items: center; 
-            background: rgba(255, 255, 255, 0.8); 
-            padding: 6px 12px;
-            border-radius: 6px;
         }
         
         .header-cart-btn { 
             background: #10b981; 
             color: white; 
-            padding: 10px 22px; 
-            border-radius: 6px; 
+            padding: 8px 16px; 
+            border-radius: var(--radius-sm); 
             cursor: pointer; 
             white-space: nowrap; 
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.15);
             transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
-        .header-cart-btn:hover { background: #059669; transform: translateY(-2px); }
+        .header-cart-btn:hover { background: #059669; transform: translateY(-1px); }
         
         .header-buynow-btn { 
             background: #f59e0b; 
             color: white; 
-            padding: 10px 24px; 
-            border-radius: 6px; 
+            padding: 8px 18px; 
+            border-radius: var(--radius-sm); 
             cursor: pointer; 
             white-space: nowrap; 
             font-weight: 800; 
-            font-size: 14px;
+            font-size: 13px;
             border: none; 
             text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .header-buynow-btn:hover { background: #d97706; transform: translateY(-1px); }
+
+        /* ==========================================================================
+           🎯 নতুন প্রিমিয়াম ডিজিটাল স্টোর ইন্ট্রো সেকশন (New Launch Highlight Section)
+           ========================================================================== */
+        .digital-store-intro-section {
+            max-width: 1200px;
+            margin: 35px auto 10px auto;
+            padding: 0 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .new-launch-highlight-badge {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(245, 124, 0, 0.25);
+            margin-bottom: 15px; /* বক্সের ওপরে নির্দিষ্ট স্পেস */
+            display: inline-block;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 4px 10px rgba(245, 124, 0, 0.25); }
+            50% { transform: scale(1.03); box-shadow: 0 4px 15px rgba(245, 124, 0, 0.45); }
+            100% { transform: scale(1); box-shadow: 0 4px 10px rgba(245, 124, 0, 0.25); }
+        }
+
+        .digital-asset-store-box {
+            width: 100%;
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border: 2px dashed #2563eb;
+            border-radius: var(--radius-lg);
+            padding: 30px 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .digital-asset-store-box h2 {
+            color: #1e3a8a;
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 0 12px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .digital-asset-store-box p {
+            color: #475569;
+            font-size: 15px;
+            max-width: 800px;
+            margin: 0 auto 22px auto;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .visit-store-embedded-btn {
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 800;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
             transition: var(--transition);
         }
-        .header-buynow-btn:hover { background: #d97706; transform: translateY(-2px); }
+        .visit-store-embedded-btn:hover {
+            background: linear-gradient(135deg, #1e40af, #172554);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        }
         
         /* ==========================================================================
-           ③. সেকশন টাইটেল ও স্ক্রল র্যাপার (Elegant Typography & Layout)
+           ③. সেকশন টাইটেল ও স্ক্রল র্যাপার
            ========================================================================== */
         .section-title { 
             background: transparent; 
             color: var(--primary); 
             padding: 10px 0; 
-            margin: 40px auto 10px auto; 
+            margin: 25px auto 10px auto; 
             max-width: 1200px; 
             font-size: 24px; 
             font-weight: 800; 
@@ -152,7 +252,7 @@
         .grid-container::-webkit-scrollbar { display: none; }
         
         /* ==========================================================================
-           ৪. প্রিমিয়াম প্রোডাক্ট কার্ড ডিজাইন ও ডেসক্রিপশন এরিয়া (Premium UX Cards)
+           ৪. প্রিমিয়াম প্রোডাক্টカード デザイン
            ========================================================================== */
         .product-card { 
             background: var(--card-bg); 
@@ -332,105 +432,59 @@
         }
         .close-modal-btn:hover { background: #ef4444; color: #ffffff; }
 
+        /* ==========================================================================
+           ৫. এক্সপ্রেস WhatsApp চেকআউট জোন
+           ========================================================================== */
         .checkout-section { max-width: 600px; margin: 50px auto; background: white; padding: 35px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: none; border: 1px solid var(--border-color); text-align: center; }
         
-        .qr-master-card { background: #f8fafc; padding: 25px; border-radius: var(--radius-md); border: 2px solid var(--primary); margin-bottom: 25px; box-shadow: var(--shadow-sm); }
-        .qr-master-card img { max-width: 220px; height: auto; border: 6px solid white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 15px 0; }
-        .qr-caption { font-size: 16px; font-weight: 700; color: var(--danger); margin-bottom: 10px; line-height: 1.4; }
+        .live-payable-badge { font-size: 24px; font-weight: 800; color: var(--success); background: #e6f4ea; border: 2px dashed var(--success); padding: 12px; border-radius: var(--radius-sm); margin: 15px auto; display: inline-block; width: 90%; box-sizing: border-box; }
         
-        /* 📱 উপায় ১: কিউআর ডাউনলোড বাটন স্টাইল */
-        .download-qr-action-btn {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            border: none;
-            padding: 14px 24px;
-            font-size: 15px;
-            font-weight: 800;
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            width: 90%;
-            margin: 15px auto 5px auto;
-            display: block;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .download-qr-action-btn:hover {
-            background: linear-gradient(135deg, #059669, #047857);
-            transform: translateY(-2px);
-        }
+        .order-summary-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; text-align: left; margin-bottom: 25px; }
+        .order-summary-box h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
 
-        /* 💬 উপায় ২: সরাসরি হোয়াটসঅ্যাপ পেমেন্ট বাটন স্টাইল */
-        .whatsapp-pay-action-btn {
+        .express-whatsapp-pay-btn {
             background: linear-gradient(135deg, #25d366, #128c7e);
             color: white;
             border: none;
-            padding: 14px 24px;
-            font-size: 15px;
+            padding: 16px 28px;
+            font-size: 16px;
             font-weight: 800;
             border-radius: var(--radius-md);
             cursor: pointer;
-            width: 90%;
-            margin: 8px auto 5px auto;
+            width: 100%;
             display: block;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
             transition: var(--transition);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .whatsapp-pay-action-btn:hover {
+        .express-whatsapp-pay-btn:hover {
             background: linear-gradient(135deg, #128c7e, #075e54);
             transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
         }
 
-        .or-divider {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin: 15px 0;
-            position: relative;
-        }
-
-        .live-payable-badge { font-size: 24px; font-weight: 800; color: var(--success); background: #e6f4ea; border: 2px dashed var(--success); padding: 12px; border-radius: var(--radius-sm); margin: 15px auto; display: inline-block; width: 90%; box-sizing: border-box; }
-        .merchant-tag { font-size: 13px; font-weight: 600; color: var(--primary); display: block; margin-top: 8px; background: rgba(30, 58, 138, 0.05); padding: 6px; border-radius: 6px; }
-
-        .download-trigger-zone { background: #fff; padding: 20px; border-radius: var(--radius-md); border: 1px dashed var(--text-muted); margin-bottom: 30px; }
-        .download-trigger-zone label { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--primary); cursor: pointer; }
-        .download-trigger-zone input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
-        
-        .download-btn { background: var(--success); color: white; border: none; padding: 14px 28px; font-size: 16px; font-weight: 700; border-radius: var(--radius-sm); cursor: pointer; display: none; margin: 15px auto 0 auto; width: 100%; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); transition: var(--transition); }
-        .download-btn:hover { background: var(--success-hover); transform: translateY(-1px); }
-        
-        .sequential-form { display: none; margin-top: 30px; border-top: 2px dashed var(--border-color); padding-top: 25px; }
-        .sequential-form h3 { font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        .form-group { margin-bottom: 22px; text-align: left; opacity: 0.25; pointer-events: none; transition: var(--transition); }
-        .form-group.active-field { opacity: 1; pointer-events: auto; }
-        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 14px; color: #475569; }
-        
-        .box-input-container { display: flex; gap: 8px; justify-content: flex-start; flex-wrap: wrap; margin-top: 5px; }
-        .box-input { width: 38px; height: 44px; text-align: center; font-size: 20px; font-weight: 700; border: 2px solid #cbd5e1; border-radius: 8px; background: #fff; color: var(--primary); transition: var(--transition); }
-        .box-input:focus { border-color: var(--primary); outline: none; background: #f0fdf4; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
-        
-        .standard-input { width: 100%; padding: 12px 16px; border: 2px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 15px; transition: var(--transition); }
-        .standard-input:focus { border-color: var(--primary); outline: none; background: #fdfdfd; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
-
-        .screenshot-receipt-preview { margin-top: 15px; text-align: center; border: 2px dashed #cbd5e1; padding: 15px; border-radius: var(--radius-md); background: #fafafa; display: none; }
-        .screenshot-receipt-preview img { max-width: 100%; max-height: 250px; object-fit: contain; border-radius: 6px; }
-        .receipt-info-box p { margin: 8px 0; font-size: 13px; color: #334155; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px; }
-        .watermark-text { color: var(--text-muted); font-size: 11px; font-weight: 700; text-align: center; border: 1px solid var(--border-color); padding: 8px; border-radius: 6px; background-color: var(--bg-main); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-
-        .final-submit-btn { background: var(--primary); color: white; border: none; padding: 16px; width: 100%; font-size: 16px; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; display: block; margin-top: 25px; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2); transition: var(--transition); }
-        .final-submit-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
-
+        /* ==========================================================================
+           ⑥. মোবাইল রেসপন্সিভ ওভাররাইড মিডিয়া কোয়েরি (Responsive Breakpoints)
+           ========================================================================== */
         @media (max-width: 768px) { 
             .nav-scroll-btn { display: none; } 
             .grid-container { padding: 10px; gap: 14px; } 
-            .frozen-brand-header { min-height: 110px; height: 110px; padding: 5px 15px; }
-            .header-home-link { font-size: 14px; padding: 4px 8px; }
-            .header-cart-btn { padding: 8px 12px; font-size: 11px; }
-            .header-buynow-btn { padding: 8px 14px; font-size: 11px; }
+            
+            .frozen-brand-banner { height: 75px; }
+            .header-control-bar { padding: 8px 10px; }
+            .header-home-link { font-size: 11px; padding: 6px 10px; }
+            .header-cart-btn { padding: 6px 10px; font-size: 11px; }
+            .header-buynow-btn { padding: 6px 12px; font-size: 11px; }
+
+            /* 📱 মোবাইল স্টোর ইন্ট্রো এরিয়া অপ্টিমাইজেশন */
+            .digital-store-intro-section { margin: 20px auto 5px auto; padding: 0 15px; }
+            .new-launch-highlight-badge { font-size: 10px; padding: 4px 12px; margin-bottom: 10px; }
+            .digital-asset-store-box { padding: 20px 15px; border-width: 1.5px; }
+            .digital-asset-store-box h2 { font-size: 17px; margin-bottom: 8px; }
+            .digital-asset-store-box p { font-size: 12px; margin-bottom: 16px; }
+            .visit-store-embedded-btn { padding: 10px 22px; font-size: 12px; }
+            
             .section-title { font-size: 18px; margin: 25px 15px 5px 15px; }
             .product-card { flex: 0 0 215px; padding: 12px; border-radius: var(--radius-md); }
             .product-card h3 { font-size: 13px; height: 36px; margin-bottom: 8px; }
@@ -441,23 +495,28 @@
             .add-to-cart-text-btn, .disabled-btn { min-width: 100px; width: auto; font-size: 11px; padding: 8px 10px; }
             .preview-btn { padding: 7px; font-size: 11px; margin-bottom: 8px; }
             .checkout-section { margin: 25px 15px; padding: 20px; }
-            .box-input { width: 28px; height: 36px; font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="frozen-brand-header">
-        <div>
-            <a href="index.html" class="header-home-link">&lt; Home</a>
-        </div>
-        <div class="cart-action-cluster">
-            <div class="header-cart-btn" onclick="scrollToCheckout()">🛒 Add To Cart (<span id="cartCount">0</span>)</div>
-            <button class="header-buynow-btn" onclick="scrollToCheckout()">⚡ Buy Now</button>
+    <div class="sticky-header-container">
+        <div class="frozen-brand-banner"></div>
+        
+        <div class="header-control-bar">
+            <div>
+                <a href="index.html" class="header-home-link">🏠 Home</a>
+            </div>
+            <div class="control-bar-actions">
+                <button class="header-cart-btn" onclick="scrollToCheckout()">🛒 Cart (<span id="cartCount">0</span>)</button>
+                <button class="header-buynow-btn" onclick="scrollToCheckout()">⚡ Buy Now</button>
+            </div>
         </div>
     </div>
 
-    <div class="section-title">📚 Premium E-Books</div>
+    
+
+    <div class="section-title" id="first-store-section">📚 Premium E-Books</div>
     <div class="scroll-wrapper">
         <button class="nav-scroll-btn left-btn" onclick="scrollSection('ebook-grid', 'left')">‹</button>
         <div class="grid-container" id="ebook-grid"></div>
@@ -493,95 +552,23 @@
     </div>
 
     <div class="checkout-section" id="checkoutSection">
-        <div class="qr-master-card">
-            <div class="qr-caption">নীচের যেকোনো একটি সহজ পদ্ধতিতে পেমেন্ট সম্পন্ন করুন:</div>
-            
-            <div class="live-payable-badge">
-                Total Payable: ₹<span id="qrPayableAmount">0</span>
-            </div>
-
-            <!-- 📱 উপায় ১: কিউআর অটো-ডাউনলোড এক্সপ্রেস বাটন -->
-            <button class="download-qr-action-btn" onclick="downloadQRAndPrompt()">📱 Express QR Download & Pay</button>
-            
-            <!-- 💬 উপায় ২: সরাসরি হোয়াটসঅ্যাপ চ্যাট চয়েস বাটন -->
-            <button class="whatsapp-pay-action-btn" onclick="payViaWhatsAppDirect()">💬 Chat with Sovan Kapri & Pay</button>
-
-            <div class="or-divider">— OR VIEW QR CODE BELOW —</div>
-
-            <img src="My QR Code.jpg" alt="Merchant QR Engine">
-            <span class="merchant-tag">Verified Account: Bank A/C Name - SOVANLAL KAPRI</span>
+        <div class="live-payable-badge">
+            Total Payable: ₹<span id="qrPayableAmount">0</span>
         </div>
 
-        <div class="download-trigger-zone">
-            <label>
-                <input type="checkbox" id="chkPaid" onchange="toggleDownloadBtn()"> আমি পেমেন্ট সম্পন্ন করেছি
-            </label>
-            <button class="download-btn" id="btnDownloadTrigger" onclick="unlockSequentialForm()">Download Receipt & Process Material ↓</button>
+        <div class="order-summary-box">
+            <h4>Selected Materials Summary</h4>
+            <div id="selectedProductsList" style="line-height: 1.6; font-size: 13px; color: #1e293b;"></div>
         </div>
 
-        <div class="sequential-form" id="seqFormBlock">
-            <h3 style="color:#1e3a8a; text-align: left; margin: 0 0 15px 0;">Secure Authentication Ledger</h3>
-            
-            <div class="form-group active-field" id="fg-screenshot">
-                <label>১. Upload Clear Payment Screenshot (Mandatory):</label>
-                <input type="file" id="buyerScreenshot" accept="image/*" onchange="validateField1(event)">
-            </div>
-
-            <div class="form-group" id="fg-txnid">
-                <label>২. UPI Reference No / UTR ID (Exact 12 Digits):</label>
-                <div class="box-input-container" id="utr-boxes"></div>
-            </div>
-
-            <div class="form-group" id="fg-whatsapp">
-                <label>৩. Active WhatsApp Number (Exact 10 Digits):</label>
-                <div class="box-input-container" id="wa-boxes"></div>
-            </div>
-
-            <div class="form-group" id="fg-email">
-                <label>৪. Email Address (For Material Delivery):</label>
-                <input type="email" id="buyerEmail" class="standard-input" placeholder="name@example.com" oninput="validateField4()">
-            </div>
-
-            <div class="form-group" id="fg-name">
-                <label>৫. Your Full Name:</label>
-                <input type="text" id="buyerName" class="standard-input" placeholder="Enter your official full name" oninput="validateField5()">
-            </div>
-
-            <div id="cloneArea" style="padding: 20px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; margin-top: 25px; text-align: left; display: none;">
-                <div class="watermark-text">🔒 English Spur Certified Manifest Token</div>
-                <h2 style="text-align: center; color: #1e3a8a; margin-top: 0; font-size: 18px;">Official Invoice Receipt</h2>
-                
-                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e2e8f0;">
-                    <p style="margin: 0 0 5px 0; font-size: 12px; color: #64748b;"><strong>Order Date:</strong> <span id="lblReceiptDate">-</span></p>
-                    <p style="margin: 0 0 10px 0; font-size: 12px; color: #64748b;"><strong>Order Number:</strong> <span id="lblReceiptOrderNo">-</span></p>
-                    <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 8px 0;">
-                    <h4 style="margin:0 0 5px 0; font-size: 13px; color: #475569;">Selected Assets:</h4>
-                    <div id="selectedProductsList" style="line-height: 1.5; font-size: 12px; color: #1e293b;"></div>
-                    <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 8px 0;">
-                    <h5 style="margin: 0; color: #1e293b;">Settled Amount: <span style="color: #10b981;">₹<span id="totalAmount">0</span></span></h5>
-                </div>
-
-                <div class="receipt-info-box" style="background: #ffffff; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px;">
-                    <p><strong>Account Holder:</strong> <span id="lblReceiptName">-</span></p>
-                    <p><strong>WhatsApp Node:</strong> <span id="lblReceiptWhatsapp">-</span></p>
-                    <p><strong>Mail Route:</strong> <span id="lblReceiptEmail">-</span></p>
-                    <p><strong>UTR Sync Ref:</strong> <span id="lblReceiptTxnId" style="color: #1e3a8a; font-weight: bold;">-</span></p>
-                </div>
-
-                <div class="screenshot-receipt-preview" id="receiptScreenshotContainer">
-                    <img id="receiptScreenshotImg" src="" alt="Payment Proof">
-                </div>
-            </div>
-
-            <button class="final-submit-btn" id="btnFinalSubmit" style="display:none;" onclick="generateReceiptAndGo()">Complete Registration & Get Book Access →</button>
-        </div>
+        <button class="express-whatsapp-pay-btn" onclick="sendExpressOrderToWhatsApp()">💬 Chat with Sovan kapri & Pay</button>
     </div>
 
     <script>
         const productsDatabase = [
             // 📚 CATEGORY 1: PREMIUM E-BOOKS
-            { id: 1, category: "ebook", name: "Basic English Grammar E-Book PART 1", offerPrice: 49, originalPrice: 399, coverImageUrl: "english (2).png", previewUrl: "https://drive.google.com/file/d/1r_TCKQmd08BCKYE9ToTfyobWcDpvIxXG/preview", desc: "Master essential parts of speech, sentences, and basic structure rules." },
-            { id: 2, category: "ebook", name: "Basic English Grammar E-Book PART 2", offerPrice: 59, originalPrice: 349, coverImageUrl: "BASIC GRAMMAR BOOK 2.png", previewUrl: "https://drive.google.com/file/d/1QSvj-3Gn94vhuo7xmfb_7lzwo0oa5QZS/preview", desc: "Deep dive into advanced tenses, active-passive voice, and clauses." },
+            { id: 1, category: "ebook", name: "Basic English Grammar E-Book PART 1", offerPrice: 49, originalPrice: 399, coverImageUrl: "english (2).PNG", previewUrl: "https://drive.google.com/file/d/1r_TCKQmd08BCKYE9ToTfyobWcDpvIxXG/preview", desc: "Master essential parts of speech, sentences, and basic structure rules." },
+            { id: 2, category: "ebook", name: "Basic English Grammar E-Book PART 2", offerPrice: 59, originalPrice: 349, coverImageUrl: "BASIC GRAMMAR BOOK 2.PNG", previewUrl: "https://drive.google.com/file/d/1QSvj-3Gn94vhuo7xmfb_7lzwo0oa5QZS/preview", desc: "Deep dive into advanced tenses, active-passive voice, and clauses." },
             { id: 3, category: "ebook", name: "English Vocabulary E-book ", offerPrice: 49, originalPrice: 499, coverImageUrl: "english.png", previewUrl: "https://drive.google.com/file/d/1GrJyFajGlNW50oKcRl0dlROMgWug5oc-/preview", desc: "500+ high-frequency daily use words with Bengali meanings and sentences." },
             { id: 4, category: "ebook", name: "Daily Spoken Sentences (Bengali & English) | Speak English Easily ", offerPrice: 29, originalPrice: 299, coverImageUrl: "english (3).png", previewUrl: "https://drive.google.com/file/d/1kKBXgAftudgWcUtUqsJ6gohn85haz1Jl/preview", desc: "Comprehensive study material designed for fluent speaking modules." },
             { id: 5, category: "ebook", name: "Product 05 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
@@ -649,7 +636,6 @@
         ];
 
         let selectedCart = [];
-        let globalOrderNumber = "";
 
         productsDatabase.forEach(prod => {
             let gridId = "";
@@ -659,6 +645,8 @@
             else if (prod.category === "kit") gridId = "kit-grid";
 
             const gridEl = document.getElementById(gridId);
+            if (!gridEl) return;
+
             let discountPercent = Math.round(((prod.originalPrice - prod.offerPrice) / prod.originalPrice) * 100);
             
             let isProductActive = prod.coverImageUrl !== "" && prod.previewUrl !== "";
@@ -701,12 +689,16 @@
                     ${actionRowHtml}
                 </div>
             `;
-            if (gridEl) gridEl.innerHTML += cardTemplate;
+            gridEl.innerHTML += cardTemplate;
         });
 
         function scrollSection(gridId, direction) {
             const container = document.getElementById(gridId);
             if (direction === 'left') { container.scrollLeft -= 480; } else { container.scrollLeft += 480; }
+        }
+
+        function scrollToFirstSection() {
+            document.getElementById('first-store-section').scrollIntoView({ behavior: 'smooth' });
         }
 
         function openPreview(url) { 
@@ -741,10 +733,9 @@
             if(selectedCart.length > 0) {
                 checkoutSec.style.display = "block";
                 let listHtml = ""; let total = 0;
-                selectedCart.forEach((item, i) => { listHtml += `<p>${i+1}. <strong>${item.name}</strong></p>`; total += item.price; });
+                selectedCart.forEach((item, i) => { listHtml += `<p>${i+1}. <strong>${item.name}</strong> — <span style="color:var(--danger); font-weight:bold;">₹${item.price}</span></p>`; total += item.price; });
                 
                 document.getElementById('selectedProductsList').innerHTML = listHtml;
-                document.getElementById('totalAmount').innerText = total;
                 document.getElementById('qrPayableAmount').innerText = total;
             } else { 
                 checkoutSec.style.display = "none"; 
@@ -756,180 +747,30 @@
             document.getElementById('checkoutSection').scrollIntoView({ behavior: 'smooth' });
         }
 
-        /* ⚡ উপায় ১: অটো কিউআর কোড ডাউনলোড এবং গাইড পপ-আপ লজিক */
-        function downloadQRAndPrompt() {
-            const link = document.createElement('a');
-            link.href = 'My QR Code.jpg';
-            link.download = 'English_Spur_Payment_QR.jpg';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            alert("✅ QR Code-টি সফলভাবে আপনার ফোনে ডাউনলোড হয়েছে!\n\nএবার আপনার PhonePe, GPay বা Paytm অ্যাপটি খুলুন এবং Scanner অপশনে গিয়ে 'Upload from Gallery' বা গ্যালারি আইকন সিলেক্ট করে এই কিউআর ইমেজটি সিলেক্ট করুন।\n\nপেমেন্ট সম্পন্ন করে সিকিউরড ফর্মটি পূরণ করুন!");
-        }
-
-        /* ⚡ উপায় ২: সরাসরি হোয়াটসঅ্যাপ চ্যাট ফ্লো পেমেন্ট লজিক */
-        function payViaWhatsAppDirect() {
-            const totalAmount = document.getElementById('totalAmount').innerText;
-            if (!totalAmount || totalAmount === "0") { alert("Your cart is empty!"); return; }
+        function sendExpressOrderToWhatsApp() {
+            const total = document.getElementById('qrPayableAmount').innerText;
+            if (!total || total === "0") { alert("Your cart is empty!"); return; }
             
             let productNames = "";
-            selectedCart.forEach((item, i) => { productNames += `• ${item.name}%0A`; });
+            selectedCart.forEach((item, i) => { productNames += `${i+1}. ${item.name} (₹${item.price})%0A`; });
 
-            const today = new Date();
-            const tempOrderNo = "ESP-REQ-" + Math.floor(1000 + Math.random() * 9000);
+            const currentTimestamp = new Date();
+            const dateString = currentTimestamp.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const timeString = currentTimestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            const exactDateTime = `${dateString} at ${timeString}`;
 
-            const waMessage = `*NEW DIGITAL STORE PURCHASE REQUEST*%0A%0A` +
-                              `Hello *Sovan Kapri*, আমি আপনার অনলাইন স্টোর থেকে প্রোডাক্ট অর্ডার করতে চাই। ব্যাঙ্কের সিকিউরিটি সমস্যার কারণে আমি সরাসরি চ্যাটে পে করতে চাই।%0A%0A` +
-                              `*Selected Materials:*%0A${productNames}%0A` +
-                              `*Total Payable Amount:* ₹${totalAmount}%0A` +
-                              `*Request ID:* ${tempOrderNo}%0A%0A` +
-                              `_⚡ দয়া করে আমাকে পেমেন্ট করার জন্য আপনার সঠিক UPI ID বা QR কোডটি চ্যাটে পাঠান।_`;
+            const liveOrderNo = "ESP-" + currentTimestamp.getFullYear() + (currentTimestamp.getMonth()+1) + currentTimestamp.getDate() + "-" + Math.floor(1000 + Math.random() * 9000);
 
-            window.open(`https://wa.me/919875340842?text=${waMessage}`, '_blank');
-        }
+            const finalWAMessage = `*NEW DIGITAL STORE ORDER REQUEST*%0A%0A` +
+                                   `• *My Name:* [এখানে আপনার নাম লিখুন]%0A` +
+                                   `• *Purchase Date:* ${exactDateTime}%0A` +
+                                   `• *Order Number:* ${liveOrderNo}%0A%0A` +
+                                   `Hello *Sovan Kapri*, আমি আপনার অনলাইন স্টোর থেকে ডিজিটাল প্রোডাক্ট অর্ডার করতে চাই। আমার কার্ট / order ডিটেইলস নিচে দেওয়া হলো:%0A%0A` +
+                                   `*Selected Materials:*%0A${productNames}%0A` +
+                                   `*Total Price:* ₹${total}%0A%0A` +
+                                   `_⚡ Sovan kapri,উপরে আমার নাম লিখে দিলাম। এবার আমাকে পেমেন্ট করার জন্য আপনার সঠিক QR কোড বা UPI ID চ্যাটে পাঠান। আমি পেমেন্ট সম্পন্ন করে পেমেন্ট অ্যাপ থেকে সরাসরি এই চ্যাটেই স্ক্রিনশট শেয়ার করে দিচ্ছি। ভেরিফাই করে আমাকে ই-বুক বা মেটেরিয়ালের অ্যাক্সেস দিয়ে দিন!_`;
 
-        function toggleDownloadBtn() {
-            const chk = document.getElementById('chkPaid');
-            document.getElementById('btnDownloadTrigger').style.display = chk.checked ? 'block' : 'none';
-        }
-
-        function unlockSequentialForm() {
-            document.getElementById('seqFormBlock').style.display = 'block';
-            const today = new Date();
-            const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            globalOrderNumber = "ESP-" + today.getFullYear() + (today.getMonth()+1) + today.getDate() + "-" + Math.floor(1000 + Math.random() * 9000);
-            
-            document.getElementById('lblReceiptDate').innerText = dateStr;
-            document.getElementById('lblReceiptOrderNo').innerText = globalOrderNumber;
-            document.getElementById('fg-screenshot').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function createBoxInputs(containerId, count, nextValidationFunc) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = "";
-            for (let i = 0; i < count; i++) {
-                let input = document.createElement("input");
-                input.type = "text";
-                input.maxLength = 1;
-                input.className = "box-input";
-                input.dataset.index = i;
-                
-                input.addEventListener("input", function() {
-                    this.value = this.value.replace(/[^0-9]/g, "");
-                    if (this.value.length === 1 && i < count - 1) {
-                        container.children[i + 1].focus();
-                    }
-                    nextValidationFunc();
-                });
-
-                input.addEventListener("keydown", function(e) {
-                    if (e.key === "Backspace" && this.value.length === 0 && i > 0) {
-                        container.children[i - 1].focus();
-                    }
-                });
-                container.appendChild(input);
-            }
-        }
-
-        function getBoxValues(containerId) {
-            let str = "";
-            const inputs = document.getElementById(containerId).children;
-            for (let input of inputs) { str += input.value; }
-            return str;
-        }
-
-        function validateField1(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('receiptScreenshotImg').src = e.target.result;
-                    document.getElementById('receiptScreenshotContainer').style.display = 'block';
-                    document.getElementById('cloneArea').style.display = 'block';
-                    
-                    createBoxInputs("utr-boxes", 12, validateField2);
-                    document.getElementById('fg-txnid').classList.add('active-field');
-                }
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function validateField2() {
-            const utrVal = getBoxValues("utr-boxes");
-            document.getElementById('lblReceiptTxnId').innerText = utrVal || "-";
-            if (utrVal.length === 12) {
-                if (document.getElementById('wa-boxes').children.length === 0) {
-                    createBoxInputs("wa-boxes", 10, validateField3);
-                }
-                document.getElementById('fg-whatsapp').classList.add('active-field');
-            } else {
-                document.getElementById('fg-whatsapp').classList.remove('active-field');
-                document.getElementById('fg-email').classList.remove('active-field');
-                document.getElementById('fg-name').classList.remove('active-field');
-                document.getElementById('btnFinalSubmit').style.display = 'none';
-            }
-        }
-
-        function validateField3() {
-            const waVal = getBoxValues("wa-boxes");
-            document.getElementById('lblReceiptWhatsapp').innerText = waVal || "-";
-            if (waVal.length === 10) {
-                document.getElementById('fg-email').classList.add('active-field');
-            } else {
-                document.getElementById('fg-email').classList.remove('active-field');
-                document.getElementById('fg-name').classList.remove('active-field');
-                document.getElementById('btnFinalSubmit').style.display = 'none';
-            }
-        }
-
-        function validateField4() {
-            const val = document.getElementById('buyerEmail').value.trim();
-            document.getElementById('lblReceiptEmail').innerText = val || "-";
-            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-                document.getElementById('fg-name').classList.add('active-field');
-            } else {
-                document.getElementById('fg-name').classList.remove('active-field');
-                document.getElementById('btnFinalSubmit').style.display = 'none';
-            }
-        }
-
-        function validateField5() {
-            const val = document.getElementById('buyerName').value.trim();
-            document.getElementById('lblReceiptName').innerText = val || "-";
-            if (val.length >= 3) {
-                document.getElementById('btnFinalSubmit').style.display = 'block';
-            } else {
-                document.getElementById('btnFinalSubmit').style.display = 'none';
-            }
-        }
-
-        function generateReceiptAndGo() {
-            const name = document.getElementById('buyerName').value.trim();
-            const whatsapp = getBoxValues("wa-boxes");
-            const email = document.getElementById('buyerEmail').value.trim();
-            const txnId = getBoxValues("utr-boxes");
-            const total = document.getElementById('totalAmount').innerText;
-
-            const cloneArea = document.getElementById('cloneArea');
-            html2canvas(cloneArea, {scale: 2}).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `English_Spur_Invoice_${name}.png`;
-                link.href = canvas.toDataURL('image/png');
-                link.click(); 
-
-                const baseMessage = `*NEW TRANSACTION SYNC - DISPATCH SYSTEM*%0A%0A` +
-                                    `*Order No:* ${globalOrderNumber}%0A` +
-                                    `*Invoice Token:*%0A` +
-                                    `• Holder Name: ${name}%0A` +
-                                    `• WhatsApp: ${whatsapp}%0A` +
-                                    `• Email: ${email}%0A%0A` +
-                                    `• UTR ID: ${txnId}%0A` +
-                                    `• Amount Paid: ₹${total}%0A%0A` +
-                                    `_⚡ My payment image is saved in my download folder inside the receipt clone._`;
-
-                window.open(`https://wa.me/919875340842?text=${baseMessage}`, '_blank');
-            });
+            window.open(`https://wa.me/919875340842?text=${finalWAMessage}`, '_blank');
         }
     </script>
 </body>
