@@ -60,7 +60,7 @@
         .frozen-brand-banner { 
             width: 100%; 
             height: 140px; 
-            /* 👇 এখানে তোমার ইমেজ ফাইল বা ইউআরএলটি বসিয়ে দেবে */
+            /* 👇 এখানে তোমার ইমেজ ফাইল বা ইউআরএলটি বসিয়ে দেবে */
             background-image: url('ess2.png'); 
             background-size: contain; 
             background-position: center center; 
@@ -138,89 +138,6 @@
         }
         .header-buynow-btn:hover { background: #d97706; transform: translateY(-1px); }
 
-        /* ==========================================================================
-           🎯 নতুন প্রিমিয়াম ডিজিটাল স্টোর ইন্ট্রো সেকশন (New Launch Highlight Section)
-           ========================================================================== */
-        .digital-store-intro-section {
-            max-width: 1200px;
-            margin: 35px auto 10px auto;
-            padding: 0 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .new-launch-highlight-badge {
-            background: linear-gradient(135deg, #ff9800, #f57c00);
-            color: #ffffff;
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 6px 16px;
-            border-radius: 20px;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(245, 124, 0, 0.25);
-            margin-bottom: 15px; /* বক্সের ওপরে নির্দিষ্ট স্পেস */
-            display: inline-block;
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0% { transform: scale(1); box-shadow: 0 4px 10px rgba(245, 124, 0, 0.25); }
-            50% { transform: scale(1.03); box-shadow: 0 4px 15px rgba(245, 124, 0, 0.45); }
-            100% { transform: scale(1); box-shadow: 0 4px 10px rgba(245, 124, 0, 0.25); }
-        }
-
-        .digital-asset-store-box {
-            width: 100%;
-            background: linear-gradient(135deg, #f8fafc, #ffffff);
-            border: 2px dashed #2563eb;
-            border-radius: var(--radius-lg);
-            padding: 30px 20px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .digital-asset-store-box h2 {
-            color: #1e3a8a;
-            font-size: 22px;
-            font-weight: 800;
-            margin: 0 0 12px 0;
-            letter-spacing: 0.5px;
-        }
-
-        .digital-asset-store-box p {
-            color: #475569;
-            font-size: 15px;
-            max-width: 800px;
-            margin: 0 auto 22px auto;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
-        .visit-store-embedded-btn {
-            background: linear-gradient(135deg, #2563eb, #1e3a8a);
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            font-size: 15px;
-            font-weight: 800;
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-            transition: var(--transition);
-        }
-        .visit-store-embedded-btn:hover {
-            background: linear-gradient(135deg, #1e40af, #172554);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
-        }
-        
         /* ==========================================================================
            ③. সেকশন টাইটেল ও স্ক্রল র্যাপার
            ========================================================================== */
@@ -477,14 +394,6 @@
             .header-cart-btn { padding: 6px 10px; font-size: 11px; }
             .header-buynow-btn { padding: 6px 12px; font-size: 11px; }
 
-            /* 📱 মোবাইল স্টোর ইন্ট্রো এরিয়া অপ্টিমাইজেশন */
-            .digital-store-intro-section { margin: 20px auto 5px auto; padding: 0 15px; }
-            .new-launch-highlight-badge { font-size: 10px; padding: 4px 12px; margin-bottom: 10px; }
-            .digital-asset-store-box { padding: 20px 15px; border-width: 1.5px; }
-            .digital-asset-store-box h2 { font-size: 17px; margin-bottom: 8px; }
-            .digital-asset-store-box p { font-size: 12px; margin-bottom: 16px; }
-            .visit-store-embedded-btn { padding: 10px 22px; font-size: 12px; }
-            
             .section-title { font-size: 18px; margin: 25px 15px 5px 15px; }
             .product-card { flex: 0 0 215px; padding: 12px; border-radius: var(--radius-md); }
             .product-card h3 { font-size: 13px; height: 36px; margin-bottom: 8px; }
@@ -513,8 +422,6 @@
             </div>
         </div>
     </div>
-
-    
 
     <div class="section-title" id="first-store-section">📚 Premium E-Books</div>
     <div class="scroll-wrapper">
@@ -697,10 +604,6 @@
             if (direction === 'left') { container.scrollLeft -= 480; } else { container.scrollLeft += 480; }
         }
 
-        function scrollToFirstSection() {
-            document.getElementById('first-store-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
         function openPreview(url) { 
             document.getElementById('modalIframe').src = url; 
             document.getElementById('previewModal').style.display = 'flex'; 
@@ -747,12 +650,15 @@
             document.getElementById('checkoutSection').scrollIntoView({ behavior: 'smooth' });
         }
 
+        /* ⚡ লাইন ব্রেক ফিক্স করা আল্ট্রা-নিখুঁত হোয়াটসঅ্যাপ ফাংশন */
         function sendExpressOrderToWhatsApp() {
             const total = document.getElementById('qrPayableAmount').innerText;
             if (!total || total === "0") { alert("Your cart is empty!"); return; }
             
             let productNames = "";
-            selectedCart.forEach((item, i) => { productNames += `${i+1}. ${item.name} (₹${item.price})%0A`; });
+            selectedCart.forEach((item, i) => { 
+                productNames += `${i+1}. ${item.name} (₹${item.price})\n`; 
+            });
 
             const currentTimestamp = new Date();
             const dateString = currentTimestamp.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -761,16 +667,19 @@
 
             const liveOrderNo = "ESP-" + currentTimestamp.getFullYear() + (currentTimestamp.getMonth()+1) + currentTimestamp.getDate() + "-" + Math.floor(1000 + Math.random() * 9000);
 
-            const finalWAMessage = `*NEW DIGITAL STORE ORDER REQUEST*%0A%0A` +
-                                   `• *My Name:* [এখানে আপনার নাম লিখুন]%0A` +
-                                   `• *Purchase Date:* ${exactDateTime}%0A` +
-                                   `• *Order Number:* ${liveOrderNo}%0A%0A` +
-                                   `Hello *Sovan Kapri*, আমি আপনার অনলাইন স্টোর থেকে ডিজিটাল প্রোডাক্ট অর্ডার করতে চাই। আমার কার্ট / order ডিটেইলস নিচে দেওয়া হলো:%0A%0A` +
-                                   `*Selected Materials:*%0A${productNames}%0A` +
-                                   `*Total Price:* ₹${total}%0A%0A` +
-                                   `_⚡ Sovan kapri,উপরে আমার নাম লিখে দিলাম। এবার আমাকে পেমেন্ট করার জন্য আপনার সঠিক QR কোড বা UPI ID চ্যাটে পাঠান। আমি পেমেন্ট সম্পন্ন করে পেমেন্ট অ্যাপ থেকে সরাসরি এই চ্যাটেই স্ক্রিনশট শেয়ার করে দিচ্ছি। ভেরিফাই করে আমাকে ই-বুক বা মেটেরিয়ালের অ্যাক্সেস দিয়ে দিন!_`;
+            // 🎯 একদম নিচে নিচে লাইন ব্রেক সহ মেসেজ ফরম্যাট
+            const rawMessage = `*NEW DIGITAL STORE ORDER REQUEST*\n\n` +
+                               `• *My Name:* [এখানে আপনার নাম লিখুন]\n` +
+                               `• *Purchase Date:* ${exactDateTime}\n` +
+                               `• *Order Number:* ${liveOrderNo}\n\n` +
+                               `Hello *শোভন কাপড়ী*, আমি আপনার অনলাইন স্টোর থেকে ডিজিটাল প্রোডাক্ট অর্ডার করতে চাই। আমার কার্ট / order ডিটেইলস নিচে দেওয়া হলো:\n\n` +
+                               `*Selected Materials:*\n${productNames}\n` +
+                               `*Total Price:* ₹${total}\n\n` +
+                               `_⚡ শোভন কাপড়ী, উপরে আমার নাম লিখে দিলাম। এবার আমাকে পেমেন্ট করার জন্য আপনার সঠিক QR কোড বা UPI ID চ্যাটে পাঠান। আমি পেমেন্ট সম্পন্ন করে পেমেন্ট অ্যাপ থেকে সরাসরি এই চ্যাটেই স্ক্রিনশট শেয়ার করে দিচ্ছি। ভেরিফাই করে আমাকে ই-বুক বা মেটেরিয়ালের অ্যাক্সেস দিয়ে দিন!_`;
 
-            window.open(`https://wa.me/919875340842?text=${finalWAMessage}`, '_blank');
+            // নিরাপদ ব্রাউজার এনকোডিং যা লাইন ব্রেক নষ্ট করবে না
+            const finalLink = `https://wa.me/919875340842?text=${encodeURIComponent(rawMessage)}`;
+            window.open(finalLink, '_blank');
         }
     </script>
 </body>
