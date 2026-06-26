@@ -21,7 +21,7 @@
         :root {
             --primary-color: #0B192C;       /* Ultra dark base */
             --logo-blue: #2563EB;           /* Precise Royal Blue matching Logo script */
-            --logo-orange: #FF8A00;         /* Vibrant Orange matching Logo accent */
+            --logo-orange: #FF8A00;          /* Vibrant Orange matching Logo accent */
             --secondary-color: #1F316F;     /* Supporting Navy Blue */
             --text-light: #F8FAFC;
             --bg-light: #F4F6F9;
@@ -343,6 +343,58 @@
             transform: translateX(4px);
         }
 
+        /* NEW CUSTOM DIGITAL STORE SECTION STYLING */
+        .digital-store-section {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(255, 138, 0, 0.08) 100%);
+            border: 2.5px dashed var(--logo-blue);
+            border-radius: 20px;
+            padding: 30px 20px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .digital-store-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+        }
+        .store-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--logo-orange);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 6px rgba(255, 138, 0, 0.3);
+        }
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--logo-blue) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 15px;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+            transition: 0.3s;
+        }
+        .store-btn:hover {
+            background: linear-gradient(135deg, var(--logo-orange) 0%, #d47300 100%);
+            box-shadow: 0 6px 20px rgba(255, 138, 0, 0.45);
+            transform: scale(1.03);
+        }
+
         /* FEATURED COURSES SECTION STYLING */
         .section-title {
             font-size: 18px;
@@ -549,9 +601,9 @@
             
         .footer { 
             background-color: var(--footer-bg) !important; 
-            padding: 18px 20px !important;                 
+            padding: 18px 20px !important;                  
             margin-top: 60px; 
-            border-radius: 18px;                            
+            border-radius: 18px;                                     
             border: 1px solid rgba(255, 255, 255, 0.02);
             border-top: 3.5px solid var(--logo-blue) !important; 
             width: 100% !important;
@@ -559,18 +611,18 @@
             flex-direction: column !important;
             justify-content: center !important;
             align-items: center !important;
-            gap: 6px !important;                            
+            gap: 6px !important;                                    
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .footer-text-main {
             font-family: 'Inter', sans-serif !important;
-            font-size: 10.5px !important;                 
+            font-size: 10.5px !important;                  
             font-weight: 800 !important;
             letter-spacing: 0.3px !important;
-            color: #FFFFFF !important;                     
+            color: #FFFFFF !important;                      
             text-transform: uppercase;
-            text-align: center !important;                 
+            text-align: center !important;                  
             line-height: 1.5 !important;
         }
 
@@ -582,11 +634,11 @@
             text-transform: uppercase;
             letter-spacing: 0.5px !important;
             text-align: center !important;
-            white-space: nowrap;                            
+            white-space: nowrap;                                    
         }
 
         .creator-highlight {
-            color: var(--logo-orange) !important;                     
+            color: var(--logo-orange) !important;                      
             font-weight: 800 !important;
             padding-left: 4px;
         }
@@ -729,20 +781,16 @@
 <body>
 
     <div class="card">
-        <!-- Brand Logo Area -->
         <div class="logo-area">
             <img src="logo.png" alt="ENGLISH SPUR LOGO" loading="lazy" onerror="this.style.display='none';">
         </div>
         
-        <!-- "SINCE 2020" Badge -->
         <div class="badge animate-fade-up delay-1">SINCE 2020</div>
         
-        <!-- Newly Upgraded Vibrant & Bright Indian Flag Asset Positioned Perfectly Here -->
         <div class="indian-flag-gif-container">
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYndqc254NjJkaW4zYWtjZnA2cWI3aTRkMGFqYmNuNjlreDM2ZndrcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3TYuocrjKLFC9tuszs/giphy.gif" alt="Vibrant Indian National Flag Animation">
         </div>
         
-        <!-- Symmetrical Color Mapped Heading -->
         <h1 class="animate-fade-up delay-1">
             <span class="brand-blue">ENGLISH</span> <span class="brand-orange">SPUR</span>
         </h1>
@@ -783,13 +831,11 @@
                 
         <div class="tagline animate-fade-up delay-4">"YOUR GATEWAY TO CONFIDENT ENGLISH"</div>
 
-        <!-- NEW OPTIMIZED SQUARE 1:1 TESTIMONIAL GRID -->
         <div class="testimonial-section animate-fade-up delay-4">
             <h3 class="section-title" style="margin-top: 0; margin-bottom: 5px;">What Our Students Say</h3>
             <p style="font-size: 12px; color: #64748B; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;">Real success stories from English Spur learners</p>
             
             <div class="testimonial-grid">
-                <!-- Video 1: Rabeya Sultana -->
                 <div class="testimonial-card">
                     <div class="testimonial-name">Rabeya Sultana's Success Story</div>
                     <div class="testimonial-video-wrapper">
@@ -800,7 +846,6 @@
                     </div>
                 </div>
 
-                <!-- Video 2: Arnab Mondal -->
                 <div class="testimonial-card">
                     <div class="testimonial-name">Arnab Mondal's Experience</div>
                     <div class="testimonial-video-wrapper">
@@ -813,6 +858,17 @@
             </div>
 
             <a href="testimonials.html" class="view-all-link">View More Success Stories <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="digital-store-section animate-fade-up delay-4">
+            <div class="store-badge">New Launch</div>
+            <h3 class="section-title" style="margin-top: 0; margin-bottom: 8px; color: var(--secondary-color);">English Spur Digital Asset Store</h3>
+            <p style="font-size: 13px; color: #475569; font-weight: 600; max-width: 600px; margin: 0 auto 15px; line-height: 1.6;">
+                আমাদের স্পেশাল ই-বুক, স্টাডি মেটেরিয়ালস এবং এক্সক্লুসিভ ডিজিটাল লার্নিং রিসোর্স সরাসরি ডাউনলোড করে নিজের সুবিধামতো ইংরেজি শিখুন।
+            </p>
+            <a href="Digital Store.html" class="store-btn">
+                <i class="fa-solid fa-basket-shopping"></i> Visit Our Digital Store
+            </a>
         </div>
 
         <h3 class="section-title animate-fade-up delay-4">Featured Courses</h3>
@@ -918,14 +974,13 @@
                 &copy; 2026 ENGLISH SPUR ONLINE ENGLISH TRAINING ACADEMY.<br>ALL RIGHTS RESERVED.
             </div>
             <div class="footer-author-line">
-                CREATED BY: <span class="creator-highlight">SOVAN KAPRI</span>
+                CREATED BY: <span class="creator-highlight">শোভনরূপ কাপড়ী</span>
             </div>
         </div>
     </div>
 
     <a href="https://wa.me/919875340842?text=Hi!%20My%20name%20is%20_____.%20I%20want%20to%20know%20more%20about%20this%20institute." target="_blank" class="floating-contact"><i class="fa-brands fa-whatsapp"></i></a>
 
-    <!-- Official YouTube API Script Load -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         function loadYouTubeAPI(divId, videoId, posterElement) {
