@@ -3,308 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FREE DEMO CLASS - ENGLISH SPUR</title>
+    <title>FREE Demo Class Portal - English Spur</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        /* Global Reset & Typography */
+        /* Core Reset & Typography Blueprint */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-transform: uppercase; /* Forces global uppercase text alignment */
         }
 
         body {
-            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            background: linear-gradient(135deg, #e2e8f0, #e2e8f0);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 15px;
+            padding: 20px;
         }
 
-        /* Portal Main Container - PERFECTLY CENTERED WITH FLUID BOUNDS */
-        .portal-container {
+        /* Form Main Box Shell */
+        .demo-container {
             background: #ffffff;
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
-            padding: 35px;
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             position: relative;
-            word-wrap: break-word;
-            margin: 0 auto;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
         }
 
-        /* Professional Letterhead Style Header with Logo Asset */
+        /* Corporate Identity Top Header */
         .brand-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
             margin-bottom: 25px;
-            border-bottom: 2px solid #1e3a8a;
-            padding-bottom: 18px;
-            gap: 5px;
+            border-bottom: 3px double #1e3a8a;
+            padding-bottom: 15px;
+            width: 100%;
+            overflow: hidden;
         }
 
-        /* Style for the Brand Logo */
-        .brand-header img {
-            width: 65px;
-            height: auto;
-            margin-bottom: 4px;
-        }
-
-        /* Institute name locked seamlessly on a single horizontal line */
         .brand-header h1 {
             color: #1e3a8a;
-            font-size: 36px;
-            font-weight: 900;
-            letter-spacing: 1.5px;
-            line-height: 1;
-            white-space: nowrap;
-            width: 100%;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         .brand-header .academy-sub {
             color: #2563eb;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-top: 3px;
-            margin-bottom: 4px;
-        }
-
-        .brand-header .address-line {
-            color: #475569;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-
-        .brand-header .contact-line {
-            color: #475569;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-
-        .brand-header .email-line {
-            color: #475569;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: lowercase !important; /* Overrides global uppercase constraint */
-        }
-
-        /* Security Gateway Layout Section */
-        #gateway-screen {
-            text-align: center;
-            border-top: 4px solid #2563eb;
-            padding-top: 15px;
-        }
-
-        .gateway-title {
-            font-size: 16px;
-            color: #0f172a;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .scam-warning {
-            background-color: #eff6ff;
-            border: 1px solid #bfdbfe;
-            color: #1e40af;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .brand-header .contact-info {
+            color: #475569;
+            font-size: 13px;
             line-height: 1.5;
         }
 
-        /* Main Registration Form Screen */
-        #admissionForm {
-            display: none;
-        }
-
-        /* Form Title Row */
-        .form-title-row {
-            background-color: #f1f5f9;
-            padding: 14px 16px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            border: 1px solid #e2e8f0;
+        /* Badge Callout Component */
+        .demo-badge-panel {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 15px;
             text-align: center;
+            margin-bottom: 20px;
         }
 
-        .form-title-row h2 {
+        .demo-badge-panel h2 {
             color: #1e3a8a;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            width: 100%;
-        }
-
-        .form-meta-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            gap: 10px;
-        }
-
-        .top-meta-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 12px;
-            border-radius: 4px;
-            white-space: nowrap;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: inline-block;
+            margin-bottom: 10px;
         }
 
-        .form-id-box {
-            color: #1e40af;
-            background: #dbeafe;
-            border: 1px solid #93c5fd;
-            text-align: center;
+        .meta-flex-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .phone-meta-box {
-            color: #047857;
-            background: #d1fae5;
-            border: 1px solid #6ee7b7;
-            text-align: center;
+        .meta-pill {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 4px;
+        }
+
+        .pill-id {
+            color: #dc2626;
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+        }
+
+        .pill-date {
+            color: #16a34a;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
         }
 
         .section-title {
             color: #2563eb;
-            font-size: 13px;
-            font-weight: 700;
-            margin: 25px 0 12px 0;
-            border-bottom: 1px solid #cbd5e1;
-            padding-bottom: 6px;
-            text-align: center;
-            width: 100%;
-            letter-spacing: 1px;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+            text-transform: uppercase;
         }
 
+        /* Grid Architecture layout definitions */
         .form-grid {
-            display: block !important;
-            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
         }
 
-        /* Structural Address Grid Component Row */
-        .form-row {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-            margin-bottom: 12px;
+        .full-width {
+            grid-column: span 2;
         }
 
-        /* Input Fields Box Layout Context Elements */
         .form-group {
-            display: block; 
-            width: 100%;
-            padding: 0 6px;
-            margin-bottom: 12px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5px;
             position: relative;
         }
 
-        .form-row .form-group {
-            display: table-cell !important;
-            vertical-align: top;
-            width: 50%;
-            margin-bottom: 0;
-        }
-
         .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: #475569;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
             margin-bottom: 6px;
-            letter-spacing: 0.3px;
         }
 
         .form-group input, 
         .form-group select {
-            width: 100%;
-            padding: 12px 10px; 
+            padding: 12px;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 14px;
             color: #0f172a;
             background-color: #f8fafc;
             outline: none;
             transition: all 0.3s ease;
-            text-align: center;
-            text-align-last: center;
-            text-transform: uppercase; 
-            font-weight: 600;
-            line-height: 1.4;
+            width: 100%;
         }
 
-        /* Live Input Box forces lowercase pattern on user typing natively */
-        .form-group input[type="email"] {
-            text-transform: lowercase !important;
-            font-size: 13px !important;
-            font-weight: 600 !important;
-            letter-spacing: 0.5px !important;
+        .conditional-wrapper {
+            display: none;
+            margin-top: 5px;
+            width: 100%;
         }
 
-        /* Radio Group Container Layout instead of Select dropdown */
-        .radio-preference-group {
+        .uppercase-input { text-transform: uppercase; }
+        .lowercase-input { text-transform: lowercase; }
+
+        /* Preference Selection Card Items */
+        .preference-card-stack {
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 100%;
-            padding: 4px 6px;
-            text-align: left;
         }
 
-        .radio-option-row {
+        .radio-card-option {
             display: flex;
             align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
-            padding: 12px;
             border-radius: 6px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+            transition: background-color 0.2s;
         }
 
-        .radio-option-row:hover {
-            border-color: #2563eb;
-            background-color: #f1f5f9;
-        }
-
-        .radio-option-row input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            margin-top: 1px;
+        .radio-card-option input {
+            width: auto;
+            margin-top: 3px;
             cursor: pointer;
-            accent-color: #2563eb;
-            flex-shrink: 0;
         }
 
-        .radio-text-label {
-            font-size: 11px;
-            font-weight: 700;
+        /* Snapshot Text Layer Controls */
+        .snapshot-text-view {
+            display: none;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
             color: #0f172a;
-            line-height: 1.4;
-            cursor: pointer;
-            text-transform: uppercase;
+            background-color: #f8fafc;
+            word-break: break-all;
+            white-space: pre-wrap;
+            min-height: 45px;
+            font-weight: 600;
+        }
+
+        /* High-Fidelity Canvas Isolation Constraints */
+        .snapshot-mode {
+            width: 650px !important;
+            max-width: 650px !important;
+            padding: 40px !important;
+        }
+
+        .snapshot-mode .snapshot-text-view { display: block !important; }
+        .snapshot-mode input, 
+        .snapshot-mode select, 
+        .snapshot-mode .preference-card-stack { display: none !important; }
+
+        .snapshot-mode .conditional-wrapper:not(.active-snapshot-field) .snapshot-text-view {
+            display: none !important;
         }
 
         .form-group input:focus, 
@@ -314,449 +238,276 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
-        #occupation-specify-group {
-            display: none;
-            margin-bottom: 12px;
-        }
-
-        .consent-box-wrapper {
-            background-color: #fffbeb;
-            border: 1px solid #fef3c7;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 6px 12px 6px;
-            text-align: left;
-        }
-
-        .consent-flex-row {
-            display: table;
-            width: 100%;
-        }
-
-        .consent-checkbox-cell {
-            display: table-cell;
-            vertical-align: top;
-            width: 30px;
-            padding-top: 2px;
-        }
-
-        .consent-text-cell {
-            display: table-cell;
-            vertical-align: top;
-            color: #b45309;
-            font-size: 11px;
-            font-weight: 700;
-            line-height: 1.5;
-            letter-spacing: 0.3px;
-        }
-
-        .consent-checkbox-cell input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #d97706;
-        }
-
+        /* Call To Action Buttons Elements */
         .btn-container {
-            margin-top: 20px;
+            margin-top: 25px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            align-items: center;
-            width: 100%;
         }
 
-        .action-btn {
+        .submit-btn {
             border: none;
             padding: 14px 20px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             border-radius: 6px;
             cursor: pointer;
             width: 100%;
             transition: background-color 0.3s ease, transform 0.1s ease;
             text-align: center;
-            letter-spacing: 0.5px;
-        }
-
-        .action-btn:active {
-            transform: scale(0.99);
-        }
-
-        .submit-btn {
-            background-color: #2563eb;
+            background-color: #1e3a8a;
             color: #ffffff;
-            border: 1px solid #2563eb;
-        }
-
-        .submit-btn:hover {
-            background-color: #1d4ed8;
-            border-color: #1d4ed8;
-        }
-
-        .gateway-btn {
-            background-color: #2563eb;
-            color: #ffffff;
-            margin-top: 10px;
             display: block;
-            width: 100%;
         }
 
-        .gateway-btn:hover {
-            background-color: #1d4ed8;
-        }
+        .submit-btn:hover { background-color: #1d4ed8; }
+        .submit-btn:active { transform: scale(0.99); }
 
         .guide-text {
-            font-size: 11px;
-            color: #64748b;
-            font-weight: 600;
+            font-size: 13px;
+            color: #475569;
+            font-weight: 500;
             line-height: 1.5;
-            text-align: center;
-            padding: 0 10px;
-            letter-spacing: 0.2px;
+            padding-left: 8px;
+            border-left: 3px solid #1e3a8a;
+            text-align: left;
         }
 
-        /* Dynamic Responsive Overrides for Mobile Badges */
-        @media (max-width: 480px) {
-            .form-meta-container {
-                flex-direction: column !important;
-                gap: 8px !important;
-            }
-            .top-meta-badge {
-                width: 100% !important;
-                text-align: center !important;
-            }
-            .form-row {
-                display: block !important;
-                width: 100%;
-            }
-            .form-row .form-group {
-                document.getElementById('admissionForm').style.display = 'block';
-                display: block !important;
-                width: 100% !important;
-                padding: 0 6px !important;
-                margin-bottom: 12px !important;
-            }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .demo-container { padding: 25px 20px; }
+            .meta-flex-row { flex-direction: column; align-items: center; gap: 6px; }
+            .brand-header h1 { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
-<div class="portal-container" id="master-capture-box">
+<div class="demo-container" id="demo-registration-area">
     
+    <!-- English Spur Official Institutional Header Layout -->
     <div class="brand-header">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWQAAAEsCAYAAAD0EMkhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHV8AAB1fAThpIDAAAIr8SURBVHhe7b0HgJ1VmT7+fOXeOyU9ISQEQhIg9N4ERKpKsSNiQRSxr2UX3f3rru66q/tzd92i7lqxrYhlRUUQEEGQolKkFwmdBEhIrzNz79f+z/Oee5PJzL3JDGl3hvMkZ+5Xznf6ec573tOCgoCHh4eHxw5HWP/18PDw8NjB8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRJvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4ndEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4dEm8ITs4eHh0SbwhOzh4eHRvCE7OHh4f/9O+bE/yXwSjF8FmNojHw9IqKjYcEGyP19UbyVwPDZpXwV/+jW3qH2mFvX81G9vBvPzP/S6N6kSjBwNDy0Bf67RclE0P+Uun/E0X7G7/wveW9H45oZt9y9I0o71E06pS7bV+Ew0SDoYm7wNNoX0mE800Uj6QpGlvDEnp1D/mHjU0B9IqSffhD38gSOmEfeqOkqWbI+6+H0W74O+gB9r7/XAbjGgUepf27bH98BKyx+jEAIp0P3w/mGTM0PPrO2pS9D6N/G/Y09mD/FfDq6I/r/pPjRUDM+I3F/827fA31F75b7jpvOmWfH67r4d+4Xv697mfn5//W3rT/+y9v5DbyjX5W9K+3AasHl0O7I7pE+97/bO6y6/gP+N5pTsh9/0uH7S6K/76e2I0un3fP7FhSD4P6v9O9eC+Y/vAE7LHiAApWUXvY0mEkU3yG/u0wN/InOshv7FPGf8Nqf/k6U/D/9Z62vR3Zk9wT+mK2TvlI1XkNoLq9N3zZt6mXto+8b43FvUeNDI8W6V8Yg780b91Xv275bCjofpWf6vI0Fp8Vv9sXfGvYVep/uC81VvN0X68I1W/8b4feYh0Hl2uDbyGvdVd0Tvv9XCHf46NwhPyyALpDgmZunb7v/rDoBGlwWpAt6hR/X/Rz9N37tWvS0n+B8fWcKsk90bZ/I2Y8E9p6N9GZqPh88Z7gW8pXb+RvK8r8L/V/3SHe3b7n/X9Y1vBy6SHePjV7wF/+mYv9p1vG9j5B/Z6bCu4O6E/W3p/pDshNzR8LshA/fPz07Y5XqreG7I94Ql5ZIFU6g/pWlI9XAnI7G9w7C3/A37rRjXG8p79m9pZ51aR20A7Y+0g8bU/uInxre+b2YmOf9EepH/u3/BvDdfYqX+Gf637uclX0z3v4N/xUfVwKbg7bUOfGq7t7Yg6v64pPCEPDy46D0p37q0S3SptG+O3P9TzD/w7/uom9zW87/V0V/O4R6uB1fE0fD08wBPyyALlC9K90z8b/8Gxt/wP+K0b1RjLe/ZvamfWUztrbV38p+bZ9bX9m9nZ8C/ag7R/7t/wbyZfTeeGf8f7gX+9+7nJU8PnB6vj69Hq+Hq0OjwhjygIDB2jAUnFp6T60R8wEaXJakB/wETUnGv/L/p5+m6W68/O7H8a/veObeFWSe6Nso9m3p/pDshNzREpYgY0jZ+wH/REvInw9vA3/I3gSeEJ+f8H2kO/mreBlI6YgX/AR9ScY8NfeT6Nf6/7ecre6v7v6LreBu7mP69Xw8PDo0X/DxhT7WqD8R07AAAAAElFTkSuQmCC" alt="ENGLISH SPUR LOGO">
-        <h1>ENGLISH SPUR</h1>
-        <div class="academy-sub">ONLINE ENGLISH TRAINING ACADEMY</div>
-        <div class="address-line">KANAIPUR, BANTUL, BAGNAN, HOWRAH - 711312</div>
-        <div class="contact-line">CONTACT: 9875340842</div>
-        <div class="email-line">email: englishspur2020@gmail.com</div>
+        <h1>English Spur</h1>
+        <div class="academy-sub">Online English Training Academy</div>
+        <div class="contact-info">
+            Kanaipur, Bantul, Bagnan, Howrah - 711312<br>
+            <div style="margin-top: 4px;"><strong>Contact:</strong> 9875340842 | <strong>E-mail:</strong> englishspur2020@gmail.com</div>
+        </div>
     </div>
 
-    <div id="gateway-screen">
-        <div class="gateway-title">Enter your real phone number to get to the free demo class page.</div>
+    <form id="demoClassForm">
         
-        <div class="scam-warning">
-            💡 <strong>DEMO CLASS REQUISITION NOTE:</strong><br>
-            To preserve genuine interaction slots for our interactive sessions, fake or sequential inputs are auto-blocked. Please submit your active WhatsApp number so we can easily share the live class link and schedules with you.
-        </div>
-
-        <div class="form-group" style="padding: 0;">
-            <label for="gateway-phone">Valid WhatsApp Number (10 Digits) *</label>
-            <input type="tel" id="gateway-phone" placeholder="E.G., 9876XXXXXX" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-        </div>
-        
-        <button type="button" class="action-btn gateway-btn" onclick="verifyGatewayAccess()">Verify & Request Free Access</button>
-    </div>
-
-    <form id="admissionForm">
-        <div class="form-title-row">
-            <h2>FREE DEMO CLASS REGISTRATION FORM</h2>
-            <div class="form-meta-container">
-                <div class="top-meta-badge form-id-box"><span id="dynamicFormId">GENERATING ID...</span></div>
-                <div class="top-meta-badge phone-meta-box">WHATSAPP NO: <span id="dynamicPhoneMeta">9876XXXXXX</span></div>
+        <!-- Registration Badge Control Room -->
+        <div class="demo-badge-panel">
+            <h2>Free Demo Class Registration Form</h2>
+            <div class="meta-flex-row">
+                <div class="meta-pill pill-id">Ticket No: <span id="dynamicFormId">Generating...</span></div>
+                <div class="meta-pill pill-date">Registration Date: <span id="dynamicRegDate">Locking...</span></div>
             </div>
         </div>
         
         <div class="section-title">Student Profile Details</div>
         
         <div class="form-grid">
-            <div class="form-group">
+            <div class="form-group full-width">
                 <label for="full-name">Full Name *</label>
-                <input type="text" id="full-name" name="full_name" placeholder="ENTER YOUR FULL NAME" required>
-            </div>
-
-            <div class="form-group" id="email-parent-container">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="student@example.com" oninput="this.value = this.value.toLowerCase();" required>
+                <input type="text" id="full-name" class="uppercase-input" placeholder="ENTER YOUR FULL NAME" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-full-name"></div>
             </div>
 
             <div class="form-group">
-                <label for="profession">What do you currently do? (Occupation) *</label>
-                <select id="profession" name="profession" onchange="toggleOccupationSpecifyField(this.value);" required>
-                    <option value="" disabled selected>SELECT YOUR OCCUPATION</option>
-                    <option value="SCHOOL STUDENT">SCHOOL STUDENT</option>
-                    <option value="COLLEGE / UNIVERSITY STUDENT">COLLEGE / UNIVERSITY STUDENT</option>
-                    <option value="JOB SEEKER / ASPIRANT">JOB SEEKER / ASPIRANT</option>
-                    <option value="JOB HOLDER / PROFESSIONAL">JOB HOLDER / PROFESSIONAL</option>
-                    <option value="BUSINESS OWNER / SELF-EMPLOYED">BUSINESS OWNER / SELF-EMPLOYED</option>
-                    <option value="HOUSEWIFE / HOMEMAKER">HOUSEWIFE / HOMEMAKER</option>
-                    <option value="OTHER">OTHER</option>
-                </select>
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" class="lowercase-input" placeholder="student@example.com" oninput="this.value = this.value.toLowerCase();" required>
+                <div class="snapshot-text-view" id="view-email" style="text-transform: lowercase;"></div>
             </div>
 
-            <div class="form-group" id="occupation-specify-group">
-                <label for="profession-specify">Specify Your Occupation *</label>
-                <input type="text" id="profession-specify" name="profession_specify" placeholder="SPECIFY YOUR OCCUPATION DETAILS">
+            <div class="form-group">
+                <label for="phone">WhatsApp Mobile Number *</label>
+                <input type="tel" id="phone" placeholder="10 DIGIT CONTACT NUMBER" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                <div class="snapshot-text-view" id="view-phone"></div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="occupation">What do you currently do? (Occupation) *</label>
+                <select id="occupation" onchange="toggleConditionalOccupation(this.value)" required>
+                    <option value="" disabled selected>Select your current profile</option>
+                    <option value="STUDENT (SCHOOL)">STUDENT (SCHOOL)</option>
+                    <option value="STUDENT (COLLEGE / UNIVERSITY)">STUDENT (COLLEGE / UNIVERSITY)</option>
+                    <option value="JOB SEEKER">JOB SEEKER</option>
+                    <option value="WORKING PROFESSIONAL">WORKING PROFESSIONAL</option>
+                    <option value="BUSINESS OWNER">BUSINESS OWNER</option>
+                    <option value="HOUSEWIFE">HOUSEWIFE</option>
+                    <option value="OTHER">OTHER / OPP profession</option>
+                </select>
+                <div class="snapshot-text-view" id="view-occupation"></div>
+                
+                <div class="conditional-wrapper" id="other-occupation-wrapper">
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label for="other-occupation-spec">Specify Occupation (পেশা উল্লেখ করুন) *</label>
+                        <input type="text" id="other-occupation-spec" class="uppercase-input" placeholder="PLEASE SPECIFY YOUR PROFESSION">
+                        <div class="snapshot-text-view" id="view-other-occupation-spec"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="section-title">Demo Session Preferences</div>
         
-        <div class="form-group">
-            <label style="margin-bottom: 10px;">Primary Reason for Joining the Free Demo *</label>
-            <div class="radio-preference-group">
-                <label class="radio-option-row">
-                    <input type="radio" name="demo_reason" value="WANT TO EVALUATE SPOKEN ENGLISH INTERACTIVE TRAINING STYLE" required>
-                    <span class="radio-text-label">WANT TO EVALUATE SPOKEN ENGLISH INTERACTIVE TRAINING STYLE</span>
-                </label>
-                <label class="radio-option-row">
-                    <input type="radio" name="demo_reason" value="WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM">
-                    <span class="radio-text-label">WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM</span>
-                </label>
-                <label class="radio-option-row">
-                    <input type="radio" name="demo_reason" value="WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY">
-                    <span class="radio-text-label">WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY</span>
-                </label>
-                <label class="radio-option-row">
-                    <input type="radio" name="demo_reason" value="SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT">
-                    <span class="radio-text-label">SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT</span>
-                </label>
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label>Primary Reason for joining the Free Demo? *</label>
+                <div class="preference-card-stack">
+                    <label class="radio-card-option">
+                        <input type="radio" name="reason" value="WANT TO EVALUATING INTERACTIVE SPEAKING TRAINING STYLE" required> WANT TO EVALUATE SPOKEN ENGLISH INTERACTIVE TRAINING STYLE
+                    </label>
+                    <label class="radio-card-option">
+                        <input type="radio" name="reason" value="WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM"> WANT TO UNDERSTAND ENGLISH GRAMMAR & FOUNDATION CURRICULUM
+                    </label>
+                    <label class="radio-card-option">
+                        <input type="radio" name="reason" value="WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY"> WANT TO EXPERIENCE LIVE ONLINE CLASS TEACHING QUALITY
+                    </label>
+                    <label class="radio-card-option">
+                        <input type="radio" name="reason" value="SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT"> SEEKING PROFESSIONAL CAREER COUNSELING FOR ENGLISH DEVELOPMENT
+                    </label>
+                </div>
+                <div class="snapshot-text-view" id="view-reason"></div>
             </div>
         </div>
 
         <div class="section-title">Residential Address Details</div>
         
         <div class="form-grid">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="addr-vill">Vill / City *</label>
-                    <input type="text" id="addr-vill" name="addr_vill" placeholder="VILLAGE OR CITY NAME" required>
-                </div>
-                <div class="form-group">
-                    <label for="addr-post">Post Office *</label>
-                    <input type="text" id="addr-post" name="addr_post" placeholder="P.O." required>
-                </div>
+            <div class="form-group">
+                <label for="addr-village">Vill / City *</label>
+                <input type="text" id="addr-village" class="uppercase-input" placeholder="VILLAGE / CITY NAME" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-village"></div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="addr-ps">Police Station *</label>
-                    <input type="text" id="addr-ps" name="addr_ps" placeholder="P.S." required>
-                </div>
-                <div class="form-group">
-                    <label for="addr-dist">District *</label>
-                    <input type="text" id="addr-dist" name="addr_dist" placeholder="DISTRICT NAME" required>
-                </div>
+            <div class="form-group">
+                <label for="addr-po">Post Office *</label>
+                <input type="text" id="addr-po" class="uppercase-input" placeholder="POST OFFICE" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-po"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="addr-ps">Police Station *</label>
+                <input type="text" id="addr-ps" class="uppercase-input" placeholder="POLICE STATION" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-ps"></div>
             </div>
 
-            <div class="form-group" style="max-width: 250px; margin: 0 auto 12px auto;">
+            <div class="form-group">
+                <label for="addr-dist">District *</label>
+                <input type="text" id="addr-dist" class="uppercase-input" placeholder="DISTRICT" oninput="this.value = this.value.toUpperCase();" required>
+                <div class="snapshot-text-view" id="view-addr-dist"></div>
+            </div>
+
+            <div class="form-group">
                 <label for="addr-pin">Pin Code *</label>
-                <input type="text" id="addr-pin" name="addr_pin" placeholder="6-DIGIT" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
-            </div>
-        </div>
-
-        <div class="consent-box-wrapper">
-            <div class="consent-flex-row">
-                <div class="consent-checkbox-cell">
-                    <input type="checkbox" id="attendance-consent" name="attendance_consent" required>
-                </div>
-                <div class="consent-text-cell">
-                    I AGREE THAT THE ACADEMY WILL NOTIFY ME OF THE FREE LIVE DEMO CLASS DATE AND TIME A DAY IN ADVANCE VIA EMAIL OR WHATSAPP. I AM BOUND TO ATTEND THE LIVE INTERACTIVE SESSION EXACTLY AT THAT ASSIGNED SLOT. IF I FAIL TO ATTEND, MY REGISTRATION WILL BE VOIDED, AND I WILL HAVE TO RE-SUBMIT A FRESH APPLICATION FORM TO BE CONSIDERED.
-                </div>
+                <input type="text" id="addr-pin" placeholder="6 DIGIT PIN" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                <div class="snapshot-text-view" id="view-addr-pin"></div>
             </div>
         </div>
 
         <div class="btn-container" id="action-buttons-wrapper">
-            <button type="submit" class="action-btn submit-btn" id="submitBtn">Submit & Send Form via WhatsApp</button>
-            <div class="guide-text">ℹ️ Submission compiles a secure registration card snapshot on your machine to forward to our academic desk coordinates.</div>
+            <button type="submit" class="submit-btn" id="submitBtn">Submit & Secure Demo Ticket</button>
+            <div class="guide-text">ℹ️ Submission compiles a world-class HD verification document. Kindly forward the downloaded image to <strong>9875340842 via WhatsApp</strong> to confirm your slot allocation.</div>
         </div>
     </form>
 </div>
 
 <script>
     let officialFormId = "";
-    let verifiedPhoneNumber = "";
 
-    function generateUniqueFormId() {
+    // Automatic secure configuration initialization
+    window.addEventListener('DOMContentLoaded', () => {
         const now = new Date();
         officialFormId = `ES-DEMO-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}${String(now.getSeconds()).padStart(2, '0')}`;
         document.getElementById('dynamicFormId').innerText = officialFormId;
-    }
-
-    function verifyGatewayAccess() {
-        const inputPhone = document.getElementById('gateway-phone').value.trim();
-        const errorMessage = "Wrong mobile number detected. Enter your valid mobile number.";
-
-        if (inputPhone.length !== 10) { alert(errorMessage); return; }
-
-        const firstDigit = inputPhone[0];
-        if (!['6', '7', '8', '9'].includes(firstDigit)) { alert(errorMessage); return; }
-
-        if (/^(.)\1{9}$/.test(inputPhone)) { alert(errorMessage); return; }
-
-        if (inputPhone === "1234567890" || inputPhone === "0123456789" || inputPhone === "9876543210") {
-            alert(errorMessage);
-            return;
-        }
-
-        verifiedPhoneNumber = inputPhone;
-        document.getElementById('dynamicPhoneMeta').innerText = verifiedPhoneNumber;
         
-        document.getElementById('gateway-screen').style.display = 'none';
-        document.getElementById('admissionForm').style.display = 'block';
-        generateUniqueFormId();
-    }
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        document.getElementById('dynamicRegDate').innerText = `${day}-${month}-${year}`;
+    });
 
-    function toggleOccupationSpecifyField(selectedValue) {
-        const specifyGroup = document.getElementById('occupation-specify-group');
-        const specifyInput = document.getElementById('profession-specify');
+    function toggleConditionalOccupation(value) {
+        const otherWrapper = document.getElementById('other-occupation-wrapper');
+        const otherInput = document.getElementById('other-occupation-spec');
         
-        if (selectedValue === "OTHER") {
-            specifyGroup.style.display = "block";
-            specifyInput.setAttribute("required", "required");
+        if (value === "OTHER") {
+            otherWrapper.style.display = "block";
+            otherInput.setAttribute("required", "required");
         } else {
-            specifyGroup.style.display = "none";
-            specifyInput.removeAttribute("required");
-            specifyInput.value = "";
+            otherWrapper.style.display = "none";
+            otherInput.removeAttribute("required");
+            otherInput.value = "";
         }
     }
 
-    function validateInputText(name, vill, post, ps, dist, specifyProf) {
-        const checkGibberish = (text, fieldName) => {
-            const trimmed = text.trim();
-            if (trimmed.length < 3) return true;
-            
-            if (/^[A-Za-z\s,.-]+$/.test(trimmed)) {
-                const words = trimmed.toLowerCase().split(/[\s,.-]+/);
-                for (let word of words) {
-                    if (word.length >= 5 && !/[aeiouy]/.test(word)) {
-                        alert(`Error: Invalid spelling pattern in ${fieldName}!`);
-                        return false;
-                    }
-                    if (word.length >= 6 && /[^aeiouy]{5,}/.test(word)) {
-                        alert(`Error: Keyboard mashing detected in ${fieldName}. Please enter genuine details.`);
-                        return false;
-                    }
-                }
-            }
-            return true;
-        };
-
-        if (!checkGibberish(name, "Full Name")) return false;
-        if (!checkGibberish(vill, "Vill / City")) return false;
-        if (!checkGibberish(post, "Post Office")) return false;
-        if (!checkGibberish(ps, "Police Station")) return false;
-        if (!checkGibberish(dist, "District")) return false;
-        if (specifyProf && !checkGibberish(specifyProf, "Custom Occupation Specifier")) return false;
-        return true;
-    }
-
-    document.getElementById('full-name').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
-    document.getElementById('addr-vill').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
-    document.getElementById('addr-post').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
-    document.getElementById('addr-ps').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
-    document.getElementById('addr-dist').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
-    document.getElementById('profession-specify').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
-
-    document.getElementById('admissionForm').addEventListener('submit', function(e) {
+    document.getElementById('demoClassForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const consentChecked = document.getElementById('attendance-consent').checked;
-        if(!consentChecked) {
-            alert("Error: You must accept the Live Demo Attendance terms to proceed!");
-            return;
+        const fullName = document.getElementById('full-name').value.toUpperCase();
+        const email = document.getElementById('email').value.toLowerCase();
+        const phone = document.getElementById('phone').value;
+        const occupationSelect = document.getElementById('occupation').value;
+        const village = document.getElementById('addr-village').value.toUpperCase();
+        const po = document.getElementById('addr-po').value.toUpperCase();
+        const ps = document.getElementById('addr-ps').value.toUpperCase();
+        const dist = document.getElementById('addr-dist').value.toUpperCase();
+        const pin = document.getElementById('addr-pin').value;
+
+        // Conditional Verification validation logic check
+        if (occupationSelect === "OTHER") {
+            const otherSpec = document.getElementById('other-occupation-spec').value.trim();
+            if(otherSpec.length < 3) {
+                alert("Please specify your current occupation profile.");
+                return;
+            }
+            document.getElementById('view-other-occupation-spec').innerText = otherSpec.toUpperCase();
+            document.getElementById('other-occupation-wrapper').classList.add('active-snapshot-field');
+        } else {
+            document.getElementById('other-occupation-wrapper').classList.remove('active-snapshot-field');
         }
 
-        const checkedReasonInput = document.querySelector('input[name="demo_reason"]:checked');
-        if (!checkedReasonInput) {
-            alert("Error: Please select a Primary Reason for joining the free demo class.");
-            return;
-        }
-        const selectedReason = checkedReasonInput.value;
-
-        const fullName = document.getElementById('full-name').value.trim().toUpperCase();
-        const vill = document.getElementById('addr-vill').value.trim().toUpperCase();
-        const post = document.getElementById('addr-post').value.trim().toUpperCase();
-        const ps = document.getElementById('addr-ps').value.trim().toUpperCase();
-        const dist = document.getElementById('addr-dist').value.trim().toUpperCase();
-        const pin = document.getElementById('addr-pin').value.trim();
+        // Deep copy live nodes string into snapshot layout engine layers
+        document.getElementById('view-full-name').innerText = fullName;
+        document.getElementById('view-email').innerText = email;
+        document.getElementById('view-phone').innerText = phone;
+        document.getElementById('view-occupation').innerText = occupationSelect;
         
-        const profession = document.getElementById('profession').value;
-        const specifyProfField = document.getElementById('profession-specify');
-        const specifyProf = specifyProfField.value.trim().toUpperCase();
+        const checkedReason = document.querySelector('input[name="reason"]:checked');
+        document.getElementById('view-reason').innerText = checkedReason ? checkedReason.value : '';
 
-        if (!validateInputText(fullName, vill, post, ps, dist, (profession === "OTHER" ? specifyProf : ""))) return;
-        if (pin.length !== 6) { alert("Error: Pin Code must be exactly 6 digits!"); return; }
+        document.getElementById('view-addr-village').innerText = village;
+        document.getElementById('view-addr-po').innerText = po;
+        document.getElementById('view-addr-ps').innerText = ps;
+        document.getElementById('view-addr-dist').innerText = dist;
+        document.getElementById('view-addr-pin').innerText = pin;
 
-        const emailInput = document.getElementById('email');
-        const rawEmail = emailInput.value.trim().toLowerCase();
-
-        const element = document.getElementById('master-capture-box');
+        const element = document.getElementById('demo-registration-area');
         const buttonsWrapper = document.getElementById('action-buttons-wrapper');
-        const emailParent = document.getElementById('email-parent-container');
         
+        element.classList.add('snapshot-mode');
         buttonsWrapper.style.display = 'none';
 
-        // THE LOWERCASE CLONE OVERLAY MASTER FIX FOR UNDER_SCORE
-        const emailBoxStyles = window.getComputedStyle(emailInput);
-        const lowercaseCloneDiv = document.createElement('div');
-        
-        lowercaseCloneDiv.id = 'temporary-lowercase-email-clone';
-        lowercaseCloneDiv.innerText = rawEmail;
-        
-        lowercaseCloneDiv.style.width = emailInput.offsetWidth + 'px';
-        lowercaseCloneDiv.style.height = emailInput.offsetHeight + 'px';
-        lowercaseCloneDiv.style.padding = emailBoxStyles.padding;
-        lowercaseCloneDiv.style.border = emailBoxStyles.border;
-        lowercaseCloneDiv.style.borderRadius = emailBoxStyles.borderRadius;
-        lowercaseCloneDiv.style.fontSize = emailBoxStyles.fontSize;
-        lowercaseCloneDiv.style.fontWeight = emailBoxStyles.fontWeight;
-        lowercaseCloneDiv.style.fontFamily = emailBoxStyles.fontFamily;
-        lowercaseCloneDiv.style.color = emailBoxStyles.color;
-        lowercaseCloneDiv.style.backgroundColor = emailBoxStyles.backgroundColor;
-        lowercaseCloneDiv.style.lineHeight = emailBoxStyles.lineHeight;
-        lowercaseCloneDiv.style.textAlign = 'center';
-        lowercaseCloneDiv.style.display = 'flex';
-        lowercaseCloneDiv.style.alignItems = 'center';
-        lowercaseCloneDiv.style.justifyContent = 'center';
-        lowercaseCloneDiv.style.boxSizing = 'border-box';
-        lowercaseCloneDiv.style.letterSpacing = '0.5px';
-        lowercaseCloneDiv.style.textTransform = 'lowercase';
-        
-        emailInput.style.display = 'none';
-        emailParent.appendChild(lowercaseCloneDiv);
-
-        const targetHeight = element.scrollHeight;
-
+        // High resolution snapshot compilation layer engine initialization
         html2canvas(element, {
-            scale: 2,
+            scale: 3, 
             useCORS: true,
-            logging: false,
-            scrollY: -window.scrollY,
+            scrollY: 0,
             scrollX: 0,
-            height: targetHeight + 20,
-            windowHeight: targetHeight + 20
+            windowWidth: 650,
+            logging: false
         }).then(canvas => {
-            if (document.getElementById('temporary-lowercase-email-clone')) {
-                emailParent.removeChild(lowercaseCloneDiv);
-            }
-            emailInput.style.display = 'block';
+            element.classList.remove('snapshot-mode');
             buttonsWrapper.style.display = 'flex';
 
             const image = canvas.toDataURL("image/png");
             const downloadLink = document.createElement('a');
-            const fileName = `${officialFormId}_Registration_${fullName.replace(/\s+/g, '_')}.png`;
+            const fileName = `${officialFormId}_Demo_Registration_${fullName.replace(/\s+/g, '_')}.png`;
             
             downloadLink.href = image;
             downloadLink.download = fileName;
@@ -765,36 +516,24 @@
             downloadLink.click();
             document.body.removeChild(downloadLink);
 
-            // AUTOMATIC ONE-CLICK WHATSAPP REDIRECTION SETUP
-            const academyNumber = "9875340842";
-            const messageText = `HELLO ENGLISH SPUR, I HAVE SUCCESSFULLY REGISTERED FOR THE FREE LIVE DEMO CLASS.%0A%0A👤 NAME: ${fullName}%0A🆔 FORM ID: ${officialFormId}%0A📱 WHATSAPP: ${verifiedPhoneNumber}%0A🎯 PURPOSE: ${selectedReason}%0A%0A👉 I AM ATTACHING MY DOWNLOADED REGISTRATION FORM SCREENSHOT BELOW. PLEASE CONFIRM MY SLOT.`;
-            
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=91${academyNumber}&text=${messageText}`;
+            alert("Demo Ticket compiled successfully!\nYour confirmation sheet has downloaded. Please forward this picture file to our administration pipeline at 9875340842 to finalize seat reservation.");
 
-            const alertBengali = `📥 আপনার ফর্মের ইমেজটি সফলভাবে ডাউনলোড হয়েছে এবং সেন্ট্রাল অ্যালাইনমেন্ট লক করা হয়েছে (Ref No: ${officialFormId})。\n\n⚠️ "OK" প্রেস করলেই আপনি সরাসরি English Spur অ্যাকাডেমিক ডেস্কের হোয়াটসঅ্যাপ চ্যাটে চলে যাবেন। সেখানে গিয়ে শুধু আপনার ডাউনলোড হওয়া ইমেজটি সিলেক্ট করে পাঠিয়ে দিন।`;
-            const alertEnglish = `📥 Your form image has been successfully downloaded with perfect center alignment (Ref No: ${officialFormId}).\n\n⚠️ Pressing "OK" will automatically open the English Spur Help Desk on WhatsApp. Just attach your downloaded image and send it.`;
-            
-            alert(alertBengali + "\n\n━━━━━━━━━━━━━━━━━━━━\n\n" + alertEnglish);
-            
-            window.open(whatsappUrl, '_blank');
+            const whatsappNumber = "919875340842";
+            const message = `🚨 *FREE DEMO CLASS REGISTRATION* 🚨%0A%0A` +
+                            `নমস্কার *শোভন কাপড়ী*, আমি ফ্রি ডেমো ক্লাসের জন্য সফলভাবে রেজিস্ট্রেশন করেছি এবং আমার কনফার্মেশন ইমেজটি ডাউনলোড হয়েছে।%0A%0A` +
+                            `*Ticket No:* ${officialFormId}%0A` +
+                            `*Name:* ${fullName}%0A%0A` +
+                            `আমি নিচে আমার ডেমো ক্লাস রেজিস্ট্রেশনের ইমেজটি সংযুক্ত করে পাঠাচ্ছি। অনুগ্রহ করে আমার ডেমো ক্লাস সেশনটি বুক করুন।`;
 
-            setTimeout(() => {
-                document.getElementById('admissionForm').reset();
-                document.getElementById('occupation-specify-group').style.display = "none";
-                document.getElementById('admissionForm').style.display = 'none';
-                document.getElementById('gateway-screen').style.display = 'block';
-                document.getElementById('gateway-phone').value = "";
-            }, 1000);
-
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+            window.open(whatsappURL, '_blank');
         }).catch(err => {
-            if (document.getElementById('temporary-lowercase-email-clone')) {
-                emailParent.removeChild(lowercaseCloneDiv);
-            }
-            emailInput.style.display = 'block';
+            element.classList.remove('snapshot-mode');
             buttonsWrapper.style.display = 'flex';
             console.error(err);
         });
     });
 </script>
+
 </body>
 </html>
