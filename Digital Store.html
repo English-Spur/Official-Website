@@ -396,23 +396,7 @@
 
             .section-title { font-size: 18px; margin: 25px 15px 5px 15px; }
             .product-card { flex: 0 0 215px; padding: 12px; border-radius: var(--radius-md); }
-            .product-card h3 { 
-    font-size: 13px; 
-    height: 46px; /* হাইট ৩৬ থেকে বাড়িয়ে ৪৬ করা হলো যাতে দুটো লাইন সুন্দরভাবে ধরে যায় */
-    margin-bottom: 8px; 
-    line-height: 1.4;
-    display: block;
-    overflow: hidden;
-}
-
-/* 🎯 ব্র্যাকেটের ভেতরের টেক্সটকে নিচে নামানো এবং হালকা স্পেস দেওয়ার জন্য এই নতুন স্টাইলটি ঠিক তার নিচে যোগ করে দাও */
-.book-subtitle {
-    display: block; /* লেখাটিকে জোর করে পরের লাইনে নিয়ে যাবে */
-    font-size: 11px; /* মেইন টাইটেল থেকে একটু ছোট দেখাবে */
-    color: #64748b; /* হালকা সুন্দর কালার */
-    font-weight: normal; /* মেইন টাইটেল বোল্ড থাকলেও এটা নরমাল থাকবে */
-    margin-top: 4px; /* ওপরের লাইনের সাথে হালকা সুন্দর গ্যাপ তৈরি করবে ইস */
-}
+            .product-card h3 { font-size: 13px; height: 36px; margin-bottom: 8px; }
             .image-box { height: 160px; border-radius: var(--radius-sm); }
             .card-description-area { min-height: 52px; font-size: 10px; padding: 6px 8px; }
             .offer-price { font-size: 16px; }
@@ -490,16 +474,16 @@
     <script>
         const productsDatabase = [
             // 📚 CATEGORY 1: PREMIUM E-BOOKS
-            { id: 1, category: "ebook", name: "BASIC ENGLISH GRAMMAR (BOOK 1)", offerPrice: 49, originalPrice: 399, coverImageUrl: "english (2).png", previewUrl: "https://drive.google.com/file/d/1r_TCKQmd08BCKYE9ToTfyobWcDpvIxXG/preview", desc: "Master essential parts of speech, sentences, and basic structure rules." },
-            { id: 2, category: "ebook", name: "BASIC ENGLISH GRAMMAR (BOOK 2)", offerPrice: 59, originalPrice: 349, coverImageUrl: "english (4).png", previewUrl: "https://drive.google.com/file/d/1hB6XdL3KWu3kRm1-brPDpNDHLduG2Zwl/preview", desc: "Deep dive into advanced tenses, active-passive voice, and clauses." },
-            { id: 3, category: "ebook", name: "ENGLISH VOCABULARY E-BOOK ", offerPrice: 49, originalPrice: 499, coverImageUrl: "english.png", previewUrl: "https://drive.google.com/file/d/1GrJyFajGlNW50oKcRl0dlROMgWug5oc-/preview", desc: "500+ high-frequency daily use words with Bengali meanings and sentences." },
-            { id: 4, category: "ebook", name: "175+ DAILY USED SENTENCES (BILINGUAL)", offerPrice: 11, originalPrice: 299, coverImageUrl: "english (3).png", previewUrl: "https://drive.google.com/file/d/1kKBXgAftudgWcUtUqsJ6gohn85haz1Jl/preview", desc: "Comprehensive study material designed for fluent speaking modules." },
-            { id: 5, category: "ebook", name: "KIDS' GRAMMAR SERIES (BK 1)", offerPrice: 59, originalPrice: 599, coverImageUrl: "KGS1.png", previewUrl: "https://drive.google.com/file/d/1kjZk0b-W0LZL5v9nUrD0PmgBF7S1WgFQ/preview", desc: "Comprehensive Grammar study material designed for kids aged 6-8." },
-            { id: 6, category: "ebook", name: "KIDS' GRAMMAR SERIES (BK 2)", offerPrice: 59, originalPrice: 599, coverImageUrl: "KGS2.png", previewUrl: "https://drive.google.com/file/d/1Dobfz4F-nTBjnMMzxeJiRrRwRiyib4uk/preview", desc: "Comprehensive Grammar study material designed for kids aged 6-8." },
-            { id: 7, category: "ebook", name: "KIDS' GRAMMAR SERIES (BK 3)", offerPrice: 79, originalPrice: 599, coverImageUrl: "KGS3.png", previewUrl: "https://drive.google.com/file/d/1-vG1oe3TSpB96BOCOXVgRz6EckedWzbC/preview", desc: "Comprehensive Grammar study material designed for kids aged 8-10." },
-            { id: 8, category: "ebook", name: "KIDS' GRAMMAR SERIES (BK 4)", offerPrice: 79, originalPrice: 599, coverImageUrl: "KGS4.png", previewUrl: "https://drive.google.com/file/d/1Be5STFL2VTAGg0S06l1UqV0BYdIZK34_/preview", desc: "Comprehensive Grammar study material designed for kids aged 8-10." },
-            { id: 9, category: "ebook", name: "KIDS' GRAMMAR SERIES (BK 5)", offerPrice: 89, originalPrice: 599, coverImageUrl: "KGS5.png", previewUrl: "https://drive.google.com/file/d/1hpDOyEoXJ7quyQm2i6FEAEv-m9LRDXrf/preview", desc: "Comprehensive Grammar study material designed for kids aged 10-12." },
-            { id: 10, category: "ebook", name: "KIDS' GRAMMAR SERIES (BK 6)", offerPrice: 89, originalPrice: 599, coverImageUrl: "KGS6.png", previewUrl: "https://drive.google.com/file/d/1lzUDBzbuPxRsjVX2z_R5zr7YfgeY-1W_/preview", desc: "Comprehensive Grammar study material designed for kids aged 10-12." },
+            { id: 1, category: "ebook", name: "Basic English Grammar E-Book PART 1", offerPrice: 49, originalPrice: 399, coverImageUrl: "english (2).png", previewUrl: "https://drive.google.com/file/d/1r_TCKQmd08BCKYE9ToTfyobWcDpvIxXG/preview", desc: "Master essential parts of speech, sentences, and basic structure rules." },
+            { id: 2, category: "ebook", name: "Basic English Grammar E-Book PART 2", offerPrice: 59, originalPrice: 349, coverImageUrl: "english (4).png", previewUrl: "https://drive.google.com/file/d/1hB6XdL3KWu3kRm1-brPDpNDHLduG2Zwl/preview", desc: "Deep dive into advanced tenses, active-passive voice, and clauses." },
+            { id: 3, category: "ebook", name: "English Vocabulary E-book ", offerPrice: 49, originalPrice: 499, coverImageUrl: "english.png", previewUrl: "https://drive.google.com/file/d/1GrJyFajGlNW50oKcRl0dlROMgWug5oc-/preview", desc: "500+ high-frequency daily use words with Bengali meanings and sentences." },
+            { id: 4, category: "ebook", name: "Daily Spoken Sentences (Bengali & English)", offerPrice: 5, originalPrice: 299, coverImageUrl: "english (3).png", previewUrl: "https://drive.google.com/file/d/1kKBXgAftudgWcUtUqsJ6gohn85haz1Jl/preview", desc: "Comprehensive study material designed for fluent speaking modules." },
+            { id: 5, category: "ebook", name: "Grammar Friends 1 ", offerPrice: 59, originalPrice: 599, coverImageUrl: "english (5).png", previewUrl: "https://drive.google.com/file/d/1kjZk0b-W0LZL5v9nUrD0PmgBF7S1WgFQ/preview", desc: "Comprehensive Grammar study material designed for kids aged 6-12." },
+            { id: 6, category: "ebook", name: "Grammar Friends 2", offerPrice: 59, originalPrice: 599, coverImageUrl: "English6.png", previewUrl: "https://drive.google.com/file/d/1Dobfz4F-nTBjnMMzxeJiRrRwRiyib4uk/preview", desc: "Comprehensive Grammar study material designed for kids aged 6-12." },
+            { id: 7, category: "ebook", name: "Product 07 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
+            { id: 8, category: "ebook", name: "Product 08 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
+            { id: 9, category: "ebook", name: "Product 09 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
+            { id: 10, category: "ebook", name: "Product 10 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
             { id: 11, category: "ebook", name: "Product 11 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
             { id: 12, category: "ebook", name: "Product 12 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
             { id: 13, category: "ebook", name: "Product 13 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
