@@ -396,7 +396,23 @@
 
             .section-title { font-size: 18px; margin: 25px 15px 5px 15px; }
             .product-card { flex: 0 0 215px; padding: 12px; border-radius: var(--radius-md); }
-            .product-card h3 { font-size: 13px; height: 36px; margin-bottom: 8px; }
+            .product-card h3 { 
+    font-size: 13px; 
+    height: 46px; /* হাইট ৩৬ থেকে বাড়িয়ে ৪৬ করা হলো যাতে দুটো লাইন সুন্দরভাবে ধরে যায় */
+    margin-bottom: 8px; 
+    line-height: 1.4;
+    display: block;
+    overflow: hidden;
+}
+
+/* 🎯 ব্র্যাকেটের ভেতরের টেক্সটকে নিচে নামানো এবং হালকা স্পেস দেওয়ার জন্য এই নতুন স্টাইলটি ঠিক তার নিচে যোগ করে দাও */
+.book-subtitle {
+    display: block; /* লেখাটিকে জোর করে পরের লাইনে নিয়ে যাবে */
+    font-size: 11px; /* মেইন টাইটেল থেকে একটু ছোট দেখাবে */
+    color: #64748b; /* হালকা সুন্দর কালার */
+    font-weight: normal; /* মেইন টাইটেল বোল্ড থাকলেও এটা নরমাল থাকবে */
+    margin-top: 4px; /* ওপরের লাইনের সাথে হালকা সুন্দর গ্যাপ তৈরি করবে ইস */
+}
             .image-box { height: 160px; border-radius: var(--radius-sm); }
             .card-description-area { min-height: 52px; font-size: 10px; padding: 6px 8px; }
             .offer-price { font-size: 16px; }
