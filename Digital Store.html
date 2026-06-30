@@ -3,684 +3,522 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Spur Online Store</title>
-    <style>
-        /* ==========================================================================
-           ১. গ্লোবাল সেটিংস এবং আধুনিক ভেরিয়েবলস (Premium Theme)
-           ========================================================================== */
-        :root {
-            --primary: #1e3a8a;
-            --primary-hover: #1e40af;
-            --accent: #f59e0b;
-            --accent-hover: #d97706;
-            --success: #10b981;
-            --success-hover: #059669;
-            --danger: #ef4444;
-            --danger-bg: #fee2e2;
-            --bg-main: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --radius-lg: 16px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 10px 15px -3px rgba(30, 58, 138, 0.05), 0 4px 6px -2px rgba(30, 58, 138, 0.02);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * { box-sizing: border-box; }
-
-        body { 
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--bg-main); 
-            color: var(--text-main);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* ==========================================================================
-           ②. সম্পূর্ণ ফ্রিজড এবং ১০০% রেসপন্সিভ হেডার জোন (Sticky Header Banner & Navigation)
-           ========================================================================== */
-        .sticky-header-container {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-            width: 100%;
-            background-color: #ffffff;
-            box-shadow: var(--shadow-md);
-            border-bottom: 3px solid var(--accent);
-        }
-
-        .frozen-brand-banner { 
-            width: 100%; 
-            height: 140px; 
-            /* 👇 এখানে তোমার ইমেজ ফাইল বা ইউআরএলটি বসিয়ে দেবে */
-            background-image: url('ess2.png'); 
-            background-size: contain; 
-            background-position: center center; 
-            background-repeat: no-repeat; 
-            background-color: #ffffff; 
-        }
-        
-        .header-control-bar {
-            background-color: #1e3a8a;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .header-home-link { 
-            color: #ffffff; 
-            text-decoration: none; 
-            font-size: 14px;
-            font-weight: 800;
-            text-transform: uppercase;
-            transition: var(--transition);
-            letter-spacing: 0.5px;
-            background: rgba(255, 255, 255, 0.15); 
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .header-home-link:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-1px); }
-        
-        .control-bar-actions { 
-            display: flex; 
-            gap: 10px; 
-            align-items: center; 
-        }
-        
-        .header-cart-btn { 
-            background: #10b981; 
-            color: white; 
-            padding: 8px 16px; 
-            border-radius: var(--radius-sm); 
-            cursor: pointer; 
-            white-space: nowrap; 
-            font-weight: 800;
-            font-size: 13px;
-            text-transform: uppercase;
-            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.15);
-            transition: var(--transition);
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .header-cart-btn:hover { background: #059669; transform: translateY(-1px); }
-        
-        .header-buynow-btn { 
-            background: #f59e0b; 
-            color: white; 
-            padding: 8px 18px; 
-            border-radius: var(--radius-sm); 
-            cursor: pointer; 
-            white-space: nowrap; 
-            font-weight: 800; 
-            font-size: 13px;
-            border: none; 
-            text-transform: uppercase;
-            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .header-buynow-btn:hover { background: #d97706; transform: translateY(-1px); }
-
-        /* ==========================================================================
-           ③. সেকশন টাইটেল ও স্ক্রল র্যাপার
-           ========================================================================== */
-        .section-title { 
-            background: transparent; 
-            color: var(--primary); 
-            padding: 10px 0; 
-            margin: 25px auto 10px auto; 
-            max-width: 1200px; 
-            font-size: 24px; 
-            font-weight: 800; 
-            border-left: 5px solid var(--accent);
-            padding-left: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        @media (max-width: 1240px) { .section-title { margin-left: 20px; margin-right: 20px; } }
-        
-        .scroll-wrapper { position: relative; max-width: 1240px; margin: auto; display: flex; align-items: center; padding: 0 10px; }
-        
-        .grid-container { 
-            display: flex; 
-            overflow-x: auto; 
-            gap: 20px; 
-            padding: 15px 10px 30px 10px; 
-            width: 100%; 
-            scroll-behavior: smooth; 
-        }
-        .grid-container::-webkit-scrollbar { display: none; }
-        
-        /* ==========================================================================
-           ৪. প্রিমিয়াম প্রোডাক্টカード デザイン
-           ========================================================================== */
-        .product-card { 
-            background: var(--card-bg); 
-            border-radius: var(--radius-lg); 
-            padding: 16px; 
-            box-shadow: var(--shadow-md); 
-            text-align: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            flex: 0 0 250px; 
-            position: relative; 
-            border: 1px solid var(--border-color); 
-            transition: var(--transition);
-        }
-        .product-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(30, 58, 138, 0.15);
-        }
-        
-        .product-card h3 { 
-            font-size: 14px; 
-            margin: 0 0 12px 0; 
-            line-height: 1.4; 
-            height: 40px; 
-            overflow: hidden; 
-            color: var(--text-main); 
-            font-weight: 700; 
-        }
-        
-        .image-box { 
-            width: 100%; 
-            height: 190px; 
-            background: #f1f5f9; 
-            margin-bottom: 12px; 
-            border-radius: var(--radius-md); 
-            overflow: hidden; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-        .product-card:hover .image-box img { transform: scale(1.05); }
-        
-        .coming-soon-box { color: var(--text-muted); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
-        
-        .preview-btn { 
-            background: var(--bg-main); 
-            color: var(--primary); 
-            border: 1px solid var(--primary); 
-            padding: 9px; 
-            border-radius: var(--radius-sm); 
-            font-weight: 700; 
-            cursor: pointer; 
-            margin-bottom: 8px; 
-            width: 100%; 
-            font-size: 12px; 
-            transition: var(--transition); 
-        }
-        .preview-btn:hover { background: var(--primary); color: white; }
-
-        .card-description-area {
-            background: #f1f5f9;
-            border-radius: var(--radius-sm);
-            padding: 8px 10px;
-            margin-bottom: 12px;
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: left;
-            line-height: 1.4;
-            display: flex;
-            align-items: flex-start;
-            gap: 6px;
-            border: 1px solid rgba(30, 58, 138, 0.03);
-            min-height: 46px; 
-        }
-        .card-description-area .info-badge {
-            background: var(--primary);
-            color: white;
-            font-size: 9px;
-            font-weight: bold;
-            border-radius: 50%;
-            width: 14px;
-            height: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        
-        .card-action-row { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-top: 4px; 
-            padding-top: 10px; 
-            border-top: 1px dashed var(--border-color); 
-            gap: 6px; 
-        }
-        
-        .price-container { font-size: 13px; text-align: left; display: flex; flex-direction: column; justify-content: center; flex-shrink: 0; }
-        .offer-price { color: var(--danger); font-weight: 800; font-size: 18px; display: block; line-height: 1.1; }
-        .original-price { text-decoration: line-through; color: var(--text-muted); font-size: 12px; margin-top: 2px; }
-
-        .discount-badge { 
-            background: var(--danger-bg); 
-            color: var(--danger); 
-            font-size: 11px; 
-            font-weight: 700; 
-            padding: 4px 8px; 
-            border-radius: 6px; 
-            white-space: nowrap; 
-        }
-
-        .add-to-cart-text-btn { 
-            background: #2563eb; 
-            color: white; 
-            border: none; 
-            padding: 9px 14px; 
-            border-radius: var(--radius-sm); 
-            font-size: 12px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            transition: var(--transition); 
-            min-width: 115px; 
-            width: auto; 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0; 
-            white-space: nowrap;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.15);
-        }
-        .add-to-cart-text-btn:hover { background: var(--primary-hover); transform: translateY(-1px); box-shadow: 0 6px 12px rgba(37, 99, 235, 0.25); }
-        .add-to-cart-text-btn.added { background: var(--success); color: white; cursor: default; box-shadow: none; }
-        .add-to-cart-text-btn.added:hover { background: var(--success); transform: none; }
-        
-        .disabled-btn { 
-            background: #e2e8f0; color: #94a3b8; border: none; padding: 9px 14px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; cursor: not-allowed; 
-            min-width: 115px; width: auto; display: inline-flex; align-items: center; justify-content: center;
-        }
-
-        .inactive-card-msg {
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .nav-scroll-btn {
-            position: absolute; top: 50%; transform: translateY(-50%); background: white; color: var(--primary); 
-            border: 1px solid var(--border-color); width: 44px; height: 44px; border-radius: 50%; font-size: 22px; font-weight: bold; 
-            cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-        .nav-scroll-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-50%) scale(1.1); }
-        .nav-scroll-btn.left-btn { left: -15px; }
-        .nav-scroll-btn.right-btn { right: -15px; }
-
-        .preview-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(4px); }
-        .modal-body { background: white; width: 92%; max-width: 950px; height: 85%; border-radius: var(--radius-lg); overflow: hidden; position: relative; display: flex; flex-direction: column; box-shadow: var(--shadow-lg); }
-        
-        .close-modal-btn { 
-            position: absolute; top: 0; right: 0; 
-            width: 60px; height: 80px; 
-            font-size: 32px; font-weight: bold; 
-            color: #ef4444; background: #ffffff; 
-            cursor: pointer; z-index: 2005; 
-            border: none; border-radius: 0; 
-            display: flex; align-items: center; justify-content: center; 
-            box-shadow: -2px 2px 10px rgba(0,0,0,0.15);
-            transition: var(--transition);
-        }
-        .close-modal-btn:hover { background: #ef4444; color: #ffffff; }
-
-        /* ==========================================================================
-           ৫. এক্সপ্রেস WhatsApp চেকআউট জোন
-           ========================================================================== */
-        .checkout-section { max-width: 600px; margin: 50px auto; background: white; padding: 35px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: none; border: 1px solid var(--border-color); text-align: center; }
-        
-        .live-payable-badge { font-size: 24px; font-weight: 800; color: var(--success); background: #e6f4ea; border: 2px dashed var(--success); padding: 12px; border-radius: var(--radius-sm); margin: 15px auto; display: inline-block; width: 90%; box-sizing: border-box; }
-        
-        .order-summary-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; text-align: left; margin-bottom: 25px; }
-        .order-summary-box h4 { margin: 0 0 10px 0; color: var(--primary); font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-
-        .express-whatsapp-pay-btn {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            border: none;
-            padding: 16px 28px;
-            font-size: 16px;
-            font-weight: 800;
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            width: 100%;
-            display: block;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .express-whatsapp-pay-btn:hover {
-            background: linear-gradient(135deg, #128c7e, #075e54);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
-        }
-
-        /* ==========================================================================
-           ⑥. মোবাইল রেসপন্সিভ ওভাররাইড মিডিয়া কোয়েরি (Responsive Breakpoints)
-           ========================================================================== */
-        @media (max-width: 768px) { 
-            .nav-scroll-btn { display: none; } 
-            .grid-container { padding: 10px; gap: 14px; } 
-            
-            .frozen-brand-banner { height: 75px; }
-            .header-control-bar { padding: 8px 10px; }
-            .header-home-link { font-size: 11px; padding: 6px 10px; }
-            .header-cart-btn { padding: 6px 10px; font-size: 11px; }
-            .header-buynow-btn { padding: 6px 12px; font-size: 11px; }
-
-            .section-title { font-size: 18px; margin: 25px 15px 5px 15px; }
-            .product-card { flex: 0 0 215px; padding: 12px; border-radius: var(--radius-md); }
-            .product-card h3 { font-size: 13px; height: 36px; margin-bottom: 8px; }
-            .image-box { height: 160px; border-radius: var(--radius-sm); }
-            .card-description-area { min-height: 52px; font-size: 10px; padding: 6px 8px; }
-            .offer-price { font-size: 16px; }
-            .discount-badge { font-size: 10px; padding: 2px 6px; }
-            .add-to-cart-text-btn, .disabled-btn { min-width: 100px; width: auto; font-size: 11px; padding: 8px 10px; }
-            .preview-btn { padding: 7px; font-size: 11px; margin-bottom: 8px; }
-            .checkout-section { margin: 25px 15px; padding: 20px; }
-        }
-    </style>
+    <title>English Spur - Premium Digital Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;800&family=Roboto:wght@400;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style id="dynamic-styles"></style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 transition-all duration-200">
 
-    <div class="sticky-header-container">
-        <div class="frozen-brand-banner"></div>
-        
-        <div class="header-control-bar">
-            <div>
-                <a href="index.html" class="header-home-link">🏠 Home</a>
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div id="logo-wrapper" class="flex items-center justify-center overflow-hidden rounded-lg"></div>
+                    <span id="nav-brand-text" class="font-bold text-indigo-900 tracking-tight"></span>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-house"></i> Home
+                    </a>
+                    <button onclick="toggleCart()" class="relative p-2 text-slate-600 hover:text-indigo-600 transition">
+                        <i class="fa-solid fa-basket-shopping text-2xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">0</span>
+                    </button>
+                </div>
             </div>
-            <div class="control-bar-actions">
-                <button class="header-cart-btn" onclick="scrollToCheckout()">🛒 Cart (<span id="cartCount">0</span>)</button>
-                <button class="header-buynow-btn" onclick="scrollToCheckout()">⚡ Buy Now</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero-section" class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white text-center px-4">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+            <p class="text-amber-400 font-bold tracking-widest text-xs sm:text-sm uppercase mb-2" id="hero-welcome-text">WELCOME TO</p>
+            <h1 class="font-black tracking-tight" id="hero-line1">ENGLISH SPUR ONLINE DIGITAL STORE</h1>
+            <p class="text-indigo-200 mt-4 max-w-3xl mx-auto block text-center" id="hero-line2"></p>
+            <div id="hero-points-container" class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl text-left w-full justify-center"></div>
+
+            <a href="#store-products" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition inline-flex items-center gap-2 mt-10">
+                Browse Products <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN PRODUCT CATALOG -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section id="store-products" class="mb-20">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Our Premium Resources</h2>
+            <p class="text-slate-500 mb-8">Boost your learning journey with instant digital downloads.</p>
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </section>
+    </main>
+
+    <!-- CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute inset-0 bg-slate-900 bg-opacity-50 transition-opacity" onclick="toggleCart()"></div>
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <div class="pointer-events-auto w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                    <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
+                        <div class="flex items-start justify-between border-b pb-4">
+                            <h2 class="text-lg font-bold text-slate-900"><i class="fa-solid fa-cart-shopping text-indigo-600 mr-2"></i> Your Basket</h2>
+                            <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-500"><i class="fa-solid fa-xmark text-xl"></i></button>
+                        </div>
+                        <div class="mt-8" id="cart-items-container"></div>
+                    </div>
+                    <div class="border-t border-slate-200 py-6 px-4 sm:px-6 bg-slate-50">
+                        <div class="space-y-1.5 border-b pb-4 mb-4 text-sm text-slate-600">
+                            <div class="flex justify-between">
+                                <p>Total Price (Actual)</p>
+                                <p id="cart-actual-total" class="line-through text-slate-400">₹0.00</p>
+                            </div>
+                            <div class="flex justify-between text-emerald-600 font-medium">
+                                <p>Your Discount</p>
+                                <p id="cart-discount-total">-₹0.00</p>
+                            </div>
+                            <div class="flex justify-between text-base font-bold text-slate-900 pt-2 border-t">
+                                <p>Total Payable</p>
+                                <p id="cart-total-price">₹0.00</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <input type="text" id="buyer-name" placeholder="Your Name" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" required>
+                            <input type="email" id="buyer-email" placeholder="Your Delivery Email" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" required>
+                            <button onclick="checkoutViaWhatsApp()" class="w-full flex items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-3 text-base font-bold text-white shadow-sm hover:bg-green-700 transition">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> Pay via UPI & Order on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="section-title" id="first-store-section">📚 Premium E-Books</div>
-    <div class="scroll-wrapper">
-        <button class="nav-scroll-btn left-btn" onclick="scrollSection('ebook-grid', 'left')">‹</button>
-        <div class="grid-container" id="ebook-grid"></div>
-        <button class="nav-scroll-btn right-btn" onclick="scrollSection('ebook-grid', 'right')">›</button>
-    </div>
-
-    <div class="section-title"> 📚 Premium self study series </div>
-    <div class="scroll-wrapper">
-        <button class="nav-scroll-btn left-btn" onclick="scrollSection('video-grid', 'left')">‹</button>
-        <div class="grid-container" id="video-grid"></div>
-        <button class="nav-scroll-btn right-btn" onclick="scrollSection('video-grid', 'right')">›</button>
-    </div>
-
-    <div class="section-title">🎧 Learn And Speak English Better With Interesting Short Audio Stories</div>
-    <div class="scroll-wrapper">
-        <button class="nav-scroll-btn left-btn" onclick="scrollSection('audio-grid', 'left')">‹</button>
-        <div class="grid-container" id="audio-grid"></div>
-        <button class="nav-scroll-btn right-btn" onclick="scrollSection('audio-grid', 'right')">›</button>
-    </div>
-
-    <div class="section-title">📝 Premium Practice Kits</div>
-    <div class="scroll-wrapper">
-        <button class="nav-scroll-btn left-btn" onclick="scrollSection('kit-grid', 'left')">‹</button>
-        <div class="grid-container" id="kit-grid"></div>
-        <button class="nav-scroll-btn right-btn" onclick="scrollSection('kit-grid', 'right')">›</button>
-    </div>
-
-    <div class="preview-modal" id="previewModal">
-        <div class="modal-body">
-            <button class="close-modal-btn" onclick="closePreview()">&times;</button>
-            <iframe style="width: 100%; height: 100%; border: none;" id="modalIframe" src=""></iframe>
+    <!-- PREVIEW BOX MODAL -->
+    <div id="preview-modal" class="fixed inset-0 z-50 overflow-hidden hidden bg-slate-950 bg-opacity-95 flex items-center justify-center p-2 sm:p-4" onclick="closePreview()">
+        <div class="relative bg-white rounded-2xl max-w-4xl w-full h-[90vh] overflow-hidden shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+            <button onclick="closePreview()" class="absolute top-3 right-3 z-50 bg-black/60 hover:bg-black text-white w-9 h-9 rounded-full flex items-center justify-center transition shadow-md"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <div id="preview-content" class="w-full h-full bg-slate-900 flex items-center justify-center overflow-hidden"></div>
         </div>
     </div>
 
-    <div class="checkout-section" id="checkoutSection">
-        <div class="live-payable-badge">
-            Total Payable: ₹<span id="qrPayableAmount">0</span>
+    <!-- FREE DOWNLOAD LEAD MODAL -->
+    <div id="free-download-modal" class="fixed inset-0 z-50 overflow-hidden hidden bg-slate-950 bg-opacity-80 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border relative" onclick="event.stopPropagation()">
+            <button onclick="closeFreeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fa-solid fa-circle-down"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Get Your Free E-Book</h3>
+                <p class="text-xs text-slate-500 mt-1">Please enter your correct details to start the automatic instant download.</p>
+            </div>
+            <form id="free-lead-form" onsubmit="handleFreeSubmit(event)" class="space-y-4">
+                <input type="hidden" id="free-prod-id">
+                <input type="hidden" id="free-prod-title">
+                <input type="hidden" id="free-prod-drive">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name</label>
+                    <input type="text" id="lead-name" required class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" placeholder="e.g. Shovon Kapri">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">WhatsApp Number</label>
+                    <input type="tel" id="lead-phone" required class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" placeholder="e.g. 9875340842">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
+                    <input type="email" id="lead-email" required class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" placeholder="name@example.com">
+                </div>
+                <button type="submit" id="free-submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> Unlock & Download Now
+                </button>
+            </form>
         </div>
-
-        <div class="order-summary-box">
-            <h4>Selected Materials Summary</h4>
-            <div id="selectedProductsList" style="line-height: 1.6; font-size: 13px; color: #1e293b;"></div>
-        </div>
-
-        <button class="express-whatsapp-pay-btn" onclick="sendExpressOrderToWhatsApp()">💬 Chat with Sovan kapri & Pay</button>
     </div>
 
     <script>
-        const productsDatabase = [
-            // 📚 CATEGORY 1: PREMIUM E-BOOKS
-            { id: 1, category: "ebook", name: "Basic English Grammar E-Book PART 1", offerPrice: 49, originalPrice: 399, coverImageUrl: "english (2).png", previewUrl: "https://drive.google.com/file/d/1r_TCKQmd08BCKYE9ToTfyobWcDpvIxXG/preview", desc: "Master essential parts of speech, sentences, and basic structure rules." },
-            { id: 2, category: "ebook", name: "Basic English Grammar E-Book PART 2", offerPrice: 59, originalPrice: 349, coverImageUrl: "english (4).png", previewUrl: "https://drive.google.com/file/d/1hB6XdL3KWu3kRm1-brPDpNDHLduG2Zwl/preview", desc: "Deep dive into advanced tenses, active-passive voice, and clauses." },
-            { id: 3, category: "ebook", name: "English Vocabulary E-book ", offerPrice: 49, originalPrice: 499, coverImageUrl: "english.png", previewUrl: "https://drive.google.com/file/d/1GrJyFajGlNW50oKcRl0dlROMgWug5oc-/preview", desc: "500+ high-frequency daily use words with Bengali meanings and sentences." },
-            { id: 4, category: "ebook", name: "Daily Spoken Sentences (Bengali & English)", offerPrice: 5, originalPrice: 299, coverImageUrl: "english (3).png", previewUrl: "https://drive.google.com/file/d/1kKBXgAftudgWcUtUqsJ6gohn85haz1Jl/preview", desc: "Comprehensive study material designed for fluent speaking modules." },
-            { id: 5, category: "ebook", name: "KIDS GRAMMAR SERIES (BK1) ", offerPrice: 59, originalPrice: 599, coverImageUrl: "KGS1.png", previewUrl: "https://drive.google.com/file/d/1kjZk0b-W0LZL5v9nUrD0PmgBF7S1WgFQ/preview", desc: "Comprehensive Grammar study material designed for kids aged 6 to 8" },
-            { id: 6, category: "ebook", name: "KIDS GRAMMAR SERIES (BK2)", offerPrice: 59, originalPrice: 599, coverImageUrl: "KGS2.png", previewUrl: "https://drive.google.com/file/d/1Dobfz4F-nTBjnMMzxeJiRrRwRiyib4uk/preview", desc: "Comprehensive Grammar study material designed for kids aged 6 to 8" },
-            { id: 7, category: "ebook", name: "KIDS GRAMMAR SERIES (BK3)", offerPrice: 69, originalPrice: 599, coverImageUrl: "KGS3.png", previewUrl: "https://drive.google.com/file/d/1-vG1oe3TSpB96BOCOXVgRz6EckedWzbC/preview", desc: "Comprehensive Grammar study material designed for kids aged 8 to 10" },
-            { id: 8, category: "ebook", name: "KIDS GRAMMAR SERIES (BK4)", offerPrice: 69, originalPrice: 599, coverImageUrl: "KGS4.png", previewUrl: "https://drive.google.com/file/d/1Be5STFL2VTAGg0S06l1UqV0BYdIZK34_/preview", desc: "Comprehensive Grammar study material designed for kids aged 8 to 10" },
-            { id: 9, category: "ebook", name: "KIDS GRAMMAR SERIES (BK5)", offerPrice: 79, originalPrice: 599, coverImageUrl: "KGS5.png", previewUrl: "https://drive.google.com/file/d/1hpDOyEoXJ7quyQm2i6FEAEv-m9LRDXrf/preview", desc: "Comprehensive Grammar study material designed for kids aged 10 to 12" },
-            { id: 10, category: "ebook", name: "KIDS GRAMMAR SERIES (BK6)", offerPrice: 79, originalPrice: 599, coverImageUrl: "KGS6.png", previewUrl: "https://drive.google.com/file/d/1lzUDBzbuPxRsjVX2z_R5zr7YfgeY-1W_/preview", desc: "Comprehensive Grammar study material designed for kids aged 10 to 12" },
-            { id: 11, category: "ebook", name: "Product 11 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
-            { id: 12, category: "ebook", name: "Product 12 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
-            { id: 13, category: "ebook", name: "Product 13 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
-            { id: 14, category: "ebook", name: "Product 14 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
-            { id: 15, category: "ebook", name: "Product 15 E-Book", offerPrice: 49, originalPrice: 399, coverImageUrl: "", previewUrl: "", desc: "Comprehensive study material designed for fluent speaking modules." },
+        let storeProducts = [];
+        let shoppingCart = [];
+        let configData = {};
 
-            // 📚 CATEGORY 2: COMPLETE SELF STUDY SERIES
-            { id: 16, category: "video", name: "ENGLISH SELF STUDY LEVEL 1", offerPrice: 1099, originalPrice: 6999, coverImageUrl: "CSSL1.png", previewUrl: "https://drive.google.com/file/d/1n03qhsSLZRJaKCChYhcU59Lm_aXW5XNl/preview", desc: "Step-by-step guide to learn and practice at home | <strong>Course e-book & audio files available</strong>" },
-            { id: 17, category: "video", name: "Product 02 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 18, category: "video", name: "Product 03 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 19, category: "video", name: "Product 04 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 20, category: "video", name: "Product 05 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 21, category: "video", name: "Product 06 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 22, category: "video", name: "Product 07 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 23, category: "video", name: "Product 08 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 24, category: "video", name: "Product 09 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 25, category: "video", name: "Product 10 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 26, category: "video", name: "Product 11 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "", desc: "Step-by-step video guide to absolute fluency with visual graphics." },
-            { id: 27, category: "video", name: "Product 12 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "" , desc: "Step-by-step video guide to absolute fluency with visual graphics."},
-            { id: 28, category: "video", name: "Product 13 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "" , desc: "Step-by-step video guide to absolute fluency with visual graphics."},
-            { id: 29, category: "video", name: "Product 14 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "" , desc: "Step-by-step video guide to absolute fluency with visual graphics."},
-            { id: 30, category: "video", name: "Product 15 Video Course", offerPrice: 99, originalPrice: 999, coverImageUrl: "", previewUrl: "" , desc: "Step-by-step video guide to absolute fluency with visual graphics."},
+        // AUTOMATICALLY MOUNTED LIVE GOOGLE MACRO ROUTER ENDPOINT
+        const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_5uGXWarsZb7Cy_GLnWnYESJlpRQOkTpHZ8_wzMMP3K8cgDqrvCyV5sDOTVVsk5Ee/exec"; 
 
-            // 🎧 CATEGORY 3: LEARN AND SPEAK ENGLISH BETTER WITH INTERESTING SHORT AUDIO STORIES
-            { id: 31, category: "audio", name: "Audio Story of EMMA", offerPrice: 19, originalPrice: 199, coverImageUrl: "Ema.png", previewUrl: "https://drive.google.com/file/d/1bdf6zjrNxkPUPqtm87P5TO3lvI2NHA0l/preview" , desc: "Unlock the entire 12-minute story for just ₹19"},
-            { id: 32, category: "audio", name: "ENGLISH SELF STUDY LEVEL 1 Audio sample", offerPrice: 5, originalPrice: 299, coverImageUrl: "CSSL1.png", previewUrl: "https://drive.google.com/file/d/1TSoYd-DJuIdI993BmfV4KxBeTYe78cRV/preview" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 33, category: "audio", name: "Product 03 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 34, category: "audio", name: "Product 04 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 35, category: "audio", name: "Product 05 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 36, category: "audio", name: "Product 06 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 37, category: "audio", name: "Product 07 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 38, category: "audio", name: "Product 08 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 39, category: "audio", name: "Product 09 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 40, category: "audio", name: "Product 10 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 41, category: "audio", name: "Product 11 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 42, category: "audio", name: "Product 12 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 43, category: "audio", name: "Product 13 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 44, category: "audio", name: "Product 14 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
-            { id: 45, category: "audio", name: "Product 15 Audio Course", offerPrice: 49, originalPrice: 299, coverImageUrl: "", previewUrl: "" , desc: "Listen, practice, and shadow your pronunciation anywhere, anytime."},
+        function getEmbedUrl(url) {
+            if (!url) return '';
+            let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            let match = url.match(regExp);
+            if (match && match[2].length == 11) {
+                return "https://www.youtube.com/embed/" + match[2];
+            }
+            return url;
+        }
 
-            // 📝 CATEGORY 4: PREMIUM PRACTICE KITS
-            { id: 46, category: "kit", name: "Product 01 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" , desc: "Functional worksheets, tests, and interactive grammar templates."},
-            { id: 47, category: "kit", name: "Product 02 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" , desc: "Functional worksheets, tests, and interactive grammar templates."},
-            { id: 48, category: "kit", name: "Product 03 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" , desc: "Functional worksheets, tests, and interactive grammar templates."},
-            { id: 49, category: "kit", name: "Product 04 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" , desc: "Functional worksheets, tests, and interactive grammar templates."},
-            { id: 50, category: "kit", name: "Product 05 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" , desc: "Functional worksheets, tests, and interactive grammar templates."},
-            { id: 51, category: "kit", name: "Product 06 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" , desc: "Functional worksheets, tests, and interactive grammar templates."},
-            { id: 52, category: "kit", name: "Product 07 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 53, category: "kit", name: "Product 08 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 54, category: "kit", name: "Product 09 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 55, category: "kit", name: "Product 10 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 56, category: "kit", name: "Product 11 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 57, category: "kit", name: "Product 12 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 58, solidCategory: "kit", name: "Product 13 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 59, category: "kit", name: "Product 14 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" }
-        ];
+        function formatDateDMY(dateString) {
+            if (!dateString) return '';
+            const parts = dateString.split('-');
+            if (parts.length === 3) {
+                return `${parts[2]}-${parts[1]}-${parts[0]}`;
+            }
+            return dateString;
+        }
 
-        let selectedCart = [];
+        function loadData() {
+            configData = JSON.parse(localStorage.getItem('es_config')) || {
+                whatsappNumber: "919876543210",
+                upiId: "sovankapri@upi",
+                logoUrl: "logo.png",
+                logoSize: "40",
+                brandText: "English Spur",
+                brandFontSize: "20",
+                heroLine1: "ENGLISH SPUR ONLINE DIGITAL STORE",
+                heroLine2: "Premium digital products, visual e-books, and expert-curated courses to build your English fluency instantly.",
+                line1FontSize: "38",
+                line2FontSize: "18",
+                heroPoints: "LSRW Framework Modules\nInstant E-Book Downloads\nExpert Video Reviews\nLifetime Asset Access",
+                fontFamily: "'Poppins', sans-serif",
+                titleColor: "#ffffff",
+                subtitleColor: "#c7d2fe",
+                heroPadding: "80",
+                lineSpacing: "1.5"
+            };
+            storeProducts = JSON.parse(localStorage.getItem('es_products')) || [];
 
-        productsDatabase.forEach(prod => {
-            let gridId = "";
-            if (prod.category === "ebook") gridId = "ebook-grid";
-            else if (prod.category === "video") gridId = "video-grid";
-            else if (prod.category === "audio") gridId = "audio-grid";
-            else if (prod.category === "kit") gridId = "kit-grid";
+            document.getElementById('nav-brand-text').innerText = configData.brandText;
+            document.getElementById('hero-line1').innerText = configData.heroLine1;
+            document.getElementById('hero-line2').innerText = configData.heroLine2;
 
-            const gridEl = document.getElementById(gridId);
-            if (!gridEl) return;
-
-            let discountPercent = Math.round(((prod.originalPrice - prod.offerPrice) / prod.originalPrice) * 100);
-            
-            let isProductActive = prod.coverImageUrl !== "" && prod.previewUrl !== "";
-            let imageHtml = isProductActive ? `<img src="${prod.coverImageUrl}" alt="${prod.name}">` : `<div class="coming-soon-box">Available Soon</div>`;
-            let previewBtnHtml = isProductActive ? `<button class="preview-btn" onclick="openPreview('${prod.previewUrl}')">Preview Content</button>` : `<button class="preview-btn" style="background:#cbd5e1; color:#94a3b8;" disabled>No Preview</button>`;
-            let cartBtnHtml = isProductActive ? `<button class="add-to-cart-text-btn" id="btn-${prod.id}" onclick="toggleCart(${prod.id}, '${prod.name}', ${prod.offerPrice})">Add to Cart</button>` : `<button class="disabled-btn" disabled>No Access</button>`;
-
-            let actionRowHtml = "";
-            if (isProductActive) {
-                actionRowHtml = `
-                    <div class="card-description-area">
-                        <span class="info-badge">i</span>
-                        <div>${prod.desc}</div>
-                    </div>
-                    <div class="card-action-row">
-                        <div class="price-container">
-                            <span class="offer-price">₹${prod.offerPrice}</span>
-                            <span class="original-price">₹${prod.originalPrice}</span>
-                        </div>
-                        <div class="discount-badge">${discountPercent}% OFF</div>
-                        ${cartBtnHtml}
-                    </div>
-                `;
+            if(configData.logoUrl) {
+                document.getElementById('logo-wrapper').innerHTML = `<img src="${configData.logoUrl}" class="object-cover w-auto select-none" style="height: ${configData.logoSize || 40}px;">`;
             } else {
-                actionRowHtml = `
-                    <div class="card-description-area" style="justify-content: center; align-items: center; min-height: 46px; background: #f8fafc;">
-                        <span class="inactive-card-msg">⚠️ Coming Soon</span>
-                    </div>
-                    <div class="card-action-row" style="justify-content: center; padding-top: 5px;">
-                        ${cartBtnHtml}
-                    </div>
-                `;
+                document.getElementById('logo-wrapper').innerHTML = `<i class="fa-solid fa-graduation-cap text-2xl text-indigo-600"></i>`;
             }
 
-            let cardTemplate = `
-                <div class="product-card">
-                    <h3>${prod.name}</h3>
-                    <div class="image-box">${imageHtml}</div>
-                    ${previewBtnHtml}
-                    ${actionRowHtml}
-                </div>
+            document.getElementById('dynamic-styles').innerHTML = `
+                body { font-family: ${configData.fontFamily || "'Poppins', sans-serif"}; }
+                #nav-brand-text { font-size: ${configData.brandFontSize || 20}px; }
+                #hero-section {
+                    padding-top: ${configData.heroPadding || 80}px;
+                    padding-bottom: ${configData.heroPadding || 80}px;
+                }
+                #hero-line1 {
+                    color: ${configData.titleColor || '#ffffff'};
+                    line-height: ${configData.lineSpacing || 1.2};
+                    font-size: ${configData.line1FontSize || 38}px;
+                }
+                #hero-line2 {
+                    color: ${configData.subtitleColor || '#c7d2fe'};
+                    line-height: ${configData.lineSpacing || 1.5};
+                    font-size: ${configData.line2FontSize || 18}px;
+                }
             `;
-            gridEl.innerHTML += cardTemplate;
-        });
 
-        function scrollSection(gridId, direction) {
-            const container = document.getElementById(gridId);
-            if (direction === 'left') { container.scrollLeft -= 480; } else { container.scrollLeft += 480; }
-        }
-
-        function openPreview(url) { 
-            document.getElementById('modalIframe').src = url; 
-            document.getElementById('previewModal').style.display = 'flex'; 
-        }
-        
-        function closePreview() { 
-            document.getElementById('previewModal').style.display = 'none'; 
-            document.getElementById('modalIframe').src = ''; 
-        }
-
-        function toggleCart(id, name, price) {
-            const index = selectedCart.findIndex(item => item.id === id);
-            const btn = document.getElementById(`btn-${id}`);
-            
-            if (index > -1) { 
-                selectedCart.splice(index, 1); 
-                btn.innerHTML = "Add to Cart"; 
-                btn.classList.remove('added'); 
-            } else { 
-                selectedCart.push({ id: id, name: name, price: price }); 
-                btn.innerHTML = "Added to Cart ✓"; 
-                btn.classList.add('added'); 
+            const pointsContainer = document.getElementById('hero-points-container');
+            if(configData.heroPoints) {
+                const lines = configData.heroPoints.split('\n').filter(l => l.trim() !== '');
+                pointsContainer.innerHTML = lines.map(line => `
+                    <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/10 transition hover:bg-white/15">
+                        <i class="fa-solid fa-circle-check text-amber-400 text-lg flex-shrink-0"></i>
+                        <span class="text-sm font-semibold tracking-wide text-white">${line.trim()}</span>
+                    </div>`).join('');
+                pointsContainer.classList.remove('hidden');
+            } else {
+                pointsContainer.innerHTML = '';
+                pointsContainer.classList.add('hidden');
             }
-            document.getElementById('cartCount').innerText = selectedCart.length;
-            updateOrderSummary();
+
+            renderStoreGrid();
+            updateCart();
         }
 
-        function updateOrderSummary() {
-            const checkoutSec = document.getElementById('checkoutSection');
-            if(selectedCart.length > 0) {
-                checkoutSec.style.display = "block";
-                let listHtml = ""; let total = 0;
-                selectedCart.forEach((item, i) => { listHtml += `<p>${i+1}. <strong>${item.name}</strong> — <span style="color:var(--danger); font-weight:bold;">₹${item.price}</span></p>`; total += item.price; });
+        function toggleCart() { document.getElementById('cart-drawer').classList.toggle('hidden'); }
+
+        function openPreview(url) {
+            const container = document.getElementById('preview-content');
+            if (!url) {
+                container.innerHTML = `<div class="text-white text-sm">No sample pages provided for this asset.</div>`;
+                return;
+            } 
+            
+            if (url.includes('drive.google.com')) {
+                let embedUrl = url.replace(/\/view.*$/, "/preview");
+                if (!embedUrl.includes("/preview")) embedUrl = url + "/preview";
                 
-                document.getElementById('selectedProductsList').innerHTML = listHtml;
-                document.getElementById('qrPayableAmount').innerText = total;
-            } else { 
-                checkoutSec.style.display = "none"; 
+                container.innerHTML = `
+                    <div class="relative w-full h-full bg-slate-900 flex items-center justify-center p-1 sm:p-4 select-none">
+                        <div class="absolute top-0 left-0 w-full h-[54px] bg-slate-900 z-30 border-b border-slate-800 flex items-center pl-6">
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-shield-halved text-indigo-400 mr-1.5"></i> Secure Preview Deck</span>
+                        </div>
+                        <div class="relative w-full h-full overflow-hidden rounded-xl border border-slate-700 bg-white pt-[54px]">
+                            <iframe src="${embedUrl}" 
+                                    class="w-full h-full border-none z-10" 
+                                    sandbox="allow-scripts allow-same-origin"
+                                    allow="autoplay">
+                            </iframe>
+                        </div>
+                    </div>`;
+            } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                let cleanEmbedUrl = getEmbedUrl(url);
+                container.innerHTML = `<iframe class="w-full h-full" src="${cleanEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
+            } else {
+                container.innerHTML = `<div class="w-full h-full overflow-auto p-4 flex items-center justify-center bg-slate-900"><img src="${url}" class="max-w-full max-h-full object-contain rounded-lg shadow-md bg-white"></div>`;
             }
+            document.getElementById('preview-modal').classList.remove('hidden');
         }
 
-        function scrollToCheckout() {
-            if(selectedCart.length === 0) { alert("Please add items first!"); return; }
-            document.getElementById('checkoutSection').scrollIntoView({ behavior: 'smooth' });
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+            document.getElementById('preview-content').innerHTML = '';
         }
 
-        /* ⚡ লাইন ব্রেক ফিক্স করা আল্ট্রা-নিখুঁত হোয়াটসঅ্যাপ ফাংশন */
-        function sendExpressOrderToWhatsApp() {
-            const total = document.getElementById('qrPayableAmount').innerText;
-            if (!total || total === "0") { alert("Your cart is empty!"); return; }
+        function openFreeModal(id, title, directDownloadUrl) {
+            document.getElementById('free-prod-id').value = id;
+            document.getElementById('free-prod-title').value = title;
+            document.getElementById('free-prod-drive').value = directDownloadUrl;
+            document.getElementById('free-download-modal').classList.remove('hidden');
+        }
+
+        function closeFreeModal() {
+            document.getElementById('free-download-modal').classList.add('hidden');
+            document.getElementById('free-lead-form').reset();
+        }
+
+        function handleFreeSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('free-submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> Processing Download...";
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('lead-name').value.trim();
+            const phone = document.getElementById('lead-phone').value.trim();
+            const email = document.getElementById('lead-email').value.trim();
+            const pTitle = document.getElementById('free-prod-title').value;
+            const directUrl = document.getElementById('free-prod-drive').value.trim();
+
+            const formData = {
+                date: new Date().toLocaleString(),
+                product: pTitle,
+                name: name,
+                phone: phone,
+                email: email
+            };
+
+            if(GOOGLE_SHEET_SCRIPT_URL) {
+                fetch(GOOGLE_SHEET_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                }).catch(err => console.log(err));
+            }
+
+            // ADVANCED RELIABLE API EXPORT CONVERSION FOR DOWNLOAD LINKS
+            let finalDownloadUrl = directUrl;
+            if (directUrl.includes("drive.google.com")) {
+                const matches = directUrl.match(/\/d\/([^\/]+)/) || directUrl.match(/id=([^\&]+)/);
+                if (matches && matches[1]) {
+                    finalDownloadUrl = `https://drive.google.com/uc?id=${matches[1]}&export=download`;
+                }
+            }
+
+            // TRIGGER BACKGROUND ANCHOR FOR DYNAMIC STREAMING
+            const link = document.createElement('a');
+            link.href = finalDownloadUrl;
+            link.setAttribute('download', pTitle + '.pdf');
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => {
+                alert(`Thank you ${name}! Your request has been successfully processed.\n\nYour download will initiate. If it gets intercepted, please click OK to retry manually.`);
+                closeFreeModal();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 600);
+        }
+
+        function renderStoreGrid() {
+            const grid = document.getElementById('products-grid');
+            if(storeProducts.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center text-slate-400 py-10">No items available.</p>`;
+                return;
+            }
+            grid.innerHTML = storeProducts.map(p => {
+                const isInCart = shoppingCart.some(c => c.id === p.id);
+                const offerPrice = parseFloat(p.price) || 0;
+                const actualPrice = parseFloat(p.actualPrice) || 0;
+                
+                let priceSection = '';
+                let actionButtons = '';
+                let discountBadge = '';
+                let previewButton = '';
+
+                // CONDITION 1: IF PRODUCT IS MARKED FREE (PRICE = 0)
+                if (offerPrice === 0) {
+                    priceSection = `
+                        <span class="text-xl font-black text-emerald-600 uppercase tracking-wide">FREE</span>
+                        <span class="text-xs text-slate-400 line-through ml-2">₹${p.actualPrice || '199'}</span>`;
+                    discountBadge = `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded ml-2">100% OFF</span>`;
+                    
+                    actionButtons = `
+                        <button onclick="openFreeModal('${p.id}', '${p.title}', '${p.downloadLink || p.video}')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition shadow-sm flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-circle-down text-sm"></i> Download Free Ebook
+                        </button>`;
+                } else {
+                    // CONDITION 2: STANDARD PREMIUM COURSES / ASSETS
+                    if (actualPrice > offerPrice) {
+                        const discountPercent = Math.round(((actualPrice - offerPrice) / actualPrice) * 100);
+                        discountBadge = `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded ml-2">${discountPercent}% OFF</span>`;
+                    }
+                    
+                    priceSection = `
+                        <span class="text-xl font-black text-slate-900">₹${p.price}</span>
+                        <span class="text-xs text-slate-400 line-through ml-2">₹${p.actualPrice}</span>`;
+                    
+                    const buttonText = isInCart ? `<i class="fa-solid fa-check mr-1"></i> Added` : `<i class="fa-solid fa-cart-plus mr-1"></i> Add To Cart`;
+                    const buttonClass = isInCart ? `bg-emerald-600 text-white font-bold px-3 py-2.5 rounded-xl text-xs transition` : `bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2.5 rounded-xl text-xs transition`;
+                    
+                    actionButtons = `
+                        <button onclick="addToCart('${p.id}')" class="flex-1 ${buttonClass}">${buttonText}</button>
+                        <button onclick="buyNow('${p.id}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs transition">Buy Now</button>`;
+                }
+
+                // Append preview render if link exists
+                if(p.video) {
+                    previewButton = `
+                        <button onclick="openPreview('${p.video}')" class="w-full bg-slate-100 hover:bg-slate-200 text-indigo-700 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition border border-slate-200">
+                            <i class="fa-solid fa-book-open"></i> Watch Preview Pages
+                        </button>`;
+                } else {
+                    previewButton = `
+                        <div class="w-full bg-slate-50 text-slate-400 py-2 rounded-xl text-[11px] text-center border border-dashed select-none">
+                            <i class="fa-solid fa-bolt"></i> Instant Direct Delivery Resource
+                        </div>`;
+                }
+
+                const formattedDate = formatDateDMY(p.expiry);
+
+                return `
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="relative w-full aspect-square bg-slate-100 overflow-hidden border-b border-slate-100">
+                                <img src="${p.image}" class="w-full h-full object-cover select-none" alt="Product Image">
+                            </div>
+                            
+                            <div class="p-5">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-red-50 text-red-600 text-[10px] font-bold px-2.5 py-1 rounded border border-red-100 flex items-center gap-1">
+                                        <i class="fa-solid fa-clock"></i> Special offer price ends on ${formattedDate}
+                                    </span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1 line-clamp-2">${p.title}</h3>
+                                <p class="text-xs text-slate-600 line-clamp-3 mb-4">${p.desc}</p>
+                                
+                                ${previewButton}
+                            </div>
+                        </div>
+                        <div class="px-5 pb-5 pt-3 border-t border-slate-100 bg-slate-50/50">
+                            <div class="flex items-center mb-3">
+                                ${priceSection}
+                                ${discountBadge}
+                            </div>
+                            <div class="flex gap-2">
+                                ${actionButtons}
+                            </div>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function addToCart(id) {
+            const item = storeProducts.find(p => p.id === id);
+            if (!item || parseFloat(item.price) === 0) return;
+            if (shoppingCart.some(c => c.id === id)) { toggleCart(); return; }
+            shoppingCart.push(item);
+            updateCart();
+            renderStoreGrid();
+        }
+
+        function buyNow(id) {
+            const item = storeProducts.find(p => p.id === id);
+            if (!item || parseFloat(item.price) === 0) return;
+            if (!shoppingCart.some(c => c.id === id)) {
+                shoppingCart.push(item);
+                updateCart();
+                renderStoreGrid();
+            }
+            toggleCart();
+        }
+
+        function removeFromCart(id) {
+            shoppingCart = shoppingCart.filter(c => c.id !== id);
+            updateCart();
+            renderStoreGrid();
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = shoppingCart.length;
+            document.getElementById('cart-count').classList.toggle('hidden', shoppingCart.length === 0);
+            const container = document.getElementById('cart-items-container');
             
-            let productNames = "";
-            selectedCart.forEach((item, i) => { 
-                productNames += `${i+1}. ${item.name} (₹${item.price})\n`; 
-            });
+            if(shoppingCart.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-slate-400">Basket is empty.</div>`;
+                document.getElementById('cart-actual-total').innerText = "₹0.00";
+                document.getElementById('cart-discount-total').innerText = "-₹0.00";
+                document.getElementById('cart-total-price').innerText = "₹0.00";
+                return;
+            }
 
-            const currentTimestamp = new Date();
-            const dateString = currentTimestamp.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            const timeString = currentTimestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-            const exactDateTime = `${dateString} at ${timeString}`;
+            container.innerHTML = shoppingCart.map(item => `
+                <div class="flex items-center justify-between py-4 border-b text-sm">
+                    <div class="flex-1 pr-3">
+                        <h4 class="font-bold text-slate-900 line-clamp-1">${item.title}</h4>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <span class="font-bold text-slate-800">₹${item.price}</span>
+                            <span class="text-xs text-slate-400 line-through">₹${item.actualPrice}</span>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:underline">Remove</button>
+                </div>`).join('');
 
-            const liveOrderNo = "ESP-" + currentTimestamp.getFullYear() + (currentTimestamp.getMonth()+1) + currentTimestamp.getDate() + "-" + Math.floor(1000 + Math.random() * 9000);
+            const payableTotal = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+            const actualTotal = shoppingCart.reduce((sum, item) => sum + parseFloat(item.actualPrice), 0);
+            const discountTotal = actualTotal - payableTotal;
 
-            // 🎯 একদম নিচে নিচে লাইন ব্রেক সহ মেসেজ ফরম্যাট
-            const rawMessage = `*NEW DIGITAL STORE ORDER REQUEST*\n\n` +
-                               `• *My Name:* [এখানে আপনার নাম লিখুন]\n` +
-                               `• *Purchase Date:* ${exactDateTime}\n` +
-                               `• *Order Number:* ${liveOrderNo}\n\n` +
-                               `Hello *শোভন কাপড়ী*, আমি আপনার অনলাইন স্টোর থেকে ডিজিটাল প্রোডাক্ট অর্ডার করতে চাই। আমার কার্ট / order ডিটেইলস নিচে দেওয়া হলো:\n\n` +
-                               `*Selected Materials:*\n${productNames}\n` +
-                               `*Total Price:* ₹${total}\n\n` +
-                               `_⚡ শোভন কাপড়ী, উপরে আমার নাম লিখে দিলাম। এবার আমাকে পেমেন্ট করার জন্য আপনার সঠিক QR কোড বা UPI ID চ্যাটে পাঠান। আমি পেমেন্ট সম্পন্ন করে পেমেন্ট অ্যাপ থেকে সরাসরি এই চ্যাটেই স্ক্রিনশট শেয়ার করে দিচ্ছি। ভেরিফাই করে আমাকে ই-বুক বা মেটেরিয়ালের অ্যাক্সেস দিয়ে দিন!_`;
-
-            // নিরাপদ ব্রাউজার এনকোডিং যা লাইন ব্রেক নষ্ট করবে না
-            const finalLink = `https://wa.me/919875340842?text=${encodeURIComponent(rawMessage)}`;
-            window.open(finalLink, '_blank');
+            document.getElementById('cart-actual-total').innerText = `₹${actualTotal.toFixed(2)}`;
+            document.getElementById('cart-discount-total').innerText = `-₹${discountTotal.toFixed(2)}`;
+            document.getElementById('cart-total-price').innerText = `₹${payableTotal.toFixed(2)}`;
         }
+
+        function checkoutViaWhatsApp() {
+            const name = document.getElementById('buyer-name').value.trim();
+            const email = document.getElementById('buyer-email').value.trim();
+            if(!name || !email) { alert("Please input name and delivery email."); return; }
+
+            const total = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+            const itemsList = shoppingCart.map(i => `- ${i.title} (₹${i.price})`).join('%0A');
+            
+            const upiString = `upi://pay?pa=${configData.upiId}&pn=${encodeURIComponent(configData.brandText)}&am=${total}&cu=INR&tn=Store`;
+            const text = `*NEW DIGITAL STORE ORDER*%0A%0A` +
+                         `*Customer:* ${name}%0A` +
+                         `*Email:* ${email}%0A%0A` +
+                         `*Items:*%0A${itemsList}%0A%0A` +
+                         `*Total Payable:* ₹${total}%0A%0A` +
+                         `👉 *Pay securely via UPI:* ${encodeURIComponent(upiString)}%0A%0A` +
+                         `Please attach the payment screenshot right below this message!`;
+
+            window.open(`https://wa.me/${configData.whatsappNumber}?text=${text}`, '_blank');
+        }
+
+        window.onload = loadData;
     </script>
 </body>
 </html>
