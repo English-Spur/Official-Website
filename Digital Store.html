@@ -13,7 +13,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 transition-all duration-200">
 
-    <!-- NAVBAR -->
     <nav class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -35,7 +34,6 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <header id="hero-section" class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white text-center px-4">
         <div class="max-w-4xl mx-auto flex flex-col items-center">
             <p class="text-amber-400 font-bold tracking-widest text-xs sm:text-sm uppercase mb-2" id="hero-welcome-text">WELCOME TO</p>
@@ -49,16 +47,20 @@
         </div>
     </header>
 
-    <!-- MAIN PRODUCT CATALOG -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <section id="store-products" class="mb-20">
             <h2 class="text-3xl font-bold text-slate-900 mb-2">Our Premium Resources</h2>
             <p class="text-slate-500 mb-8">Boost your learning journey with instant digital downloads.</p>
+            
+            <div id="cloud-loader" class="text-center py-20 text-slate-500 space-y-3">
+                <i class="fa-solid fa-spinner fa-spin text-4xl text-indigo-600"></i>
+                <p class="text-sm font-semibold">Streaming authentic catalog assets from Google Cloud Sheet...</p>
+            </div>
+            
             <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </section>
     </main>
 
-    <!-- CART DRAWER -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div class="absolute inset-0 overflow-hidden">
             <div class="absolute inset-0 bg-slate-900 bg-opacity-50 transition-opacity" onclick="toggleCart()"></div>
@@ -99,7 +101,6 @@
         </div>
     </div>
 
-    <!-- PREVIEW BOX MODAL -->
     <div id="preview-modal" class="fixed inset-0 z-50 overflow-hidden hidden bg-slate-950 bg-opacity-95 flex items-center justify-center p-2 sm:p-4" onclick="closePreview()">
         <div class="relative bg-white rounded-2xl max-w-4xl w-full h-[90vh] overflow-hidden shadow-2xl flex flex-col" onclick="event.stopPropagation()">
             <button onclick="closePreview()" class="absolute top-3 right-3 z-50 bg-black/60 hover:bg-black text-white w-9 h-9 rounded-full flex items-center justify-center transition shadow-md"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -107,16 +108,15 @@
         </div>
     </div>
 
-    <!-- FREE DOWNLOAD LEAD MODAL -->
     <div id="free-download-modal" class="fixed inset-0 z-50 overflow-hidden hidden bg-slate-950 bg-opacity-80 flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border relative" onclick="event.stopPropagation()">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border relative">
             <button onclick="closeFreeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
             <div class="text-center mb-6">
                 <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
                     <i class="fa-solid fa-circle-down"></i>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900">Get Your Free E-Book</h3>
-                <p class="text-xs text-slate-500 mt-1">Please enter your correct details to start the automatic instant download.</p>
+                <p class="text-xs text-slate-500 mt-1">Please enter your details to start the automatic secure download.</p>
             </div>
             <form id="free-lead-form" onsubmit="handleFreeSubmit(event)" class="space-y-4">
                 <input type="hidden" id="free-prod-id">
@@ -146,8 +146,8 @@
         let shoppingCart = [];
         let configData = {};
 
-        // AUTOMATICALLY MOUNTED LIVE GOOGLE MACRO ROUTER ENDPOINT
-        const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_5uGXWarsZb7Cy_GLnWnYESJlpRQOkTpHZ8_wzMMP3K8cgDqrvCyV5sDOTVVsk5Ee/exec"; 
+        // INHERITED SINGLE ACTIVE ENDPOINT FOR SYSTEM TRANSFERS
+        const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3JXiMD_dEiGOGTnX9Dl94FuB78NaLVvRqPSO7ZcYvXS48u4Je9PwRQc7v5o88SYe9/exec"; 
 
         function getEmbedUrl(url) {
             if (!url) return '';
@@ -161,89 +161,74 @@
 
         function formatDateDMY(dateString) {
             if (!dateString) return '';
-            const parts = dateString.split('-');
+            const parts = dateString.split('T')[0].split('-');
             if (parts.length === 3) {
                 return `${parts[2]}-${parts[1]}-${parts[0]}`;
             }
-            return dateString;
+            return dateString.split('T')[0];
         }
 
         function loadData() {
             configData = JSON.parse(localStorage.getItem('es_config')) || {
-                whatsappNumber: "919876543210",
+                whatsappNumber: "919875340842",
                 upiId: "sovankapri@upi",
                 logoUrl: "logo.png",
-                logoSize: "40",
                 brandText: "English Spur",
-                brandFontSize: "20",
                 heroLine1: "ENGLISH SPUR ONLINE DIGITAL STORE",
                 heroLine2: "Premium digital products, visual e-books, and expert-curated courses to build your English fluency instantly.",
-                line1FontSize: "38",
-                line2FontSize: "18",
                 heroPoints: "LSRW Framework Modules\nInstant E-Book Downloads\nExpert Video Reviews\nLifetime Asset Access",
-                fontFamily: "'Poppins', sans-serif",
-                titleColor: "#ffffff",
-                subtitleColor: "#c7d2fe",
-                heroPadding: "80",
-                lineSpacing: "1.5"
+                fontFamily: "'Poppins', sans-serif"
             };
-            storeProducts = JSON.parse(localStorage.getItem('es_products')) || [];
 
             document.getElementById('nav-brand-text').innerText = configData.brandText;
             document.getElementById('hero-line1').innerText = configData.heroLine1;
             document.getElementById('hero-line2').innerText = configData.heroLine2;
 
             if(configData.logoUrl) {
-                document.getElementById('logo-wrapper').innerHTML = `<img src="${configData.logoUrl}" class="object-cover w-auto select-none" style="height: ${configData.logoSize || 40}px;">`;
-            } else {
-                document.getElementById('logo-wrapper').innerHTML = `<i class="fa-solid fa-graduation-cap text-2xl text-indigo-600"></i>`;
+                document.getElementById('logo-wrapper').innerHTML = `<div class="bg-indigo-600 text-white px-2 py-1 text-xs font-bold rounded">ESPUR</div>`;
             }
 
             document.getElementById('dynamic-styles').innerHTML = `
                 body { font-family: ${configData.fontFamily || "'Poppins', sans-serif"}; }
-                #nav-brand-text { font-size: ${configData.brandFontSize || 20}px; }
-                #hero-section {
-                    padding-top: ${configData.heroPadding || 80}px;
-                    padding-bottom: ${configData.heroPadding || 80}px;
-                }
-                #hero-line1 {
-                    color: ${configData.titleColor || '#ffffff'};
-                    line-height: ${configData.lineSpacing || 1.2};
-                    font-size: ${configData.line1FontSize || 38}px;
-                }
-                #hero-line2 {
-                    color: ${configData.subtitleColor || '#c7d2fe'};
-                    line-height: ${configData.lineSpacing || 1.5};
-                    font-size: ${configData.line2FontSize || 18}px;
-                }
+                #hero-section { padding-top: 80px; padding-bottom: 80px; }
             `;
 
             const pointsContainer = document.getElementById('hero-points-container');
             if(configData.heroPoints) {
                 const lines = configData.heroPoints.split('\n').filter(l => l.trim() !== '');
                 pointsContainer.innerHTML = lines.map(line => `
-                    <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/10 transition hover:bg-white/15">
+                    <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/10">
                         <i class="fa-solid fa-circle-check text-amber-400 text-lg flex-shrink-0"></i>
                         <span class="text-sm font-semibold tracking-wide text-white">${line.trim()}</span>
                     </div>`).join('');
-                pointsContainer.classList.remove('hidden');
-            } else {
-                pointsContainer.innerHTML = '';
-                pointsContainer.classList.add('hidden');
             }
 
-            renderStoreGrid();
-            updateCart();
+            fetchCloudProducts();
+        }
+
+        function fetchCloudProducts() {
+            if(GOOGLE_SHEET_SCRIPT_URL === "") {
+                document.getElementById('cloud-loader').innerText = "Developer Configuration Required.";
+                return;
+            }
+
+            fetch(GOOGLE_SHEET_SCRIPT_URL)
+                .then(res => res.json())
+                .then(data => {
+                    storeProducts = data;
+                    document.getElementById('cloud-loader').classList.add('hidden');
+                    renderStoreGrid();
+                })
+                .catch(err => {
+                    document.getElementById('cloud-loader').innerText = "Failed to stream live catalog entries.";
+                });
         }
 
         function toggleCart() { document.getElementById('cart-drawer').classList.toggle('hidden'); }
 
         function openPreview(url) {
             const container = document.getElementById('preview-content');
-            if (!url) {
-                container.innerHTML = `<div class="text-white text-sm">No sample pages provided for this asset.</div>`;
-                return;
-            } 
+            if (!url) return;
             
             if (url.includes('drive.google.com')) {
                 let embedUrl = url.replace(/\/view.*$/, "/preview");
@@ -255,18 +240,11 @@
                             <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-shield-halved text-indigo-400 mr-1.5"></i> Secure Preview Deck</span>
                         </div>
                         <div class="relative w-full h-full overflow-hidden rounded-xl border border-slate-700 bg-white pt-[54px]">
-                            <iframe src="${embedUrl}" 
-                                    class="w-full h-full border-none z-10" 
-                                    sandbox="allow-scripts allow-same-origin"
-                                    allow="autoplay">
-                            </iframe>
+                            <iframe src="${embedUrl}" class="w-full h-full border-none z-10" sandbox="allow-scripts allow-same-origin"></iframe>
                         </div>
                     </div>`;
-            } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
-                let cleanEmbedUrl = getEmbedUrl(url);
-                container.innerHTML = `<iframe class="w-full h-full" src="${cleanEmbedUrl}" frameborder="0" allowfullscreen></iframe>`;
             } else {
-                container.innerHTML = `<div class="w-full h-full overflow-auto p-4 flex items-center justify-center bg-slate-900"><img src="${url}" class="max-w-full max-h-full object-contain rounded-lg shadow-md bg-white"></div>`;
+                container.innerHTML = `<iframe class="w-full h-full" src="${getEmbedUrl(url)}" frameborder="0" allowfullscreen></iframe>`;
             }
             document.getElementById('preview-modal').classList.remove('hidden');
         }
@@ -292,7 +270,7 @@
             e.preventDefault();
             const submitBtn = document.getElementById('free-submit-btn');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> Processing Download...";
+            submitBtn.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> Triggering Secure Download...";
             submitBtn.disabled = true;
 
             const name = document.getElementById('lead-name').value.trim();
@@ -309,16 +287,13 @@
                 email: email
             };
 
-            if(GOOGLE_SHEET_SCRIPT_URL) {
-                fetch(GOOGLE_SHEET_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                }).catch(err => console.log(err));
-            }
+            fetch(GOOGLE_SHEET_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
 
-            // ADVANCED RELIABLE API EXPORT CONVERSION FOR DOWNLOAD LINKS
             let finalDownloadUrl = directUrl;
             if (directUrl.includes("drive.google.com")) {
                 const matches = directUrl.match(/\/d\/([^\/]+)/) || directUrl.match(/id=([^\&]+)/);
@@ -327,7 +302,6 @@
                 }
             }
 
-            // TRIGGER BACKGROUND ANCHOR FOR DYNAMIC STREAMING
             const link = document.createElement('a');
             link.href = finalDownloadUrl;
             link.setAttribute('download', pTitle + '.pdf');
@@ -338,7 +312,7 @@
             document.body.removeChild(link);
 
             setTimeout(() => {
-                alert(`Thank you ${name}! Your request has been successfully processed.\n\nYour download will initiate. If it gets intercepted, please click OK to retry manually.`);
+                alert(`Thank you ${name}! Lead logged to Google Sheet.\n\nYour download will initiate instantly.`);
                 closeFreeModal();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
@@ -348,7 +322,7 @@
         function renderStoreGrid() {
             const grid = document.getElementById('products-grid');
             if(storeProducts.length === 0) {
-                grid.innerHTML = `<p class="col-span-full text-center text-slate-400 py-10">No items available.</p>`;
+                grid.innerHTML = `<p class="col-span-full text-center text-slate-400 py-10">No cloud products active at this time.</p>`;
                 return;
             }
             grid.innerHTML = storeProducts.map(p => {
@@ -361,7 +335,6 @@
                 let discountBadge = '';
                 let previewButton = '';
 
-                // CONDITION 1: IF PRODUCT IS MARKED FREE (PRICE = 0)
                 if (offerPrice === 0) {
                     priceSection = `
                         <span class="text-xl font-black text-emerald-600 uppercase tracking-wide">FREE</span>
@@ -369,11 +342,10 @@
                     discountBadge = `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded ml-2">100% OFF</span>`;
                     
                     actionButtons = `
-                        <button onclick="openFreeModal('${p.id}', '${p.title}', '${p.downloadLink || p.video}')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition shadow-sm flex items-center justify-center gap-1">
+                        <button onclick="openFreeModal('${p.id}', '${p.title}', '${p.downloadLink || p.video}')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-1">
                             <i class="fa-solid fa-circle-down text-sm"></i> Download Free Ebook
                         </button>`;
                 } else {
-                    // CONDITION 2: STANDARD PREMIUM COURSES / ASSETS
                     if (actualPrice > offerPrice) {
                         const discountPercent = Math.round(((actualPrice - offerPrice) / actualPrice) * 100);
                         discountBadge = `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded ml-2">${discountPercent}% OFF</span>`;
@@ -383,28 +355,22 @@
                         <span class="text-xl font-black text-slate-900">₹${p.price}</span>
                         <span class="text-xs text-slate-400 line-through ml-2">₹${p.actualPrice}</span>`;
                     
-                    const buttonText = isInCart ? `<i class="fa-solid fa-check mr-1"></i> Added` : `<i class="fa-solid fa-cart-plus mr-1"></i> Add To Cart`;
-                    const buttonClass = isInCart ? `bg-emerald-600 text-white font-bold px-3 py-2.5 rounded-xl text-xs transition` : `bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2.5 rounded-xl text-xs transition`;
+                    const buttonText = isInCart ? `<i class="fa-solid fa-check mr-1"></i> Added` : `<i class="fa-solid fa-cart-plus mr-1"></i> Add To Basket`;
+                    const buttonClass = isInCart ? `bg-emerald-600 text-white font-bold px-3 py-2.5 rounded-xl text-xs` : `bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2.5 rounded-xl text-xs`;
                     
                     actionButtons = `
                         <button onclick="addToCart('${p.id}')" class="flex-1 ${buttonClass}">${buttonText}</button>
                         <button onclick="buyNow('${p.id}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs transition">Buy Now</button>`;
                 }
 
-                // Append preview render if link exists
                 if(p.video) {
                     previewButton = `
                         <button onclick="openPreview('${p.video}')" class="w-full bg-slate-100 hover:bg-slate-200 text-indigo-700 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition border border-slate-200">
                             <i class="fa-solid fa-book-open"></i> Watch Preview Pages
                         </button>`;
                 } else {
-                    previewButton = `
-                        <div class="w-full bg-slate-50 text-slate-400 py-2 rounded-xl text-[11px] text-center border border-dashed select-none">
-                            <i class="fa-solid fa-bolt"></i> Instant Direct Delivery Resource
-                        </div>`;
+                    previewButton = `<div class="w-full bg-slate-50 text-slate-400 py-2 rounded-xl text-[11px] text-center border border-dashed select-none"><i class="fa-solid fa-bolt"></i> Instant Direct Delivery Resource</div>`;
                 }
-
-                const formattedDate = formatDateDMY(p.expiry);
 
                 return `
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
@@ -416,7 +382,7 @@
                             <div class="p-5">
                                 <div class="flex items-center justify-between mb-3">
                                     <span class="bg-red-50 text-red-600 text-[10px] font-bold px-2.5 py-1 rounded border border-red-100 flex items-center gap-1">
-                                        <i class="fa-solid fa-clock"></i> Special offer price ends on ${formattedDate}
+                                        <i class="fa-solid fa-clock"></i> Special cloud rate active ends: ${formatDateDMY(p.expiry)}
                                     </span>
                                 </div>
                                 <h3 class="text-lg font-bold text-slate-900 mb-1 line-clamp-2">${p.title}</h3>
@@ -501,7 +467,7 @@
         function checkoutViaWhatsApp() {
             const name = document.getElementById('buyer-name').value.trim();
             const email = document.getElementById('buyer-email').value.trim();
-            if(!name || !email) { alert("Please input name and delivery email."); return; }
+            if(!name || !email) { alert("Please fill details."); return; }
 
             const total = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
             const itemsList = shoppingCart.map(i => `- ${i.title} (₹${i.price})`).join('%0A');
@@ -513,7 +479,7 @@
                          `*Items:*%0A${itemsList}%0A%0A` +
                          `*Total Payable:* ₹${total}%0A%0A` +
                          `👉 *Pay securely via UPI:* ${encodeURIComponent(upiString)}%0A%0A` +
-                         `Please attach the payment screenshot right below this message!`;
+                         `Please attach payment screenshot below!`;
 
             window.open(`https://wa.me/${configData.whatsappNumber}?text=${text}`, '_blank');
         }
