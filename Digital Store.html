@@ -19,9 +19,8 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                     <div class="bg-indigo-600 text-white px-2 py-1 text-xs font-bold rounded">ESPUR</div>
-                    <span id="nav-brand-text" class="font-bold text-indigo-900 tracking-tight">English Spur</span>
+                    <span class="font-bold text-indigo-900 tracking-tight">English Spur</span>
                 </div>
-                
                 <div class="flex items-center gap-6">
                     <button onclick="toggleCart()" class="relative p-2 text-slate-600 hover:text-indigo-600 transition">
                         <i class="fa-solid fa-basket-shopping text-2xl"></i>
@@ -36,14 +35,8 @@
     <header class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white text-center py-16 px-4">
         <div class="max-w-4xl mx-auto flex flex-col items-center">
             <p class="text-amber-400 font-bold tracking-widest text-xs uppercase mb-2">WELCOME TO</p>
-            <h1 class="text-2xl sm:text-4xl font-black tracking-tight" id="hero-title">ENGLISH SPUR ONLINE DIGITAL STORE</h1>
+            <h1 class="text-2xl sm:text-4xl font-black tracking-tight">ENGLISH SPUR ONLINE DIGITAL STORE</h1>
             <p class="text-indigo-200 mt-4 text-xs sm:text-sm max-w-2xl">Premium digital products, visual e-books, and expert-curated courses to build your English fluency instantly.</p>
-            <div id="hero-points" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-xl text-xs">
-                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> LSRW Framework Modules</div>
-                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> Instant E-Book Downloads</div>
-                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> Expert Video Reviews</div>
-                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> Lifetime Asset Access</div>
-            </div>
         </div>
     </header>
 
@@ -51,12 +44,10 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <section class="mb-20">
             <h2 class="text-2xl font-bold text-slate-900 mb-6">Our Premium Resources</h2>
-            
             <div id="cloud-loader" class="text-center py-12 text-slate-500 space-y-2">
                 <i class="fa-solid fa-spinner fa-spin text-3xl text-indigo-600"></i>
                 <p class="text-xs font-semibold">Streaming authentic catalog assets from Google Cloud Sheet...</p>
             </div>
-            
             <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </section>
     </main>
@@ -81,12 +72,20 @@
                         </div>
                         <input type="text" id="buyer-name" placeholder="Your Name" class="w-full p-2 border rounded-lg text-sm focus:outline-indigo-600" required>
                         <input type="email" id="buyer-email" placeholder="Your Delivery Email" class="w-full p-2 border rounded-lg text-sm focus:outline-indigo-600" required>
-                        <button onclick="checkoutViaWhatsApp()" class="w-full flex items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-green-700 transition">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Pay & Order on WhatsApp
+                        <button onclick="checkoutViaWhatsApp()" class="w-full flex items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-green-700 transition">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Pay via UPI & Order on WhatsApp
                         </button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- PREVIEW BOX MODAL -->
+    <div id="preview-modal" class="fixed inset-0 z-50 overflow-hidden hidden bg-slate-950 bg-opacity-95 flex items-center justify-center p-2 sm:p-4" onclick="closePreview()">
+        <div class="relative bg-white rounded-2xl max-w-4xl w-full h-[85vh] overflow-hidden shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+            <button onclick="closePreview()" class="absolute top-3 right-3 z-50 bg-black text-white w-9 h-9 rounded-full flex items-center justify-center transition shadow-md"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <div id="preview-content" class="w-full h-full bg-slate-900 flex items-center justify-center overflow-hidden"></div>
         </div>
     </div>
 
@@ -96,7 +95,7 @@
             <button onclick="closeFreeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
             <div class="text-center mb-4">
                 <h3 class="text-lg font-bold text-slate-900">Get Your Free E-Book</h3>
-                <p class="text-xs text-slate-500 mt-1">Enter your details to start the automatic secure download.</p>
+                <p class="text-xs text-slate-500 mt-1">Enter details to start the automatic secure download.</p>
             </div>
             <form id="free-lead-form" onsubmit="handleFreeSubmit(event)" class="space-y-3 text-xs">
                 <input type="hidden" id="free-prod-title">
@@ -125,10 +124,6 @@
         let shoppingCart = [];
         const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3JXiMD_dEiGOGTnX9Dl94FuB78NaLVvRqPSO7ZcYvXS48u4Je9PwRQc7v5o88SYe9/exec"; 
 
-        function loadData() {
-            fetchCloudProducts();
-        }
-
         function fetchCloudProducts() {
             if(!GOOGLE_SHEET_SCRIPT_URL) return;
             fetch(GOOGLE_SHEET_SCRIPT_URL)
@@ -137,13 +132,24 @@
                     storeProducts = data;
                     document.getElementById('cloud-loader').classList.add('hidden');
                     renderStoreGrid();
-                })
-                .catch(err => {
-                    document.getElementById('cloud-loader').innerText = "Failed to stream live catalog entries.";
                 });
         }
 
         function toggleCart() { document.getElementById('cart-drawer').classList.toggle('hidden'); }
+
+        function openPreview(url) {
+            const container = document.getElementById('preview-content');
+            if (!url) return;
+            let embedUrl = url.replace(/\/view.*$/, "/preview");
+            if (!embedUrl.includes("/preview")) embedUrl = url + "/preview";
+            container.innerHTML = `<iframe src="${embedUrl}" class="w-full h-full border-none" sandbox="allow-scripts allow-same-origin"></iframe>`;
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+            document.getElementById('preview-content').innerHTML = '';
+        }
 
         function openFreeModal(title, directDownloadUrl) {
             document.getElementById('free-prod-title').value = title;
@@ -168,22 +174,14 @@
             const pTitle = document.getElementById('free-prod-title').value;
             const directUrl = document.getElementById('free-prod-drive').value.trim();
 
-            const formData = {
-                date: new Date().toLocaleString(),
-                product: pTitle,
-                name: name,
-                phone: phone,
-                email: email
-            };
-
             fetch(GOOGLE_SHEET_SCRIPT_URL, {
                 method: 'POST',
-                body: JSON.stringify(formData)
+                body: JSON.stringify({ date: new Date().toLocaleString(), product: pTitle, name: name, phone: phone, email: email })
             });
 
             setTimeout(() => {
                 window.open(directUrl, '_blank');
-                alert("Thank you! Lead logged securely. If download doesn't start, please check pop-up settings.");
+                alert("Thank you! Lead logged securely inside Google Sheet.");
                 closeFreeModal();
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Unlock & Download Now";
@@ -193,28 +191,39 @@
         function renderStoreGrid() {
             const grid = document.getElementById('products-grid');
             if(storeProducts.length === 0) {
-                grid.innerHTML = `<p class="col-span-full text-center text-slate-400 py-10">No cloud products active at this time.</p>`;
+                grid.innerHTML = `<p class="col-span-full text-center text-slate-400 py-10">No cloud products active.</p>`;
                 return;
             }
             grid.innerHTML = storeProducts.map(p => {
                 const offerPrice = parseFloat(p.price) || 0;
                 let actionBtn = '';
-                
+                let previewBtn = p.downloadUrl ? `<button onclick="openPreview('${p.downloadUrl}')" class="w-full bg-slate-100 text-indigo-700 text-xs font-bold py-2 rounded-lg hover:bg-slate-200 border flex items-center justify-center gap-1"><i class="fa-solid fa-book-open"></i> Watch Preview Pages</button>` : '';
+                let discountBadge = p.discount ? `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded ml-2">${p.discount}</span>` : '';
+
                 if(offerPrice === 0) {
-                    actionBtn = `<button onclick="openFreeModal('${p.title}', '${p.downloadUrl}')" class="w-full bg-emerald-600 text-white text-xs font-bold py-2 rounded-lg hover:bg-emerald-700">Download Free Ebook</button>`;
+                    actionBtn = `<button onclick="openFreeModal('${p.title}', '${p.downloadUrl}')" class="w-full bg-emerald-600 text-white text-xs font-bold py-2.5 rounded-lg hover:bg-emerald-700 flex items-center justify-center gap-1"><i class="fa-solid fa-circle-down"></i> Download Free Ebook</button>`;
                 } else {
-                    actionBtn = `<button onclick="addToCart('${p.id}')" class="flex-1 bg-indigo-600 text-white text-xs font-bold py-2 rounded-lg hover:bg-indigo-700">Add to Basket</button>`;
+                    actionBtn = `
+                        <button onclick="addToCart('${p.id}')" class="flex-1 bg-indigo-600 text-white text-xs font-bold py-2 rounded-lg hover:bg-indigo-700">Add to Basket</button>
+                        <button onclick="buyNow('${p.id}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-3 py-2 rounded-lg transition">Buy Now</button>`;
                 }
 
                 return `
-                    <div class="bg-white rounded-2xl border overflow-hidden flex flex-col justify-between shadow-sm p-4 hover:shadow-md transition">
-                        <div class="space-y-3">
-                            <img src="${p.image || 'https://via.placeholder.com/300'}" class="w-full aspect-square object-cover rounded-xl" alt="Cover">
-                            <h3 class="font-bold text-slate-900 text-base line-clamp-2">${p.title}</h3>
-                            <p class="text-xs text-slate-500 line-clamp-3">${p.description || ''}</p>
+                    <div class="bg-white rounded-2xl border overflow-hidden flex flex-col justify-between shadow-sm p-5 hover:shadow-md transition">
+                        <div>
+                            <img src="${p.image || 'https://via.placeholder.com/300'}" class="w-full aspect-square object-cover rounded-xl border" alt="Cover">
+                            <div class="mt-4">
+                                <h3 class="font-bold text-slate-900 text-base line-clamp-2">${p.title}</h3>
+                                <p class="text-xs text-slate-500 mt-1 line-clamp-3">${p.description || ''}</p>
+                            </div>
+                            <div class="mt-3">${previewBtn}</div>
                         </div>
-                        <div class="mt-4 pt-3 border-t flex flex-col gap-2">
-                            <div class="font-black text-slate-900 text-lg">${offerPrice === 0 ? 'FREE' : '₹' + p.price}</div>
+                        <div class="mt-4 pt-3 border-t bg-slate-50/50 p-3 rounded-xl">
+                            <div class="flex items-center mb-2">
+                                <span class="font-black text-slate-900 text-lg">${offerPrice === 0 ? 'FREE' : '₹' + p.price}</span>
+                                <span class="text-xs text-slate-400 line-through ml-2">₹${p.originalPrice}</span>
+                                ${discountBadge}
+                            </div>
                             <div class="flex gap-2">${actionBtn}</div>
                         </div>
                     </div>`;
@@ -227,6 +236,15 @@
             if (shoppingCart.some(c => c.id === id)) { toggleCart(); return; }
             shoppingCart.push(item);
             updateCart();
+        }
+
+        function buyNow(id) {
+            const item = storeProducts.find(p => p.id === id);
+            if (!item) return;
+            if (!shoppingCart.some(c => c.id === id)) {
+                shoppingCart.push(item);
+                updateCart();
+            }
             toggleCart();
         }
 
@@ -239,13 +257,11 @@
             document.getElementById('cart-count').innerText = shoppingCart.length;
             document.getElementById('cart-count').classList.toggle('hidden', shoppingCart.length === 0);
             const container = document.getElementById('cart-items-container');
-            
             if(shoppingCart.length === 0) {
                 container.innerHTML = `<div class="text-center py-6 text-slate-400 text-xs">Basket is empty.</div>`;
                 document.getElementById('cart-total-price').innerText = "₹0.00";
                 return;
             }
-
             container.innerHTML = shoppingCart.map(item => `
                 <div class="flex items-center justify-between py-3 border-b text-xs">
                     <div>
@@ -254,7 +270,6 @@
                     </div>
                     <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:underline">Remove</button>
                 </div>`).join('');
-
             const total = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
             document.getElementById('cart-total-price').innerText = `₹${total.toFixed(2)}`;
         }
@@ -263,14 +278,19 @@
             const name = document.getElementById('buyer-name').value.trim();
             const email = document.getElementById('buyer-email').value.trim();
             if(!name || !email) { alert("Please fill details."); return; }
-
             const total = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
-            const itemsList = shoppingCart.map(i => `- ${i.title} (₹${i.price})`).join('%0A');
+            const itemsList = shoppingCart.map(i => `• ${i.title} (₹${i.price})`).join('%0A');
             
-            const text = `*NEW DIGITAL STORE ORDER*%0A%0ACustomer: ${name}%0AEmail: ${email}%0A%0AItems:%0A${itemsList}%0A%0ATotal Payable: ₹${total}`;
+            const upiString = `upi://pay?pa=sovankapri@upi&pn=English%20Spur&am=${total}&cu=INR&tn=Ebook%20Order`;
+            const text = `*🔥 NEW DIGITAL STORE ORDER - ENGLISH SPUR 🔥*%0A%0A` +
+                         `*👤 Customer Name:* ${name}%0A` +
+                         `*📧 Delivery Email:* ${email}%0A%0A` +
+                         `*📚 Ordered Resources:*%0A${itemsList}%0A%0A` +
+                         `*💰 Total Payable Amount:* ₹${total}%0A%0A` +
+                         `*👉 Pay Securely via UPI Link:* ${encodeURIComponent(upiString)}%0A%0A` +
+                         `📢 _Please complete the payment and attach the screenshot below for instant delivery!_`;
             window.open(`https://wa.me/919875340842?text=${text}`, '_blank');
         }
-
         window.onload = loadData;
     </script>
 </body>
