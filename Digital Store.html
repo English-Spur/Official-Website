@@ -6,25 +6,23 @@
     <title>English Spur - Premium Digital Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;800&family=Roboto:wght@400;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <style id="dynamic-styles"></style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 transition-all duration-200">
+<body class="bg-slate-50 text-slate-800">
 
+    <!-- NAVBAR -->
     <nav class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <div id="logo-wrapper" class="flex items-center justify-center overflow-hidden rounded-lg"></div>
-                    <span id="nav-brand-text" class="font-bold text-indigo-900 tracking-tight"></span>
+                    <div class="bg-indigo-600 text-white px-2 py-1 text-xs font-bold rounded">ESPUR</div>
+                    <span id="nav-brand-text" class="font-bold text-indigo-900 tracking-tight">English Spur</span>
                 </div>
                 
                 <div class="flex items-center gap-6">
-                    <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
-                        <i class="fa-solid fa-house"></i> Home
-                    </a>
                     <button onclick="toggleCart()" class="relative p-2 text-slate-600 hover:text-indigo-600 transition">
                         <i class="fa-solid fa-basket-shopping text-2xl"></i>
                         <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">0</span>
@@ -34,108 +32,89 @@
         </div>
     </nav>
 
-    <header id="hero-section" class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white text-center px-4">
+    <!-- HERO SECTION -->
+    <header class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white text-center py-16 px-4">
         <div class="max-w-4xl mx-auto flex flex-col items-center">
-            <p class="text-amber-400 font-bold tracking-widest text-xs sm:text-sm uppercase mb-2" id="hero-welcome-text">WELCOME TO</p>
-            <h1 class="font-black tracking-tight" id="hero-line1">ENGLISH SPUR ONLINE DIGITAL STORE</h1>
-            <p class="text-indigo-200 mt-4 max-w-3xl mx-auto block text-center" id="hero-line2"></p>
-            <div id="hero-points-container" class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl text-left w-full justify-center"></div>
-
-            <a href="#store-products" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition inline-flex items-center gap-2 mt-10">
-                Browse Products <i class="fa-solid fa-arrow-down"></i>
-            </a>
+            <p class="text-amber-400 font-bold tracking-widest text-xs uppercase mb-2">WELCOME TO</p>
+            <h1 class="text-2xl sm:text-4xl font-black tracking-tight" id="hero-title">ENGLISH SPUR ONLINE DIGITAL STORE</h1>
+            <p class="text-indigo-200 mt-4 text-xs sm:text-sm max-w-2xl">Premium digital products, visual e-books, and expert-curated courses to build your English fluency instantly.</p>
+            <div id="hero-points" class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-xl text-xs">
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> LSRW Framework Modules</div>
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> Instant E-Book Downloads</div>
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> Expert Video Reviews</div>
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg border border-white/10"><i class="fa-solid fa-circle-check text-amber-400"></i> Lifetime Asset Access</div>
+            </div>
         </div>
     </header>
 
+    <!-- MAIN PRODUCT CATALOG -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section id="store-products" class="mb-20">
-            <h2 class="text-3xl font-bold text-slate-900 mb-2">Our Premium Resources</h2>
-            <p class="text-slate-500 mb-8">Boost your learning journey with instant digital downloads.</p>
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">Our Premium Resources</h2>
             
-            <div id="cloud-loader" class="text-center py-20 text-slate-500 space-y-3">
-                <i class="fa-solid fa-spinner fa-spin text-4xl text-indigo-600"></i>
-                <p class="text-sm font-semibold">Streaming authentic catalog assets from Google Cloud Sheet...</p>
+            <div id="cloud-loader" class="text-center py-12 text-slate-500 space-y-2">
+                <i class="fa-solid fa-spinner fa-spin text-3xl text-indigo-600"></i>
+                <p class="text-xs font-semibold">Streaming authentic catalog assets from Google Cloud Sheet...</p>
             </div>
             
             <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </section>
     </main>
 
+    <!-- CART DRAWER -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute inset-0 bg-slate-900 bg-opacity-50 transition-opacity" onclick="toggleCart()"></div>
+            <div class="absolute inset-0 bg-slate-900 bg-opacity-50" onclick="toggleCart()"></div>
             <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                 <div class="pointer-events-auto w-screen max-w-md bg-white shadow-2xl flex flex-col">
                     <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                         <div class="flex items-start justify-between border-b pb-4">
-                            <h2 class="text-lg font-bold text-slate-900"><i class="fa-solid fa-cart-shopping text-indigo-600 mr-2"></i> Your Basket</h2>
+                            <h2 class="text-base font-bold text-slate-900"><i class="fa-solid fa-cart-shopping text-indigo-600 mr-2"></i> Your Basket</h2>
                             <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-500"><i class="fa-solid fa-xmark text-xl"></i></button>
                         </div>
-                        <div class="mt-8" id="cart-items-container"></div>
+                        <div class="mt-6" id="cart-items-container"></div>
                     </div>
-                    <div class="border-t border-slate-200 py-6 px-4 sm:px-6 bg-slate-50">
-                        <div class="space-y-1.5 border-b pb-4 mb-4 text-sm text-slate-600">
-                            <div class="flex justify-between">
-                                <p>Total Price (Actual)</p>
-                                <p id="cart-actual-total" class="line-through text-slate-400">₹0.00</p>
-                            </div>
-                            <div class="flex justify-between text-emerald-600 font-medium">
-                                <p>Your Discount</p>
-                                <p id="cart-discount-total">-₹0.00</p>
-                            </div>
-                            <div class="flex justify-between text-base font-bold text-slate-900 pt-2 border-t">
-                                <p>Total Payable</p>
-                                <p id="cart-total-price">₹0.00</p>
-                            </div>
+                    <div class="border-t border-slate-200 py-4 px-4 sm:px-6 bg-slate-50 space-y-3">
+                        <div class="flex justify-between text-base font-bold text-slate-900">
+                            <p>Total Payable</p>
+                            <p id="cart-total-price">₹0.00</p>
                         </div>
-                        <div class="space-y-3">
-                            <input type="text" id="buyer-name" placeholder="Your Name" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" required>
-                            <input type="email" id="buyer-email" placeholder="Your Delivery Email" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" required>
-                            <button onclick="checkoutViaWhatsApp()" class="w-full flex items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-3 text-base font-bold text-white shadow-sm hover:bg-green-700 transition">
-                                <i class="fa-brands fa-whatsapp text-xl"></i> Pay via UPI & Order on WhatsApp
-                            </button>
-                        </div>
+                        <input type="text" id="buyer-name" placeholder="Your Name" class="w-full p-2 border rounded-lg text-sm focus:outline-indigo-600" required>
+                        <input type="email" id="buyer-email" placeholder="Your Delivery Email" class="w-full p-2 border rounded-lg text-sm focus:outline-indigo-600" required>
+                        <button onclick="checkoutViaWhatsApp()" class="w-full flex items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-green-700 transition">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Pay & Order on WhatsApp
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="preview-modal" class="fixed inset-0 z-50 overflow-hidden hidden bg-slate-950 bg-opacity-95 flex items-center justify-center p-2 sm:p-4" onclick="closePreview()">
-        <div class="relative bg-white rounded-2xl max-w-4xl w-full h-[90vh] overflow-hidden shadow-2xl flex flex-col" onclick="event.stopPropagation()">
-            <button onclick="closePreview()" class="absolute top-3 right-3 z-50 bg-black/60 hover:bg-black text-white w-9 h-9 rounded-full flex items-center justify-center transition shadow-md"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <div id="preview-content" class="w-full h-full bg-slate-900 flex items-center justify-center overflow-hidden"></div>
-        </div>
-    </div>
-
+    <!-- FREE DOWNLOAD LEAD MODAL -->
     <div id="free-download-modal" class="fixed inset-0 z-50 overflow-hidden hidden bg-slate-950 bg-opacity-80 flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border relative">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
             <button onclick="closeFreeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
-                    <i class="fa-solid fa-circle-down"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900">Get Your Free E-Book</h3>
-                <p class="text-xs text-slate-500 mt-1">Please enter your details to start the automatic secure download.</p>
+            <div class="text-center mb-4">
+                <h3 class="text-lg font-bold text-slate-900">Get Your Free E-Book</h3>
+                <p class="text-xs text-slate-500 mt-1">Enter your details to start the automatic secure download.</p>
             </div>
-            <form id="free-lead-form" onsubmit="handleFreeSubmit(event)" class="space-y-4">
-                <input type="hidden" id="free-prod-id">
+            <form id="free-lead-form" onsubmit="handleFreeSubmit(event)" class="space-y-3 text-xs">
                 <input type="hidden" id="free-prod-title">
                 <input type="hidden" id="free-prod-drive">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name</label>
-                    <input type="text" id="lead-name" required class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" placeholder="e.g. Shovon Kapri">
+                    <label class="block font-bold text-slate-700 mb-1">Your Full Name</label>
+                    <input type="text" id="lead-name" required class="w-full p-2 border rounded-lg focus:outline-indigo-600" placeholder="e.g. Shovon Kapri">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">WhatsApp Number</label>
-                    <input type="tel" id="lead-phone" required class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" placeholder="e.g. 9875340842">
+                    <label class="block font-bold text-slate-700 mb-1">WhatsApp Number</label>
+                    <input type="tel" id="lead-phone" required class="w-full p-2 border rounded-lg focus:outline-indigo-600" placeholder="e.g. 9875340842">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
-                    <input type="email" id="lead-email" required class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:outline-indigo-600" placeholder="name@example.com">
+                    <label class="block font-bold text-slate-700 mb-1">Email Address</label>
+                    <input type="email" id="lead-email" required class="w-full p-2 border rounded-lg focus:outline-indigo-600" placeholder="name@example.com">
                 </div>
-                <button type="submit" id="free-submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i> Unlock & Download Now
+                <button type="submit" id="free-submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg transition shadow-md flex items-center justify-center gap-2">
+                    Unlock & Download Now
                 </button>
             </form>
         </div>
@@ -144,74 +123,14 @@
     <script>
         let storeProducts = [];
         let shoppingCart = [];
-        let configData = {};
-
-        // INHERITED SINGLE ACTIVE ENDPOINT FOR SYSTEM TRANSFERS
         const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3JXiMD_dEiGOGTnX9Dl94FuB78NaLVvRqPSO7ZcYvXS48u4Je9PwRQc7v5o88SYe9/exec"; 
 
-        function getEmbedUrl(url) {
-            if (!url) return '';
-            let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            let match = url.match(regExp);
-            if (match && match[2].length == 11) {
-                return "https://www.youtube.com/embed/" + match[2];
-            }
-            return url;
-        }
-
-        function formatDateDMY(dateString) {
-            if (!dateString) return '';
-            const parts = dateString.split('T')[0].split('-');
-            if (parts.length === 3) {
-                return `${parts[2]}-${parts[1]}-${parts[0]}`;
-            }
-            return dateString.split('T')[0];
-        }
-
         function loadData() {
-            configData = JSON.parse(localStorage.getItem('es_config')) || {
-                whatsappNumber: "919875340842",
-                upiId: "sovankapri@upi",
-                logoUrl: "logo.png",
-                brandText: "English Spur",
-                heroLine1: "ENGLISH SPUR ONLINE DIGITAL STORE",
-                heroLine2: "Premium digital products, visual e-books, and expert-curated courses to build your English fluency instantly.",
-                heroPoints: "LSRW Framework Modules\nInstant E-Book Downloads\nExpert Video Reviews\nLifetime Asset Access",
-                fontFamily: "'Poppins', sans-serif"
-            };
-
-            document.getElementById('nav-brand-text').innerText = configData.brandText;
-            document.getElementById('hero-line1').innerText = configData.heroLine1;
-            document.getElementById('hero-line2').innerText = configData.heroLine2;
-
-            if(configData.logoUrl) {
-                document.getElementById('logo-wrapper').innerHTML = `<div class="bg-indigo-600 text-white px-2 py-1 text-xs font-bold rounded">ESPUR</div>`;
-            }
-
-            document.getElementById('dynamic-styles').innerHTML = `
-                body { font-family: ${configData.fontFamily || "'Poppins', sans-serif"}; }
-                #hero-section { padding-top: 80px; padding-bottom: 80px; }
-            `;
-
-            const pointsContainer = document.getElementById('hero-points-container');
-            if(configData.heroPoints) {
-                const lines = configData.heroPoints.split('\n').filter(l => l.trim() !== '');
-                pointsContainer.innerHTML = lines.map(line => `
-                    <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl border border-white/10">
-                        <i class="fa-solid fa-circle-check text-amber-400 text-lg flex-shrink-0"></i>
-                        <span class="text-sm font-semibold tracking-wide text-white">${line.trim()}</span>
-                    </div>`).join('');
-            }
-
             fetchCloudProducts();
         }
 
         function fetchCloudProducts() {
-            if(GOOGLE_SHEET_SCRIPT_URL === "") {
-                document.getElementById('cloud-loader').innerText = "Developer Configuration Required.";
-                return;
-            }
-
+            if(!GOOGLE_SHEET_SCRIPT_URL) return;
             fetch(GOOGLE_SHEET_SCRIPT_URL)
                 .then(res => res.json())
                 .then(data => {
@@ -226,36 +145,7 @@
 
         function toggleCart() { document.getElementById('cart-drawer').classList.toggle('hidden'); }
 
-        function openPreview(url) {
-            const container = document.getElementById('preview-content');
-            if (!url) return;
-            
-            if (url.includes('drive.google.com')) {
-                let embedUrl = url.replace(/\/view.*$/, "/preview");
-                if (!embedUrl.includes("/preview")) embedUrl = url + "/preview";
-                
-                container.innerHTML = `
-                    <div class="relative w-full h-full bg-slate-900 flex items-center justify-center p-1 sm:p-4 select-none">
-                        <div class="absolute top-0 left-0 w-full h-[54px] bg-slate-900 z-30 border-b border-slate-800 flex items-center pl-6">
-                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-shield-halved text-indigo-400 mr-1.5"></i> Secure Preview Deck</span>
-                        </div>
-                        <div class="relative w-full h-full overflow-hidden rounded-xl border border-slate-700 bg-white pt-[54px]">
-                            <iframe src="${embedUrl}" class="w-full h-full border-none z-10" sandbox="allow-scripts allow-same-origin"></iframe>
-                        </div>
-                    </div>`;
-            } else {
-                container.innerHTML = `<iframe class="w-full h-full" src="${getEmbedUrl(url)}" frameborder="0" allowfullscreen></iframe>`;
-            }
-            document.getElementById('preview-modal').classList.remove('hidden');
-        }
-
-        function closePreview() {
-            document.getElementById('preview-modal').classList.add('hidden');
-            document.getElementById('preview-content').innerHTML = '';
-        }
-
-        function openFreeModal(id, title, directDownloadUrl) {
-            document.getElementById('free-prod-id').value = id;
+        function openFreeModal(title, directDownloadUrl) {
             document.getElementById('free-prod-title').value = title;
             document.getElementById('free-prod-drive').value = directDownloadUrl;
             document.getElementById('free-download-modal').classList.remove('hidden');
@@ -269,9 +159,8 @@
         function handleFreeSubmit(e) {
             e.preventDefault();
             const submitBtn = document.getElementById('free-submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> Triggering Secure Download...";
             submitBtn.disabled = true;
+            submitBtn.innerText = "Triggering Download...";
 
             const name = document.getElementById('lead-name').value.trim();
             const phone = document.getElementById('lead-phone').value.trim();
@@ -289,34 +178,16 @@
 
             fetch(GOOGLE_SHEET_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
 
-            let finalDownloadUrl = directUrl;
-            if (directUrl.includes("drive.google.com")) {
-                const matches = directUrl.match(/\/d\/([^\/]+)/) || directUrl.match(/id=([^\&]+)/);
-                if (matches && matches[1]) {
-                    finalDownloadUrl = `https://drive.google.com/uc?id=${matches[1]}&export=download`;
-                }
-            }
-
-            const link = document.createElement('a');
-            link.href = finalDownloadUrl;
-            link.setAttribute('download', pTitle + '.pdf');
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
             setTimeout(() => {
-                alert(`Thank you ${name}! Lead logged to Google Sheet.\n\nYour download will initiate instantly.`);
+                window.open(directUrl, '_blank');
+                alert("Thank you! Lead logged securely. If download doesn't start, please check pop-up settings.");
                 closeFreeModal();
-                submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 600);
+                submitBtn.innerText = "Unlock & Download Now";
+            }, 800);
         }
 
         function renderStoreGrid() {
@@ -326,79 +197,25 @@
                 return;
             }
             grid.innerHTML = storeProducts.map(p => {
-                const isInCart = shoppingCart.some(c => c.id === p.id);
                 const offerPrice = parseFloat(p.price) || 0;
-                const actualPrice = parseFloat(p.actualPrice) || 0;
+                let actionBtn = '';
                 
-                let priceSection = '';
-                let actionButtons = '';
-                let discountBadge = '';
-                let previewButton = '';
-
-                if (offerPrice === 0) {
-                    priceSection = `
-                        <span class="text-xl font-black text-emerald-600 uppercase tracking-wide">FREE</span>
-                        <span class="text-xs text-slate-400 line-through ml-2">₹${p.actualPrice || '199'}</span>`;
-                    discountBadge = `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded ml-2">100% OFF</span>`;
-                    
-                    actionButtons = `
-                        <button onclick="openFreeModal('${p.id}', '${p.title}', '${p.downloadLink || p.video}')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-1">
-                            <i class="fa-solid fa-circle-down text-sm"></i> Download Free Ebook
-                        </button>`;
+                if(offerPrice === 0) {
+                    actionBtn = `<button onclick="openFreeModal('${p.title}', '${p.downloadUrl}')" class="w-full bg-emerald-600 text-white text-xs font-bold py-2 rounded-lg hover:bg-emerald-700">Download Free Ebook</button>`;
                 } else {
-                    if (actualPrice > offerPrice) {
-                        const discountPercent = Math.round(((actualPrice - offerPrice) / actualPrice) * 100);
-                        discountBadge = `<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded ml-2">${discountPercent}% OFF</span>`;
-                    }
-                    
-                    priceSection = `
-                        <span class="text-xl font-black text-slate-900">₹${p.price}</span>
-                        <span class="text-xs text-slate-400 line-through ml-2">₹${p.actualPrice}</span>`;
-                    
-                    const buttonText = isInCart ? `<i class="fa-solid fa-check mr-1"></i> Added` : `<i class="fa-solid fa-cart-plus mr-1"></i> Add To Basket`;
-                    const buttonClass = isInCart ? `bg-emerald-600 text-white font-bold px-3 py-2.5 rounded-xl text-xs` : `bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-3 py-2.5 rounded-xl text-xs`;
-                    
-                    actionButtons = `
-                        <button onclick="addToCart('${p.id}')" class="flex-1 ${buttonClass}">${buttonText}</button>
-                        <button onclick="buyNow('${p.id}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs transition">Buy Now</button>`;
-                }
-
-                if(p.video) {
-                    previewButton = `
-                        <button onclick="openPreview('${p.video}')" class="w-full bg-slate-100 hover:bg-slate-200 text-indigo-700 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition border border-slate-200">
-                            <i class="fa-solid fa-book-open"></i> Watch Preview Pages
-                        </button>`;
-                } else {
-                    previewButton = `<div class="w-full bg-slate-50 text-slate-400 py-2 rounded-xl text-[11px] text-center border border-dashed select-none"><i class="fa-solid fa-bolt"></i> Instant Direct Delivery Resource</div>`;
+                    actionBtn = `<button onclick="addToCart('${p.id}')" class="flex-1 bg-indigo-600 text-white text-xs font-bold py-2 rounded-lg hover:bg-indigo-700">Add to Basket</button>`;
                 }
 
                 return `
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
-                        <div>
-                            <div class="relative w-full aspect-square bg-slate-100 overflow-hidden border-b border-slate-100">
-                                <img src="${p.image}" class="w-full h-full object-cover select-none" alt="Product Image">
-                            </div>
-                            
-                            <div class="p-5">
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="bg-red-50 text-red-600 text-[10px] font-bold px-2.5 py-1 rounded border border-red-100 flex items-center gap-1">
-                                        <i class="fa-solid fa-clock"></i> Special cloud rate active ends: ${formatDateDMY(p.expiry)}
-                                    </span>
-                                </div>
-                                <h3 class="text-lg font-bold text-slate-900 mb-1 line-clamp-2">${p.title}</h3>
-                                <p class="text-xs text-slate-600 line-clamp-3 mb-4">${p.desc}</p>
-                                
-                                ${previewButton}
-                            </div>
+                    <div class="bg-white rounded-2xl border overflow-hidden flex flex-col justify-between shadow-sm p-4 hover:shadow-md transition">
+                        <div class="space-y-3">
+                            <img src="${p.image || 'https://via.placeholder.com/300'}" class="w-full aspect-square object-cover rounded-xl" alt="Cover">
+                            <h3 class="font-bold text-slate-900 text-base line-clamp-2">${p.title}</h3>
+                            <p class="text-xs text-slate-500 line-clamp-3">${p.description || ''}</p>
                         </div>
-                        <div class="px-5 pb-5 pt-3 border-t border-slate-100 bg-slate-50/50">
-                            <div class="flex items-center mb-3">
-                                ${priceSection}
-                                ${discountBadge}
-                            </div>
-                            <div class="flex gap-2">
-                                ${actionButtons}
-                            </div>
+                        <div class="mt-4 pt-3 border-t flex flex-col gap-2">
+                            <div class="font-black text-slate-900 text-lg">${offerPrice === 0 ? 'FREE' : '₹' + p.price}</div>
+                            <div class="flex gap-2">${actionBtn}</div>
                         </div>
                     </div>`;
             }).join('');
@@ -406,28 +223,16 @@
 
         function addToCart(id) {
             const item = storeProducts.find(p => p.id === id);
-            if (!item || parseFloat(item.price) === 0) return;
+            if (!item) return;
             if (shoppingCart.some(c => c.id === id)) { toggleCart(); return; }
             shoppingCart.push(item);
             updateCart();
-            renderStoreGrid();
-        }
-
-        function buyNow(id) {
-            const item = storeProducts.find(p => p.id === id);
-            if (!item || parseFloat(item.price) === 0) return;
-            if (!shoppingCart.some(c => c.id === id)) {
-                shoppingCart.push(item);
-                updateCart();
-                renderStoreGrid();
-            }
             toggleCart();
         }
 
         function removeFromCart(id) {
             shoppingCart = shoppingCart.filter(c => c.id !== id);
             updateCart();
-            renderStoreGrid();
         }
 
         function updateCart() {
@@ -436,32 +241,22 @@
             const container = document.getElementById('cart-items-container');
             
             if(shoppingCart.length === 0) {
-                container.innerHTML = `<div class="text-center py-12 text-slate-400">Basket is empty.</div>`;
-                document.getElementById('cart-actual-total').innerText = "₹0.00";
-                document.getElementById('cart-discount-total').innerText = "-₹0.00";
+                container.innerHTML = `<div class="text-center py-6 text-slate-400 text-xs">Basket is empty.</div>`;
                 document.getElementById('cart-total-price').innerText = "₹0.00";
                 return;
             }
 
             container.innerHTML = shoppingCart.map(item => `
-                <div class="flex items-center justify-between py-4 border-b text-sm">
-                    <div class="flex-1 pr-3">
-                        <h4 class="font-bold text-slate-900 line-clamp-1">${item.title}</h4>
-                        <div class="flex items-center gap-2 mt-0.5">
-                            <span class="font-bold text-slate-800">₹${item.price}</span>
-                            <span class="text-xs text-slate-400 line-through">₹${item.actualPrice}</span>
-                        </div>
+                <div class="flex items-center justify-between py-3 border-b text-xs">
+                    <div>
+                        <h4 class="font-bold text-slate-900">${item.title}</h4>
+                        <span class="font-bold text-slate-600">₹${item.price}</span>
                     </div>
                     <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:underline">Remove</button>
                 </div>`).join('');
 
-            const payableTotal = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
-            const actualTotal = shoppingCart.reduce((sum, item) => sum + parseFloat(item.actualPrice), 0);
-            const discountTotal = actualTotal - payableTotal;
-
-            document.getElementById('cart-actual-total').innerText = `₹${actualTotal.toFixed(2)}`;
-            document.getElementById('cart-discount-total').innerText = `-₹${discountTotal.toFixed(2)}`;
-            document.getElementById('cart-total-price').innerText = `₹${payableTotal.toFixed(2)}`;
+            const total = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+            document.getElementById('cart-total-price').innerText = `₹${total.toFixed(2)}`;
         }
 
         function checkoutViaWhatsApp() {
@@ -472,16 +267,8 @@
             const total = shoppingCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
             const itemsList = shoppingCart.map(i => `- ${i.title} (₹${i.price})`).join('%0A');
             
-            const upiString = `upi://pay?pa=${configData.upiId}&pn=${encodeURIComponent(configData.brandText)}&am=${total}&cu=INR&tn=Store`;
-            const text = `*NEW DIGITAL STORE ORDER*%0A%0A` +
-                         `*Customer:* ${name}%0A` +
-                         `*Email:* ${email}%0A%0A` +
-                         `*Items:*%0A${itemsList}%0A%0A` +
-                         `*Total Payable:* ₹${total}%0A%0A` +
-                         `👉 *Pay securely via UPI:* ${encodeURIComponent(upiString)}%0A%0A` +
-                         `Please attach payment screenshot below!`;
-
-            window.open(`https://wa.me/${configData.whatsappNumber}?text=${text}`, '_blank');
+            const text = `*NEW DIGITAL STORE ORDER*%0A%0ACustomer: ${name}%0AEmail: ${email}%0A%0AItems:%0A${itemsList}%0A%0ATotal Payable: ₹${total}`;
+            window.open(`https://wa.me/919875340842?text=${text}`, '_blank');
         }
 
         window.onload = loadData;
