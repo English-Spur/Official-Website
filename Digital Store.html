@@ -60,7 +60,6 @@
         .frozen-brand-banner { 
             width: 100%; 
             height: 140px; 
-            /* 👇 এখানে তোমার ইমেজ ফাইল বা ইউআরএলটি বসিয়ে দেবে */
             background-image: url('ess2.png'); 
             background-size: contain; 
             background-position: center center; 
@@ -169,7 +168,7 @@
         .grid-container::-webkit-scrollbar { display: none; }
         
         /* ==========================================================================
-           ৪. প্রিমিয়াম প্রোডাক্টカード デザイン
+           ৪. প্রিমিয়াম প্রোডাক্ট কার্ড ডিজাইন
            ========================================================================== */
         .product-card { 
             background: var(--card-bg); 
@@ -212,6 +211,7 @@
             align-items: center; 
             justify-content: center; 
             border: 1px solid rgba(0,0,0,0.02);
+            position: relative; 
         }
         .image-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
         .product-card:hover .image-box img { transform: scale(1.05); }
@@ -382,7 +382,141 @@
         }
 
         /* ==========================================================================
-           ⑥. মোবাইল রেসপন্সিভ ওভাররাইড মিডিয়া কোয়েরি (Responsive Breakpoints)
+           ৬. ফ্রি মেটেরিয়ালস সেকশন CSS
+           ========================================================================== */
+        .free-download-btn {
+            background: #2563eb; 
+            color: white;
+            border: none;
+            padding: 9px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            min-width: 115px;
+            width: auto;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.15);
+            text-transform: uppercase;
+        }
+        .free-download-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .hundred-free-badge {
+            background: #e6f4ea;
+            color: var(--success);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .free-form-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .free-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 480px;
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            animation: freeFormSlide 0.3s ease-out;
+        }
+
+        @keyframes freeFormSlide {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .free-modal-content h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .free-modal-content p {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .free-form-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+
+        .free-form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .free-form-group input, .free-form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .free-form-group input:focus, .free-form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .free-submit-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+        }
+        .free-submit-btn:hover { background: var(--success-hover); }
+
+        .free-close-x {
+            position: absolute;
+            top: 15px; right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-muted);
+            cursor: pointer;
+            border: none; background: transparent;
+        }
+        .free-close-x:hover { color: var(--danger); }
+
+        /* ==========================================================================
+           ⚙️ মোবাইল রেসপন্সিভ মিডিয়া কোয়েরি
            ========================================================================== */
         @media (max-width: 768px) { 
             .nav-scroll-btn { display: none; } 
@@ -401,9 +535,12 @@
             .card-description-area { min-height: 52px; font-size: 10px; padding: 6px 8px; }
             .offer-price { font-size: 16px; }
             .discount-badge { font-size: 10px; padding: 2px 6px; }
-            .add-to-cart-text-btn, .disabled-btn { min-width: 100px; width: auto; font-size: 11px; padding: 8px 10px; }
+            .add-to-cart-text-btn, .disabled-btn, .free-download-btn { min-width: 100px; width: auto; font-size: 11px; padding: 8px 10px; }
             .preview-btn { padding: 7px; font-size: 11px; margin-bottom: 8px; }
             .checkout-section { margin: 25px 15px; padding: 20px; }
+            
+            .hundred-free-badge { font-size: 10px; padding: 2px 6px; }
+            .free-modal-content { padding: 20px; }
         }
     </style>
 </head>
@@ -469,6 +606,63 @@
         </div>
 
         <button class="express-whatsapp-pay-btn" onclick="sendExpressOrderToWhatsApp()">💬 Chat with Sovan kapri & Pay</button>
+    </div>
+
+    <!-- 🎁 ফ্রি মেটেরিয়ালস সেকশন -->
+    <div class="section-title">🎁 Free Learning Materials</div>
+    <div class="scroll-wrapper">
+        <button class="nav-scroll-btn left-btn" onclick="scrollSection('free-grid', 'left')">‹</button>
+        <div class="grid-container" id="free-grid"></div>
+        <button class="nav-scroll-btn right-btn" onclick="scrollSection('free-grid', 'right')">›</button>
+    </div>
+
+    <!-- 📥 ফ্রি ডাউনলোড গেটওয়ে ফর্ম মডেল -->
+    <div class="free-form-modal" id="freeFormModal">
+        <div class="free-modal-content">
+            <button class="free-close-x" onclick="closeFreeModal()">&times;</button>
+            <h4 id="freeFormTitle">Enter Details to Download</h4>
+            <p>Please fill out this form with your original data. Our system will first verify it. After that, you will get the requested digital product.</p>
+            
+            <form id="freeLeadForm" onsubmit="handleFreeSubmit(event)">
+                <input type="hidden" id="freeMaterialId">
+                <input type="hidden" id="freeMaterialName">
+                <input type="hidden" id="freeDownloadUrl">
+                
+                <div class="free-form-group">
+                    <label for="fName">Full Name *</label>
+                    <input type="text" id="fName" required placeholder="Enter your full name">
+                </div>
+                <div class="free-form-group">
+                    <label for="fContact">Contact Number (WhatsApp) *</label>
+                    <input type="tel" id="fContact" required placeholder="Enter 10-digit number">
+                </div>
+                <div class="free-form-group">
+                    <label for="fEmail">Email Address *</label>
+                    <input type="email" id="fEmail" required placeholder="name@example.com">
+                </div>
+                <div class="free-form-group">
+                    <label for="fAge">Age *</label>
+                    <input type="number" id="fAge" required min="5" max="100" placeholder="Enter your age">
+                </div>
+                <div class="free-form-group">
+                    <label for="fLocation">Location (City/State) *</label>
+                    <input type="text" id="fLocation" required placeholder="e.g. Bagnan, Howrah">
+                </div>
+                <div class="free-form-group">
+                    <label for="fOccupation">Occupation *</label>
+                    <select id="fOccupation" required>
+                        <option value="" disabled selected>Select your occupation</option>
+                        <option value="Student">Student</option>
+                        <option value="Job Holder">Job Holder</option>
+                        <option value="Business Owner">Business Owner</option>
+                        <option value="Home Maker">Home Maker</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="free-submit-btn" id="freeSubmitBtn">Verify & Download PDF</button>
+            </form>
+        </div>
     </div>
 
     <script>
@@ -539,11 +733,58 @@
             { id: 57, category: "kit", name: "Product 12 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
             { id: 58, solidCategory: "kit", name: "Product 13 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
             { id: 59, category: "kit", name: "Product 14 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
-            { id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" }
+            { id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" },
+{ id: 60, category: "kit", name: "Product 15 Practice Kit", offerPrice: 79, originalPrice: 499, coverImageUrl: "", previewUrl: "" }
         ];
+
+        /* 🎁 ফ্রি মেটেরিয়াল ডাটাবেস */
+        const freeMaterialsDatabase = [
+            { id: 101, name: "Free Basic Spoken Guide PDF", coverImageUrl: "Logo.png", previewUrl: "https://drive.google.com/file/d/1GrJyFajGlNW50oKcRl0dlROMgWug5oc-/preview", downloadUrl: "https://drive.google.com/file/d/1GrJyFajGlNW50oKcRl0dlROMgWug5oc-/view", desc: "Get started with fundamental conversation rules for free." },
+            { id: 102, name: "Kids Vocabulary Fun Sheet", coverImageUrl: "https://drive.google.com/file/d/1kjZk0b-W0LZL5v9nUrD0PmgBF7S1WgFQ/view", previewUrl: "https://drive.google.com/file/d/1kjZk0b-W0LZL5v9nUrD0PmgBF7S1WgFQ/preview", downloadUrl: "https://drive.google.com/file/d/1kjZk0b-W0LZL5v9nUrD0PmgBF7S1WgFQ/view", desc: "Interactive vocabulary worksheet perfectly tailored for kids." },
+            { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." },
+ { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }, { id: 103, name: "Sample Practice Worksheet", coverImageUrl: "", previewUrl: "", downloadUrl: "https://drive.google.com/file/d/YOUR_FREE_FILE_3_URL/view", desc: "Daily practice set with solutions included." }
+        ];
+
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyGR1UKejZNtds3ktl7r5rcBVhibcp2SmxOIyz7w8qZPjS0E0t-QLyvZME5QrRrZ2iOKw/exec";
 
         let selectedCart = [];
 
+        function extractDriveId(url) {
+            if (!url || !url.includes('drive.google.com')) return "";
+            if (url.includes('/file/d/')) {
+                return url.split('/file/d/')[1].split('/')[0];
+            } else if (url.includes('id=')) {
+                return url.split('id=')[1].split('&')[0];
+            }
+            return "";
+        }
+
+        function convertToDriveImageUrl(url) {
+            if (!url) return "";
+            if (!url.includes('drive.google.com')) return url; 
+            let id = extractDriveId(url);
+            return id ? `https://drive.google.com/uc?export=view&id=${id}` : "";
+        }
+
+        function convertToDirectDownloadUrl(driveUrl) {
+            if (!driveUrl) return "";
+            if (!driveUrl.includes('drive.google.com')) return driveUrl;
+            let fileId = extractDriveId(driveUrl);
+            return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : driveUrl;
+        }
+
+        // প্রিমিয়াম প্রোডাক্ট রেন্ডারিং
         productsDatabase.forEach(prod => {
             let gridId = "";
             if (prod.category === "ebook") gridId = "ebook-grid";
@@ -599,6 +840,42 @@
             gridEl.innerHTML += cardTemplate;
         });
 
+        // ফ্রি প্রোডাক্ট রেন্ডারিং
+        const freeGridEl = document.getElementById('free-grid');
+        if (freeGridEl) {
+            freeMaterialsDatabase.forEach(prod => {
+                let isProductActive = prod.coverImageUrl !== "";
+                let hasPreview = prod.previewUrl !== "";
+                
+                let processedImgSrc = convertToDriveImageUrl(prod.coverImageUrl);
+                
+                let imageHtml = isProductActive ? 
+                    `<img src="${processedImgSrc}" alt="${prod.name}">` : 
+                    `<div class="coming-soon-box">Material Soon</div>`;
+                
+                let previewBtnHtml = hasPreview ? 
+                    `<button class="preview-btn" onclick="openPreview('${prod.previewUrl}')">Preview Content</button>` : 
+                    `<button class="preview-btn" style="background:#cbd5e1; color:#94a3b8;" disabled>No Preview</button>`;
+                
+                let cardTemplate = `
+                    <div class="product-card">
+                        <h3>${prod.name}</h3>
+                        <div class="image-box">${imageHtml}</div>
+                        ${previewBtnHtml}
+                        <div class="card-description-area">
+                            <span class="info-badge">i</span>
+                            <div>${prod.desc}</div>
+                        </div>
+                        <div class="card-action-row">
+                            <div class="hundred-free-badge">100% FREE</div>
+                            <button class="free-download-btn" onclick="openFreeModal(${prod.id}, '${prod.name}', '${prod.downloadUrl}')">📥 Download</button>
+                        </div>
+                    </div>
+                `;
+                freeGridEl.innerHTML += cardTemplate;
+            });
+        }
+
         function scrollSection(gridId, direction) {
             const container = document.getElementById(gridId);
             if (direction === 'left') { container.scrollLeft -= 480; } else { container.scrollLeft += 480; }
@@ -650,7 +927,6 @@
             document.getElementById('checkoutSection').scrollIntoView({ behavior: 'smooth' });
         }
 
-        /* ⚡ লাইন ব্রেক ফিক্স করা আল্ট্রা-নিখুঁত হোয়াটসঅ্যাপ ফাংশন */
         function sendExpressOrderToWhatsApp() {
             const total = document.getElementById('qrPayableAmount').innerText;
             if (!total || total === "0") { alert("Your cart is empty!"); return; }
@@ -667,7 +943,6 @@
 
             const liveOrderNo = "ESP-" + currentTimestamp.getFullYear() + (currentTimestamp.getMonth()+1) + currentTimestamp.getDate() + "-" + Math.floor(1000 + Math.random() * 9000);
 
-            // 🎯 একদম নিচে নিচে লাইন ব্রেক সহ মেসেজ ফরম্যাট
             const rawMessage = `*NEW DIGITAL STORE ORDER REQUEST*\n\n` +
                                `• *My Name:* [এখানে আপনার নাম লিখুন]\n` +
                                `• *Purchase Date:* ${exactDateTime}\n` +
@@ -675,11 +950,91 @@
                                `Hello *শোভন কাপড়ী*, আমি আপনার অনলাইন স্টোর থেকে ডিজিটাল প্রোডাক্ট অর্ডার করতে চাই। আমার কার্ট / order ডিটেইলস নিচে দেওয়া হলো:\n\n` +
                                `*Selected Materials:*\n${productNames}\n` +
                                `*Total Price:* ₹${total}\n\n` +
-                               `_⚡ শোভন কাপড়ী, উপরে আমার নাম লিখে দিলাম। এবার আমাকে পেমেন্ট করার জন্য আপনার সঠিক QR কোড বা UPI ID চ্যাটে পাঠান। আমি পেমেন্ট সম্পন্ন করে পেমেন্ট অ্যাপ থেকে সরাসরি এই চ্যাটেই স্ক্রিনশট শেয়ার করে দিচ্ছি। ভেরিফাই করে আমাকে ই-বুক বা মেটেরিয়ালের অ্যাক্সেস দিয়ে দিন!_`;
+                               `_শোভন কাপড়ী, উপরে আমার নাম লিখে দিলাম। এবার আমাকে পেমেন্ট করার জন্য আপনার সঠিক QR কোড বা UPI ID চ্যাটে পাঠান। আমি পেমেন্ট সম্পন্ন করে পেমেন্ট অ্যাপ থেকে সরাসরি এই চ্যাটেই স্ক্রিনশট শেয়ার করে দিচ্ছি। ভেরিফাই করে আমাকে ই-বুক বা মেটেরিয়ালের অ্যাক্সেস দিয়ে দিন!_`;
 
-            // নিরাপদ ব্রাউজার এনকোডিং যা লাইন ব্রেক নষ্ট করবে না
             const finalLink = `https://wa.me/919875340842?text=${encodeURIComponent(rawMessage)}`;
             window.open(finalLink, '_blank');
+        }
+
+        /* ==========================================================================
+           📥 ফিক্সড গেটওয়ে হ্যান্ডলার (উইথ নেটওয়ার্ক সেফটি ডিলে অ্যান্ড টার্গেট)
+           ========================================================================== */
+        function openFreeModal(id, name, downloadUrl) {
+            document.getElementById('freeMaterialId').value = id;
+            document.getElementById('freeMaterialName').value = name;
+            document.getElementById('freeDownloadUrl').value = downloadUrl;
+            document.getElementById('freeFormTitle').innerText = `Download: ${name}`;
+            document.getElementById('freeFormModal').style.display = 'flex';
+        }
+
+        function closeFreeModal() {
+            document.getElementById('freeFormModal').style.display = 'none';
+            document.getElementById('freeLeadForm').reset();
+        }
+
+        function handleFreeSubmit(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('freeSubmitBtn');
+            submitBtn.innerText = "Processing... Submitting Data...";
+            submitBtn.disabled = true;
+
+            const matName = document.getElementById('freeMaterialName').value;
+            const userEmail = document.getElementById('fEmail').value;
+            const userAge = document.getElementById('fAge').value;
+            const userLoc = document.getElementById('fLocation').value;
+            const userOcc = document.getElementById('fOccupation').value;
+            const rawDownloadUrl = document.getElementById('freeDownloadUrl').value;
+
+            const mappedFormData = {
+                Date: new Date().toLocaleString('en-US'), 
+                Product: `[FREE] ${matName}`,               
+                Name: document.getElementById('fName').value, 
+                Phone: document.getElementById('fContact').value, 
+                Email: `${userEmail} (Age: ${userAge} | Loc: ${userLoc} | Occ: ${userOcc})`
+            };
+
+            const finalDirectDownloadUrl = convertToDirectDownloadUrl(rawDownloadUrl);
+
+            // নেটওয়ার্ক ক্যানসেলেশন এড়ানোর জন্য রান লজিক সিকোয়েন্স
+            let downloadTriggered = false;
+            const triggerDownload = () => {
+                if (!downloadTriggered) {
+                    downloadTriggered = true;
+                    
+                    // উইন্ডো ক্লোজার বা ক্যানসেলেশন এড়াতে ইনভিসিবল ট্রিক ট্রিগার
+                    const link = document.createElement('a');
+                    link.href = finalDirectDownloadUrl;
+                    link.target = '_blank'; // আলাদা পপআপ ব্লকার সেফ থ্রেড
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    closeFreeModal();
+                    submitBtn.innerText = "Verify & Download PDF";
+                    submitBtn.disabled = false;
+                }
+            };
+
+            // ১. গুগল শিটে সফল ডেটা ট্রান্সফার রিকোয়েস্ট পাঠানো হলো
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors", 
+                cache: "no-cache",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(mappedFormData)
+            })
+            .then(() => {
+                // রিকোয়েস্ট সফল হলে ছোট ডিলে দিয়ে ফাইল ফায়ার করা হবে
+                setTimeout(triggerDownload, 300);
+            })
+            .catch(error => {
+                console.error("Submission trace:", error);
+                triggerDownload();
+            });
+
+            // লোকাল ফাইল সেফটি ব্যাকআপ কাউন্টার (যদি নেটওয়ার্ক স্লো থাকে, 1.5 সেকেন্ড পর ফোর্স ডাউনলোড হবে)
+            setTimeout(triggerDownload, 1500);
         }
     </script>
 </body>
