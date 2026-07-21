@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ENGLISH SPUR - Complete Tense Guide</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ============================================
+                   CSS VARIABLES
+                   ============================================ */
+        :root {
+            --bg-primary: #f0f6ff;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #0b1a2a;
+            --text-secondary: #2d4055;
+            --text-muted: #6b7f93;
+            --border-color: #dce4ec;
+            --shadow: 0 10px 35px rgba(0, 20, 40, 0.08);
+            --shadow-hover: 0 20px 55px rgba(0, 20, 40, 0.15);
+            --light-blue: #5b9bd5;
+            --orange: #f5a623;
+            --gradient-header: linear-gradient(135deg, #ffffff 0%, #f4faff 100%);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0d1a26;
+            --bg-secondary: #152433;
+            --bg-card: #1a2b3c;
+            --text-primary: #e8edf2;
+            --text-secondary: #c8d4e0;
+            --text-muted: #8a9aa8;
+            --border-color: #2a3f54;
+            --shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 20px 55px rgba(0, 0, 0, 0.6);
+            --gradient-header: linear-gradient(135deg, #1a2b3c 0%, #0d1a26 100%);
+        }
+
+        /* ============================================
+                   RESET & BASE
+                   ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Nunito', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.4s, color 0.4s;
+            min-height: 100vh;
+            padding: 0 20px 20px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--light-blue);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--orange);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+                   TOP BAR
+                   ============================================ */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .top-bar button {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .top-bar button:hover {
+            border-color: var(--orange);
+            background: var(--orange);
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+        /* ============================================
+                   HEADER
+                   ============================================ */
+        .header {
+            width: 100%;
+            background: var(--gradient-header);
+            border-radius: 30px;
+            padding: 35px 45px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .header::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 70px;
+            opacity: 0.08;
+        }
+        .header::after {
+            content: "📚";
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            font-size: 60px;
+            opacity: 0.08;
+        }
+
+        .brand {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        .brand .english {
+            color: var(--light-blue);
+            text-shadow: 0 4px 15px rgba(91, 155, 213, 0.25);
+        }
+        .brand .spur {
+            color: var(--orange);
+            text-shadow: 0 4px 15px rgba(245, 166, 35, 0.30);
+        }
+        .brand .academy {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: block;
+            margin-top: 2px;
+            letter-spacing: 5px;
+            opacity: 0.8;
+        }
+
+        .mentor {
+            margin-top: 14px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: rgba(91, 155, 213, 0.08);
+            display: inline-block;
+            padding: 8px 32px;
+            border-radius: 40px;
+            border: 1px solid rgba(91, 155, 213, 0.12);
+            backdrop-filter: blur(4px);
+        }
+        .mentor span {
+            color: var(--orange);
+            font-weight: 800;
+        }
+
+        /* ============================================
+                   NAVIGATION
+                   ============================================ */
+        .nav-bar {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 12px 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px 12px;
+        }
+
+        .nav-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 30px;
+            transition: 0.3s;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .nav-bar a:hover {
+            background: var(--light-blue);
+            color: #fff;
+            border-color: var(--light-blue);
+            transform: translateY(-2px);
+        }
+
+        .nav-bar .search-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-primary);
+            border-radius: 30px;
+            padding: 4px 16px 4px 20px;
+            border: 1px solid var(--border-color);
+            margin-left: auto;
+        }
+        .nav-bar .search-box input {
+            border: none;
+            background: transparent;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: var(--text-primary);
+            outline: none;
+            width: 140px;
+        }
+        .nav-bar .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+        .nav-bar .search-box i {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+                   INTRO
+                   ============================================ */
+        .intro {
+            background: var(--bg-secondary);
+            border-radius: 28px;
+            padding: 32px 38px;
+            margin-bottom: 35px;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--light-blue);
+            border-right: 8px solid var(--orange);
+            transition: 0.4s;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .intro h2 .badge {
+            background: var(--orange);
+            color: #fff;
+            font-size: 0.9rem;
+            padding: 4px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+        }
+        .intro p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-weight: 500;
+        }
+        .intro p .highlight {
+            background: linear-gradient(120deg, #fde68a 0%, #fde68a 40%, #fcd34d 90%);
+            padding: 0 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #1a2b3c;
+        }
+        .intro .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 2px dashed var(--border-color);
+        }
+        .intro .stats .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .intro .stats .stat-item i {
+            color: var(--orange);
+            font-size: 1.3rem;
+        }
+        .intro .stats .stat-item span {
+            color: var(--light-blue);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        /* ============================================
+                   TIMELINE
+                   ============================================ */
+        .timeline-section {
+            background: var(--bg-secondary);
+            border-radius: 28px;
+            padding: 28px 35px;
+            margin-bottom: 35px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: 0.4s;
+        }
+
+        .timeline-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .timeline-section h3 i {
+            color: var(--orange);
+        }
+
+        .timeline-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .timeline-item {
+            flex: 1 1 80px;
+            min-width: 70px;
+            text-align: center;
+            padding: 12px 6px;
+            border-radius: 16px;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            transition: 0.3s;
+            cursor: default;
+        }
+        .timeline-item:hover {
+            transform: scale(1.05);
+            border-color: var(--light-blue);
+        }
+        .timeline-item .t-icon {
+            font-size: 1.5rem;
+            display: block;
+        }
+        .timeline-item .t-name {
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin-top: 4px;
+            color: var(--text-secondary);
+        }
+        .timeline-item .t-time {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .timeline-item.past {
+            border-color: #8e44ad;
+        }
+        .timeline-item.present {
+            border-color: var(--light-blue);
+        }
+        .timeline-item.future {
+            border-color: var(--orange);
+        }
+
+        /* ============================================
+                   FILTER TAGS
+                   ============================================ */
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+        .filter-tags .tag {
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .filter-tags .tag:hover,
+        .filter-tags .tag.active {
+            background: var(--light-blue);
+            color: #fff;
+            border-color: var(--light-blue);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+                   TENSE CARDS - UPDATED WITH LINE-WISE USE CASES
+                   ============================================ */
+        .tense-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .tense-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 24px 26px 28px;
+            box-shadow: var(--shadow);
+            border-top: 8px solid var(--light-blue);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
+            opacity: 0;
+            transform: translateY(40px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tense-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tense-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Each card different top color */
+        .tense-card:nth-child(1) {
+            border-top-color: #5b9bd5;
+        }
+        .tense-card:nth-child(2) {
+            border-top-color: #f5a623;
+        }
+        .tense-card:nth-child(3) {
+            border-top-color: #34a853;
+        }
+        .tense-card:nth-child(4) {
+            border-top-color: #e67e22;
+        }
+        .tense-card:nth-child(5) {
+            border-top-color: #8e44ad;
+        }
+        .tense-card:nth-child(6) {
+            border-top-color: #e74c3c;
+        }
+        .tense-card:nth-child(7) {
+            border-top-color: #2c3e50;
+        }
+        .tense-card:nth-child(8) {
+            border-top-color: #1abc9c;
+        }
+        .tense-card:nth-child(9) {
+            border-top-color: #3498db;
+        }
+        .tense-card:nth-child(10) {
+            border-top-color: #f39c12;
+        }
+        .tense-card:nth-child(11) {
+            border-top-color: #9b59b6;
+        }
+        .tense-card:nth-child(12) {
+            border-top-color: #e67e22;
+        }
+
+        .tense-card .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        .tense-card .number {
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            font-weight: 800;
+            font-size: 0.7rem;
+            padding: 2px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+        }
+        .tense-card .tag-icon {
+            font-size: 1.8rem;
+        }
+
+        .tense-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .tense-card .tense-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tense-card .use-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .tense-card .use-tags .utag {
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 30px;
+            background: rgba(91, 155, 213, 0.10);
+            color: var(--light-blue);
+            border: 1px solid rgba(91, 155, 213, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== USE CASE SECTION - LINE WISE ===== */
+        .tense-card .use-section {
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tense-card .use-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tense-card .use-item {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border-left: 4px solid var(--light-blue);
+            transition: 0.3s;
+        }
+
+        .tense-card .use-item:hover {
+            border-left-color: var(--orange);
+            background: rgba(91, 155, 213, 0.05);
+        }
+
+        .tense-card .use-item .use-label {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.88rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .tense-card .use-item .use-label i {
+            color: var(--orange);
+            margin-right: 6px;
+            font-size: 0.8rem;
+        }
+
+        .tense-card .use-item .use-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 6px;
+            padding-left: 22px;
+        }
+
+        .tense-card .use-item .ex-list {
+            padding-left: 22px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .tense-card .use-item .ex-list .ex {
+            display: block;
+        }
+
+        .tense-card .use-item .ex-list .ex .bn {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .tense-card .use-item .ex-list .ex i {
+            color: var(--light-blue);
+            font-size: 0.6rem;
+            margin-right: 4px;
+        }
+
+        .tense-card .structure-box {
+            background: rgba(91, 155, 213, 0.06);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--light-blue);
+            display: inline-block;
+            margin-top: 10px;
+            border: 1px solid rgba(91, 155, 213, 0.15);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.3px;
+        }
+        .tense-card .structure-box i {
+            color: var(--orange);
+            margin-right: 6px;
+        }
+
+        /* ============================================
+                   FOOTER
+                   ============================================ */
+        .footer {
+            width: 100%;
+            background: linear-gradient(135deg, #1a2a3a 0%, #0f1e2e 100%);
+            border-radius: 30px;
+            padding: 28px 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer .phone {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .footer .phone .icon {
+            font-size: 1.6rem;
+        }
+        .footer .phone .num {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 6px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: 0.3s;
+            cursor: default;
+        }
+        .footer .phone .num:hover {
+            background: rgba(245, 166, 35, 0.15);
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+        .footer .copy {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .footer .copy span {
+            color: var(--orange);
+            font-weight: 700;
+        }
+        .footer .social {
+            display: flex;
+            gap: 12px;
+        }
+        .footer .social a {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .footer .social a:hover {
+            color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================
+                   BACK TO TOP
+                   ============================================ */
+        .back-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--orange);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(245, 166, 35, 0.35);
+            transition: 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        .back-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-top:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 12px 35px rgba(245, 166, 35, 0.5);
+        }
+
+        /* ============================================
+                   RESPONSIVE
+                   ============================================ */
+        @media (max-width: 768px) {
+            .header {
+                padding: 24px 18px;
+            }
+            .brand {
+                font-size: 2.4rem;
+            }
+            .brand .academy {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+            .mentor {
+                font-size: 0.95rem;
+                padding: 6px 18px;
+            }
+            .intro {
+                padding: 20px;
+            }
+            .intro h2 {
+                font-size: 1.5rem;
+            }
+            .intro p {
+                font-size: 1rem;
+            }
+            .nav-bar .search-box input {
+                width: 90px;
+            }
+            .nav-bar a {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+            .tense-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer {
+                flex-direction: column;
+                gap: 8px;
+                padding: 20px;
+            }
+            .footer .phone {
+                font-size: 1rem;
+            }
+            .timeline-item {
+                flex: 1 1 50px;
+                min-width: 50px;
+                padding: 8px 4px;
+            }
+            .timeline-item .t-icon {
+                font-size: 1rem;
+            }
+            .timeline-item .t-name {
+                font-size: 0.5rem;
+            }
+            .timeline-item .t-time {
+                font-size: 0.5rem;
+            }
+            .tense-card .use-item .ex-list {
+                font-size: 0.82rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand {
+                font-size: 1.8rem;
+            }
+            .brand .academy {
+                font-size: 0.9rem;
+            }
+            .top-bar button {
+                font-size: 0.7rem;
+                padding: 5px 12px;
+            }
+            .intro .stats {
+                gap: 10px;
+            }
+            .intro .stats .stat-item {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- TOP BAR -->
+    <!-- ============================================ -->
+    <div class="top-bar container">
+        <button class="mode-toggle" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i> <span id="modeLabel">ডার্ক</span>
+        </button>
+        <button onclick="window.print()">
+            <i class="fas fa-print"></i> প্রিন্ট
+        </button>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- HEADER -->
+    <!-- ============================================ -->
+    <header class="header container">
+        <div class="brand">
+            <span class="english">ENGLISH</span>
+            <span class="spur">SPUR</span>
+            <span class="academy">ONLINE ENGLISH TRAINING ACADEMY</span>
+        </div>
+        <div class="mentor">
+            <i class="fas fa-chalkboard-teacher" style="margin-right:6px;"></i>
+            Mentored by <span>Shovan Kapri</span>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- NAVIGATION -->
+    <!-- ============================================ -->
+    <nav class="nav-bar container" id="navBar">
+        <a href="#tense1">#১</a>
+        <a href="#tense2">#২</a>
+        <a href="#tense3">#৩</a>
+        <a href="#tense4">#৪</a>
+        <a href="#tense5">#৫</a>
+        <a href="#tense6">#৬</a>
+        <a href="#tense7">#৭</a>
+        <a href="#tense8">#৮</a>
+        <a href="#tense9">#৯</a>
+        <a href="#tense10">#১০</a>
+        <a href="#tense11">#১১</a>
+        <a href="#tense12">#১২</a>
+
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="খুঁজুন..." onkeyup="filterCards()" />
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- INTRO -->
+    <!-- ============================================ -->
+    <section class="intro container">
+        <h2>
+            <i class="fas fa-book-open" style="color:var(--light-blue);"></i>
+            টেন্স (Tense) কী?
+            <span class="badge">ছোটদের ভাষায়</span>
+        </h2>
+        <p>
+            <span class="highlight">টেন্স</span> মানে হলো — <strong>কাজের সময়</strong>।
+            কোনো কাজ <strong>এখন</strong> হচ্ছে, <strong>আগে</strong> হয়েছিল,
+            নাকি <strong>পরে</strong> হবে — সেটাই টেন্স বলে।
+            <br />
+            যেমন: <em>"আমি খাচ্ছি"</em> → এখন,
+            <em>"আমি খেয়েছি"</em> → আগে,
+            <em>"আমি খাব"</em> → পরে।
+        </p>
+        <div class="stats">
+            <div class="stat-item"><i class="fas fa-clock"></i> মোট টেন্স: <span>১২</span>টি</div>
+            <div class="stat-item"><i class="fas fa-hourglass-start"></i> Present: <span>৪</span>টি</div>
+            <div class="stat-item"><i class="fas fa-hourglass-end"></i> Past: <span>৪</span>টি</div>
+            <div class="stat-item"><i class="fas fa-hourglass-half"></i> Future: <span>৪</span>টি</div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TIMELINE -->
+    <!-- ============================================ -->
+    <section class="timeline-section container">
+        <h3><i class="fas fa-chart-line"></i> টাইম লাইন — কোন টেন্স কোন সময়ে?</h3>
+        <div class="timeline-bar">
+            <div class="timeline-item past">
+                <span class="t-icon">⏪</span>
+                <span class="t-name">Past</span>
+                <span class="t-time">৫-৮</span>
+            </div>
+            <div class="timeline-item present">
+                <span class="t-icon">⏳</span>
+                <span class="t-name">Present</span>
+                <span class="t-time">১-৪</span>
+            </div>
+            <div class="timeline-item future">
+                <span class="t-icon">🔮</span>
+                <span class="t-name">Future</span>
+                <span class="t-time">৯-১২</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FILTER TAGS -->
+    <!-- ============================================ -->
+    <div class="filter-tags container">
+        <span class="tag active" onclick="filterByTag('all', this)">🔆 সব</span>
+        <span class="tag" onclick="filterByTag('habit', this)">🔄 অভ্যাস</span>
+        <span class="tag" onclick="filterByTag('truth', this)">🌍 সত্য</span>
+        <span class="tag" onclick="filterByTag('ongoing', this)">⏳ চলমান</span>
+        <span class="tag" onclick="filterByTag('experience', this)">✨ অভিজ্ঞতা</span>
+        <span class="tag" onclick="filterByTag('completed', this)">✅ সম্পন্ন</span>
+        <span class="tag" onclick="filterByTag('future', this)">🔮 ভবিষ্যৎ</span>
+        <span class="tag" onclick="filterByTag('duration', this)">⏱️ সময়কাল</span>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ১২টি টেন্সের কার্ড - UPDATED WITH LINE-WISE USE CASES -->
+    <!-- ============================================ -->
+    <div class="tense-grid container" id="tenseGrid">
+
+        <!-- ===== 1. Present Indefinite ===== -->
+        <div class="tense-card" id="tense1" data-tags="habit truth">
+            <div class="card-top">
+                <span class="number">#১</span>
+                <span class="tag-icon">🌅</span>
+            </div>
+            <h3>Present Indefinite</h3>
+            <div class="tense-sub">সাধারণ বর্তমান</div>
+            <div class="use-tags">
+                <span class="utag">Habit</span>
+                <span class="utag">Truth</span>
+                <span class="utag">Schedule</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-globe-asia"></i> চিরন্তন সত্য</span>
+                    <div class="use-desc">যে সত্য কখনো পরিবর্তন হয় না।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> The sun rises in the east. <span class="bn">(সূর্য পূর্বে ওঠে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> The earth moves around the sun. <span class="bn">(পৃথিবী সূর্যের চারপাশে ঘোরে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-sync-alt"></i> দৈনন্দিন অভ্যাস</span>
+                    <div class="use-desc">যেসব কাজ প্রতিদিন বা নিয়মিত করা হয়।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I brush my teeth twice daily. <span class="bn">(আমি প্রতিদিন দুইবার দাঁত ব্রাশ করি।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> He drinks tea every morning. <span class="bn">(সে প্রতিদিন সকালে চা খায়।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-flask"></i> সাধারণ সত্য / বৈজ্ঞানিক তথ্য</span>
+                    <div class="use-desc">চিরস্থায়ী বৈজ্ঞানিক সত্য।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> Water boils at 100°C. <span class="bn">(পানি ১০০°C-তে ফোটে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> Ice melts at 0°C. <span class="bn">(বরফ ০°C-তে গলে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-calendar-alt"></i> নিকট ভবিষ্যৎ</span>
+                    <div class="use-desc">পূর্বনির্ধারিত সময়সূচি।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> The train leaves at 8 PM. <span class="bn">(ট্রেন রাত ৮টায় ছাড়ে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> Our exam starts next Monday. <span class="bn">(আমাদের পরীক্ষা আগামী সোমবার শুরু হয়।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + V1 (s/es) + Object</div>
+        </div>
+
+        <!-- ===== 2. Present Continuous ===== -->
+        <div class="tense-card" id="tense2" data-tags="ongoing future">
+            <div class="card-top">
+                <span class="number">#২</span>
+                <span class="tag-icon">⏳</span>
+            </div>
+            <h3>Present Continuous</h3>
+            <div class="tense-sub">ঘটমান বর্তমান</div>
+            <div class="use-tags">
+                <span class="utag">Ongoing</span>
+                <span class="utag">Temporary</span>
+                <span class="utag">Plan</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-play"></i> এখনই চলছে</span>
+                    <div class="use-desc">কথা বলার মুহূর্তে যে কাজ চলছে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I am reading a book now. <span class="bn">(আমি এখন বই পড়ছি।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She is cooking dinner. <span class="bn">(সে রাতের খাবার রান্না করছে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-clock"></i> সাময়িক অবস্থা</span>
+                    <div class="use-desc">কিছুদিনের জন্য সাময়িকভাবে চলা কাজ।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> He is studying law these days. <span class="bn">(এসব দিনে সে আইন পড়ছে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> I am staying with my friend for a week. <span class="bn">(আমি এক সপ্তাহ বন্ধুর সাথে থাকছি।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-rocket"></i> নিকট ভবিষ্যতের সিদ্ধান্ত</span>
+                    <div class="use-desc">নির্দিষ্ট কোনো পরিকল্পনা।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> We are moving to London next week. <span class="bn">(আমরা আগামী সপ্তাহে লন্ডনে যাচ্ছি।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> He is meeting the doctor tonight. <span class="bn">(সে আজ রাতে ডাক্তারের সাথে দেখা করবে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + am/is/are + V-ing</div>
+        </div>
+
+        <!-- ===== 3. Present Perfect ===== -->
+        <div class="tense-card" id="tense3" data-tags="completed experience">
+            <div class="card-top">
+                <span class="number">#৩</span>
+                <span class="tag-icon">✅</span>
+            </div>
+            <h3>Present Perfect</h3>
+            <div class="tense-sub">পুরাঘটিত বর্তমান</div>
+            <div class="use-tags">
+                <span class="utag">Recent</span>
+                <span class="utag">Experience</span>
+                <span class="utag">Result</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-check-circle"></i> সদ্য সমাপ্ত কাজ</span>
+                    <div class="use-desc">কাজ এইমাত্র শেষ হয়েছে, ফল এখনো বর্তমান।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I have just finished my homework. <span class="bn">(আমি এইমাত্র হোমওয়ার্ক শেষ করেছি।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She has just arrived at the station. <span class="bn">(সে এইমাত্র স্টেশনে পৌঁছেছে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-star"></i> জীবনের অভিজ্ঞতা</span>
+                    <div class="use-desc">জীবনে কোনো কিছু ঘটার অভিজ্ঞতা।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I have visited the Taj Mahal twice. <span class="bn">(আমি তাজমহল দুইবার দেখেছি।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> He has never eaten sushi. <span class="bn">(সে কখনো সুশি খায়নি।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-flag"></i> ফল এখনো বর্তমান</span>
+                    <div class="use-desc">কাজের প্রভাব এখনো আছে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> He has lost his wallet. <span class="bn">(সে তার মানিব্যাগ হারিয়েছে — এখনো খুঁজে পায়নি।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She has broken her leg. <span class="bn">(সে তার পা ভেঙ্গেছে — এখনো কাস্ট আছে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + have/has + V3</div>
+        </div>
+
+        <!-- ===== 4. Present Perfect Continuous ===== -->
+        <div class="tense-card" id="tense4" data-tags="ongoing duration">
+            <div class="card-top">
+                <span class="number">#৪</span>
+                <span class="tag-icon">🔄</span>
+            </div>
+            <h3>Present Perfect Continuous</h3>
+            <div class="tense-sub">পুরাঘটিত ঘটমান বর্তমান</div>
+            <div class="use-tags">
+                <span class="utag">Duration</span>
+                <span class="utag">Since/For</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-hourglass-start"></i> নির্দিষ্ট সময় ধরে চলা (for)</span>
+                    <div class="use-desc">অতীতে শুরু হয়ে এখনো চলছে, নির্দিষ্ট সময় ধরে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I have been studying for three hours. <span class="bn">(আমি ৩ ঘণ্টা ধরে পড়াশোনা করছি।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> They have been playing cricket for two hours. <span class="bn">(তারা ২ ঘণ্টা ধরে ক্রিকেট খেলছে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-hourglass-half"></i> নির্দিষ্ট সময় থেকে চলা (since)</span>
+                    <div class="use-desc">অতীতে শুরু হয়ে এখনো চলছে, নির্দিষ্ট সময় থেকে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> It has been raining since morning. <span class="bn">(সকাল থেকে বৃষ্টি হচ্ছে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She has been working here since 2021. <span class="bn">(সে ২০২১ সাল থেকে এখানে কাজ করছে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + have/has been + V-ing</div>
+        </div>
+
+        <!-- ===== 5. Past Indefinite ===== -->
+        <div class="tense-card" id="tense5" data-tags="completed habit">
+            <div class="card-top">
+                <span class="number">#৫</span>
+                <span class="tag-icon">⏪</span>
+            </div>
+            <h3>Past Indefinite</h3>
+            <div class="tense-sub">সাধারণ অতীত</div>
+            <div class="use-tags">
+                <span class="utag">Completed</span>
+                <span class="utag">Past Habit</span>
+                <span class="utag">History</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-check-double"></i> অতীতের সাধারণ কাজ</span>
+                    <div class="use-desc">অতীতে নির্দিষ্ট সময়ে কাজ সম্পন্ন হয়েছে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I met my old friend yesterday. <span class="bn">(আমি গতকাল পুরোনো বন্ধুর সাথে দেখা করলাম।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She cooked a delicious meal last night. <span class="bn">(সে গতকাল রাতে সুস্বাদু খাবার রান্না করেছিল।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-history"></i> অতীতের অভ্যাস</span>
+                    <div class="use-desc">অতীতে নিয়মিত করা হতো, এখন আর করা হয় না।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> He always walked to school when he was young. <span class="bn">(ছোটবেলায় সে সবসময় স্কুলে হাঁটত।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> They played football every Sunday in their childhood. <span class="bn">(ছোটবেলায় তারা প্রতি রবিবার ফুটবল খেলত।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-landmark"></i> ঐতিহাসিক ঘটনা</span>
+                    <div class="use-desc">ইতিহাসের ঘটনা।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> India gained independence in 1947. <span class="bn">(ভারত ১৯৪৭ সালে স্বাধীনতা লাভ করে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> Columbus discovered America in 1492. <span class="bn">(কলম্বাস ১৪৯২ সালে আমেরিকা আবিষ্কার করে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + V2 + Object</div>
+        </div>
+
+        <!-- ===== 6. Past Continuous ===== -->
+        <div class="tense-card" id="tense6" data-tags="ongoing">
+            <div class="card-top">
+                <span class="number">#৬</span>
+                <span class="tag-icon">⏳</span>
+            </div>
+            <h3>Past Continuous</h3>
+            <div class="tense-sub">ঘটমান অতীত</div>
+            <div class="use-tags">
+                <span class="utag">Ongoing</span>
+                <span class="utag">Parallel</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-play"></i> অতীতের চলমান কাজ</span>
+                    <div class="use-desc">অতীতের কোনো নির্দিষ্ট মুহূর্তে কাজ চলছিল।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I was drawing a picture yesterday afternoon. <span class="bn">(আমি গতকাল বিকেলে ছবি আঁকছিলাম।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> It was raining heavily when I woke up. <span class="bn">(আমি ঘুম থেকে উঠার সময় ভারী বৃষ্টি হচ্ছিল।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-arrows-alt-h"></i> দুটি কাজ একসাথে চলা</span>
+                    <div class="use-desc">দুটি কাজ একই সময়ে চলছিল।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> She was dancing while he was singing. <span class="bn">(সে নাচছিল যখন সে গাইছিল।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> The children were playing while their mother was cooking. <span class="bn">(বাচ্চারা খেলছিল যখন তাদের মা রান্না করছিল।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + was/were + V-ing</div>
+        </div>
+
+        <!-- ===== 7. Past Perfect ===== -->
+        <div class="tense-card" id="tense7" data-tags="completed">
+            <div class="card-top">
+                <span class="number">#৭</span>
+                <span class="tag-icon">⏮</span>
+            </div>
+            <h3>Past Perfect</h3>
+            <div class="tense-sub">পুরাঘটিত অতীত</div>
+            <div class="use-tags">
+                <span class="utag">Earlier Action</span>
+                <span class="utag">Sequence</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-arrow-left"></i> আগে হওয়া কাজ</span>
+                    <div class="use-desc">অতীতের দুটি কাজের মধ্যে আগেরটি।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> The train had left before we reached the station. <span class="bn">(আমরা স্টেশনে পৌঁছানোর আগেই ট্রেন ছেড়ে গিয়েছিল।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> I had finished my homework before my friend came. <span class="bn">(বন্ধু আসার আগেই আমি হোমওয়ার্ক শেষ করেছিলাম।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-arrow-right"></i> পরে হওয়া কাজের সাথে সম্পর্ক</span>
+                    <div class="use-desc">একটি কাজের পর আরেকটি কাজ ঘটে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> The doctor arrived after the patient had died. <span class="bn">(রোগী মারা যাওয়ার পর ডাক্তার আসেন।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She had slept before her father returned home. <span class="bn">(বাবা ফিরে আসার আগেই সে ঘুমিয়ে পড়েছিল।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + had + V3</div>
+        </div>
+
+        <!-- ===== 8. Past Perfect Continuous ===== -->
+        <div class="tense-card" id="tense8" data-tags="ongoing duration">
+            <div class="card-top">
+                <span class="number">#৮</span>
+                <span class="tag-icon">🔄</span>
+            </div>
+            <h3>Past Perfect Continuous</h3>
+            <div class="tense-sub">পুরাঘটিত ঘটমান অতীত</div>
+            <div class="use-tags">
+                <span class="utag">Duration</span>
+                <span class="utag">Up to Past</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-hourglass-end"></i> অন্য ঘটনার আগে পর্যন্ত চলা</span>
+                    <div class="use-desc">অতীতে একটি কাজ শুরু হয়ে অন্য একটি অতীত ঘটনার আগে পর্যন্ত চলছিল।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> They had been playing for two hours before it started to rain. <span class="bn">(বৃষ্টি শুরু হওয়ার আগে পর্যন্ত তারা ২ ঘণ্টা খেলছিল।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> I had been waiting for an hour before the bus arrived. <span class="bn">(বাস আসার আগে পর্যন্ত আমি ১ ঘণ্টা অপেক্ষা করছিলাম।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-clock"></i> নির্দিষ্ট সময় পর্যন্ত চলা</span>
+                    <div class="use-desc">অতীতে নির্দিষ্ট সময় পর্যন্ত কাজ চলছিল।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> She had been working at that firm for 5 years before resigning. <span class="bn">(ইস্তফা দেওয়ার আগে পর্যন্ত সে সেই ফার্মে ৫ বছর কাজ করছিল।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> He had been sleeping for 10 hours when I woke him up. <span class="bn">(আমি তাকে ডাকার আগে পর্যন্ত সে ১০ ঘণ্টা ঘুমাচ্ছিল।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + had been + V-ing</div>
+        </div>
+
+        <!-- ===== 9. Future Indefinite ===== -->
+        <div class="tense-card" id="tense9" data-tags="future">
+            <div class="card-top">
+                <span class="number">#৯</span>
+                <span class="tag-icon">🔮</span>
+            </div>
+            <h3>Future Indefinite</h3>
+            <div class="tense-sub">সাধারণ ভবিষ্যৎ</div>
+            <div class="use-tags">
+                <span class="utag">Future</span>
+                <span class="utag">Decision</span>
+                <span class="utag">Prediction</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-forward"></i> সাধারণ ভবিষ্যৎ কাজ</span>
+                    <div class="use-desc">আগামীতে স্বাভাবিকভাবে যে কাজ ঘটবে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I will buy a new book tomorrow. <span class="bn">(আমি কাল একটি নতুন বই কিনব।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> They will go to Delhi next week. <span class="bn">(তারা আগামী সপ্তাহে দিল্লি যাবে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-bolt"></i> তাত্ক্ষণিক সিদ্ধান্ত</span>
+                    <div class="use-desc">কথা বলার মুহূর্তেই সিদ্ধান্ত নেওয়া।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I will answer the phone call! <span class="bn">(আমি ফোনটা ধরছি!)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> I will help you with that right now! <span class="bn">(আমি এখনই তোমাকে সেটাতে সাহায্য করছি!)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-cloud-sun"></i> অনুমান / পূর্বাভাস</span>
+                    <div class="use-desc">ভবিষ্যতের সম্ভাব্য ঘটনা।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> It will rain this evening. <span class="bn">(আজ সন্ধ্যায় বৃষ্টি হবে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> You will pass the examination if you study hard. <span class="bn">(তুমি যদি কঠিন পড়াশোনা করো তাহলে পরীক্ষায় পাস করবে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + will + V1</div>
+        </div>
+
+        <!-- ===== 10. Future Continuous ===== -->
+        <div class="tense-card" id="tense10" data-tags="ongoing future">
+            <div class="card-top">
+                <span class="number">#১০</span>
+                <span class="tag-icon">⏳</span>
+            </div>
+            <h3>Future Continuous</h3>
+            <div class="tense-sub">ঘটমান ভবিষ্যৎ</div>
+            <div class="use-tags">
+                <span class="utag">Ongoing</span>
+                <span class="utag">Future Time</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-clock"></i> নির্দিষ্ট সময়ে চলা</span>
+                    <div class="use-desc">ভবিষ্যতে কোনো নির্দিষ্ট সময়ে কাজ চলতে থাকবে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I will be studying at 10 AM tomorrow. <span class="bn">(আমি আগামীকাল সকাল ১০টায় পড়তে থাকব।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She will be waiting for us at the station at 5 PM. <span class="bn">(সে বিকেল ৫টায় স্টেশনে আমাদের জন্য অপেক্ষা করতে থাকবে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-calendar-week"></i> সময় জুড়ে চলা</span>
+                    <div class="use-desc">ভবিষ্যতে কোনো সময় জুড়ে কাজ চলতে থাকবে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> They will be playing football this time tomorrow. <span class="bn">(তারা আগামীকাল এই সময় ফুটবল খেলতে থাকবে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> Engineers will be working on the bridge all week. <span class="bn">(ইঞ্জিনিয়াররা সপ্তাহ জুড়ে ব্রিজের উপর কাজ করতে থাকবে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + will be + V-ing</div>
+        </div>
+
+        <!-- ===== 11. Future Perfect ===== -->
+        <div class="tense-card" id="tense11" data-tags="completed future">
+            <div class="card-top">
+                <span class="number">#১১</span>
+                <span class="tag-icon">✅</span>
+            </div>
+            <h3>Future Perfect</h3>
+            <div class="tense-sub">পুরাঘটিত ভবিষ্যৎ</div>
+            <div class="use-tags">
+                <span class="utag">Completed</span>
+                <span class="utag">By Time</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-hourglass-end"></i> নির্দিষ্ট সময়ের মধ্যে শেষ</span>
+                    <div class="use-desc">ভবিষ্যতে নির্দিষ্ট সময়ের মধ্যে কাজ শেষ হয়ে যাবে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> I will have finished the assignment by 5 PM. <span class="bn">(আমি বিকেল ৫টার মধ্যে অ্যাসাইনমেন্ট শেষ করে ফেলব।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> She will have reached home before sunset. <span class="bn">(সূর্যাস্তের আগেই সে বাড়ি পৌঁছে যাবে।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-arrow-right"></i> অন্য কাজের আগে শেষ</span>
+                    <div class="use-desc">ভবিষ্যতে অন্য কাজের আগেই কাজটি শেষ হয়ে যাবে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> The train will have left before we reach the station. <span class="bn">(আমরা স্টেশনে পৌঁছানোর আগেই ট্রেন ছেড়ে যাবে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> The sun will have set before we arrive at the beach. <span class="bn">(আমরা সৈকতে পৌঁছানোর আগেই সূর্যাস্ত হয়ে যাবে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + will have + V3</div>
+        </div>
+
+        <!-- ===== 12. Future Perfect Continuous ===== -->
+        <div class="tense-card" id="tense12" data-tags="duration future">
+            <div class="card-top">
+                <span class="number">#১২</span>
+                <span class="tag-icon">🔄</span>
+            </div>
+            <h3>Future Perfect Continuous</h3>
+            <div class="tense-sub">পুরাঘটিত ঘটমান ভবিষ্যৎ</div>
+            <div class="use-tags">
+                <span class="utag">Duration</span>
+                <span class="utag">Up to Future</span>
+            </div>
+
+            <div class="use-section">
+                <div class="use-title"><i class="fas fa-bullseye"></i> কখন ব্যবহার হয়?</div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-hourglass-start"></i> নির্দিষ্ট সময় পর্যন্ত চলা</span>
+                    <div class="use-desc">ভবিষ্যতে নির্দিষ্ট সময় পর্যন্ত কাজ চলতে থাকবে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> By next year, I will have been learning English for three years. <span class="bn">(আগামী বছরের মধ্যে আমি ৩ বছর ধরে ইংরেজি শিখতে থাকব।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> By December, we will have been living in this city for a decade. <span class="bn">(ডিসেম্বরের মধ্যে আমরা এই শহরে ১০ বছর ধরে বসবাস করতে থাকব।)</span></span>
+                    </div>
+                </div>
+
+                <div class="use-item">
+                    <span class="use-label"><i class="fas fa-arrow-right"></i> অন্য ঘটনার আগে পর্যন্ত চলা</span>
+                    <div class="use-desc">ভবিষ্যতে অন্য ঘটনার আগে পর্যন্ত কাজ চলতে থাকবে।</div>
+                    <div class="ex-list">
+                        <span class="ex"><i class="fas fa-circle"></i> She will have been practicing music for 2 hours before the concert. <span class="bn">(কনসার্টের আগে পর্যন্ত সে ২ ঘণ্টা ধরে গান চর্চা করতে থাকবে।)</span></span>
+                        <span class="ex"><i class="fas fa-circle"></i> The students will have been studying for 3 hours when the test begins. <span class="bn">(পরীক্ষা শুরু হওয়ার আগে পর্যন্ত শিক্ষার্থীরা ৩ ঘণ্টা ধরে পড়তে থাকবে।)</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="structure-box"><i class="fas fa-cog"></i> Subject + will have been + V-ing</div>
+        </div>
+
+    </div>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="footer container">
+        <div class="phone">
+            <span class="icon"><i class="fas fa-phone-alt"></i></span>
+            <span class="num">9875340842</span>
+            <span style="color:rgba(255,255,255,0.15);">|</span>
+            <span class="num">8158874131</span>
+        </div>
+        <div class="copy">
+            &copy; 2026 <span>ENGLISH SPUR</span> · ছোটদের জন্য তৈরি <i class="fas fa-heart" style="color:#f5a623;font-size:0.8rem;"></i>
+        </div>
+        <div class="social">
+            <a href="https://www.facebook.com/profile.php?id=100078171497466"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@SOVANKAPRI123"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/kaprisovan/"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- BACK TO TOP -->
+    <!-- ============================================ -->
+    <button class="back-top" id="backTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================ -->
+    <script>
+        // ===== DARK MODE TOGGLE =====
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const label = document.getElementById('modeLabel');
+
+            if (current === 'dark') {
+                html.removeAttribute('data-theme');
+                label.textContent = 'ডার্ক';
+                document.querySelector('.mode-toggle i').className = 'fas fa-moon';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                label.textContent = 'লাইট';
+                document.querySelector('.mode-toggle i').className = 'fas fa-sun';
+            }
+        }
+
+        // ===== SCROLL ANIMATION =====
+        const cards = document.querySelectorAll('.tense-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 80);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        cards.forEach(card => observer.observe(card));
+
+        // ===== BACK TO TOP =====
+        const backBtn = document.getElementById('backTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backBtn.classList.add('show');
+            } else {
+                backBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== SEARCH FILTER =====
+        function filterCards() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.tense-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(input) ? 'block' : 'none';
+            });
+        }
+
+        // ===== TAG FILTER =====
+        function filterByTag(tag, element) {
+            document.querySelectorAll('.filter-tags .tag').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+
+            const cards = document.querySelectorAll('.tense-card');
+            if (tag === 'all') {
+                cards.forEach(card => card.style.display = 'block');
+                return;
+            }
+            cards.forEach(card => {
+                const tags = card.dataset.tags || '';
+                card.style.display = tags.includes(tag) ? 'block' : 'none';
+            });
+        }
+
+        // ===== SMOOTH NAV SCROLL =====
+        document.querySelectorAll('.nav-bar a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('📚 ENGLISH SPUR - Complete Tense Guide with Line-wise Use Cases Loaded!');
+    </script>
+
+</body>
+</html>
